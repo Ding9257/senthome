@@ -1,0 +1,52 @@
+<view class="container">
+<view style=" background-color:#F1E22D;">
+    <van-row>
+        <van-col span="24">
+            <button style="width:80%;height:75%;margin:0 auto;border-radius:50px;" size="20">
+            <van-icon style='margin-left:-5px' name="location" />
+            送到家（通州金源小区）
+            <van-icon style='margin-right:-5px' name="location" />
+            </button>
+        </van-col>
+    </van-row>
+
+    <van-row>
+        <van-col offset="2" span="20">
+          <van-row>
+            <van-col span="4">
+            <image src='./../../image/location.png' style='width:50px;height:50px;'></image>
+            </van-col>
+            <van-col span="20">
+              <view class="van-ellipsis" style="font-size:16px;color:#fff;">美宜佳便利店美宜佳便利店美宜佳便利店</view>
+              <view style="font-size:12px;color:#fff;">营业时间：09：00-23：59</view>
+              <view class="van-ellipsis" style="font-size:14px;color:#fff;">商店地址：顺义区后沙峪绿地自由阿萨是打发斯蒂芬</view>
+            </van-col>
+          </van-row>
+        </van-col>
+    </van-row>
+    <van-row>
+      <van-col offset="2" span="20">
+        <swiper style='width:100%' class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+          <swiper-item style="border-radius:15px;" wx:for="{{banner}}" wx:key="{{item.id}}">
+              <navigator url="{{item.link}}">
+                  <image src="{{item.image_url}}" background-size="cover"></image>
+              </navigator>
+          </swiper-item>
+        </swiper>
+      </van-col>
+    </van-row>
+</view>
+<van-row>
+    <van-col span="12">商品选购</van-col>
+    <van-col span="12">
+        <van-row>轻松夺宝</van-row>
+        <van-row>惊喜福袋</van-row>
+    </van-col>
+</van-row>
+<van-row style="text-align:center;">店长推荐</van-row>
+<scroll-view class="scroll-view_H" scroll-x="true" style="height: 200px;width:100%" bindscroll="scroll">
+    <view class="scroll-view-item_H">商品名称</view>
+    <view class="scroll-view-item_H">商品名称</view>
+    <view class="scroll-view-item_H">商品名称</view>
+</scroll-view>
+</view>
