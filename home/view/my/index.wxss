@@ -23,3 +23,22 @@
   background-color: #F1E22D;
   color: #fff;
 }
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250rpx;
+  background: #F1E22D;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+}

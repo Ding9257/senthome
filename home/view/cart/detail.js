@@ -16,6 +16,9 @@ Page({
         galleryHeight: 200
     },
     onLoad: function (options) {
+        wx.setNavigationBarTitle({
+            title: options.product_name//页面标题为路由参数
+        })
         that = this;
         console.log(options);
         var goodsId = options.product_id;

@@ -1,22 +1,7 @@
 <view class="container">
-  <view class="header"></view>
-  <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__bd">
-      <navigator url="/view/qrcode/index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="{{userInfo.avatarUrl}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">
-            <view>{{userInfo.nickName}}</view>
-            <view style="font-size: 14px;">账户余额：
-              <label style="color: {{color}}">￥{{member_total_amount}}</label>
-            </view>
-          </view>
-        </view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">账单</view>
-      </navigator>
-    </view>
+  <view class="userinfo">
+  	<image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/logo.png'}}" background-size="cover" bindtap="chooseImage"></image>
+  	<text class="userinfo-nickname">{{userInfo.nickName ? userInfo.nickName : '18945612356'}}</text>
   </view>
   <view class="weui-cells weui-cells_after-title margin-top">
     <navigator url="/view/order/index?order_flow=ALL" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
