@@ -1,7 +1,7 @@
 {
   "pages": [
     "view/index/index",
-    "view/cart/index",
+    "view/cart/cart",
     "view/cart/detail",
     "view/my/index",
     "view/category/index",
@@ -16,14 +16,13 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "微信商城",
+    "navigationBarBackgroundColor": "#F1E22D",
+    "navigationBarTitleText": "送到家",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#e8e8ed"
+    "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
     "color": "#666666",
-    "selectedColor": "#c81623",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -34,7 +33,13 @@
         "text": "首页"
       },
       {
-        "pagePath": "view/cart/index",
+        "pagePath": "view/category/index",
+        "iconPath": "/image/icon_component.png",
+        "selectedIconPath": "/image/icon_component_HL.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "view/cart/cart",
         "iconPath": "/image/cart.png",
         "selectedIconPath": "/image/cart_active.png",
         "text": "购物车"

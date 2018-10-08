@@ -1,0 +1,80 @@
+<view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <navigator url="/view/qrcode/index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="/image/location.png" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <view style="font-size: 14px;">美宜佳便利店</view>
+            <view style="font-size: 14px;">营业时间：10：00--23：00</view>
+            <view style="font-size: 14px;">北京市北京市北京市北京市北京市</view>
+          </view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">修改</view>
+      </navigator>
+    </view>
+  </view>
+<view class="weui-cells weui-cells_after-title margin-top">
+    <navigator url="/view/order/index?order_flow=ALL" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">提货时间</view>
+      <view class="weui-cell__ft order-info">店铺当天营业时间内</view>
+    </navigator>
+</view>
+<view class="container carts-list margin-top">
+    <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods" data-object-id="{{item.goods.objectId}}">
+    	<view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+	    	<!-- 复选框图标 -->
+			<icon type="{{item.selected ? 'success_circle' : 'circle'}}" size="20" catchtap="bindCheckbox" data-index="{{index}}"/>
+			<view>
+			<!-- 缩略图 -->
+				<image class="carts-image" src="{{item.goods.avatar}}" mode="aspectFill"/>
+			</view>
+			<view class="carts-text">
+				<!-- 商品标题 -->
+				<text class="carts-title">{{item.goods.title}}</text>
+				<view class="carts-subtitle">
+				<!-- 价格 -->
+				  	<text class="carts-price">{{item.goods.price}}</text>
+				  	<!-- 数量加减 -->
+				  	<view>
+				      <view class="stepper">
+						<!-- 减号 -->
+						<text class="{{minusStatuses[index]}}" data-index="{{index}}" catchtap="bindMinus">-</text>
+						<!-- 数值 -->
+						<input type="number" data-index="{{index}}" catchchange="bindManual" catchtap="bindManualTapped" value="{{item.quantity}}" />
+						<!-- 加号 -->
+						<text class="normal" data-index="{{index}}" catchtap="bindPlus">+</text>
+					  </view>
+				  	</view>
+				</view>
+			</view>
+      	</view>
+      	<button type="warn" class="delete-button" catchtap="delete" data-object-id="{{item.objectId}}">删除</button>
+    </view>
+</view>
+
+<view class="message">
+  <form bindsubmit="handleSubmit">
+    <view class="header"></view>
+    <view class="weui-cells weui-cells_after-title margin-top">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">捎口信:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <textarea name="delivery_street" class="weui-textarea" placeholder="如果您需要小店的其他商品请留言" style="height: 3.3em" value="{{delivery_street}}" />
+        </view>
+      </view>
+    </view>
+  </form>
+</view>
+
+<view class="carts-footer">
+	<view class="select-and-amount" bindtap="bindSelectAll">
+		<icon type="{{selectedAllStatus ? 'success_circle' : 'circle'}}" size="18"/>
+		<text>全选</text>
+		<text>{{total}}</text>
+	</view>
+	<view class="button" bindtap="bindCheckout">选好了</view>
+</view>

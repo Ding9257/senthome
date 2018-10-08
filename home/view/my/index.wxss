@@ -19,3 +19,7 @@
     width: 30px;
     height: 30px;
 }
+.out-button {
+  background-color: #F1E22D;
+  color: #fff;
+}

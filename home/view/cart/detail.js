@@ -1,192 +1,112 @@
-const constant = require("../../util/constant.js");
-const notification = require('../../util/notification.js');
-const storage = require("../../util/storage.js");
-const Quantity = require('../../component/quantity/index');
+/**
+ *
+ * 配套视频教程请移步微信->小程序->灵动云课堂
+ * 关注订阅号【huangxiujie85】，第一时间收到教程推送
+ *
+ * @link http://blog.it577.net
+ * @author 黄秀杰
+ */
 
-Page(Object.assign({}, Quantity, {
+const AV = require('./../../util/av-weapp.js')
+var that
+Page({
     data: {
-        color: constant.color,
-        is_all: false,
-        is_select: false,
-        is_edit: false,
-        cart_total: parseFloat(0).toFixed(2),
-        cart_list: storage.getCart()
+        goods: {},
+        current: 0,
+        galleryHeight: 200
     },
-    onUnload: function () {
-        notification.remove('notification_cart_index_load', this);
+    onLoad: function (options) {
+        that = this;
+        console.log(options);
+        var goodsId = options.product_id;
+        this.getGoodsById(goodsId);
+        this.getEvaluateByGoods(goodsId);
     },
-    onLoad: function () {
-        notification.on('notification_cart_index_load', this, function (data) {
-            this.handleLoad();
+    getGoodsById: function (goodsId) {
+        that.setData({
+            goods: {
+                images: ["/image/1933457.jpg", "/image/1933457.jpg", "/image/1933457.jpg"],
+                title: "屈臣氏香草苏打汽水333.0ml*24听",
+                price: 100
+            }
         });
-
-        this.handleLoad();
     },
-    onReady: function () {
-
+    getEvaluateByGoods: function (goodsId) {
+        // var query = new AV.Query('Evaluate');
+        // // 查询关联表的数据需要调用设置include属性，可以多次设定
+        // query.include('user');
+        // // 查询条件设定为当前goods对象
+        // query.equalTo('goods', AV.Object.createWithoutData('Goods', goodsId));
+        // // 查询所有记录
+        // query.find().then(function (evaluateObjects) {
+        // 	// 将返回结果返回到data数据中，以在wxml渲染
+        // 	that.setData({
+        // 		evaluateObjects: evaluateObjects
+        // 	})
+        // }, function (err) {
+        // 	console.log(err);
+        // });
     },
-    onShow: function () {
-
+    addCart: function () {
+        this.insertCart(this.data.goods);
     },
-    onHide: function () {
-
-    },
-    onPullDownRefresh: function () {
-
-    },
-    onReachBottom: function () {
-
-    },
-    onShareAppMessage: function () {
-
-    },
-    handleLoad: function () {
-        var cart_list = storage.getCart();
-        var is_all = cart_list.length > 0;
-        var is_select = false;
-        var cart_total = 0;
-
-        for (var i = 0; i < cart_list.length; i++) {
-            var product = cart_list[i];
-
-            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
-
-            if (product.is_check) {
-                is_select = true;
-
-                cart_total += product.product_quantity.quantity * product.product_price;
+    insertCart: function (goods) {
+        var that = this;
+        // add cart
+        var user = AV.User.current();
+        // search if this goods exsit or not.if did exsit then quantity ++ updated cart object;
+        // if not, create cart object
+        // query cart
+        var query = new AV.Query('Cart');
+        query.equalTo('user', user);
+        query.equalTo('goods', goods);
+        // if count less then zero
+        query.count().then(function (count) {
+            if (count <= 0) {
+                // if didn't exsit, then create new one
+                var cart = AV.Object('Cart');
+                cart.set('user', user);
+                cart.set('quantity', 1);
+                cart.set('goods', goods);
+                cart.save().then(function (cart) {
+                    that.showCartToast();
+                }, function (error) {
+                    console.log(error);
+                });
             } else {
-                is_all = false;
+                // if exsit, get the cart self
+                query.first().then(function (cart) {
+                    // update quantity
+                    cart.increment('quantity', 1);
+                    // atom operation
+                    // cart.fetchWhenSave(true);
+                    that.showCartToast();
+                    return cart.save();
+                }, function (error) {
+                    console.log(error);
+                });
             }
-        }
+        }, function (error) {
 
-        this.setData({
-            is_all: is_all,
-            is_select: is_select,
-            cart_total: cart_total,
-            cart_list: cart_list
         });
     },
-    handleSingle: function (event) {
-        var is_all = true;
-        var is_select = false;
-        var cart_total = 0;
-
-        for (var i = 0; i < this.data.cart_list.length; i++) {
-            var product = this.data.cart_list[i];
-
-            if (product.product_id == event.currentTarget.id) {
-                product.is_check = !product.is_check;
-            }
-
-            if (product.is_check) {
-                is_select = true;
-
-                cart_total += product.product_quantity.quantity * product.product_price;
-            }
-        }
-
-        this.setData({
-            is_select: is_select,
-            cart_total: cart_total.toFixed(2),
-            cart_list: this.data.cart_list
+    showCartToast: function () {
+        wx.showToast({
+            title: '已加入购物车',
+            icon: 'success',
+            duration: 1000
         });
     },
-    handleAll: function () {
-        if (this.data.cart_list.length == 0) {
-            return;
-        }
-
-        var is_all = !this.data.is_all;
-        var cart_total = 0;
-
-        for (var i = 0; i < this.data.cart_list.length; i++) {
-            var product = this.data.cart_list[i];
-
-            product.is_check = is_all;
-
-            if (is_all) {
-                cart_total += product.product_quantity.quantity * product.product_price;
-            }
-        }
-
-        this.setData({
-            is_all: is_all,
-            is_select: is_all,
-            cart_total: cart_total.toFixed(2),
-            cart_list: this.data.cart_list
-        });
-
-        storage.setCart(this.data.cart_list);
+    previewImage: function (e) {
+        wx.previewImage({
+            //从<image>的data-current取到current，得到String类型的url路径
+            current: this.data.goods.get('images')[parseInt(e.currentTarget.dataset.current)],
+            urls: this.data.goods.get('images') // 需要预览的图片http链接列表
+        })
     },
-    handleZanQuantityChange(event) {
-        var componentId = event.componentId;
-        var quantity = event.quantity;
-        var cart_total = 0;
-
-        for (var i = 0; i < this.data.cart_list.length; i++) {
-            var product = this.data.cart_list[i];
-
-            if (product.product_id == componentId) {
-                product.product_quantity.quantity = quantity;
-
-                product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
-            }
-
-            if (product.is_check) {
-                cart_total += product.product_quantity.quantity * product.product_price;
-            }
-        }
-
-        this.setData({
-            cart_total: cart_total.toFixed(2),
-            cart_list: this.data.cart_list
-        });
-
-        storage.setCart(this.data.cart_list);
-    },
-    handleBalance: function () {
-        var cart_list = this.data.cart_list;
-        var uncheck_cart_list = [];
-        var product_list = [];
-        var is_all = cart_list.length > 0;
-        var is_select = false;
-        var cart_total = 0;
-
-        for (var i = 0; i < cart_list.length; i++) {
-            if (cart_list[i].is_check) {
-                product_list.push(cart_list[i]);
-            } else {
-                uncheck_cart_list.push(cart_list[i]);
-            }
-        }
-
-        storage.setCart(uncheck_cart_list);
-        storage.setProduct(product_list);
-
-        for (var i = 0; i < uncheck_cart_list.length; i++) {
-            var product = cart_list[i];
-
-            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
-
-            if (product.is_check) {
-                is_select = true;
-
-                cart_total += product.product_quantity.quantity * product.product_price;
-            } else {
-                is_all = false;
-            }
-        }
-
-        this.setData({
-            is_all: is_all,
-            is_select: is_select,
-            cart_total: cart_total,
-            cart_list: uncheck_cart_list
-        });
-
-        wx.navigateTo({
-            url: '/view/order/check'
+    showCart: function () {
+        wx.switchTab({
+            url: '../../cart/cart'
         });
     }
-}));
+});

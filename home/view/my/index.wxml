@@ -36,15 +36,6 @@
         </view>
         代付款
       </navigator>
-      <navigator url="/view/order/index?order_flow=WAIT_SEND" class="order-item">
-        <view class="order-item-icon">
-          <view style="position: relative; display:inline-block;">
-            <image class="order-item-icon-image" src="/image/send.svg" />
-            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_SEND > 0}}">{{WAIT_SEND}}</view>
-          </view>
-        </view>
-        代发货
-      </navigator>
       <navigator url="/view/order/index?order_flow=WAIT_RECEIVE" class="order-item">
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
@@ -54,11 +45,20 @@
         </view>
         代收货
       </navigator>
+      <navigator url="/view/order/index?order_flow=WAIT_SEND" class="order-item">
+              <view class="order-item-icon">
+                <view style="position: relative; display:inline-block;">
+                  <image class="order-item-icon-image" src="/image/send.svg" />
+                  <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{WAIT_SEND > 0}}">{{WAIT_SEND}}</view>
+                </view>
+              </view>
+              代评价
+            </navigator>
       <navigator url="/view/order/index?order_flow=FINISH" class="order-item">
         <view class="order-item-icon">
           <image class="order-item-icon-image" src="/image/comment.svg" />
         </view>
-        已完成
+        退款/售后
       </navigator>
     </view>
   </view>
@@ -67,14 +67,14 @@
       <view class="weui-cell__hd">
         <image src="/image/qr_code.svg" style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
       </view>
-      <view class="weui-cell__bd">我的二维码</view>
+      <view class="weui-cell__bd">我的夺宝</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
     <navigator url="/view/team/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="/image/friend.svg" style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
       </view>
-      <view class="weui-cell__bd">我的团队</view>
+      <view class="weui-cell__bd">代金券</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
@@ -83,15 +83,18 @@
       <view class="weui-cell__hd">
         <image src="/image/location.svg" style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
       </view>
-      <view class="weui-cell__bd">我的地址</view>
+      <view class="weui-cell__bd">收货地址</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
     <navigator url="/view/favor/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="/image/favor_active.svg" style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
       </view>
-      <view class="weui-cell__bd">我的收藏</view>
+      <view class="weui-cell__bd">客服电话</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
+  </view>
+  <view class="weui-cells weui-cells_after-title margin-top">
+    <button class="out-button">退出登录</button>
   </view>
 </view>

@@ -1,5 +1,5 @@
 const constant = require("./util/constant.js");
-const wechat = require("./util/wechat.js");
+const wechat = require("./util/wechat.js");;
 
 App({
   onLaunch: function () {
