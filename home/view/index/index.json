@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "送到家"
+  "navigationBarTitleText": "送到家",
+  "usingComponents": {
+    "van-card": "./../../dist/card/index"
+  }
 }

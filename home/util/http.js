@@ -1,6 +1,7 @@
 const constant = require("./constant.js");
 const storage = require("./storage.js");
 const util = require("./util.js");
+const host = require("./../config/index").host;
 
 function request(config) {
     if (typeof (config.is_toast) == 'undefined') {
@@ -12,47 +13,27 @@ function request(config) {
     }
 
     if (config.is_toast) {
-        wx.showToast({
-            title: '加载中..',
-            icon: 'loading',
-            mask: true,
-            duration: constant.duration * 10
-        });
+        // wx.showToast({
+        //     title: '加载中..',
+        //     icon: 'loading',
+        //     mask: true,
+        //     duration: constant.duration * 10
+        // });
     }
-
+    console.log(2);
     wx.request({
-        url: 'https://api.nowui.com' + config.url,
-        method: config.method,
+        url: `${host}${config.url}`,
+        method: config.method || "GET",
         header: {
             // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
-            // 'Token': storage.getToken(),
-            'Platform': constant.platform,
-            'Version': constant.version,
-            'Project': 'jiyiguan'
+            'Content-Type': 'application/json'
         },
         data: config.data,
         success: function (response) {
-            if (config.is_toast) {
-                wx.hideToast();
-            }
-
-            if (response.data.code == 200) {
-                config.success(response.data.data);
-            } else {
-                util.showFailToast({
-                    title: response.data.message
-                });
-            }
+            config.success(response);
         },
-        fail: function () {
-            if (config.is_toast) {
-                wx.hideToast();
-            }
-
-            util.showFailToast({
-                title: '网络出现错误'
-            });
+        fail: function (err) {
+            config.fail(err);
         }
     });
 }

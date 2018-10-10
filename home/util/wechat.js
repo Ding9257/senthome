@@ -11,29 +11,22 @@ function auth(config) {
                 if (code) {
                     wx.getUserInfo({
                         success: function (res) {
-                            console.log(res.userInfo.nickName);
-
                             http.request({
                                 url: '/wechat/api/openid?js_code=' + code + '&encrypted_data=' + res.encryptedData + '&iv=' + res.iv + '&avatar_url=' + res.userInfo.avatarUrl + '&nick_name=' + res.userInfo.nickName + '&platform=' + constant.platform + '&version=' + constant.version,
                                 method: 'GET',
-                                data: {
-
-                                },
+                                data: {},
                                 success: function (data) {
                                     config.success(data);
                                 }.bind(this)
                             });
                         }.bind(this)
                     });
-
                 }
             }.bind(this)
         });
     } else {
         //config.success();
     }
-
-
 }
 
 module.exports = {

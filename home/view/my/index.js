@@ -17,7 +17,16 @@ Page({
             userInfo: getApp().globalData.userInfo
         });
 
-        
+
+    },
+    onGotUserInfo: function (e) {
+        getApp().globalData.userInfo = e.detail.userInfo;
+        this.setData({
+            userInfo: getApp().globalData.userInfo
+        });
+        console.log(e.detail.errMsg)
+        console.log(e.detail.userInfo)
+        console.log(e.detail.rawData)
     },
     onReady: function () {
 
@@ -41,9 +50,7 @@ Page({
         http.request({
             is_toast: false,
             url: '/member/my/find',
-            data: {
-
-            },
+            data: {},
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
                     data[i].product_image_file = constant.host + data[i].product_image_file;

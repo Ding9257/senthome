@@ -1,7 +1,8 @@
 <view class="container">
   <view class="userinfo">
   	<image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/logo.png'}}" background-size="cover" bindtap="chooseImage"></image>
-  	<text class="userinfo-nickname">{{userInfo.nickName ? userInfo.nickName : '18945612356'}}</text>
+  	<text wx:if="{{!!userInfo.nickName}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
+  	<button wx:else open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击登录</button>
   </view>
   <view class="weui-cells weui-cells_after-title margin-top">
     <navigator url="/view/order/index?order_flow=ALL" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
