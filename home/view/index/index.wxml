@@ -1,6 +1,17 @@
 <view class="container">
-  <view>送到家</view>
-  <view>美宜佳</view>
+  <view><button>送到家</button></view>
+  <view>
+    <van-row>
+      <van-col span="8">
+        <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+      </van-col>
+      <van-col span="16">
+        <text>文字描述文字描述文字描述文字描述</text>
+        <text>文字描述文字描述文字描述文字描述</text>
+        <text>文字描述文字描述文字描述文字描述</text>
+      </van-col>
+    </van-row>
+  </view>
   <view class="header"></view>
   <view class="page-section page-section-spacing swiper">
     <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
@@ -9,6 +20,63 @@
       </swiper-item>
     </swiper>
   </view>
+  <view>
+      <van-row>
+        <van-col span="12">
+            <view style="vertical-align:middle;">
+                <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+            </view>
+            <view><text>商品选购</text></view>
+        </van-col>
+        <van-col span="12">
+            <view>
+                <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                <text style="position: absolute;margin-top:15px">轻松夺宝</text>
+            </view>
+            <view>
+                <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                <text style="position: absolute;margin-top:15px">惊喜福袋</text>
+            </view>
+        </van-col>
+      </van-row>
+  </view>
+  <view>
+    <view class="text-center">店长推荐</view>
+    <scroll-view class="scroll-view" scroll-x>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+            <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述一段描述一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+        <view class="scroll-view-item_H">
+            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
+             <text class="text-wrap" style="display:block">一段描述</text>
+        </view>
+      </scroll-view>
+  </view>
+
+
+
+<!--
 <van-card num="2" tag="标签" price="2.00" desc="描述信息" title="商品标题" thumb="/image/1933457.jpg">
   <view slot="footer">
     <van-button size="mini">-</van-button>
@@ -29,5 +97,5 @@
       <view class="category-right-item-name">{{product.product_name}}</view>
       <view class="category-right-item-price">￥{{product.product_price}}</view>
     </navigator>
-    <view style="float: left; width: 100%; margin-top: 8px;"></view>
+    <view style="float: left; width: 100%; margin-top: 8px;"></view>-->
 </view>

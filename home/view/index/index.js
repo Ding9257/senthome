@@ -6,13 +6,13 @@ Page({
         window_width: getApp().globalData.window_width,
         banner_list: [{
             banner_id: 0,
-            banner_image: 'http://api.jiyiguan.nowui.com/upload/6a4dbae2ac824d2fb170638d55139666/original/00b1216e83b84226978d63703e7d597b.jpg'
+            banner_image: '/image/1933457.jpg'
         }, {
             banner_id: 1,
-            banner_image: 'http://api.jiyiguan.nowui.com/upload/6a4dbae2ac824d2fb170638d55139666/original/00b1216e83b84226978d63703e7d597b.jpg'
+            banner_image: '/image/1933457.jpg'
         }, {
             banner_id: 2,
-            banner_image: 'http://api.jiyiguan.nowui.com/upload/6a4dbae2ac824d2fb170638d55139666/original/00b1216e83b84226978d63703e7d597b.jpg'
+            banner_image: '/image/1933457.jpg'
         }],
         category_list: [],
         product_list: []
@@ -31,22 +31,6 @@ Page({
             category_list: category_list
         });
 
-        http.request({
-            url: '/product/hot/list',
-            data: {
-
-            },
-            success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    data[i].product_image_file = constant.host + data[i].product_image_file;
-                    data[i].product_price = data[i].product_price.toFixed(2);
-                }
-
-                this.setData({
-                    product_list: data
-                });
-            }.bind(this)
-        });
     },
     onReady: function () {
 

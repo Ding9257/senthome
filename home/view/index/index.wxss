@@ -77,3 +77,24 @@
 page {
 	background: #eee;
 }
+.scroll-view {
+    height:150px;
+    white-space: nowrap;
+}
+.scroll-view-item_H {
+    height:140px;
+    width:100px;
+    margin:5px;
+    display:inline-block;
+}
+.text-center {
+    text-align: center;
+}
+.text-wrap {
+     word-wrap:break-word;
+     word-break:normal;
+     break-all:normal;
+     width:50px;
+     overflow:auto;
+    white-space:pre-line;
+}
