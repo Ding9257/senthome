@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "轻松夺宝",
+  "usingComponents": {
+    "van-tab": "./../../dist/tab/index",
+    "van-tabs": "./../../dist/tabs/index",
+    "van-row": "./../../dist/row/index",
+    "van-col": "./../../dist/col/index",
+    "van-progress": "./../../dist/progress/index"
+  }
+}

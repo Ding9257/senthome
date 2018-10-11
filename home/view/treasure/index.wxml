@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
+      <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
+        <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;" src="{{banner.banner_image}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <view>
+    <van-tabs bind:disabled="onClickDisabled">
+      <van-tab title="热门夺宝"></van-tab>
+      <van-tab title="即将结束" ></van-tab>
+      <van-tab title="金额顺序"></van-tab>
+    </van-tabs>
+  </view>
+  <view>
+    <van-row>
+        <navigator open-type="navigate" url="/view/treasure/index">
+          <van-col span="6">
+            <image class="img" src="/image/shop.png" />
+          </van-col>
+          <van-col span="16" class="col">
+            <text>这是商品</text>
+            <text>截止时间2018-09-28 12：00</text>
+            <text>夺宝价：￥50.0</text>
+            <van-progress color="#E7F72A" percentage="50" />
+            <text class="winning">当前326人，中奖率50%</text>
+          </van-col>
+      </navigator>
+    </van-row>
+  </view>
+</view>

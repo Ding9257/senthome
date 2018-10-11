@@ -15,25 +15,12 @@ Page({
             banner_image: '/image/1933457.jpg'
         }],
         category_list: [],
-        product_list: [],
-        dianZhang_list: [
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"},
-            {id: 1, text: "描述信息描述信息", imgsrc: "/image/shop.png"}
-        ]
+        product_list: []
     },
     onUnload: function () {
 
     },
     onLoad: function () {
-        // wx.clearStorage();
 
         var category_list = constant.category_list.concat();
         category_list.splice(0, 1);

@@ -12,7 +12,9 @@
     "view/order/result",
     "view/delivery/index",
     "view/delivery/detail",
-    "view/favor/index"
+    "view/favor/index",
+    "view/treasure/index",
+    "view/treasure/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

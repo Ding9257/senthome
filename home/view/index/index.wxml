@@ -23,15 +23,19 @@
   <view>
       <van-row>
         <van-col span="12">
-            <view style="vertical-align:middle;">
-                <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
-            </view>
-            <view><text>商品选购</text></view>
+            <navigator open-type="switchTab" url="/view/category/index">
+                <view style="vertical-align:middle;">
+                    <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+                </view>
+                <view><text>商品选购</text></view>
+            </navigator>
         </van-col>
         <van-col span="12">
             <view>
-                <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
-                <text style="position: absolute;margin-top:15px">轻松夺宝</text>
+                <navigator open-type="navigate" url="/view/treasure/index">
+                    <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                    <text style="position: absolute;margin-top:15px">轻松夺宝</text>
+                </navigator>
             </view>
             <view>
                 <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
@@ -40,37 +44,15 @@
         </van-col>
       </van-row>
   </view>
-  <view>
+  <view style="margin-bottom:20px;">
     <view class="text-center">店长推荐</view>
     <scroll-view class="scroll-view" scroll-x>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-            <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述一段描述一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
-        <view class="scroll-view-item_H">
-            <image src="/image/1933457.jpg" style="width: 40px; height: 80px;" />
-             <text class="text-wrap" style="display:block">一段描述</text>
-        </view>
+        <navigator class="scroll-view-item_H" url="/view/cart/detail?product_id={{item.id}}" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
+            <view >
+                <image class="" src="{{item.imgsrc}}" />
+                <text class="text-wrap" style="display:block">{{item.text}}</text>
+            </view>
+        </navigator>
       </scroll-view>
   </view>
 
