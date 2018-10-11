@@ -1,0 +1,32 @@
+<import src="/component/quantity/index.wxml" />
+<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000" style="height:{{galleryHeight}}px;">
+    <block wx:for="{{goods.images}}" wx:key="">
+      <swiper-item>
+        <image src="{{item}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="{{index}}"/>
+    </swiper-item>
+    </block>
+</swiper>
+<view class="treasure">
+	<text class="title">{{goods.title}}</text>
+	<text class="price">夺宝价：￥ {{goods.price}} </text>
+	<text>截止时间：2018-09-28 12：00</text>
+	<van-progress color="#E7F72A" percentage="35" />
+	<text>目标超过100人，中奖率超过500人，</text>
+</view>
+
+<view class="margin-top summary" style="padding-bottom:110rpx;">
+    <view style="text-align:center;">图片详情</view>
+    <image style="width:100vw;height:{{height}}rpx" src="/image/1933457.jpg"/>
+</view>
+
+<view class="footer">
+    <view class="opt-buttons">
+        <view class="button-group" bindtap="showCart">
+            <image src="/image/icon_cart.png" class="button-image" />
+        </view>
+        <view class="button-group" bindtap="">
+            <view class="in-line">添加商品</view>
+            <view class="in-line"><template is="zan-quantity" data="{{ ...product_quantity, componentId: 'product_quantity' }}" /></view>
+        </view>
+    </view>
+</view>

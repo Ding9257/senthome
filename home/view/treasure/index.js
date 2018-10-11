@@ -14,21 +14,19 @@ Page({
             banner_id: 2,
             banner_image: '/image/1933457.jpg'
         }],
-        category_list: [],
-        product_list: []
+        treasure_list: [
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
+            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"}
+        ]
     },
     onUnload: function () {
 
     },
     onLoad: function () {
-
-        var category_list = constant.category_list.concat();
-        category_list.splice(0, 1);
-        category_list.push(constant.category_list[0]);
-
-        this.setData({
-            category_list: category_list
-        });
 
     },
     onReady: function () {

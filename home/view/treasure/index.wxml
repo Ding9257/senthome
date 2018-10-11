@@ -14,16 +14,16 @@
     </van-tabs>
   </view>
   <view>
-    <van-row>
-        <navigator open-type="navigate" url="/view/treasure/index">
+    <van-row wx:for="{{treasure_list}}" wx:key="{{item.id}}">
+        <navigator  open-type="navigate" url="/view/treasure/detail">
           <van-col span="6">
-            <image class="img" src="/image/shop.png" />
+            <image class="img" src="{{item.imgsrc}}" />
           </van-col>
           <van-col span="16" class="col">
-            <text>这是商品</text>
-            <text>截止时间2018-09-28 12：00</text>
-            <text>夺宝价：￥50.0</text>
-            <van-progress color="#E7F72A" percentage="50" />
+            <text>{{item.title}}</text>
+            <text>截止时间:{{item.time}}</text>
+            <text>夺宝价：￥{{item.price}}</text>
+            <van-progress color="#E7F72A" percentage="{{item.oddsOfWinning}}" />
             <text class="winning">当前326人，中奖率50%</text>
           </van-col>
       </navigator>
