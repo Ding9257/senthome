@@ -1,28 +1,50 @@
 <view class="container">
-  <view><button>送到家</button></view>
-  <view>
-    <van-row>
-      <van-col span="8">
-        <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
-      </van-col>
-      <van-col span="16">
-        <text>文字描述文字描述文字描述文字描述</text>
-        <text>文字描述文字描述文字描述文字描述</text>
-        <text>文字描述文字描述文字描述文字描述</text>
-      </van-col>
-    </van-row>
+    <view class="top">
+      <view>
+        <van-row class="center">
+            <van-col offset="1" span="22">
+                <button class="button-radius">
+                    <van-row>
+                        <van-col>
+                            <image src="/image/location.png" style=""  class="button-img"/>
+                        </van-col>
+                        <van-col offset="2" span="18" class="button-text" style="">送到家(通州鑫源小区)</van-col>
+                        <van-col span="2">
+                            <image src="/image/location.png"
+                            style="position: absolute;width:30px;height:20px;padding-top:5px;right:1px;" />
+                        </van-col>
+                    </van-row>
+                </button>
+            </van-col>
+        </van-row>
+      </view>
+      <view style="margin-top:10px;">
+        <van-row>
+          <van-col offset="2" span="6">
+            <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+          </van-col>
+          <van-col span="14">
+            <view style="font-size:14px;color:#fff" class="van-ellipsis">文字描述文字描述文字描述文字描述</view>
+            <view style="margin-top:5px;font-size:12px;color:#fff" class="van-ellipsis">营业时间：2018-09-12 12：00</view>
+            <view style="margin-top:5px;font-size:13px;" class="van-ellipsis">文字描述文字描述文字描述文字描述</view>
+          </van-col>
+        </van-row>
+      </view>
+      <view class="page-section page-section-spacing swiper">
+          <van-row>
+            <van-col offset="1" span="22">
+                <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
+                  <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
+                    <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;" src="{{banner.banner_image}}" />
+                  </swiper-item>
+                </swiper>
+            </van-col>
+          </van-row>
+      </view>
   </view>
-  <view class="header"></view>
-  <view class="page-section page-section-spacing swiper">
-    <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
-      <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
-        <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;" src="{{banner.banner_image}}" />
-      </swiper-item>
-    </swiper>
-  </view>
-  <view>
+  <view class="margin-top">
       <van-row>
-        <van-col span="12">
+        <van-col offset="1" span="11">
             <navigator open-type="switchTab" url="/view/category/index">
                 <view style="vertical-align:middle;">
                     <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
@@ -30,7 +52,7 @@
                 <view><text>商品选购</text></view>
             </navigator>
         </van-col>
-        <van-col span="12">
+        <van-col span="11">
             <view>
                 <navigator open-type="navigate" url="/view/treasure/index">
                     <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />

@@ -1,5 +1,7 @@
 @import 'style/weui.wxss';
 @import 'component/quantity/index.wxss';
+@import "dist/common/index.wxss";
+
 
 .container {
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;

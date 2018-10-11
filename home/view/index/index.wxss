@@ -102,3 +102,25 @@ page {
      overflow:auto;
     white-space:pre-line;
 }
+.button-radius {
+    border-radius:50px;
+    background:#FFFF99;
+    height:30px;
+    line-height:1.9;
+}
+.button-text {
+    text-align:left;
+    padding-left:10px;
+}
+.button-img {
+    position: absolute;left:0px;width:30px;height:20px;padding-top:5px;
+}
+.shop text {
+    display:block;
+}
+.center {
+    text-align:center;
+}
+.top{
+    background:#FFFF00;
+}
