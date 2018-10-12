@@ -75,7 +75,7 @@
   padding-left: 3px;
 }
 page {
-	background: #eee;
+	background: #fff;
 }
 .scroll-view {
     height:150px;
@@ -104,7 +104,7 @@ page {
 }
 .button-radius {
     border-radius:50px;
-    background:#FFFF99;
+    background:#FCEDA2;
     height:30px;
     line-height:1.9;
 }
@@ -122,5 +122,14 @@ page {
     text-align:center;
 }
 .top{
-    background:#FFFF00;
+    background:#FADE56;
+}
+.box-shadow {
+    box-shadow: 10px 10px 5px #888888;
+}
+.outline {
+    border:1px solid #D7D7D7;
+    outline-color:#D7D7D7;
+    outline-style:outset;
+    outline-width:1px;
 }

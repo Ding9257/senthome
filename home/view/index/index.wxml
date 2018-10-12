@@ -30,7 +30,7 @@
           </van-col>
         </van-row>
       </view>
-      <view class="page-section page-section-spacing swiper">
+      <view style="padding-bottom:10px;" class="page-section page-section-spacing swiper">
           <van-row>
             <van-col offset="1" span="22">
                 <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
@@ -42,44 +42,45 @@
           </van-row>
       </view>
   </view>
-  <view class="margin-top">
-      <van-row>
-        <van-col offset="1" span="11">
-            <navigator open-type="switchTab" url="/view/category/index">
-                <view style="vertical-align:middle;">
-                    <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
-                </view>
-                <view><text>商品选购</text></view>
-            </navigator>
-        </van-col>
-        <van-col span="11">
-            <view>
-                <navigator open-type="navigate" url="/view/treasure/index">
-                    <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
-                    <text style="position: absolute;margin-top:15px">轻松夺宝</text>
+  <view style="background: #fff;">
+      <view class="margin-top">
+          <van-row>
+            <van-col offset="1" span="10">
+                <navigator open-type="switchTab" url="/view/category/index" class="outline">
+                    <view style="vertical-align:middle;">
+                        <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+                    </view>
+                    <view><text>商品选购</text></view>
                 </navigator>
-            </view>
-            <view>
-                <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
-                <text style="position: absolute;margin-top:15px">惊喜福袋</text>
-            </view>
-        </van-col>
-      </van-row>
-  </view>
-  <view style="margin-bottom:20px;">
-    <view class="text-center">店长推荐</view>
-    <scroll-view class="scroll-view" scroll-x>
-        <navigator class="scroll-view-item_H" url="/view/cart/detail?product_id={{item.id}}" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-            <view >
-                <image class="" src="{{item.imgsrc}}" />
-                <text class="text-wrap" style="display:block">{{item.text}}</text>
-            </view>
-        </navigator>
-      </scroll-view>
-  </view>
+            </van-col>
+            <van-col offset="1" span="10">
+                <view class="outline">
+                    <navigator open-type="navigate" url="/view/treasure/index">
+                        <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                        <text style="position: absolute;margin-top:15px">轻松夺宝</text>
+                    </navigator>
+                </view>
+                <view class="outline">
+                    <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                    <text style="position: absolute;margin-top:15px">惊喜福袋</text>
+                </view>
+            </van-col>
+          </van-row>
+      </view>
+      <view style="margin-bottom:20px;">
+        <view class="text-center">店长推荐</view>
+        <scroll-view class="scroll-view" scroll-x>
+            <navigator class="scroll-view-item_H" url="/view/cart/detail?product_id={{item.id}}" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
+                <view >
+                    <image class="" src="{{item.imgsrc}}" />
+                    <text class="text-wrap" style="display:block">{{item.text}}</text>
+                </view>
+            </navigator>
+          </scroll-view>
+      </view>
+    </view>
 
-
-
+</view>
 <!--
 <van-card num="2" tag="标签" price="2.00" desc="描述信息" title="商品标题" thumb="/image/1933457.jpg">
   <view slot="footer">
@@ -102,4 +103,4 @@
       <view class="category-right-item-price">￥{{product.product_price}}</view>
     </navigator>
     <view style="float: left; width: 100%; margin-top: 8px;"></view>-->
-</view>
+

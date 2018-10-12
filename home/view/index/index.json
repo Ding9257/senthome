@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "送到家",
-  "navigationBarBackgroundColor": "#FFFF00",
+  "navigationBarBackgroundColor": "#FADE56",
   "usingComponents": {
     "van-card": "./../../dist/card/index",
     "van-row": "./../../dist/row/index",
