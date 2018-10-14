@@ -43,37 +43,39 @@
       </view>
   </view>
   <view style="background: #fff;">
-      <view class="margin-top">
+      <view style="padding-top:10px">
           <van-row>
             <van-col offset="1" span="10">
-                <navigator open-type="switchTab" url="/view/category/index" class="outline">
+                <navigator style="text-align:center;padding-top:5px;" open-type="switchTab" url="/view/category/index" class="outline">
                     <view style="vertical-align:middle;">
                         <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
                     </view>
-                    <view><text>商品选购</text></view>
+                    <view>
+                        <text>商品选购</text>
+                    </view>
                 </navigator>
             </van-col>
             <van-col offset="1" span="10">
-                <view class="outline">
+                <view class="outline" style="background-color:#f7d4ea;">
                     <navigator open-type="navigate" url="/view/treasure/index">
-                        <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                        <image src="/image/1933457.jpg" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
                         <text style="position: absolute;margin-top:15px">轻松夺宝</text>
                     </navigator>
                 </view>
-                <view class="outline">
-                    <image src="/image/1933457.jpg" style="width: 30px; height: 35px;" />
+                <view class="outline" style="margin-top:9px;background-color:#f3fde3;">
+                    <image src="/image/1933457.jpg" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
                     <text style="position: absolute;margin-top:15px">惊喜福袋</text>
                 </view>
             </van-col>
           </van-row>
       </view>
-      <view style="margin-bottom:20px;">
+      <view style="margin-bottom:20px;padding-top:10px;">
         <view class="text-center">店长推荐</view>
         <scroll-view class="scroll-view" scroll-x>
             <navigator class="scroll-view-item_H" url="/view/cart/detail?product_id={{item.id}}" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-                <view >
-                    <image class="" src="{{item.imgsrc}}" />
-                    <text class="text-wrap" style="display:block">{{item.text}}</text>
+                <view style="text-align:center;">
+                    <image class="" src="{{item.imgsrc}}"/>
+                    <view class="text-wrap" style="font-size:12px;display:block">{{item.text}}</view>
                 </view>
             </navigator>
           </scroll-view>

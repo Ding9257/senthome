@@ -98,9 +98,9 @@ page {
      word-wrap:break-word;
      word-break:normal;
      break-all:normal;
-     width:50px;
+     padding:0 10px;
      overflow:auto;
-    white-space:pre-line;
+     white-space:pre-line;
 }
 .button-radius {
     border-radius:50px;

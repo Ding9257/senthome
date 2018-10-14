@@ -10,26 +10,23 @@
 	<text class="title">{{goods.title}}</text>
 	<text class="price">￥ {{goods.price}} <text style="text-decoration:line-through;">￥ {{goods.price}}</text></text>
 </view>
-<ad unit-id="adunit-1ee60bfa024274a5"></ad>
-<view class="margin-top summary">
+<view class="margin-top summary" style="text-align:left;">
     <view style="text-align:center;">商品详情</view>
     <view class="padding-left-20">品牌：新希望</view>
     <view class="padding-left-20">产品规格：370g</view>
 </view>
 
-<view class="margin-top summary" style="padding-bottom:110rpx;">
-    <view style="text-align:center;">图片详情</view>
-    <image style="width:{{width}}rpx;height:{{height}}rpx" src="/image/1933457.jpg"/>
-</view>
-
 <view class="footer">
     <view class="opt-buttons">
-        <view class="button-group" bindtap="showCart">
-            <image src="/image/icon_cart.png" class="button-image" />
+        <view>
+            <image src="/image/icon_cart.png" style="width:30px;height:30px;" />
+            <text>￥20.0</text>
         </view>
         <view class="button-group" bindtap="">
             <view class="in-line">添加商品</view>
-            <view class="in-line"><template is="zan-quantity" data="{{ ...product_quantity, componentId: 'product_quantity' }}" /></view>
+            <van-button size="mini">-</van-button>
+            {{1}}
+            <van-button size="mini">+</van-button>
         </view>
     </view>
 </view>

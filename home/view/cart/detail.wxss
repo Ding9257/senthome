@@ -71,6 +71,7 @@ page {
 .opt-buttons {
 	width: 100%;
 	display: flex;
+	padding-top:10px;
 	justify-content: space-around;
 }
 
