@@ -7,60 +7,29 @@ Page({
         window_width: getApp().globalData.window_width,
         window_height: getApp().globalData.window_height,
         list: [],
-        category_list: constant.category_list,
-        category_id: '',
-        product_list: [
-            {product_id: 1, product_image_file: "/image/1933457.jpg", product_name: "好的商品", product_price: 20.0},
-            {
-                product_id: 1,
-                product_image_file: "https://cdn2.ettoday.net/images/1933/1933457.jpg",
-                product_name: "好的商品",
-                product_price: 20.0
-            },
-            {product_id: 1, product_image_file: "/image/1933457.jpg", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品1", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品2", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品3", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品4", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品5", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品6", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品7", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品8", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品9", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0},
-            {product_id: 1, product_image_file: "", product_name: "好的商品", product_price: 20.0}
-        ]
+        //商品分类
+        categoryList: [],
+        categoryId: '',
+        currentPage: 1,
+        totalPage: 0,
+        page: 10,
+        productList: []
     },
     onUnload: function () {
 
     },
     onLoad: function (option) {
-        var category_id = '';
-
-        if (typeof (option.category_id) != 'undefined') {
-            category_id = option.category_id;
-        }
-
-        this.setData({
-            category_id: category_id
-        });
+        //商品分类
         request({
-            url: '/product/list',
+            url: '/product/typeList',
             method: "POST",
             data: {}
         }).then((data) => {
-            console.log(data);
+            this.setData({
+                categoryList: data.data,
+                categoryId: data.data[0]
+            });
+            this.getShop();
         }).catch(err => {
             console.log(err);
         });
@@ -84,18 +53,52 @@ Page({
 
     },
     handleCategory: function (event) {
-        var category_id = event.currentTarget.id;
-        var product_list = [];
-
-        for (var i = 0; i < this.data.list.length; i++) {
-            if (this.data.list[i].category_id == category_id || category_id == '') {
-                product_list.push(this.data.list[i]);
-            }
-        }
-
+        //选择的商品分类
+        var categoryId = event.currentTarget.id;
+        var productList = [];
+        let currentPage = 1;
         this.setData({
-            category_id: category_id,
-            product_list: product_list
+            categoryId: categoryId,
+            currentPage: currentPage,
+            productList
         });
+        this.getShop();
+    },
+    getShop: function () {
+        request({
+            url: '/product/listType',
+            method: "POST",
+            data: {type: this.data.categoryId, pageNo: this.data.currentPage}
+        }).then((data) => {
+            let totalPage = Math.ceil(data.data.count / this.data.page);
+            let productList = this.data.productList || [];
+            this.setData({
+                productList: productList.concat(data.data.productList),
+                totalPage: totalPage,
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    },
+    upper: function (e) {
+        if (this.data.currentPage != 1) {
+            this.setData({
+                currentPage: this.data.currentPage - 1
+            });
+            this.getShop();
+        } else {
+            return false;
+        }
+    },
+    lower: function (e) {
+        if (this.data.currentPage != this.data.totalPage) {
+            this.setData({
+                currentPage: this.data.currentPage + 1
+            });
+            this.getShop();
+        } else {
+            console.log("最大页数", this.data.totalPage);
+            return false;
+        }
     }
 });

@@ -47,7 +47,7 @@ App({
                         console.log(addressRes.result.formatted_addresses.recommend);
                         console.log("addressRes", addressRes);
                     },
-                    fail:function (err) {
+                    fail: function (err) {
                         console.log(err);
                     }
                 });
@@ -58,6 +58,7 @@ App({
     },
     globalData: {
         userInfo: {},
+        shopInfo: {},
         window_width: 0,
         window_height: 0,
         open_id: ''

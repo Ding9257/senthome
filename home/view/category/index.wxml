@@ -3,9 +3,9 @@
   <view class="container">
     <view class="header"></view>
     <scroll-view class="category-left" scroll-y="true">
-      <view class="category-left-item {{category_id == category.category_id ? 'category-left-item-active' : ''}}"
-       wx:for="{{category_list}}" wx:for-item="category" wx:key="{{category.category_id}}" bindtap="handleCategory"
-        id="{{category.category_id}}">{{category.category_name}}</view>
+      <view class="category-left-item {{categoryId == item ? 'category-left-item-active' : ''}}"
+       wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory"
+        id="{{item}}">{{item}}</view>
       <view class="category-left-item-bottom" style="height: {{window_height - 50.5 * 6}}px;"></view>
     </scroll-view>
     <van-tabs bind:change="onChange" class="category-right" style="width: {{window_width - 100}}px;">
@@ -13,25 +13,25 @@
       <van-tab title="标签 2"></van-tab>
       <van-tab title="标签 3"></van-tab>
     </van-tabs>
-    <scroll-view class="category-right" style="width: {{window_width - 100}}px;margin-top:45px;" scroll-y="true">
+    <scroll-view class="category-right" style="width: {{window_width - 100}}px;margin-top:45px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
       <view class="category-right-item" style="margin: 7px 0 0 7px;width: {{window_width - 114}}px;"
-       wx:for="{{product_list}}" wx:for-item="product" wx:key="{{product.product_id}}">
+       wx:for="{{productList}}" wx:for-item="product" wx:key="{{product.id}}">
         <van-col span="6">
-            <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{product.product_image_file}}" />
+            <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{product.img}}" />
         </van-col>
         <van-col span="16">
             <view>
-                <navigator url="/view/cart/detail?product_id={{product.product_id}}&product_name={{product.product_name}}">
-                            描述信息
+                <navigator url="/view/cart/detail?id={{product.id}}&name={{product.name}}">
+                            {{product.details}}
                 </navigator>
             </view>
-            <view>
-                <view style="position: absolute;left:90px;top:50px;">
-                    <text>￥20.0</text>
+            <view style="position: relative;">
+                <view style="position: absolute;left:10px;top:20px;">
+                    <text>￥{{product.price}}</text>
                 </view>
-                <view style="position: absolute;right:10px;top:50px;">
-                    <van-button size="mini">-</van-button>
-                    {{1}}
+                <view style="position: absolute;right:0px;top:20px;">
+                    <van-button size="mini" bindtap="down">-</van-button>
+                    {{0}}
                     <van-button size="mini">+</van-button>
                 </view>
             </view>
