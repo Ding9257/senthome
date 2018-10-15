@@ -1,5 +1,4 @@
 const constant = require("../../util/constant.js");
-const http = require("../../util/http.js");
 const request = require("./../../util/request").request;
 
 Page({

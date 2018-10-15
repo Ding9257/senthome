@@ -7,8 +7,8 @@
     </block>
 </swiper>
 <view class="summary">
-	<text class="title">{{goods.title}}</text>
-	<text class="price">￥ {{goods.price}} <text style="text-decoration:line-through;">￥ {{goods.price}}</text></text>
+	<text class="title">{{goods.details}}</text>
+	<text class="price">￥ {{goods.price}} <text style="text-decoration:line-through;">￥ {{goods.money}}</text></text>
 </view>
 <view class="margin-top summary" style="text-align:left;">
     <view style="text-align:center;">商品详情</view>

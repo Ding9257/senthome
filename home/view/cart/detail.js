@@ -1,4 +1,5 @@
 const AV = require('./../../util/av-weapp.js')
+const request = require("./../../util/request").request;
 var that
 Page({
     data: {
@@ -11,21 +12,32 @@ Page({
     onLoad: function (options) {
         wx.setNavigationBarTitle({
             title: options.product_name//页面标题为路由参数
-        })
+        });
         that = this;
         console.log(options);
-        var goodsId = options.product_id;
-        this.getGoodsById(goodsId);
+        var id = options.id;
+        this.getGoodsById(id);
         this.getEvaluateByGoods(goodsId);
     },
-    getGoodsById: function (goodsId) {
-        that.setData({
-            goods: {
-                images: ["/image/1933457.jpg", "/image/1933457.jpg", "/image/1933457.jpg"],
-                title: "屈臣氏香草苏打汽水333.0ml*24听",
-                price: 100
-            }
+    getGoodsById: function (id) {
+        request({
+            url: '/product/findOne',
+            method: "POST",
+            data: {id}
+        }).then(res=>{
+            let images = [res.data.img];
+            res.images = images;
+            that.setData({
+                goods:res.data
+            });
         });
+        // that.setData({
+        //     goods: {
+        //         images: ["/image/1933457.jpg", "/image/1933457.jpg", "/image/1933457.jpg"],
+        //         title: "屈臣氏香草苏打汽水333.0ml*24听",
+        //         price: 100
+        //     }
+        // });
     },
     getEvaluateByGoods: function (goodsId) {
         // var query = new AV.Query('Evaluate');

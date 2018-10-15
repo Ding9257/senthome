@@ -29,7 +29,7 @@
                 <view style="position: absolute;left:10px;top:20px;">
                     <text>￥{{product.price}}</text>
                 </view>
-                <view style="position: absolute;right:0px;top:20px;">
+                <view style="position: absolute;right:-10px;top:20px;">
                     <van-button id="{{product.id}}" size="mini" bindtap="down">-</van-button>
                     {{!!shopCart[product.id]?shopCart[product.id].num:0}}
                     <van-button id="{{product.id}}" size="mini" bindtap="add">+</van-button>
