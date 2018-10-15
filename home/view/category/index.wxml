@@ -4,14 +4,14 @@
     <view class="header"></view>
     <scroll-view class="category-left" scroll-y="true">
       <view class="category-left-item {{categoryId == item ? 'category-left-item-active' : ''}}"
-       wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory"
-        id="{{item}}">{{item}}</view>
-      <view class="category-left-item-bottom" style="height: {{window_height - 50.5 * 6}}px;"></view>
+       wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory" id="{{item}}">
+        {{item}}
+        </view>
     </scroll-view>
     <van-tabs bind:change="onChange" class="category-right" style="width: {{window_width - 100}}px;">
-      <van-tab title="标签 1"></van-tab>
-      <van-tab title="标签 2"></van-tab>
-      <van-tab title="标签 3"></van-tab>
+      <van-tab title="综合排序"></van-tab>
+      <van-tab title="按价格"></van-tab>
+      <van-tab title="按销量"></van-tab>
     </van-tabs>
     <scroll-view class="category-right" style="width: {{window_width - 100}}px;margin-top:45px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
       <view class="category-right-item" style="margin: 7px 0 0 7px;width: {{window_width - 114}}px;"
@@ -30,9 +30,9 @@
                     <text>￥{{product.price}}</text>
                 </view>
                 <view style="position: absolute;right:0px;top:20px;">
-                    <van-button size="mini" bindtap="down">-</van-button>
-                    {{0}}
-                    <van-button size="mini">+</van-button>
+                    <van-button id="{{product.id}}" size="mini" bindtap="down">-</van-button>
+                    {{!!shopCart[product.id]?shopCart[product.id].num:0}}
+                    <van-button id="{{product.id}}" size="mini" bindtap="add">+</van-button>
                 </view>
             </view>
         </van-col>

@@ -13,6 +13,7 @@ Page({
         currentPage: 1,
         totalPage: 0,
         page: 10,
+        shopCart: {},
         productList: []
     },
     onUnload: function () {
@@ -72,6 +73,11 @@ Page({
         }).then((data) => {
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
+            for (let item of data.data.productList) {
+                if (!this.data.shopCart[item.id]) {
+                    this.data.shopCart[item.id] = {num: 0, otherStock: item.otherStock};
+                }
+            }
             this.setData({
                 productList: productList.concat(data.data.productList),
                 totalPage: totalPage,
@@ -100,5 +106,28 @@ Page({
             console.log("最大页数", this.data.totalPage);
             return false;
         }
+    },
+    add: function (e) {
+        let id = e.currentTarget.id;
+        let shopCart = this.data.shopCart;
+        let num = shopCart[id].num + 1;
+        shopCart[id].num = num;
+        this.setData({
+            shopCart: shopCart
+        });
+    },
+    down: function (e) {
+        let id = e.currentTarget.id;
+        let shopCart = this.data.shopCart;
+        let num = shopCart[id].num;
+        if (num == 0) {
+
+        } else {
+            shopCart[id].num = num - 1;
+        }
+
+        this.setData({
+            shopCart: shopCart
+        });
     }
 });
