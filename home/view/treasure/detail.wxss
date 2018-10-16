@@ -47,10 +47,9 @@ page {
 .footer {
 	background: #f9f9f9;
 	width: 100%;
-	display: flex; 
-	flex-direction: row; 
-	justify-content: space-between;
 	position: fixed;
+	line-height:50px;
+	text-align:center;
 	bottom: 0;
 }
 
@@ -157,6 +156,20 @@ page {
     padding-left:20rpx;
 }
 
+.treasure {
+    padding-left:10px;
+}
 .treasure text {
     display:block;
+}
+.footer button {
+    color:#fff;
+    background:#f9de56;
+}
+.custom-button {
+    display: inline-block;
+    width:20px;height:20px;
+    border-radius: 30px;background:#F6E65D;
+    text-align:center;line-height: 20px;
+    overflow: hidden;
 }

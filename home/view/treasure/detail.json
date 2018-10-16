@@ -5,6 +5,7 @@
     "van-tabs": "./../../dist/tabs/index",
     "van-row": "./../../dist/row/index",
     "van-col": "./../../dist/col/index",
+    "van-button": "./../../dist/button/index",
     "van-progress": "./../../dist/progress/index"
   }
 }

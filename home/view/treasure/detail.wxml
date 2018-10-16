@@ -7,26 +7,32 @@
     </block>
 </swiper>
 <view class="treasure">
-	<text class="title">{{goods.title}}</text>
-	<text class="price">夺宝价：￥ {{goods.price}} </text>
-	<text>截止时间：2018-09-28 12：00</text>
-	<van-progress color="#E7F72A" percentage="35" />
-	<text>目标超过100人，中奖率超过500人，</text>
+	<text class="title" style="font-size:16px;">{{goods.title}}</text>
+	<text class="price" style="font-size:14px;">夺宝价：￥ {{goods.price}} </text>
+	<text style="font-size:14px;">截止时间：2018-09-28 12：00</text>
+	<view style="width:90%;margin-top:10px;">
+	    <van-progress color="#E7F72A" percentage="35" />
+	</view>
+	<view style="margin-top:10px;">
+	    <text style="font-size:14px;">目标超过100人，中奖率超过500人，</text>
+	</view>
 </view>
 
-<view class="margin-top summary" style="padding-bottom:110rpx;">
-    <view style="text-align:center;">图片详情</view>
+<view class="margin-top summary" style="padding-bottom:40px;">
+    <view style="text-align:center;color:#f6c993">图片详情</view>
     <image style="width:100vw;height:{{height}}rpx" src="/image/1933457.jpg"/>
 </view>
 
 <view class="footer">
-    <view class="opt-buttons">
-        <view class="button-group" bindtap="showCart">
-            <image src="/image/icon_cart.png" class="button-image" />
-        </view>
-        <view class="button-group" bindtap="">
-            <view class="in-line">添加商品</view>
-            <view class="in-line"><template is="zan-quantity" data="{{ ...product_quantity, componentId: 'product_quantity' }}" /></view>
-        </view>
-    </view>
+    <van-row>
+        <van-col span="12">
+            <text style="font-size:14px">购买数量:</text>
+            <view class="custom-button" bindtap="down">-</view>
+                {{shopNum}}
+            <view class="custom-button" bindtap="add">+</view>
+        </van-col>
+        <van-col span="12">
+            <van-button>立即购买</van-button>
+        </van-col>
+    </van-row>
 </view>

@@ -12,6 +12,8 @@ var that
 Page({
     data: {
         goods: {},
+        id: "",
+        shopNum: 0,
         current: 0,
         width: getApp().globalData.window_width,
         height: getApp().globalData.window_height,
@@ -20,12 +22,12 @@ Page({
     onLoad: function (options) {
         wx.setNavigationBarTitle({
             title: options.product_name//页面标题为路由参数
-        })
-        that = this;
-        console.log(options);
-        var goodsId = options.product_id;
-        this.getGoodsById(goodsId);
-        this.getEvaluateByGoods(goodsId);
+        });
+        let id = options.id;
+        this.setData({
+            id
+        });
+
     },
     getGoodsById: function (goodsId) {
         that.setData({
@@ -112,6 +114,25 @@ Page({
     showCart: function () {
         wx.switchTab({
             url: '../../cart/cart'
+        });
+    },
+    down: function () {
+        let shopNum = this.data.shopNum;
+        if (shopNum <= 0) {
+            return false;
+        }
+        shopNum--;
+        this.setData({
+            shopNum
+        });
+    },
+    add: function () {
+        let shopNum = this.data.shopNum;
+        //判断不能大于库存
+
+        shopNum++;
+        this.setData({
+            shopNum
         });
     }
 });
