@@ -8,12 +8,12 @@
 </swiper>
 <view class="summary">
 	<text class="title">{{goods.details}}</text>
-	<text class="price">￥ {{goods.price}} <text style="text-decoration:line-through;">￥ {{goods.money}}</text></text>
+	<text class="price">￥ {{goods.money}} <text style="text-decoration:line-through;">￥ {{goods.price}}</text></text>
 </view>
 <view class="margin-top summary" style="text-align:left;">
     <view style="text-align:center;">商品详情</view>
-    <view class="padding-left-20">品牌：新希望</view>
-    <view class="padding-left-20">产品规格：370g</view>
+    <view class="padding-left-20">品牌：{{goods.brand}}</view>
+    <view class="padding-left-20">产品规格：{{goods.specifications}}</view>
 </view>
 
 <view class="footer">

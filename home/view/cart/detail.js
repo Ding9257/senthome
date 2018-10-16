@@ -31,13 +31,6 @@ Page({
                 goods:res.data
             });
         });
-        // that.setData({
-        //     goods: {
-        //         images: ["/image/1933457.jpg", "/image/1933457.jpg", "/image/1933457.jpg"],
-        //         title: "屈臣氏香草苏打汽水333.0ml*24听",
-        //         price: 100
-        //     }
-        // });
     },
     getEvaluateByGoods: function (goodsId) {
         // var query = new AV.Query('Evaluate');

@@ -4,16 +4,7 @@ const request = require("./../../util/request").request;
 Page({
     data: {
         window_width: getApp().globalData.window_width,
-        banner_list: [{
-            banner_id: 0,
-            banner_image: '/image/1933457.jpg'
-        }, {
-            banner_id: 1,
-            banner_image: '/image/1933457.jpg'
-        }, {
-            banner_id: 2,
-            banner_image: '/image/1933457.jpg'
-        }],
+        banner_list: [],
         category_list: [],
         product_list: [],
         dianZhang_list: []
@@ -23,8 +14,11 @@ Page({
     },
     onLoad: function () {
         // wx.clearStorage();
+        //轮播图
+        this.carouselMap();
         //店长推荐
         this.getDianZhangRecommend();
+
         var category_list = constant.category_list.concat();
         category_list.splice(0, 1);
         category_list.push(constant.category_list[0]);
@@ -66,6 +60,17 @@ Page({
             console.log(list);
             this.setData({
                 dianZhang_list: list
+            });
+        })
+    },
+    carouselMap: function () {
+        request({
+            url: '/picture/list',
+            method: "POST",
+            data: {}
+        }).then(res => {
+            this.setData({
+                banner_list: res.data
             });
         })
     }

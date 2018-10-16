@@ -86,6 +86,7 @@ Page({
         });
     },
     upper: function (e) {
+        return false;
         if (this.data.currentPage != 1) {
             this.setData({
                 currentPage: this.data.currentPage - 1
