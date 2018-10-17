@@ -1,0 +1,42 @@
+.order {
+    padding: 0px;
+}
+.order-info {
+    font-size: 14px;
+}
+.order-item {
+    float: left;
+    width: 25%;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.order-item-icon {
+    height: 35px;
+}
+.order-item-icon-image {
+    width: 30px;
+    height: 30px;
+}
+.out-button {
+  background-color: #F1E22D;
+  color: #fff;
+}
+.border {
+    border:solid 1px #E4E4E4;
+    background:#fff;
+}
+.cell {
+    height:50px;
+    line-height:50px;
+    padding-left:15px;
+}
+.footer {
+	width: 100%;
+	height:40px;
+	line-height:40px;
+	flex-direction: row;
+	position: fixed;
+	bottom: 0;
+}

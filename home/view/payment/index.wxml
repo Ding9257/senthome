@@ -1,0 +1,57 @@
+<view class="container">
+    <view class="margin-top">
+        <view class="border cell">
+            <van-row>
+                <van-col span="6">支付方式：</van-col>
+                <van-col span="16">微信支付</van-col>
+            </van-row>
+        </view>
+    </view>
+    <view class="margin-top">
+        <view class="border cell">
+            <van-row>
+                <van-col span="6">代金券</van-col>
+                <van-col span="18" style="text-align:right;">
+                    <text>0张可用代金券</text>
+                    <van-icon name="arrow" />
+                </van-col>
+            </van-row>
+        </view>
+    </view>
+    <view class="margin-top">
+        <view class="border" style="padding-left:15px;color:#E4E4E4;height:30px;line-height:30px;">带其他元素</view>
+        <view class="border cell" style="border-top:none;">
+            <van-row>
+                <van-col span="18">代金券</van-col>
+                <van-col span="3">*1</van-col>
+                <van-col span="3">￥2</van-col>
+            </van-row>
+        </view>
+    </view>
+    <view class="margin-top">
+        <view class="border" style="padding-left:15px;color:#E4E4E4;height:30px;line-height:30px;">费用明细</view>
+        <view class="border cell" style="border-top:none;">
+            <van-row>
+                <van-col span="18">商品总额</van-col>
+                <van-col span="3"></van-col>
+                <van-col span="3">￥2</van-col>
+            </van-row>
+        </view>
+    </view>
+    <view class="margin-top">
+        <view class="border" style="padding-left:15px;color:#E4E4E4;height:30px;line-height:30px;">捎口信</view>
+        <view class="border cell" style="border-top:none;">
+            <van-row>
+                <textarea name="delivery_street" class="weui-textarea" placeholder="如果您需要小店的其他商品请留言" style="height: 3.3em" value="{{delivery_street}}" />
+            </van-row>
+        </view>
+    </view>
+    <view class="footer">
+       <van-row>
+           <van-col offset="1" span="17">应付金额：￥10</van-col>
+           <van-col span="6" style="text-align:right;">
+            <van-button>选好了</van-button>
+           </van-col>
+       </van-row>
+    </view>
+</view>

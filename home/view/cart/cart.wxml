@@ -76,5 +76,7 @@
 		<text>全选</text>
 		<text>{{total}}</text>
 	</view>
-	<view class="button" bindtap="bindCheckout">选好了</view>
+	<navigator url="/view/payment/index">
+	    <view class="button" bindtap="bindCheckout">选好了</view>
+	</navigator>
 </view>

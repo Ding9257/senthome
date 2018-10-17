@@ -15,6 +15,7 @@
     "view/favor/index",
     "view/treasure/index",
     "view/luckBag/index",
+    "view/payment/index",
     "view/treasure/detail"
   ],
   "window": {
