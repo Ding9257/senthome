@@ -1,3 +1,4 @@
+const request = require("./../../util/request").request;
 Page({
     data: {
         carts: [
@@ -57,27 +58,57 @@ Page({
                 objectId: 123, quantity: 1
             },
             {
-                goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
+                goods: {
+                    objectId: 123,
+                    avatar: "/image/1933457.jpg",
+                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
+                    price: 30,
+                    quantity: 2
+                },
                 selected: true,
                 objectId: 123, quantity: 1
             },
             {
-                goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
+                goods: {
+                    objectId: 123,
+                    avatar: "/image/1933457.jpg",
+                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
+                    price: 30,
+                    quantity: 2
+                },
                 selected: true,
                 objectId: 123, quantity: 1
             },
             {
-                goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
+                goods: {
+                    objectId: 123,
+                    avatar: "/image/1933457.jpg",
+                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
+                    price: 30,
+                    quantity: 2
+                },
                 selected: true,
                 objectId: 123, quantity: 1
             },
             {
-                goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
+                goods: {
+                    objectId: 123,
+                    avatar: "/image/1933457.jpg",
+                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
+                    price: 30,
+                    quantity: 2
+                },
                 selected: true,
                 objectId: 123, quantity: 1
             },
             {
-                goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
+                goods: {
+                    objectId: 123,
+                    avatar: "/image/1933457.jpg",
+                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
+                    price: 30,
+                    quantity: 2
+                },
                 selected: true,
                 objectId: 123, quantity: 1
             }
@@ -88,6 +119,14 @@ Page({
             // }
         ],
         minusStatuses: [],
+        userId: 1,
+        sendTime:[
+            {time:"10:00-12:00"},
+            {time:"12:00-14:00"},
+            {time:"14:00-16:00"}
+        ],
+        currenTime:"",
+        popupStatus: false,
         selectedAllStatus: false,
         total: '',
         startX: 0,
@@ -100,28 +139,29 @@ Page({
             mask: true
         });
         var index = parseInt(e.currentTarget.dataset.index);
-        var num = this.data.carts[index]["quantity"];
-        // 如果只有1件了，就不允许再减了
-        if (num > 1) {
-            num--;
-        }
-        // 只有大于一件的时候，才能normal状态，否则disable状态
-        var minusStatus = num <= 1 ? 'disabled' : 'normal';
-        // 购物车数据
+        var num = this.data.carts[index]["num"];
+        // 如果只有0件了，就删除
+        num--;
         var carts = this.data.carts;
-        carts[index]["quantity"] = num;
-        // 按钮可用状态
-        var minusStatuses = this.data.minusStatuses;
-        minusStatuses[index] = minusStatus;
-        // 将数值与状态写回
-        this.setData({
-            carts: carts,
-            minusStatuses: minusStatuses
-        });
-        // update database
-
+        if (num >= 1) {
+            // 只有大于一件的时候，才能normal状态，否则disable状态
+            var minusStatus = num <= 1 ? 'disabled' : 'normal';
+            // 购物车数据
+            carts[index]["num"] = num;
+            // 按钮可用状态
+            var minusStatuses = this.data.minusStatuses;
+            minusStatuses[index] = minusStatus;
+            // 将数值与状态写回
+            this.setData({
+                carts: carts,
+                minusStatuses: minusStatuses
+            });
+        } else {
+            let id = this.data.carts[index]["id"];
+            carts = carts.splice(index, 1);
+            this.delete(id);
+        }
         wx.hideLoading();
-
         this.sum();
     },
     bindPlus: function (e) {
@@ -131,14 +171,15 @@ Page({
         });
         var index = parseInt(e.currentTarget.dataset.index);
         console.log(index);
-        var num = this.data.carts[index].quantity;
+        var num = this.data.carts[index].num;
         // 自增
         num++;
         // 只有大于一件的时候，才能normal状态，否则disable状态
         var minusStatus = num <= 1 ? 'disabled' : 'normal';
         // 购物车数据
         var carts = this.data.carts;
-        carts[index].quantity = num;
+        carts[index].num = num;
+        carts[index].selected = true;
         // 按钮可用状态
         var minusStatuses = this.data.minusStatuses;
         minusStatuses[index] = minusStatus;
@@ -181,7 +222,7 @@ Page({
         //拿到下标值，以在carts作遍历指示用
         var index = parseInt(e.currentTarget.dataset.index);
         //原始的icon状态
-        var selected = this.data.carts[index]["selected"];
+        var selected = this.data.carts[index]["selected"] || false;
         var carts = this.data.carts;
         // 对勾选状态取反
         carts[index]["selected"] = !selected;
@@ -225,11 +266,13 @@ Page({
             url: '../../../../order/checkout/checkout?cartIds=' + cartIds + '&amount=' + this.data.total
         });
     },
-    delete: function (e) {
-        var that = this;
-        // 购物车单个删除
-        var objectId = e.currentTarget.dataset.objectId;
-        console.log(objectId);
+    delete: function (id) {
+        request({
+            url: '/productOrder/delete',
+            method: "GET",
+            data: {id}
+        }).then(res => {
+        });
 
     },
     calcIds: function () {
@@ -257,7 +300,10 @@ Page({
 
     },
     onShow: function () {
-        this.sum();
+        this.setData({
+            popupStatus:false
+        });
+        this.getShop();
         //this.reloadData();
     },
     sum: function () {
@@ -266,7 +312,7 @@ Page({
         var total = 0;
         for (var i = 0; i < carts.length; i++) {
             if (carts[i].selected) {
-                total += carts[i].quantity * carts[i].goods.price;
+                total += carts[i].num * 1 * carts[i].product.money * 1;
             }
         }
         total = total.toFixed(2);
@@ -321,6 +367,37 @@ Page({
         itemLefts[index] = -distance;
         this.setData({
             itemLefts: itemLefts
+        });
+    },
+    getShop: function () {
+        let userId = this.data.userId;
+        request({
+            url: '/productOrder/list',
+            method: "POST",
+            data: {}
+        }).then(res => {
+            console.log(res);
+            this.setData({
+                carts: res.data
+            });
+        })
+    },
+    onClose: function () {
+        let popupStatus = this.data.popupStatus;
+        this.setData({
+            popupStatus: true
+        });
+    },
+    selectTime:function () {
+        this.setData({
+            popupStatus: true
+        });
+    },
+    time:function (e) {
+        let currenTime = e.currentTarget.dataset.time;
+        this.setData({
+            currenTime,
+            popupStatus:false
         });
     }
 })

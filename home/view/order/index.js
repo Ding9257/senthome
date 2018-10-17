@@ -1,23 +1,23 @@
 const constant = require("../../util/constant.js");
-const http = require("../../util/http.js");
-
+const request = require("./../../util/request").request;
 Page({
     data: {
         order_status_list: constant.order_status_list,
         window_width: getApp().globalData.window_width,
+        sid: getApp().globalData.sid || "",
+        orderStatus: "",
         slider_offset: 0,
         slider_left: 0,
         slider_width: 0,
         is_load: false,
         list: [],
         order_flow: '',
-        order_list: [
-            {id:1},
-            {id:1},
-            {id:1},
-            {id:1},{id:1},
-            {id:1},
-            {id:1}
+        order_list: [],
+        orderStatusList: [
+            {title: "全部订单", status: ""},
+            {title: "代付款", status: 1},
+            {title: "待收货", status: 2},
+            {title: "退款/售后", status: 3}
         ]
     },
     onUnload: function () {
@@ -30,7 +30,7 @@ Page({
 
     },
     onShow: function () {
-
+        this.getOrder();
     },
     onHide: function () {
 
@@ -44,20 +44,27 @@ Page({
     onShareAppMessage: function () {
 
     },
-    handleTab: function (event) {
-        var order_flow = event.currentTarget.id;
-        var order_list = [];
-
-        for (var i = 0; i < this.data.list.length; i++) {
-            if (this.data.list[i].order_flow == order_flow || order_flow == 'ALL') {
-                order_list.push(this.data.list[i]);
-            }
-        }
-
+    getOrder: function () {
+        request({
+            url: '/order/list',
+            method: "POST",
+            data: {sid: this.data.sid, orderStatus: this.data.orderStatus}
+        }).then(res => {
+            this.setData({
+                order_list: res.data.orderList
+            });
+        })
+    },
+    onChange: function (e) {
+        let title = e.detail.title;
+        let orderStatusList = this.data.orderStatusList;
+        let status = orderStatusList.filter(item => {
+            return item.title == title
+        })[0].status;
         this.setData({
-            slider_offset: event.currentTarget.offsetLeft,
-            order_flow: order_flow,
-            order_list: order_list
+            orderStatus: status,
+            order_list: []
         });
+        this.getOrder();
     }
 });

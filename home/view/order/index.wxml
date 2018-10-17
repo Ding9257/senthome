@@ -1,18 +1,15 @@
 <view class="container">
     <view class="footer">
       <van-tabs bind:change="onChange">
-        <van-tab title="全部订单"></van-tab>
-        <van-tab title="代付款"></van-tab>
-        <van-tab title="待收货"></van-tab>
-        <van-tab title="退款/售后"></van-tab>
+        <van-tab wx:for="{{orderStatusList}}" wx:key="{{item.status}}" data-status="{{item.status}}" title="{{item.title}}"></van-tab>
       </van-tabs>
     </view>
     <scroll-view style="width:100%;margin-top:40px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
         <view class="margin-top" wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.id}}">
             <view class="border">
                 <van-row>
-                    <van-col offset="1" span="19">2018-09-07 15:00</van-col>
-                    <van-col span="4">已退款</van-col>
+                    <van-col offset="1" span="19">{{order.createTime}}</van-col>
+                    <van-col span="4">{{order.status}}</van-col>
                 </van-row>
             </view>
             <view class="border">
@@ -27,7 +24,7 @@
             </view>
             <view class="border">
                <van-row>
-                   <van-col offset="1" span="19">共一件商品  ￥3.2</van-col>
+                   <van-col offset="1" span="19">共{{order.productOrderList.num}}件商品  ￥{{order.productOrderList.money}}</van-col>
                    <van-col span="4"></van-col>
                </van-row>
             </view>
