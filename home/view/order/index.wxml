@@ -1,28 +1,36 @@
 <view class="container">
-  <view class="header"></view>
-  <view class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for="{{order_status_list}}" wx:for-item="order_status" wx:key="{{order_status.order_status_value}}">
-        <view id="{{order_status.order_status_value}}" class="weui-navbar__item {{order_flow == order_status.order_status_value ? 'weui-bar__item_on' : ''}}" bindtap="handleTab">
-          <view class="weui-navbar__title">{{order_status.order_status_name}}</view>
-        </view>
-      </block>
-      <view class="weui-navbar__slider" style="width: {{slider_width}}px; left: {{slider_left}}px; transform: translateX({{slider_offset}}px); -webkit-transform: translateX({{slider_offset}}px);"></view>
+    <view class="footer">
+      <van-tabs bind:change="onChange">
+        <van-tab title="全部订单"></van-tab>
+        <van-tab title="代付款"></van-tab>
+        <van-tab title="待收货"></van-tab>
+        <van-tab title="退款/售后"></van-tab>
+      </van-tabs>
     </view>
-    <view class="weui-tab__panel" style="overflow: visible;">
-      <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.order_id}}">
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="">
-          <view>单号：{{order.order_number}}</view>
-          <view>姓名：{{order.order_delivery_name}}</view>
-          <view>地址：{{order.order_delivery_address}}</view>
-          <view class="weui-media-box__desc"></view>
+    <scroll-view style="width:100%;margin-top:40px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
+        <view class="margin-top" wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.id}}">
+            <view class="border">
+                <van-row>
+                    <van-col offset="1" span="19">2018-09-07 15:00</van-col>
+                    <van-col span="4">已退款</van-col>
+                </van-row>
+            </view>
+            <view class="border">
+                <van-row>
+                    <van-col offset="1" span="19">
+                        <image src="/image/1933457.jpg" style="width:30px;height:30px" />
+                    </van-col>
+                    <van-col span="4" style="text-align:center;">
+                        <van-icon name="arrow" />
+                    </van-col>
+                </van-row>
+            </view>
+            <view class="border">
+               <van-row>
+                   <van-col offset="1" span="19">共一件商品  ￥3.2</van-col>
+                   <van-col span="4"></van-col>
+               </van-row>
+            </view>
         </view>
-        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </view>
-    </view>
-  </view>
-      <view class="no-data" wx:if="{{is_load && order_list.length == 0}}">
-        <image src="/image/empty.svg" class="no-data-image-icon"></image>
-        <view class="no-data-text">当前没有数据</view>
-      </view>
+    </scroll-view>
 </view>
