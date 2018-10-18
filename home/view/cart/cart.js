@@ -132,6 +132,14 @@ Page({
         startX: 0,
         itemLefts: []
     },
+    onLoad: function (option) {
+        let redirectTo = option.redirectTo;
+        if(!!redirectTo){
+            wx.navigateTo({
+                url: redirectTo
+            })
+        }
+    },
     bindMinus: function (e) {
         // loading提示
         wx.showLoading({

@@ -1,0 +1,27 @@
+.container {
+    background-color: #F9F9F9;
+    font-size:14px;
+}
+.order-status{
+    background:#FADE56;
+    color:#fff;
+    padding-top:15px;
+    height:80px;
+}
+.border {
+    border:solid 1px #E4E4E4;
+    background:#fff;
+    height:40px;line-height:40px;
+    border-top:none;
+}
+.footer {
+	width: 100%;
+	height:50px;
+	line-height:50px;
+	flex-direction: row;
+	position: fixed;
+	bottom: 0;
+}
+.background {
+    background:#fff;
+}

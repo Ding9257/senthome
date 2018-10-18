@@ -1,0 +1,102 @@
+<van-dialog id="van-dialog" />
+<view class="container">
+    <view class="">
+        <van-row>
+            <view class="order-status">
+                <van-col offset="1" span="11">{{orderStatus[order.status]}}</van-col>
+                <van-col span="12">{{order.createTime}}</van-col>
+            </view>
+        </van-row>
+    </view>
+    <view class="margin-top background">
+        <van-row>
+            <van-col offset="1" span="5">订单号</van-col>
+            <van-col span="18">{{order.orderId}}</van-col>
+        </van-row>
+        <van-row>
+            <van-col offset="1" span="5">收货码</van-col>
+            <van-col span="18">{{order.collectCode}}</van-col>
+        </van-row>
+        <van-row>
+            <van-col offset="1" span="5">下单时间</van-col>
+            <van-col span="18">{{order.createTime}}</van-col>
+        </van-row>
+        <van-row>
+            <van-col offset="1" span="5">收货时间</van-col>
+            <van-col span="18">{{order.collectTime}}</van-col>
+        </van-row>
+    </view>
+    <view class="margin-top background">
+        <van-row>
+            <van-col offset="1" span="5">收货人</van-col>
+            <van-col span="18">{{order.address.name}}</van-col>
+        </van-row>
+        <van-row>
+            <van-col offset="1" span="5">电话</van-col>
+            <van-col span="18">{{order.address.phone}}</van-col>
+        </van-row>
+        <van-row>
+            <van-col offset="1" span="5">收货地址</van-col>
+            <van-col span="18">{{order.address.address}}</van-col>
+        </van-row>
+    </view>
+    <view class="margin-top background">
+        <view class="border">
+            <van-row>
+                <van-col offset="1" span="19">费用明细</van-col>
+            </van-row>
+        </view>
+        <view class="border" wx:for="{{order.productOrderResultsList}}" wx:for-item="item" wx:key="{{item.id}}">
+            <van-row>
+                <van-col offset="1" span="11">
+                    {{item.name}}
+                </van-col>
+                <van-col span="6" style="text-align:center;">
+                    *{{item.num}}
+                </van-col>
+                <van-col span="6" style="text-align:center;">
+                    {{item.money}}
+                </van-col>
+            </van-row>
+        </view>
+        <view class="border">
+           <van-row>
+               <van-col offset="1" span="19">商品总额￥{{order.total}}</van-col>
+           </van-row>
+        </view>
+    </view>
+    <view class="margin-top background">
+        <view>
+            <view class="border">
+                <van-row>
+                    <van-col offset="1" span="11">
+                        捎口信
+                    </van-col>
+                </van-row>
+            </view>
+            <view class="border">
+                 <van-row>
+                     <van-col offset="1" span="23">
+                         {{order.message}}
+                     </van-col>
+                 </van-row>
+            </view>
+        </view>
+    </view>
+
+    <view class="footer">
+        <!-- 取消订单 =4   待退款=3 -->
+        <view wx:if="{{order.status==4 ||order.status==3 }}">
+            <van-button bindtap="del">删除订单</van-button>
+        </view>
+        <!-- 待付款 -->
+        <view wx:if="{{order.status==8}}">
+            <van-button bindtap="paymentCancel">取消订单</van-button>
+            <van-button bindtap="goPayment">去付款</van-button>
+        </view>
+        <!-- 待收货 -->
+        <view wx:if="{{order.status==9}}">
+            <van-button bindtap="paidCancel">取消订单</van-button>
+        </view>
+    </view>
+</view>

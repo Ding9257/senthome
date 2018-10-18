@@ -8,6 +8,7 @@
     "view/product/index",
     "view/qrcode/index",
     "view/order/index",
+    "view/order/detail",
     "view/delivery/index",
     "view/delivery/detail",
     "view/favor/index",

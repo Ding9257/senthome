@@ -59,6 +59,18 @@ App({
     globalData: {
         userInfo: {},
         shopInfo: {},
+        orderStatus: {
+            "0": "待接单",
+            "1": "发货订单",
+            "2": "自提订单",
+            "3": "待退款",
+            "4": "取消订单",
+            "5": "失效订单",
+            "6": "已退款",
+            "7": "完成订单",
+            "8": "待付款",
+            "9": "待收货"
+        },
         window_width: 0,
         window_height: 0,
         open_id: ''

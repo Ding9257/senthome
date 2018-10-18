@@ -5,6 +5,7 @@ Page({
         order_status_list: constant.order_status_list,
         window_width: getApp().globalData.window_width,
         sid: getApp().globalData.sid || "",
+        orderStatusObject:getApp().globalData.orderStatus || "",
         orderStatus: "",
         slider_offset: 0,
         slider_left: 0,
