@@ -70,14 +70,14 @@ Page({
 
         });
     },
-    paymentCancel:function () {
+    paymentCancel: function () {
         Dialog.confirm({
             title: '确定要取消当前订单吗？'
         }).then(() => {
             request({
                 url: `/order/update`,
                 method: "POST",
-                data: {id: this.data.id}
+                data: {id: this.data.id, status: 4}
             }).then(res => {
                 //跳转界面
                 wx.navigateTo({
@@ -88,14 +88,14 @@ Page({
 
         });
     },
-    paidCancel:function () {
+    paidCancel: function () {
         Dialog.alert({
             message: '客观，小店已接单，无法取消订单~'
         }).then(() => {
             // on close
         });
     },
-    goPayment:function () {
+    goPayment: function () {
         console.log("goPayment");
         wx.reLaunch({
             url: '/view/cart/cart?redirectTo=/view/payment/index'

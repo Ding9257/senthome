@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "地址列表",
+  "navigationBarTitleText": "我的夺宝",
   "usingComponents": {
     "van-card": "./../../dist/card/index",
     "van-row": "./../../dist/row/index",
@@ -7,6 +7,7 @@
     "van-icon": "./../../dist/icon/index",
     "van-tab": "./../../dist/tab/index",
     "van-tabs": "./../../dist/tabs/index",
+    "van-progress": "./../../dist/progress/index",
     "van-dialog": "./../../dist/dialog/index",
     "van-button": "./../../dist/button/index"
   }

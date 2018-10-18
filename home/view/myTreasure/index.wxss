@@ -1,0 +1,11 @@
+.img {
+    width:90px;
+    height:90px;
+}
+.col text {
+    display:block;
+}
+.winning {
+    font-size:12px;
+    text-align: right;
+}

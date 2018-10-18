@@ -1,0 +1,39 @@
+<view class="container">
+  <view>
+    <van-tabs bind:disabled="onClickDisabled">
+      <van-tab title="正在夺宝"></van-tab>
+      <van-tab title="成功夺宝" ></van-tab>
+      <van-tab title="夺宝失败"></van-tab>
+    </van-tabs>
+  </view>
+  <view>
+    <van-row wx:for="{{treasure_list}}" wx:key="{{item.id}}">
+        <navigator  open-type="navigate" url="/view/treasure/detail" style="margin-top:5px;">
+          <van-col span="6">
+            <image class="img" src="{{item.img}}" />
+          </van-col>
+          <van-col span="16" offset="1"  class="col">
+            <text>{{item.name}}</text>
+            <text>截止时间:{{item.collectTime}}</text>
+            <view>
+                <van-row>
+                    <van-col span="14">
+                        <text>夺宝价：￥{{item.price}}</text>
+                    </van-col>
+                    <van-col span="10">
+                        <text>夺宝价数量</text>
+                    </van-col>
+                </van-row>
+            </view>
+
+            <view style="margin-top:5px;">
+                <van-progress color="#FADE56" percentage="{{item.oddsOfWinning}}" />
+            </view>
+            <view>
+                <text class="winning" style="float:right;margin-top:10px;">当前326人，中奖率50%</text>
+            </view>
+          </van-col>
+      </navigator>
+    </van-row>
+  </view>
+</view>

@@ -1,3 +1,5 @@
+import Dialog from "../../dist/dialog/dialog";
+
 const constant = require("../../util/constant.js");
 const http = require("../../util/http.js");
 
@@ -64,6 +66,16 @@ Page({
                     WAIT_RECEIVE: data.WAIT_RECEIVE
                 });
             }.bind(this)
+        });
+    },
+    customer:function () {
+        Dialog.confirm({
+            title: '客服电话',
+            message:"400123456"
+        }).then(() => {
+
+        }).catch(() => {
+
         });
     }
 });

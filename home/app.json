@@ -12,10 +12,11 @@
     "view/delivery/index",
     "view/delivery/detail",
     "view/favor/index",
-    "view/treasure/index",
     "view/luckBag/index",
     "view/payment/index",
-    "view/treasure/detail"
+    "view/treasure/index",
+    "view/treasure/detail",
+    "view/myTreasure/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

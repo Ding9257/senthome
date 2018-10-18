@@ -3,10 +3,13 @@ const constant = require("../../util/constant.js");
 const notification = require('../../util/notification.js');
 const http = require('../../util/http.js');
 const util = require('../../util/util.js');
+const request = require("./../../util/request").request;
 
 Page({
     data: {
+        id: "",
         color: constant.color,
+        address: {},
         is_edit: false,
         is_dialog: false,
         delivery_id: '',
@@ -26,19 +29,20 @@ Page({
 
     },
     onLoad: function (option) {
+        console.log(option);
+        let id = option.id;
+        if (!!id) {
+            this.setData({
+                id
+            });
+            this.getAddress();
+        }
+
         var is_edit = false;
         var delivery_id = '';
         var province_list = [];
         var city_list = [];
         var area_list = [];
-
-        if (typeof (option.delivery_id) != 'undefined') {
-            is_edit = true;
-
-            delivery_id = option.delivery_id;
-
-            this.handleFind(delivery_id);
-        }
 
         for (var i = 0; i < china.children.length; i++) {
             province_list.push(china.children[i].name);
@@ -51,7 +55,6 @@ Page({
         for (var i = 0; i < china.children[0].children[0].children.length; i++) {
             area_list.push(china.children[0].children[0].children[i].name);
         }
-
         this.setData({
             is_edit: is_edit,
             delivery_id: delivery_id,
@@ -185,12 +188,11 @@ Page({
         });
     },
     handleSubmit: function (event) {
-        var delivery_name = event.detail.value.delivery_name;
-        var delivery_phone = event.detail.value.delivery_phone;
-        var delivery_street = event.detail.value.delivery_street;
-        var delivery_is_default = event.detail.value.delivery_is_default;
+        var name = event.detail.value.name;
+        var phone = event.detail.value.phone;
+        var contentAddress = event.detail.value.contentAddress;
 
-        if (delivery_name == '') {
+        if (name == '') {
             util.showFailToast({
                 title: '请输入收货人'
             });
@@ -198,14 +200,14 @@ Page({
             return;
         }
 
-        if (delivery_phone == '') {
+        if (phone == '') {
             util.showFailToast({
                 title: '请输入手机号码'
             });
 
             return;
         } else {
-            if (!util.isPhone(delivery_phone)) {
+            if (!util.isPhone(phone)) {
                 util.showFailToast({
                     title: '手机格式不对'
                 });
@@ -222,36 +224,32 @@ Page({
             return;
         }
 
-        if (delivery_street == '') {
+        if (contentAddress == '') {
             util.showFailToast({
                 title: '请输入详细地址'
             });
 
             return;
         }
-
-        http.request({
-            url: '/delivery/' + (this.data.is_edit ? 'update' : 'save'),
-            data: {
-                delivery_id: this.data.delivery_id,
-                delivery_name: delivery_name,
-                delivery_phone: delivery_phone,
-                delivery_province: this.data.delivery_province,
-                delivery_city: this.data.delivery_city,
-                delivery_area: this.data.delivery_area,
-                delivery_street: delivery_street,
-                delivery_is_default: delivery_is_default
-            },
-            success: function (data) {
-                notification.emit('notification_delivery_index_load', data);
-
-                util.showSuccessToast({
-                    title: '保存成功',
-                    success: function () {
-                        wx.navigateBack();
-                    }
-                });
-            }.bind(this)
+        request({
+            url: '/address/save',
+            method: "POST",
+            data: {name, phone, contentAddress, userId: getApp().globalData.userInfo.userId}
+        }).then(res => {
+            wx.navigateBack({
+                delta: 1
+            })
+        });
+    },
+    getAddress: function () {
+        request({
+            url: '/address/list',
+            method: "POST",
+            data: {id: this.data.id}
+        }).then(res => {
+            this.setData({
+                address: res.data[0]
+            });
         });
     }
 });
