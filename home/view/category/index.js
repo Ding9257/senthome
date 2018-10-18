@@ -1,4 +1,3 @@
-const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
 
 Page({
@@ -6,6 +5,7 @@ Page({
         window_width: getApp().globalData.window_width,
         window_height: getApp().globalData.window_height,
         list: [],
+        userId: "",
         //商品分类
         categoryList: [],
         categoryId: '',
@@ -19,6 +19,9 @@ Page({
 
     },
     onLoad: function (option) {
+        this.setData({
+            userId: getApp().globalData.userInfo.userId
+        });
         //商品分类
         request({
             url: '/product/typeList',
@@ -128,6 +131,16 @@ Page({
 
         this.setData({
             shopCart: shopCart
+        });
+    },
+    addShop: function (param) {
+        let {id, num} = param;
+        request({
+            url: "/productOrder/save",
+            method: "POST",
+            data: {id, num, userId: this.data.userId}
+        }).then(res => {
+
         });
     }
 });

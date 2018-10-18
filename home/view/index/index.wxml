@@ -3,18 +3,20 @@
       <view>
         <van-row class="center">
             <van-col offset="1" span="22">
-                <button class="button-radius">
-                    <van-row>
-                        <van-col>
-                            <image src="/image/location.png" style=""  class="button-img"/>
-                        </van-col>
-                        <van-col offset="2" span="18" class="button-text" style="">送到家(通州鑫源小区)</van-col>
-                        <van-col span="2">
-                            <image src="/image/location.png"
-                            style="position: absolute;width:30px;height:20px;padding-top:5px;right:1px;" />
-                        </van-col>
-                    </van-row>
-                </button>
+                <navigator open-type="navigate" url="/view/position/index">
+                    <button class="button-radius">
+                        <van-row>
+                            <van-col>
+                                <image src="/image/all/dw-a.png" style=""  class="button-img"/>
+                            </van-col>
+                            <van-col offset="2" span="18" class="button-text" style="">送到家(通州鑫源小区)</van-col>
+                            <van-col span="2">
+                                <image src="/image/all/xl.png"
+                                style="position: absolute;width:10px;height:10px;padding-top:10px;right:10px;" />
+                            </van-col>
+                        </van-row>
+                    </button>
+                </navigator>
             </van-col>
         </van-row>
       </view>

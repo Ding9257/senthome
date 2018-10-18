@@ -24,7 +24,7 @@
         </view>
         <view class="weui-cell__bd">
           <view class="weui-select weui-select_in-select-after">
-            <text class="weui-input">{{delivery_province}}{{delivery_city}}{{delivery_area}}</text>
+            <text class="weui-input">{{delivery_province}}{{address.city}}{{delivery_area}}</text>
           </view>
         </view>
       </view>
@@ -36,10 +36,13 @@
         </view>
       </view>
     </view>
-    <view class="footer">
-      <button class="footer-add" formType="submit">
-        保存
-      </button>
+    <view>
+        <button style="background:#f9de56;color:#000;width:90%;margin-top:10px;" class="footer-add" formType="submit">
+            保存
+        </button>
+        <button bindtap="del" class="footer-add" style="background:#fff;color:#b47631;width:90%;margin-top:10px;">
+            删除
+        </button>
     </view>
     <view class="dialog  {{ is_dialog ? 'dialog-mask-show' : '' }}">
       <view class="dialog-mask" bindtap="handlDialogCancel"></view>

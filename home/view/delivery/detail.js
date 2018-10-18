@@ -18,7 +18,7 @@ Page({
         province_list: [],
         delivery_province: "",
         city_list: [],
-        delivery_city: "",
+        city: "",
         area_list: [],
         delivery_area: "",
         province_city_area: [0, 0, 0],
@@ -102,7 +102,7 @@ Page({
 
         this.setData({
             delivery_province: delivery_province,
-            delivery_city: delivery_city,
+            city: delivery_city,
             delivery_area: delivery_area,
             is_dialog: false
         });
@@ -138,54 +138,6 @@ Page({
                 province_city_area: [province_index, city_index, area_index]
             });
         }
-    },
-    handleFind: function (delivery_id) {
-        http.request({
-            url: '/delivery/find',
-            data: {
-                delivery_id: delivery_id
-            },
-            success: function (data) {
-                var province_index = 0;
-                var city_index = 0;
-                var area_index = 0;
-
-                for (var i = 0; i < china.children.length; i++) {
-                    if (china.children[i].name == data.delivery_province) {
-                        province_index = i;
-
-                        break;
-                    }
-                }
-
-                for (var i = 0; i < china.children[province_index].children.length; i++) {
-                    if (china.children[province_index].children[i].name == data.delivery_city) {
-                        city_index = i;
-
-                        break;
-                    }
-                }
-                console.log(city_index);
-
-                for (var i = 0; i < china.children[province_index].children[city_index].children.length; i++) {
-                    if (china.children[province_index].children[city_index].children[i].name == data.delivery_area) {
-                        area_index = i;
-
-                        break;
-                    }
-                }
-
-                this.setData({
-                    delivery_name: data.delivery_name,
-                    delivery_phone: data.delivery_phone,
-                    delivery_province: data.delivery_province,
-                    delivery_city: data.delivery_city,
-                    delivery_area: data.delivery_area,
-                    delivery_street: data.delivery_street,
-                    delivery_is_default: data.delivery_is_default
-                });
-            }.bind(this)
-        });
     },
     handleSubmit: function (event) {
         var name = event.detail.value.name;
@@ -231,10 +183,20 @@ Page({
 
             return;
         }
+        let city = this.data.city;
+        let prov = this.data.delivery_province;
+        let area = this.data.delivery_area;
+        let url = "";
+        let id = this.data.id;
+        if (!!id) {
+            url = '/address/update'
+        } else {
+            url = '/address/save'
+        }
         request({
-            url: '/address/save',
+            url,
             method: "POST",
-            data: {name, phone, contentAddress, userId: getApp().globalData.userInfo.userId}
+            data: {id, name, phone, contentAddress, userId: getApp().globalData.userInfo.userId, city}
         }).then(res => {
             wx.navigateBack({
                 delta: 1
@@ -242,6 +204,18 @@ Page({
         });
     },
     getAddress: function () {
+        request({
+            url: '/address/list',
+            method: "POST",
+            data: {id: this.data.id}
+        }).then(res => {
+            this.setData({
+                address: res.data[0]
+            });
+        });
+    },
+    del:function () {
+        return false;
         request({
             url: '/address/list',
             method: "POST",

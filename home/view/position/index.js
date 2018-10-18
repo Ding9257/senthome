@@ -8,6 +8,7 @@ Page({
         is_load: true,
         is_select: true,
         userId: getApp().globalData.userInfo.userId || "",
+        selectTab:"收货地址",
         delivery_list: []
     },
     onUnload: function () {
@@ -52,6 +53,12 @@ Page({
             this.setData({
                 delivery_list: res.data
             });
+        });
+    },
+    onChange:function (event) {
+        let title = event.detail.title;
+        this.setData({
+            selectTab:title
         });
     }
 });
