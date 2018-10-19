@@ -50,7 +50,7 @@
             <van-col offset="1" span="10">
                 <navigator style="text-align:center;padding-top:5px;" open-type="switchTab" url="/view/category/index" class="outline">
                     <view style="vertical-align:middle;">
-                        <image src="/image/1933457.jpg" style="width: 80px; height: 80px;" />
+                        <image src="/image/all/spxg.png" style="width: 80px; height: 80px;" />
                     </view>
                     <view>
                         <text>商品选购</text>
@@ -60,13 +60,13 @@
             <van-col offset="1" span="10">
                 <view class="outline" style="background-color:#f7d4ea;">
                     <navigator open-type="navigate" url="/view/treasure/index">
-                        <image src="/image/1933457.jpg" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
+                        <image src="/image/all/qsdb.png" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
                         <text style="position: absolute;margin-top:15px">轻松夺宝</text>
                     </navigator>
                 </view>
                 <view class="outline" style="margin-top:9px;background-color:#f3fde3;">
                     <navigator open-type="navigate" url="/view/luckBag/index">
-                        <image src="/image/1933457.jpg" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
+                        <image src="/image/all/jxfd.png" style="padding-top:5px;padding-left:10px;width: 30px; height: 40px;" />
                         <text style="position: absolute;margin-top:15px">惊喜福袋</text>
                     </navigator>
                 </view>

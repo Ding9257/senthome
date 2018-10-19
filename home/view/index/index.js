@@ -5,6 +5,7 @@ Page({
     data: {
         window_width: getApp().globalData.window_width,
         banner_list: [],
+        shopId: getApp().globalData.shopInfo.Id,
         category_list: [],
         product_list: [],
         dianZhang_list: []
@@ -14,6 +15,9 @@ Page({
     },
     onLoad: function () {
         // wx.clearStorage();
+        this.setData({
+            shopId: getApp().globalData.shopInfo.Id
+        });
         //轮播图
         this.carouselMap();
         //店长推荐
@@ -51,13 +55,12 @@ Page({
         request({
             url: '/product/list',
             method: "POST",
-            data: {isTop: "1"}
+            data: {isTop: "1", sid: this.data.shopId}
         }).then(res => {
             let list = [];
             for (let key in res.data) {
                 list = list.concat(res.data[key]);
             }
-            console.log(list);
             this.setData({
                 dianZhang_list: list
             });

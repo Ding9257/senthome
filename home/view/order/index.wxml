@@ -1,7 +1,10 @@
 <view class="container">
     <view class="footer">
-      <van-tabs bind:change="onChange">
-        <van-tab wx:for="{{orderStatusList}}" wx:key="{{item.status}}" data-status="{{item.status}}" title="{{item.title}}"></van-tab>
+      <van-tabs active="{{orderStatus}}" bind:change="onChange">
+        <van-tab title="全部订单"></van-tab>
+        <van-tab title="代付款"></van-tab>
+        <van-tab title="待收货"></van-tab>
+        <van-tab title="退款/售后"></van-tab>
       </van-tabs>
     </view>
     <scroll-view style="width:100%;margin-top:40px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">

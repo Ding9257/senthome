@@ -6,7 +6,7 @@
  * @link http://blog.it577.net
  * @author 黄秀杰
  */
-
+const request = require("./../../util/request").request;
 const AV = require('./../../util/av-weapp.js')
 var that
 Page({
@@ -134,5 +134,21 @@ Page({
         this.setData({
             shopNum
         });
+    },
+    getTreasureDetail: function (id) {
+        request({
+            url: '/coupon/findOne',
+            method: "POST",
+            data: {id}
+        }).then(res => {
+            let item = res.data;
+            let currentTimestamp = moment().valueOf();
+            let collectTimestamp = moment(item.collectTime).valueOf();
+            let progress = currentTimestamp / item.collectTimestamp * 100;
+            item.progress = progress;
+            this.setData({
+                goods: item
+            });
+        })
     }
 });

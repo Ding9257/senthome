@@ -7,31 +7,32 @@
     </van-tabs>
   </view>
   <view>
-    <van-row wx:for="{{treasure_list}}" wx:key="{{item.id}}">
-        <navigator  open-type="navigate" url="/view/treasure/detail" style="margin-top:5px;">
+    <van-row wx:for="{{treasure_list}}" wx:key="{{item.cid}}">
+        <navigator  open-type="navigate" url="/view/treasure/detail?id={{item.cid}}" style="margin-top:5px;">
           <van-col span="6">
-            <image class="img" src="{{item.img}}" />
+            <image class="img" src="{{item.coupon.img}}" />
           </van-col>
           <van-col span="16" offset="1"  class="col">
-            <text>{{item.name}}</text>
-            <text>截止时间:{{item.collectTime}}</text>
+            <text>{{item.coupon.name}}</text>
+            <text>截止时间:{{item.coupon.collectTime}}</text>
             <view>
                 <van-row>
                     <van-col span="14">
-                        <text>夺宝价：￥{{item.price}}</text>
+                        <text>夺宝价：￥{{item.coupon.price}}</text>
                     </van-col>
                     <van-col span="10">
-                        <text>夺宝价数量</text>
+                        <text>夺宝价数量:{{item.num}}</text>
                     </van-col>
                 </van-row>
             </view>
-
+            <!--
             <view style="margin-top:5px;">
                 <van-progress color="#FADE56" percentage="{{item.oddsOfWinning}}" />
             </view>
             <view>
                 <text class="winning" style="float:right;margin-top:10px;">当前326人，中奖率50%</text>
             </view>
+            -->
           </van-col>
       </navigator>
     </van-row>

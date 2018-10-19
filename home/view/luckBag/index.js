@@ -4,6 +4,7 @@ const request = require("./../../util/request").request;
 Page({
     data: {
         window_width: getApp().globalData.window_width,
+        sid: getApp().globalData.shopInfo.id,
         luckBagMoneyList: {},
         category_list: [],
         luckBagTotalPrice: 0
@@ -12,6 +13,9 @@ Page({
 
     },
     onLoad: function () {
+        this.setData({
+            sid: getApp().globalData.shopInfo.id
+        });
         //获取福袋
         this.getLuckBag();
     },
@@ -38,14 +42,14 @@ Page({
             url: '/blessing/list',
             method: "POST",
             data: {
-                sid: "",
+                sid: this.data.sid,
                 status: 1
             }
         }).then(res => {
             let luckBagMoneyList = this.data.luckBagMoneyList || {};
             //计算福袋价格
             let list = [];
-            for (let item of res.data) {
+            for (let item of res.data.blessingList) {
                 let luckBagMoney = 0;
                 for (let product of item.productList) {
                     luckBagMoney = luckBagMoney + product.money * 1;

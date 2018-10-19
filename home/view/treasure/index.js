@@ -1,9 +1,9 @@
-const constant = require("../../util/constant.js");
-const http = require("../../util/http.js");
-
+const request = require("./../../util/request").request;
+const moment = require("./../../util/moment");
 Page({
     data: {
         window_width: getApp().globalData.window_width,
+        status: 0,
         banner_list: [{
             banner_id: 0,
             banner_image: '/image/1933457.jpg'
@@ -14,20 +14,13 @@ Page({
             banner_id: 2,
             banner_image: '/image/1933457.jpg'
         }],
-        treasure_list: [
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"}
-        ]
+        treasure_list: []
     },
     onUnload: function () {
 
     },
     onLoad: function () {
-
+        this.getTreasure();
     },
     onReady: function () {
 
@@ -46,5 +39,33 @@ Page({
     },
     onShareAppMessage: function () {
 
+    },
+    getTreasure: function () {
+        request({
+            url: '/coupon/list',
+            method: "POST",
+            data: {}
+        }).then(res => {
+            let list = [];
+            for (let item of res.data) {
+                let currentTimestamp = moment().valueOf();
+                let collectTimestamp = moment(collectTime).valueOf();
+                let progress = currentTimestamp / collectTimestamp * 100;
+                item.progress = progress;
+                list.push(item);
+            }
+            let tempList = [{
+                id: 1,
+                name: "本地测试数据",
+                price: 100,
+                collectTime: "2018-10-10 10:10:10",
+                progress: 69,
+                couponDrools: [{rate: 85}]
+            }];
+            list = list.concat(tempList);
+            this.setData({
+                treasure_list: list
+            });
+        })
     }
 });

@@ -58,7 +58,7 @@ App({
     },
     globalData: {
         userInfo: {},
-        shopInfo: {},
+        shopInfo: {id: 1},
         orderStatus: {
             "0": "待接单",
             "1": "发货订单",

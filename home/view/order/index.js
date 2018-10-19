@@ -25,7 +25,11 @@ Page({
 
     },
     onLoad: function (option) {
-
+        let orderStatus = option.status;
+        console.log("orderStatus",orderStatus);
+        this.setData({
+            orderStatus
+        });
     },
     onReady: function () {
 
@@ -51,6 +55,9 @@ Page({
             method: "POST",
             data: {sid: this.data.sid, orderStatus: this.data.orderStatus}
         }).then(res => {
+            this.setData({
+                orderStatus:this.data.orderStatus
+            });
             this.setData({
                 order_list: res.data.orderList
             });

@@ -1,0 +1,22 @@
+<view class="container">
+    <scroll-view style="width:100%;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
+        <view class="margin-top border" wx:for="{{voucherList}}" wx:for-item="item" wx:key="{{item.id}}">
+            <van-row>
+                <van-col span="18">
+                    <text style="font-size:20px;">￥</text>
+                    <text style="font-size:40px;">{{item.price}}</text>
+                    <text style="font-size:14px;padding-left:15px;display: inline-block;">{{item.factor}}</text>
+                </van-col>
+                <van-col span="6">
+                    <navigator open-type="switchTab" url="/view/category/index">
+                        <van-button class="button">立即使用</van-button>
+                    </navigator>
+                </van-col>
+            </van-row>
+        </view>
+    </scroll-view>
+    <view class="no-data" wx:if="{{voucherList.length == 0}}">
+        <image src="/image/empty.svg" class="no-data-image-icon"></image>
+        <view class="no-data-text">当前没有数据</view>
+      </view>
+</view>

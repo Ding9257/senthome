@@ -1,15 +1,10 @@
 const request = require("./../../util/request").request;
+let app = getApp();
 Page({
     data: {
         window_width: getApp().globalData.window_width,
-        treasure_list: [
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"},
-            {id: 1, imgsrc: "/image/shop.png", title: "", oddsOfWinning: 50, price: 160, time: "2018-09-28 04:00"}
-        ]
+        result: 0,
+        treasure_list: []
     },
     onUnload: function () {
 
@@ -35,14 +30,33 @@ Page({
     onShareAppMessage: function () {
 
     },
-    getTreasure:function () {
+    getTreasure: function () {
         request({
-            url: '/coupon/list',
-            method: "POST"
+            url: '/coupon/findByUserId',
+            method: "POST",
+            data: {userId: app.globalData.userInfo.id, result: this.data.result}
         }).then(res => {
             this.setData({
                 treasure_list: res.data
             });
         })
+    },
+    onClickDisabled: function (e) {
+        if (e.detail.title == "正在夺宝") {
+            this.setData({
+                result: 0
+            });
+        }
+        if (e.detail.title == "成功夺宝") {
+            this.setData({
+                result: 1
+            });
+        }
+        if (e.detail.title == "夺宝失败") {
+            this.setData({
+                result: 2
+            });
+        }
+        this.getTreasure();
     }
 });

@@ -16,7 +16,7 @@
       </navigator>
     </navigator>
     <view class="weui-media-box weui-media-box_appmsg order" style="padding-left: 15px;">
-      <navigator url="/view/order/index?order_flow=WAIT_PAY" class="order-item">
+      <navigator url="/view/order/index?status=1" class="order-item">
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/mine/dfk.png" />
@@ -25,7 +25,7 @@
         </view>
         代付款
       </navigator>
-      <navigator url="/view/order/index?order_flow=WAIT_RECEIVE" class="order-item">
+      <navigator url="/view/order/index?status=2" class="order-item">
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/mine/dsh.png" />
@@ -34,7 +34,7 @@
         </view>
         代收货
       </navigator>
-      <navigator url="/view/order/index?order_flow=WAIT_SEND" class="order-item">
+      <navigator url="/view/order/index" class="order-item">
           <view class="order-item-icon">
             <view style="position: relative; display:inline-block;">
               <image class="order-item-icon-image" src="/image/mine/dpj.png" />
@@ -43,7 +43,7 @@
           </view>
           代评价
       </navigator>
-      <navigator url="/view/order/index?order_flow=FINISH" class="order-item">
+      <navigator url="/view/order/index?status=3" class="order-item">
         <view class="order-item-icon">
           <image class="order-item-icon-image" src="/image/mine/sh.png" />
         </view>
@@ -59,7 +59,7 @@
       <view class="weui-cell__bd">我的夺宝</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/view/team/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/view/voucher/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="/image/mine/djq.png" style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
       </view>

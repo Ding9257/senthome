@@ -1,26 +1,26 @@
 <import src="/component/quantity/index.wxml" />
 <swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000" style="height:{{galleryHeight}}px;">
-    <block wx:for="{{goods.images}}" wx:key="">
+    <block>
       <swiper-item>
-        <image src="{{item}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="{{index}}"/>
+        <image src="{{goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="1"/>
     </swiper-item>
     </block>
 </swiper>
 <view class="treasure">
-	<text class="title" style="font-size:16px;">{{goods.title}}</text>
+	<text class="title" style="font-size:16px;">{{goods.name}}</text>
 	<text class="price" style="font-size:14px;">夺宝价：￥ {{goods.price}} </text>
-	<text style="font-size:14px;">截止时间：2018-09-28 12：00</text>
+	<text style="font-size:14px;">截止时间：{{goods.collectTime}}</text>
 	<view style="width:90%;margin-top:10px;">
-	    <van-progress color="#E7F72A" percentage="35" />
+	    <van-progress color="#E7F72A" percentage="{{goods.progress}}" />
 	</view>
 	<view style="margin-top:10px;">
-	    <text style="font-size:14px;">目标超过100人，中奖率超过500人，</text>
+	    <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
 	</view>
 </view>
 
 <view class="margin-top summary" style="padding-bottom:40px;">
     <view style="text-align:center;color:#f6c993">图片详情</view>
-    <image style="width:100vw;height:{{height}}rpx" src="/image/1933457.jpg"/>
+    <image style="width:100vw;height:{{height}}rpx" src="{{goods.imgContent}}"/>
 </view>
 
 <view class="footer">

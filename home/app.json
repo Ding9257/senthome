@@ -17,7 +17,8 @@
     "view/treasure/index",
     "view/treasure/detail",
     "view/myTreasure/index",
-    "view/position/index"
+    "view/position/index",
+    "view/voucher/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
