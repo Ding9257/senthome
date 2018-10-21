@@ -28,8 +28,35 @@ function showFailToast(config) {
     });
 }
 
+function isEmpty(o) {
+    if (o == undefined) {
+        return true;
+    }
+    if (o == null) {
+        return true;
+    }
+    if (o === "") {
+        return true;
+    }
+    if (o instanceof Object) {
+        for (var x in o) {
+            return false;
+        }
+        return true;
+    }
+    if (o instanceof Array) {
+        if (o.length == 0) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+
 module.exports = {
     isPhone: isPhone,
+    isEmpty: isEmpty,
     showSuccessToast: showSuccessToast,
     showFailToast: showFailToast
 };

@@ -9,3 +9,6 @@
     font-size:12px;
     text-align: right;
 }
+.van-tab--active{
+ color:#fbdf5c;
+}

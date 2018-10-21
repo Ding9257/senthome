@@ -27,7 +27,7 @@
             </view>
             <view style="position: relative;">
                 <view style="position: absolute;left:10px;top:20px;">
-                    <text>￥{{product.price}}</text>
+                    <text>￥{{product.money}}</text>
                 </view>
                 <view style="position: absolute;right:-10px;top:20px;">
                     <view class="shop-add-down">

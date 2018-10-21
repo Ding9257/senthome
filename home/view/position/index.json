@@ -8,6 +8,8 @@
     "van-tab": "./../../dist/tab/index",
     "van-tabs": "./../../dist/tabs/index",
     "van-dialog": "./../../dist/dialog/index",
+    "van-popup": "./../../dist/popup/index",
+    "van-area": "./../../dist/area/index",
     "van-button": "./../../dist/button/index"
   }
 }

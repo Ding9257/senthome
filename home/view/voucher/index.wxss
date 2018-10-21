@@ -7,7 +7,8 @@
     height:60px;line-height:60px;
 }
 .button button{
-    border-radius: 20px;
+    border-radius: 10px;
+	color:#f8d748;
 }
 .footer {
 	width: 100%;
@@ -16,4 +17,19 @@
 	flex-direction: row;
 	position: fixed;
 	top: 0;
+}
+.voucher{
+	border-radius: 20px;
+	height:75px;margin:10px auto;
+	color: #f8d748;
+}
+.voucher .top{
+	height: 15px;
+	border-radius:20px 20px 0 0;
+	background-color: #f8d748;
+}
+.content{
+	padding:0 10px;
+	height: 60px;
+	line-height: 60px;
 }

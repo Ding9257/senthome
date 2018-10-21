@@ -1,15 +1,19 @@
 const request = require("./../../util/request").request;
+const util = require("./../../util/util");
+const app = getApp();
 Page({
     data: {
         carts: [],
+        timeLimit: {
+            province_list: {
+                1: '10:00-12:00',
+                2: '12:00-14:00',
+                3: '14:00-16:00'
+            }
+        },
         minusStatuses: [],
         userId: 1,
-        sendTime:[
-            {time:"10:00-12:00"},
-            {time:"12:00-14:00"},
-            {time:"14:00-16:00"}
-        ],
-        currenTime:"",
+        currenTime: "",
         popupStatus: false,
         selectedAllStatus: false,
         total: '',
@@ -18,7 +22,7 @@ Page({
     },
     onLoad: function (option) {
         let redirectTo = option.redirectTo;
-        if(!!redirectTo){
+        if (!!redirectTo) {
             wx.navigateTo({
                 url: redirectTo
             })
@@ -53,6 +57,11 @@ Page({
             carts = carts.splice(index, 1);
             this.delete(id);
         }
+        var id = this.data.carts[index]["id"];
+        let shopCart = app.globalData.shopCart;
+        if(!util.isEmpty(shopCart[id])){
+            shopCart[id].num = num
+        }
         wx.hideLoading();
         this.sum();
     },
@@ -62,7 +71,6 @@ Page({
             mask: true
         });
         var index = parseInt(e.currentTarget.dataset.index);
-        console.log(index);
         var num = this.data.carts[index].num;
         // 自增
         num++;
@@ -80,7 +88,13 @@ Page({
             carts: carts,
             minusStatuses: minusStatuses
         });
-        // update database
+        var id = this.data.carts[index]["id"];
+        console.log(id);
+        let shopCart = app.globalData.shopCart;
+        console.log(shopCart);
+        if(!util.isEmpty(shopCart[id])){
+            shopCart[id].num = num
+        }
         wx.hideLoading();
         this.sum();
     },
@@ -193,7 +207,7 @@ Page({
     },
     onShow: function () {
         this.setData({
-            popupStatus:false
+            popupStatus: false
         });
         this.getShop();
         //this.reloadData();
@@ -264,16 +278,22 @@ Page({
     },
     getShop: function () {
         let userId = this.data.userId;
-        request({
-            url: '/productOrder/list',
-            method: "POST",
-            data: {}
-        }).then(res => {
-            console.log(res);
-            this.setData({
-                carts: res.data
-            });
-        })
+        let data = this.handleShopCart([], app.globalData.shopCart);
+        this.setData({
+            carts: data.currentShop
+        });
+
+        // request({
+        //     url: '/productOrder/list',
+        //     method: "POST",
+        //     data: {}
+        // }).then(res => {
+        //     let data = this.handleShopCart(res.data, app.globalData.shopCart);
+        //     app.globalData.shopCart = data.shopCart;
+        //     this.setData({
+        //         carts: data.currentShop
+        //     });
+        // })
     },
     onClose: function () {
         let popupStatus = this.data.popupStatus;
@@ -281,16 +301,37 @@ Page({
             popupStatus: true
         });
     },
-    selectTime:function () {
+    selectTime: function () {
         this.setData({
             popupStatus: true
         });
     },
-    time:function (e) {
-        let currenTime = e.currentTarget.dataset.time;
+    time: function (e) {
+        let currenTime = e.detail.values[0].name;
         this.setData({
             currenTime,
-            popupStatus:false
+            popupStatus: false
         });
+    },
+    handleShopCart: function (shop = [], cache = {}) {
+        let list = [];
+        // for (let item of shop) {
+        //     if (!!cache[item.pid] && !!cache[item.pid].num) {
+        //         let num = item.num + cache[item.id].num;
+        //         item.num = num;
+        //         cache[item.pid] = num;
+        //     }
+        //     list.push(item);
+        // }
+        if (!util.isEmpty(cache)) {
+            for (let id in cache) {
+                if (!!cache[id] && cache[id].num > 0) {
+                    shop.push({
+                        id: id, num: cache[id].num, product: cache[id].product
+                    });
+                }
+            }
+        }
+        return {currentShop: shop, shopCart: cache};
     }
 })

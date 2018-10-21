@@ -77,5 +77,17 @@ Page({
         }).catch(() => {
 
         });
+    },
+    getuser:function (e) {
+        wx.authorize({
+            scope: "scope.userInfo", success: function (res) {
+                wx.getUserInfo({
+                    success: function (res) {
+                        console.log("getUserInfo:", res);
+                        getApp().globalData.userInfo = res.userInfo;
+                    }
+                });
+            }
+        });
     }
 });

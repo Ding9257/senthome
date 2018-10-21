@@ -1,5 +1,7 @@
-const AV = require('./../../util/av-weapp.js')
+const AV = require('./../../util/av-weapp.js');
 const request = require("./../../util/request").request;
+const util = require("./../../util/util");
+const app = getApp();
 var that
 Page({
     data: {
@@ -8,6 +10,8 @@ Page({
         num: 0,
         width: getApp().globalData.window_width,
         height: getApp().globalData.window_height,
+        id: 0,
+        sumPrice: 0,
         galleryHeight: 200
     },
     onLoad: function (options) {
@@ -15,10 +19,9 @@ Page({
             title: options.product_name//页面标题为路由参数
         });
         that = this;
-        console.log(options);
         var id = options.id;
+        this.setData({id});
         this.getGoodsById(id);
-        this.getEvaluateByGoods(goodsId);
     },
     getGoodsById: function (id) {
         request({
@@ -26,28 +29,14 @@ Page({
             method: "POST",
             data: {id}
         }).then(res => {
-            let images = [res.data.img];
-            res.images = images;
+            this.handleShopCartById(id);
             that.setData({
                 goods: res.data
             });
+            this.sumPrice();
         });
     },
     getEvaluateByGoods: function (goodsId) {
-        // var query = new AV.Query('Evaluate');
-        // // 查询关联表的数据需要调用设置include属性，可以多次设定
-        // query.include('user');
-        // // 查询条件设定为当前goods对象
-        // query.equalTo('goods', AV.Object.createWithoutData('Goods', goodsId));
-        // // 查询所有记录
-        // query.find().then(function (evaluateObjects) {
-        // 	// 将返回结果返回到data数据中，以在wxml渲染
-        // 	that.setData({
-        // 		evaluateObjects: evaluateObjects
-        // 	})
-        // }, function (err) {
-        // 	console.log(err);
-        // });
     },
     addCart: function () {
         this.insertCart(this.data.goods);
@@ -112,21 +101,50 @@ Page({
         });
     },
     add: function (e) {
+        let shopCart = app.globalData.shopCart;
+        let id = this.data.id;
         let num = this.data.num + 1;
+        if (!util.isEmpty(shopCart) && !util.isEmpty(shopCart[id])) {
+            shopCart[id].num = num;
+            app.globalData.shopCart = shopCart;
+        }
         this.setData({
             num: num
         });
+        this.sumPrice();
     },
     down: function (e) {
+        let shopCart = app.globalData.shopCart;
+        let id = this.data.id;
         let num = this.data.num;
         if (num == 0) {
 
         } else {
             num = num - 1;
         }
-
+        if (!util.isEmpty(shopCart) && !util.isEmpty(shopCart[id])) {
+            shopCart[id].num = num;
+            app.globalData.shopCart = shopCart;
+        }
         this.setData({
             num
         });
+        this.sumPrice();
     },
+    handleShopCartById: function (id) {
+        let shopCart = app.globalData.shopCart;
+        if (!util.isEmpty(shopCart) && !util.isEmpty(shopCart[id])) {
+            this.setData({
+                num: shopCart[id].num
+            });
+        }
+    },
+    sumPrice: function () {
+        let goods = this.data.goods;
+        let num = this.data.num;
+        let price = (goods.money * num).toFixed(2);
+        this.setData({
+            sumPrice: price
+        });
+    }
 });

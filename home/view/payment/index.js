@@ -7,15 +7,19 @@ Page({
         member_total_amount: parseFloat(0).toFixed(2),
         WAIT_PAY: 0,
         WAIT_SEND: 0,
+        total: 0,
         luckBagTotalPrice: 0,
         WAIT_RECEIVE: 0
     },
-    onUnload: function () {
+    onUnload: function (data) {
 
     },
-    onLoad: function () {
+    onLoad: function (data) {
+        console.log(data);
+        let total = data.total || 0;
         this.setData({
-            userInfo: getApp().globalData.userInfo
+            userInfo: getApp().globalData.userInfo,
+            total
         });
 
 

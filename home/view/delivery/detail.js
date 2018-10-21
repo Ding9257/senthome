@@ -1,7 +1,5 @@
 const china = require("../../util/china.js");
 const constant = require("../../util/constant.js");
-const notification = require('../../util/notification.js');
-const http = require('../../util/http.js');
 const util = require('../../util/util.js');
 const request = require("./../../util/request").request;
 
@@ -10,17 +8,30 @@ Page({
         id: "",
         color: constant.color,
         address: {},
-        is_edit: false,
-        is_dialog: false,
-        delivery_id: '',
-        delivery_name: '',
-        delivery_phone: '',
-        province_list: [],
         delivery_province: "",
-        city_list: [],
         city: "",
-        area_list: [],
         delivery_area: "",
+        popupStatus: 0,//0关闭  1打开区域 2 打开城市
+        areaList: {
+            province_list: {
+                1: '顺义区',
+                2: '石景山区',
+                3: '东城区',
+                4: '西城区',
+                5: '朝阳区',
+                6: '密云区',
+                7: '海淀区'
+            }
+        },
+        cityList: {
+            province_list: {
+                1: '北京市',
+                2: '上海市',
+                3: '重庆市',
+                4: '天津市'
+            }
+        },
+        vanPopupList: {},
         province_city_area: [0, 0, 0],
         delivery_street: '',
         delivery_is_default: false
@@ -29,7 +40,6 @@ Page({
 
     },
     onLoad: function (option) {
-        console.log(option);
         let id = option.id;
         if (!!id) {
             this.setData({
@@ -37,31 +47,6 @@ Page({
             });
             this.getAddress();
         }
-
-        var is_edit = false;
-        var delivery_id = '';
-        var province_list = [];
-        var city_list = [];
-        var area_list = [];
-
-        for (var i = 0; i < china.children.length; i++) {
-            province_list.push(china.children[i].name);
-        }
-
-        for (var i = 0; i < china.children[0].children.length; i++) {
-            city_list.push(china.children[0].children[i].name);
-        }
-
-        for (var i = 0; i < china.children[0].children[0].children.length; i++) {
-            area_list.push(china.children[0].children[0].children[i].name);
-        }
-        this.setData({
-            is_edit: is_edit,
-            delivery_id: delivery_id,
-            province_list: province_list,
-            city_list: city_list,
-            area_list: area_list
-        });
     },
     onReady: function () {
 
@@ -81,63 +66,11 @@ Page({
     onShareAppMessage: function () {
 
     },
-    handlDialogOpen: function () {
+    handlDialogOpenArea: function () {
         this.setData({
-            is_dialog: true
+            popupStatus: 1,
+            vanPopupList: this.data.areaList
         });
-    },
-    handlDialogCancel: function () {
-        this.setData({
-            is_dialog: false
-        });
-    },
-    handlDialogOK: function () {
-        var province_index = this.data.province_city_area[0];
-        var city_index = this.data.province_city_area[1];
-        var area_index = this.data.province_city_area[2];
-
-        var delivery_province = china.children[province_index].name;
-        var delivery_city = china.children[province_index].children[city_index].name;
-        var delivery_area = china.children[province_index].children[city_index].children[area_index].name;
-
-        this.setData({
-            delivery_province: delivery_province,
-            city: delivery_city,
-            delivery_area: delivery_area,
-            is_dialog: false
-        });
-    },
-    handPickerChange: function (event) {
-        if (this.data.is_dialog) {
-            var province_city_area = event.detail.value;
-            var province_index = province_city_area[0];
-            var city_index = province_city_area[1];
-            var area_index = province_city_area[2];
-
-            if (this.data.province_city_area[0] != province_city_area[0]) {
-                city_index = 0;
-                area_index = 0;
-            } else if (this.data.province_city_area[1] != province_city_area[1]) {
-                area_index = 0;
-            }
-
-            var city_list = [];
-            var area_list = [];
-
-            for (var i = 0; i < china.children[province_index].children.length; i++) {
-                city_list.push(china.children[province_index].children[i].name);
-            }
-
-            for (var i = 0; i < china.children[province_index].children[city_index].children.length; i++) {
-                area_list.push(china.children[province_index].children[city_index].children[i].name);
-            }
-
-            this.setData({
-                city_list: city_list,
-                area_list: area_list,
-                province_city_area: [province_index, city_index, area_index]
-            });
-        }
     },
     handleSubmit: function (event) {
         var name = event.detail.value.name;
@@ -214,7 +147,7 @@ Page({
             });
         });
     },
-    del:function () {
+    del: function () {
         return false;
         request({
             url: '/address/list',
@@ -224,6 +157,29 @@ Page({
             this.setData({
                 address: res.data[0]
             });
+        });
+    },
+    popupSelect: function (e) {
+        let name = e.detail.values[0].name;
+        let address = this.data.address;
+        if (this.data.popupStatus == 1) {
+            address.areaName = name;
+            this.setData({
+                address,
+                popupStatus: 0
+            });
+        } else {
+            address.cityName = name;
+            this.setData({
+                address,
+                popupStatus: 0
+            });
+        }
+    },
+    handlDialogOpenCity: function () {
+        this.setData({
+            popupStatus: 2,
+            vanPopupList: this.data.cityList
         });
     }
 });

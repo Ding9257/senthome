@@ -20,7 +20,7 @@
     <view class="opt-buttons">
         <view>
             <image src="/image/all/gwc.png" style="width:35px;height:35px;float:left;" />
-            <text style="display:inline-block:width:25px;font-size:14px;">￥{{goods.money*num}}</text>
+            <text style="display:inline-block:width:25px;font-size:14px;">￥{{sumPrice}}</text>
         </view>
         <view class="button-group">
             <view class="in-line">添加商品</view>

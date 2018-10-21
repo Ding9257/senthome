@@ -22,13 +22,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FADE56",
+    "navigationBarBackgroundColor": "#f8d549",
     "navigationBarTitleText": "送到家",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
     "color": "#666666",
+    "selectedColor": "#58ad49",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [

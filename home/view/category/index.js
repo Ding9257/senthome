@@ -1,5 +1,5 @@
 const request = require("./../../util/request").request;
-
+let app = getApp();
 Page({
     data: {
         window_width: getApp().globalData.window_width,
@@ -12,7 +12,7 @@ Page({
         currentPage: 1,
         totalPage: 0,
         page: 10,
-        shopCart: {},
+        shopCart: app.globalData.shopCart || {},
         productList: []
     },
     onUnload: function () {
@@ -38,22 +38,25 @@ Page({
         });
     },
     onReady: function () {
-
+        console.log("onReady");
     },
     onShow: function () {
-
+        console.log("show");
+        this.setData({
+            shopCart: app.globalData.shopCart
+        });
     },
     onHide: function () {
-
+        console.log("onHide");
     },
     onPullDownRefresh: function () {
-
+        console.log("onPullDownRefresh");
     },
     onReachBottom: function () {
-
+        console.log("onReachBottom");
     },
     onShareAppMessage: function () {
-
+        console.log("onShareAppMessage");
     },
     handleCategory: function (event) {
         //选择的商品分类
@@ -73,11 +76,12 @@ Page({
             method: "POST",
             data: {type: this.data.categoryId, pageNo: this.data.currentPage}
         }).then((data) => {
+
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {
                 if (!this.data.shopCart[item.id]) {
-                    this.data.shopCart[item.id] = {num: 0, otherStock: item.otherStock};
+                    this.data.shopCart[item.id] = {num: 0, otherStock: item.otherStock, product: item};
                 }
             }
             this.setData({
@@ -115,6 +119,7 @@ Page({
         let shopCart = this.data.shopCart;
         let num = shopCart[id].num + 1;
         shopCart[id].num = num;
+        app.globalData.shopCart = shopCart;
         this.setData({
             shopCart: shopCart
         });
@@ -128,7 +133,7 @@ Page({
         } else {
             shopCart[id].num = num - 1;
         }
-
+        app.globalData.shopCart = shopCart;
         this.setData({
             shopCart: shopCart
         });

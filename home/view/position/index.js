@@ -5,6 +5,19 @@ const request = require("./../../util/request").request;
 Page({
     data: {
         color: constant.color,
+        popupStatus:false,
+        areaList:{
+            province_list: {
+                1: '顺义区',
+                2: '石景山区',
+                3: '东城区',
+                4: '西城区',
+                5: '朝阳区',
+                6: '密云区',
+                7: '海淀区'
+            }
+        },
+        selectProv:"选择地区",
         is_load: true,
         is_select: true,
         userId: getApp().globalData.userInfo.userId || "",
@@ -59,6 +72,18 @@ Page({
         let title = event.detail.title;
         this.setData({
             selectTab:title
+        });
+    },
+    areaSelect:function (e) {
+        let selectProv = e.detail.values[0].name;
+        this.setData({
+            selectProv,
+            popupStatus:false
+        });
+    },
+    changePopupStatus:function () {
+        this.setData({
+            popupStatus: true
         });
     }
 });

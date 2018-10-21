@@ -1,9 +1,11 @@
 .order {
     padding: 0px;
 }
+
 .order-info {
     font-size: 14px;
 }
+
 .order-item {
     float: left;
     width: 25%;
@@ -12,33 +14,46 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
 .order-item-icon {
     height: 35px;
 }
+
 .order-item-icon-image {
     width: 30px;
     height: 30px;
 }
+
 .out-button {
-  background-color: #F1E22D;
-  color: #fff;
+    background-color: #F1E22D;
+    color: #fff;
 }
 
 .userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 250rpx;
-  background: #F1E22D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250rpx;
+    background: #F1E22D;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color: #fff;
+    color: #fff;
+}
+
+.free-btn-bordernone {
+    background: none !important;
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.free-btn-bordernone::after {
+    border: none;
 }

@@ -2,7 +2,7 @@ const constant = require("../../util/constant.js");
 const request = require("../../util/request").request;
 Page({
     data: {
-        window_width: getApp().globalData.window_width,
+        window_width: getApp().globalData.window_width-20,
         sid: getApp().globalData.sid || "",
         voucherList: [
             {id: 1, price: 100, factor: "满200使用"},

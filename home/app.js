@@ -79,6 +79,14 @@ App({
         },
         window_width: 0,
         window_height: 0,
+        shopCart: {},
         open_id: ''
+    },
+    handleShop: function (arr, type, id) {
+        let list = [];
+        for (let item of arr) {
+
+        }
+        return list;
     }
 });
