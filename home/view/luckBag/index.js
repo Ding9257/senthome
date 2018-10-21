@@ -101,6 +101,7 @@ Page({
             let product = luckBagMoneyList[key];
             luckBagTotalPrice = luckBagTotalPrice + (product.num * product.luckBagMoney);
         }
+        luckBagTotalPrice = luckBagTotalPrice.toFixed(2)
         this.setData({
             luckBagTotalPrice
         });

@@ -238,3 +238,17 @@
 	flex-direction: column;
 	margin-bottom: 110rpx;
 }
+.shop-add-down {
+    width:70px;
+    height:25px;
+    line-height:25px;
+}
+.shop-add-down image{
+    width:20px;
+    height:20px;
+}
+.shop-add-down text {
+    display:inline-block;
+    width:30px;
+    text-align:center;
+}

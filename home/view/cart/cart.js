@@ -1,123 +1,7 @@
 const request = require("./../../util/request").request;
 Page({
     data: {
-        carts: [
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: false,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: false,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            },
-            {
-                goods: {
-                    objectId: 123,
-                    avatar: "/image/1933457.jpg",
-                    title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水",
-                    price: 30,
-                    quantity: 2
-                },
-                selected: true,
-                objectId: 123, quantity: 1
-            }
-            // {
-            //     goods: {objectId: 123, avatar: "/image/1933457.jpg", title: "屈臣氏香草苏打水屈臣氏香草苏打水屈臣氏香草苏打水", price: 30, quantity: 2},
-            //     selected: true,
-            //     objectId: 123, quantity: 1
-            // }
-        ],
+        carts: [],
         minusStatuses: [],
         userId: 1,
         sendTime:[
@@ -345,6 +229,7 @@ Page({
         });
     },
     touchMove: function (e) {
+        return false;
         var index = e.currentTarget.dataset.index;
         var movedX = e.touches[0].clientX;
         var distance = this.data.startX - movedX;

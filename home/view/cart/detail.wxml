@@ -19,14 +19,16 @@
 <view class="footer">
     <view class="opt-buttons">
         <view>
-            <image src="/image/icon_cart.png" style="width:30px;height:30px;" />
-            <text>￥20.0</text>
+            <image src="/image/all/gwc.png" style="width:35px;height:35px;float:left;" />
+            <text style="display:inline-block:width:25px;font-size:14px;">￥{{goods.money*num}}</text>
         </view>
-        <view class="button-group" bindtap="">
+        <view class="button-group">
             <view class="in-line">添加商品</view>
-            <van-button size="mini">-</van-button>
-            {{1}}
-            <van-button size="mini">+</van-button>
+            <view class="shop-add-down"  style="margin-top:5px;">
+                <image src="/image/all/-.png" style="float:left;" id="{{goods.id}}" catchtap="down" />
+                    <text>{{num}}</text>
+                <image src="/image/all/+.png" style="float:right;" id="{{goods.id}}" catchtap="add" />
+            </view>
         </view>
     </view>
 </view>

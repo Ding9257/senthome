@@ -5,6 +5,7 @@ Page({
     data: {
         goods: {},
         current: 0,
+        num: 0,
         width: getApp().globalData.window_width,
         height: getApp().globalData.window_height,
         galleryHeight: 200
@@ -24,11 +25,11 @@ Page({
             url: '/product/findOne',
             method: "POST",
             data: {id}
-        }).then(res=>{
+        }).then(res => {
             let images = [res.data.img];
             res.images = images;
             that.setData({
-                goods:res.data
+                goods: res.data
             });
         });
     },
@@ -109,5 +110,23 @@ Page({
         wx.switchTab({
             url: '../../cart/cart'
         });
-    }
+    },
+    add: function (e) {
+        let num = this.data.num + 1;
+        this.setData({
+            num: num
+        });
+    },
+    down: function (e) {
+        let num = this.data.num;
+        if (num == 0) {
+
+        } else {
+            num = num - 1;
+        }
+
+        this.setData({
+            num
+        });
+    },
 });

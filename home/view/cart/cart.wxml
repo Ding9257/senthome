@@ -26,7 +26,7 @@
 </van-popup>
 <view class="container carts-list margin-top">
     <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods" data-object-id="{{item.id}}">
-    	<view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    	<view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart="" bindtouchmove="" bindtouchend="">
 	    	<!-- 复选框图标 -->
 			<icon type="{{item.selected ? 'success_circle' : 'circle'}}" size="20" catchtap="bindCheckbox" data-index="{{index}}"/>
 			<view>
@@ -41,19 +41,15 @@
 				  	<text class="carts-price">{{item.product.money}}</text>
 				  	<!-- 数量加减 -->
 				  	<view>
-				      <view class="stepper">
-						<!-- 减号 -->
-						<text class="{{minusStatuses[index]}}" data-index="{{index}}" catchtap="bindMinus">-</text>
-						<!-- 数值 -->
-						<input type="number" data-index="{{index}}" catchchange="bindManual" catchtap="bindManualTapped" value="{{item.num}}" />
-						<!-- 加号 -->
-						<text class="normal" data-index="{{index}}" catchtap="bindPlus">+</text>
-					  </view>
+				        <view class="shop-add-down">
+				            <image src="/image/all/-.png" style="float:left;" data-index="{{index}}" catchtap="bindMinus" />
+				                <text>{{item.num}}</text>
+				            <image src="/image/all/+.png" style="float:right;" data-index="{{index}}" catchtap="bindPlus" />
+				        </view>
 				  	</view>
 				</view>
 			</view>
       	</view>
-      	<button type="warn" class="delete-button" catchtap="delete" data-object-id="{{item.objectId}}">删除</button>
     </view>
 </view>
 

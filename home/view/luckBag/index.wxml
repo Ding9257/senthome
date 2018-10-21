@@ -14,9 +14,11 @@
             <view style="position: absolute;top:-15px;right:-30px;border-radius: 30px;background:#F6E65D;color:red;">{{category.luckBagMoney}}元</view>
           </view>
           <view style="padding-top:20px;">
-            <view class="custom-button" bindtap="down" id="{{category.id}}">-</view>
-            {{luckBagMoneyList[category.id].num}}
-            <view class="custom-button" bindtap="add" id="{{category.id}}">+</view>
+          <view class="shop-add-down" style="margin:0 auto;">
+              <image src="/image/all/-.png" style="float:left;" id="{{category.id}}" catchtap="down" />
+                  <text>{{luckBagMoneyList[category.id].num}}</text>
+              <image src="/image/all/+.png" style="float:right;" id="{{category.id}}" catchtap="add" />
+          </view>
           </view>
         </navigator>
     </view>

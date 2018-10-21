@@ -30,9 +30,11 @@
                     <text>￥{{product.price}}</text>
                 </view>
                 <view style="position: absolute;right:-10px;top:20px;">
-                    <van-button id="{{product.id}}" size="mini" bindtap="down">-</van-button>
-                    {{!!shopCart[product.id]?shopCart[product.id].num:0}}
-                    <van-button id="{{product.id}}" size="mini" bindtap="add">+</van-button>
+                    <view class="shop-add-down">
+                        <image src="/image/all/-.png" style="float:left;" id="{{product.id}}" data-index="{{index}}" catchtap="down" />
+                            <text>{{!!shopCart[product.id]?shopCart[product.id].num:0}}</text>
+                        <image src="/image/all/+.png" style="float:right;" id="{{product.id}}" data-index="{{index}}" catchtap="add" />
+                    </view>
                 </view>
             </view>
         </van-col>

@@ -16,17 +16,23 @@ App({
                 this.globalData.window_height = res.windowHeight;
             }.bind(this)
         });
-        wx.getUserInfo({
-            success: function (res) {
-                console.log(res);
-                getApp().globalData.userInfo = res.userInfo;
+
+        wx.authorize({
+            scope: "scope.userInfo", success: function (res) {
+                wx.getUserInfo({
+                    success: function (res) {
+                        console.log("getUserInfo:", res);
+                        getApp().globalData.userInfo = res.userInfo;
+                    }
+                });
             }
         });
-        // wx.authorize({
-        //     scope: "scope.userInfo", success: function (res) {
-        //         console.log("authorize is ok ", res);
-        //     }
-        // });
+        wx.login({
+            success: function (e) {
+                console.log("login", e);
+            }
+        })
+
         wx.getSetting({
             success: function (res) {
 
