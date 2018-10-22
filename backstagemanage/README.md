@@ -1,12 +1,7 @@
-# vue-admin [Live Demo](http://vueadmin.hinplay.com/)
+# backstagemanage
 
 ### 安装
 
-***
-项目地址: (`git clone`)
-```shell
-git clone https://github.com/zzmhot/vue-admin.git
-```
 通过`npm`安装本地服务第三方依赖模块(需要已安装[Node.js](https://nodejs.org/))
 
 ```
@@ -47,9 +42,3 @@ npm run build
 ├── .postcssrc.js             // autoprefixer的配置文件
 ├── package.json              // 项目配置文件
 </pre>
-
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_1.jpg)
-<br />
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_2.jpg)
-<br />
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_3.jpg)

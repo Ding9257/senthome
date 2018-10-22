@@ -10,6 +10,7 @@ App({
     onLaunch: function () {
         that = this;
         this.getLngLat().then(data => {
+            console.log("getLngLat", data);
             let {lng, lat, result} = data;
             this.globalData.currentPosition = result;
             this.globalData.coordinate = {lng, lat};

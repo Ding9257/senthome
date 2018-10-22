@@ -16,13 +16,13 @@ Page({
     },
     onLoad: function () {
         //获取定位
-        // app.getLngLat().then(data => {
-        //     let {lng, lat, result} = data;
-        //     app.globalData.currentPosition = result;
-        //     this.setData({
-        //         currentPosition: result
-        //     });
-        // });
+        app.getLngLat().then(data => {
+            let {lng, lat, result} = data;
+            app.globalData.currentPosition = result;
+            this.setData({
+                currentPosition: result
+            });
+        });
         this.setData({
             shopId: getApp().globalData.shopInfo.Id
         });
