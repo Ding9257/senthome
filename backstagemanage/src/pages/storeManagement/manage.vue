@@ -27,35 +27,23 @@
                 </el-table-column>
                 <el-table-column
                     prop="name"
-                    label="姓名"
+                    label="门店名称"
                     width="120">
                 </el-table-column>
                 <el-table-column
                     prop="sex"
-                    label="性别"
+                    label="微信账号"
                     width="100">
-                    <template scope="props">
-                        <span v-text="props.row.sex == 1 ? '男' : '女'"></span>
-                    </template>
                 </el-table-column>
                 <el-table-column
                     prop="age"
-                    label="年龄"
+                    label="电话/配送范围"
                     width="100">
                 </el-table-column>
                 <el-table-column
                     prop="birthday"
-                    label="生日"
+                    label="状态"
                     width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="zip"
-                    label="邮编"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address"
-                    label="地址">
                 </el-table-column>
                 <el-table-column
                     label="操作"
@@ -94,6 +82,7 @@
 </template>
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
+    import fetch from 'common/fetch'
 
     export default {
         data() {

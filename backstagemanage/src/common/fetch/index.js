@@ -1,13 +1,3 @@
-/**
- * @file: index.
- * @intro: 数据请求统一封装.
- * @author: zzmhot.
- * @email: zzmhot@163.com.
- * @Date: 2017/5/8 14:52.
- * @Copyright(©) 2017 by zzmhot.
- *
- */
-
 //导入模块
 import axios from 'axios'
 import {port_code} from 'common/port_uri'
