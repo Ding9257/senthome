@@ -9,16 +9,19 @@ Page({
         WAIT_SEND: 0,
         total: 0,
         luckBagTotalPrice: 0,
+        productList: [],
         WAIT_RECEIVE: 0
     },
     onUnload: function (data) {
 
     },
     onLoad: function (data) {
-        console.log(data);
         let total = data.total || 0;
+        let productList = JSON.parse(data.product);
+        console.log(productList);
         this.setData({
             userInfo: getApp().globalData.userInfo,
+            productList,
             total
         });
 

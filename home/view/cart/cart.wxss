@@ -233,9 +233,8 @@
   color: #fff;
 }
 .message {
-    display: flex;
-	flex-direction: column;
-	margin-bottom: 110rpx;
+
+	margin-bottom: 40px;
 }
 .shop-add-down {
     width:70px;

@@ -1,44 +1,45 @@
 <view class="container">
-  <view class="header"></view>
-  <view class="container">
     <view class="header"></view>
     <scroll-view class="category-left" scroll-y="true">
-      <view class="category-left-item {{categoryId == item ? 'category-left-item-active' : ''}}"
-       wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory" id="{{item}}">
-        {{item}}
+        <view class="category-left-item {{categoryId == item ? 'category-left-item-active' : ''}}"
+              wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory" id="{{item}}">
+            {{item}}
         </view>
     </scroll-view>
     <van-tabs bind:change="onChange" class="category-right" style="width: {{window_width - 100}}px;">
-      <van-tab title="综合排序"></van-tab>
-      <van-tab title="按价格"></van-tab>
-      <van-tab title="按销量"></van-tab>
+        <van-tab title="综合排序"></van-tab>
+        <van-tab title="按价格"></van-tab>
+        <van-tab title="按销量"></van-tab>
     </van-tabs>
-    <scroll-view class="category-right" style="width: {{window_width - 100}}px;margin-top:45px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
-      <view class="category-right-item" style="margin: 7px 0 0 7px;width: {{window_width - 114}}px;"
-       wx:for="{{productList}}" wx:for-item="product" wx:key="{{product.id}}">
-        <van-col span="6">
-            <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{product.img}}" />
-        </van-col>
-        <van-col span="16">
-            <view>
-                <navigator url="/view/cart/detail?id={{product.id}}&name={{product.name}}">
-                            {{product.details}}
-                </navigator>
-            </view>
-            <view style="position: relative;">
-                <view style="position: absolute;left:10px;top:20px;">
-                    <text>￥{{product.money}}</text>
+    <scroll-view class="category-right"
+                 style="width: {{window_width - 100}}px;padding-top:45px;height: {{window_height-45}}px" scroll-y="true"
+                 bindscrolltoupper="upper" bindscrolltolower="lower">
+        <view class="category-right-item" style="margin: 7px 0 0 7px;width: {{window_width - 114}}px;"
+              wx:for="{{productList}}" wx:for-item="product" wx:key="{{product.id}}">
+            <van-col span="6">
+                <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{product.img}}"/>
+            </van-col>
+            <van-col span="16">
+                <view class="van-ellipsis">
+                    <navigator url="/view/cart/detail?id={{product.id}}&name={{product.name}}">
+                        {{product.name}}
+                    </navigator>
                 </view>
-                <view style="position: absolute;right:-10px;top:20px;">
-                    <view class="shop-add-down">
-                        <image src="/image/all/-.png" style="float:left;" id="{{product.id}}" data-index="{{index}}" catchtap="down" />
+                <view style="position: relative;">
+                    <view style="position: absolute;left:10px;top:20px;">
+                        <text>￥{{product.money}}</text>
+                    </view>
+                    <view style="position: absolute;right:-10px;top:20px;">
+                        <view class="shop-add-down">
+                            <image src="/image/all/-.png" style="float:left;" id="{{product.id}}"
+                                   data-index="{{index}}" catchtap="down"/>
                             <text>{{!!shopCart[product.id]?shopCart[product.id].num:0}}</text>
-                        <image src="/image/all/+.png" style="float:right;" id="{{product.id}}" data-index="{{index}}" catchtap="add" />
+                            <image src="/image/all/+.png" style="float:right;" id="{{product.id}}"
+                                   data-index="{{index}}" catchtap="add"/>
+                        </view>
                     </view>
                 </view>
-            </view>
-        </van-col>
-      </view>
+            </van-col>
+        </view>
     </scroll-view>
-  </view>
 </view>

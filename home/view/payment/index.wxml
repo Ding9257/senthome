@@ -22,11 +22,11 @@
     </view>
     <view class="margin-top">
         <view class="border" style="padding-left:15px;color:#E4E4E4;height:30px;line-height:30px;">带其他元素</view>
-        <view class="border cell" style="border-top:none;">
+        <view wx:for="{{productList}}" wx:key="{{item.index}}" class="border cell" style="border-top:none;">
             <van-row>
-                <van-col span="18">代金券</van-col>
-                <van-col span="3">*1</van-col>
-                <van-col span="3">￥2</van-col>
+                <van-col span="18">{{item.product.name}}</van-col>
+                <van-col span="3">*{{item.num}}</van-col>
+                <van-col span="3">￥{{item.num*item.product.money}}</van-col>
             </van-row>
         </view>
     </view>

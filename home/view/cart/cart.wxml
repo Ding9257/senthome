@@ -25,7 +25,7 @@
 <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
     <van-area columns-num="1" area-list="{{ timeLimit }}" bind:confirm="time"/>
 </van-popup>
-<view class="container carts-list margin-top">
+<view class="carts-list margin-top">
     <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods" data-object-id="{{item.id}}">
         <view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart=""
               bindtouchmove="" bindtouchend="">
@@ -39,7 +39,7 @@
             </view>
             <view class="carts-text">
                 <!-- 商品标题 -->
-                <text class="carts-title">{{item.name}}</text>
+                <text class="carts-title">{{item.product.name}}</text>
                 <view class="carts-subtitle">
                     <!-- 价格 -->
                     <text class="carts-price">{{item.product.money}}</text>
@@ -59,7 +59,6 @@
 
 <view class="message">
     <form bindsubmit="handleSubmit">
-        <view class="header"></view>
         <view class="weui-cells weui-cells_after-title margin-top">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
@@ -81,7 +80,6 @@
         <text>全选</text>
         <text>{{total}}</text>
     </view>
-    <navigator url="/view/payment/index?total={{total}}">
-        <view class="button" bindtap="bindCheckout">选好了</view>
-    </navigator>
+    <view class="button" bindtap="bindCheckout">选好了</view>
 </view>
+<van-toast id="van-toast" />

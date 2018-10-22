@@ -1,14 +1,20 @@
 const constant = require("./util/constant.js");
-const wechat = require("./util/wechat.js");
+const request = require("./util/request.js").request;
 const QQMapWX = require('./util/qqmap-wx-jssdk.min.js');
 const mapKey = require("./config/index").mapKey;
-
+const qqmapsdk = new QQMapWX({
+    key: mapKey // 必填
+});
+let that;
 App({
     onLaunch: function () {
-        let that = this;
-
-        let qqmapsdk = new QQMapWX({
-            key: mapKey // 必填
+        that = this;
+        this.getLngLat().then(data => {
+            let {lng, lat, result} = data;
+            this.globalData.currentPosition = result;
+            this.globalData.coordinate = {lng, lat};
+            //获取附近店铺信息
+            //this.getNearbyPosition();
         });
         wx.getSystemInfo({
             success: function (res) {
@@ -16,49 +22,21 @@ App({
                 this.globalData.window_height = res.windowHeight;
             }.bind(this)
         });
-
-        wx.authorize({
-            scope: "scope.userInfo", success: function (res) {
-                wx.getUserInfo({
-                    success: function (res) {
-                        console.log("getUserInfo:", res);
-                        getApp().globalData.userInfo = res.userInfo;
-                    }
-                });
-            }
-        });
         wx.login({
             success: function (e) {
                 console.log("login", e);
             }
-        })
-
+        });
         wx.getSetting({
             success: function (res) {
-
-            },
-            fail: function (err) {
-
-            }
-        });
-        wx.getLocation({
-            success: function (res) {
-                //逆地理编码
-                qqmapsdk.reverseGeocoder({
-                    location: {
-                        latitude: res.latitude,
-                        longitude: res.longitude
-                    },
-                    success: function (addressRes) {
-                        console.log(addressRes.result.formatted_addresses.recommend);
-                        console.log("addressRes", addressRes);
-                    },
-                    fail: function (err) {
-                        console.log(err);
+                wx.getUserInfo({
+                    success: function (res) {
+                        getApp().globalData.userInfo = res.userInfo;
                     }
                 });
-            }, fail: function (err) {
-
+            },
+            fail: function (err) {
+                console.log("getSetting is error", err);
             }
         });
     },
@@ -79,14 +57,45 @@ App({
         },
         window_width: 0,
         window_height: 0,
+        //附近店铺
+        nearbyStore: {},
+        //用户当前位置
+        currentPosition: "",
         shopCart: {},
+        //坐标
+        coordinate: {},
         open_id: ''
     },
-    handleShop: function (arr, type, id) {
-        let list = [];
-        for (let item of arr) {
-
-        }
-        return list;
+    getLngLat: function () {
+        return new Promise((resolve, reject) => {
+            wx.getLocation({
+                success: function (res) {
+                    //逆地理编码
+                    qqmapsdk.reverseGeocoder({
+                        location: {
+                            latitude: res.latitude,
+                            longitude: res.longitude
+                        },
+                        success: function (addressRes) {
+                            resolve({lng: res.longitude, lat: res.latitude, result: addressRes.result});
+                        },
+                        fail: function (err) {
+                            reject(err);
+                        }
+                    });
+                },
+                fail: function (err) {
+                    //用户不同意授权获取位置
+                    reject(err);
+                }
+            });
+        });
+    },
+    getNearbyPosition: function () {
+        request({
+            url: "",
+            method: "POST",
+            data: {}
+        }).then()
     }
 });

@@ -1,5 +1,7 @@
 const request = require("./../../util/request").request;
 const util = require("./../../util/util");
+import Toast from './../../dist/toast/toast';
+
 const app = getApp();
 Page({
     data: {
@@ -59,7 +61,7 @@ Page({
         }
         var id = this.data.carts[index]["id"];
         let shopCart = app.globalData.shopCart;
-        if(!util.isEmpty(shopCart[id])){
+        if (!util.isEmpty(shopCart[id])) {
             shopCart[id].num = num
         }
         wx.hideLoading();
@@ -92,7 +94,7 @@ Page({
         console.log(id);
         let shopCart = app.globalData.shopCart;
         console.log(shopCart);
-        if(!util.isEmpty(shopCart[id])){
+        if (!util.isEmpty(shopCart[id])) {
             shopCart[id].num = num
         }
         wx.hideLoading();
@@ -166,11 +168,24 @@ Page({
         this.sum();
     },
     bindCheckout: function () {
-        var cartIds = this.calcIds();
-        cartIds = cartIds.join(',');
-        wx.navigateTo({
-            url: '../../../../order/checkout/checkout?cartIds=' + cartIds + '&amount=' + this.data.total
-        });
+        let carts = this.data.carts;
+        // 计算总金额
+        let total = 0, list = [];
+        for (var i = 0; i < carts.length; i++) {
+            if (carts[i].selected) {
+                list.push(carts[i]);
+                total += carts[i].num * 1 * carts[i].product.money * 1;
+            }
+        }
+        total = total.toFixed(2);
+        if (total != 0) {
+            let product = JSON.stringify(list);
+            wx.navigateTo({
+                url: `/view/payment/index?total=${total}&product=${product}`
+            });
+        } else {
+            Toast.fail('请选择商品');
+        }
     },
     delete: function (id) {
         request({

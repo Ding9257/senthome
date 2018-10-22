@@ -7,7 +7,7 @@
     </block>
 </swiper>
 <view class="summary">
-	<text class="title">{{goods.details}}</text>
+	<text class="title">{{goods.name}}</text>
 	<text class="price">￥ {{goods.money}} <text style="text-decoration:line-through;">￥ {{goods.price}}</text></text>
 </view>
 <view class="margin-top summary" style="text-align:left;">

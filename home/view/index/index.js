@@ -1,11 +1,12 @@
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
-
+const app = getApp();
 Page({
     data: {
         window_width: getApp().globalData.window_width,
         banner_list: [],
         shopId: getApp().globalData.shopInfo.Id,
+        currentPosition: app.globalData.currentPosition,
         category_list: [],
         product_list: [],
         dianZhang_list: []
@@ -14,7 +15,14 @@ Page({
 
     },
     onLoad: function () {
-        // wx.clearStorage();
+        //获取定位
+        // app.getLngLat().then(data => {
+        //     let {lng, lat, result} = data;
+        //     app.globalData.currentPosition = result;
+        //     this.setData({
+        //         currentPosition: result
+        //     });
+        // });
         this.setData({
             shopId: getApp().globalData.shopInfo.Id
         });
@@ -34,7 +42,10 @@ Page({
 
     },
     onReady: function () {
-
+        console.log(app.globalData.currentPosition);
+        this.setData({
+            currentPosition: app.globalData.currentPosition
+        });
     },
     onShow: function () {
 
