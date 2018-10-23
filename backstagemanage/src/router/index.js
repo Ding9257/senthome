@@ -24,6 +24,7 @@ import saveTableComponent from 'pages/table/save'
 import barChartsComponent from 'pages/charts/bar'
 //门店管理
 import storeManageComponent from 'pages/storeManagement/manage'
+import storeManageAddComponent from "pages/storeManagement/manageAdd"
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,7 @@ const routes = [
                     auth: true
                 }
             },
+            //*********demo***********
             {
                 path: '/table/base',
                 name: 'tableBase',
@@ -94,12 +96,22 @@ const routes = [
                     auth: true
                 }
             },
+            //*********demo***********
             {
                 path: '/storeManagement/manage',
                 name: 'storeManage',
                 component: storeManageComponent,
                 meta: {
                     title: "店铺列表",
+                    auth: true
+                }
+            },
+            {
+                path: 'storeManagement/add',
+                name: "storeManagementAdd",
+                component: storeManageAddComponent,
+                meta: {
+                    title: "添加数据",
                     auth: true
                 }
             },

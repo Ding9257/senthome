@@ -4,7 +4,7 @@
             <el-button @click.stop="on_refresh" size="small">
                 <i class="fa fa-refresh"></i>
             </el-button>
-            <router-link :to="{name: 'tableAdd'}" tag="span">
+            <router-link :to="{name: 'storeManagementAdd'}" tag="span">
                 <el-button type="primary" icon="plus" size="small">添加数据</el-button>
             </router-link>
         </panel-title>
@@ -38,7 +38,7 @@
                 <el-table-column
                     prop="age"
                     label="电话/配送范围"
-                    width="100">
+                    width="">
                 </el-table-column>
                 <el-table-column
                     prop="birthday"
@@ -47,7 +47,7 @@
                 </el-table-column>
                 <el-table-column
                     label="操作"
-                    width="180">
+                    width="">
                     <template scope="props">
                         <router-link :to="{name: 'tableUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>

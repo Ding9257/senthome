@@ -31,6 +31,8 @@ import Plugins from 'plugins'
 import App from './App'
 //导入mock数据
 import './mock'
+//导入地图
+import VueAMap from 'vue-amap';
 
 //使用element-ui
 Vue.use(ElementUI)
@@ -41,6 +43,13 @@ Vue.use(Plugins)
 //使用api
 Vue.use(api)
 
+Vue.use(VueAMap)
+VueAMap.initAMapApiLoader({
+    key: 'f8cd8911be9467783cf843d2feedc8fc',
+    plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor', "Geocoder"],
+    v: '1.4.4'
+});
+
 //发布后是否显示提示
 Vue.config.productionTip = false
 
@@ -48,7 +57,7 @@ Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
 
 new Vue({
-  router,
-  store,
-  ...App
+    router,
+    store,
+    ...App
 }).$mount('mainbody')
