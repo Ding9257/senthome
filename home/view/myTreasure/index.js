@@ -10,13 +10,13 @@ Page({
 
     },
     onLoad: function () {
-        //this.getTreasure()
+
     },
     onReady: function () {
 
     },
     onShow: function () {
-
+        this.getTreasure()
     },
     onHide: function () {
 

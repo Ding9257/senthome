@@ -1,9 +1,10 @@
-const constant = require("../../util/constant.js");
 const request = require("../../util/request").request;
+const app = getApp();
 Page({
     data: {
-        window_width: getApp().globalData.window_width-20,
+        window_width: getApp().globalData.window_width - 20,
         sid: getApp().globalData.sid || "",
+        userId: "",
         voucherList: [
             {id: 1, price: 100, factor: "满200使用"},
             {id: 1, price: 100, factor: "满200使用"}
@@ -19,6 +20,10 @@ Page({
 
     },
     onShow: function () {
+        let userId = app.globalData.userInfo.id;
+        this.setData({
+            userId
+        });
         this.getOrder();
     },
     onHide: function () {
@@ -35,9 +40,9 @@ Page({
     },
     getOrder: function () {
         request({
-            url: '/order/list',
+            url: '/coupon/findByCoupon',
             method: "POST",
-            data: {sid: this.data.sid, orderStatus: this.data.orderStatus}
+            data: {userId: this.data.userId}
         }).then(res => {
 
         })
