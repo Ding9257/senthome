@@ -1,4 +1,3 @@
-const china = require("../../util/china.js");
 const constant = require("../../util/constant.js");
 const util = require('../../util/util.js');
 const request = require("./../../util/request").request;
@@ -34,6 +33,7 @@ Page({
         vanPopupList: {},
         province_city_area: [0, 0, 0],
         delivery_street: '',
+        isSelect: false,
         delivery_is_default: false
     },
     onUnload: function () {
@@ -41,9 +41,11 @@ Page({
     },
     onLoad: function (option) {
         let id = option.id;
+        let isSelect = option.isSelect;
         if (!!id) {
             this.setData({
-                id
+                id,
+                isSelect
             });
             this.getAddress();
         }

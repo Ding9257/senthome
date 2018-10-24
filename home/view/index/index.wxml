@@ -26,14 +26,15 @@
         <view style="margin-top:10px;">
             <van-row>
                 <van-col offset="2" span="9">
-                    <image src="/image/1933457.jpg" style="width: 140px; height: 140px;"/>
+                    <image src="{{shopInfo.logo}}}" style="width: 140px; height: 140px;"/>
                 </van-col>
                 <van-col offset="1" span="11">
-                    <view style="font-size:15px;color:#fff" class="van-ellipsis">文字描述文字描述文字描述文字描述</view>
-                    <view style="font-size:12px;color:#fff;margin-top:15px;" class="van-ellipsis">营业时间：2018-09-12
-                        12：00
+                    <view style="font-size:15px;color:#fff" class="van-ellipsis">{{shopInfo.name}}</view>
+                    <view style="font-size:12px;color:#fff;margin-top:15px;" class="van-ellipsis">
+                        营业时间：{{shopInfo.businessHours}}
                     </view>
-                    <view style="font-size:13px;color:#fff;margin-top:15px;" class="van-ellipsis">文字描述文字描述文字描述文字描述
+                    <view style="font-size:13px;color:#fff;margin-top:15px;" class="van-ellipsis">
+                        商店地址：{{shopInfo.address}}
                     </view>
                 </van-col>
             </van-row>
@@ -58,22 +59,22 @@
             <van-row>
                 <van-col span="10" offset="1">
                     <!-- 商品选购 -->
-                    <navigator open-type="switchTab" url="/view/category/index">
+                    <view bindtap="goToshop">
                         <image src="/image/all/spxg.png" style="width:{{window_width/2-20}}px;height: 140px;"/>
-                    </navigator>
+                    </view>
                 </van-col>
                 <van-col span="10" offset="1">
                     <view>
                         <!-- 轻松夺宝 -->
-                        <navigator open-type="navigate" url="/view/treasure/index">
+                        <view data-target="1" bindtap="goToTarget">
                             <image src="/image/all/qsdb.png" style="width:{{window_width/2-20}}px; height:65px;"/>
-                        </navigator>
+                        </view>
                     </view>
                     <view style="padding-top:3px;">
                         <!-- 惊喜福袋 -->
-                        <navigator open-type="navigate" url="/view/luckBag/index">
+                        <view data-target="2" bindtap="goToTarget" >
                             <image src="/image/all/jxfd.png" style="width:{{window_width/2-20}}px; height:65px;"/>
-                        </navigator>
+                        </view>
                     </view>
                 </van-col>
             </van-row>

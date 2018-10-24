@@ -42,8 +42,7 @@ Page({
             url: '/blessing/list',
             method: "POST",
             data: {
-                sid: this.data.sid,
-                status: 1
+                sid: this.data.sid
             }
         }).then(res => {
             let luckBagMoneyList = this.data.luckBagMoneyList || {};

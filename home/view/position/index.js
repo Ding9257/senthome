@@ -1,12 +1,11 @@
-const notification = require('../../util/notification.js');
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
-
+const app = getApp();
 Page({
     data: {
         color: constant.color,
-        popupStatus:false,
-        areaList:{
+        popupStatus: false,
+        areaList: {
             province_list: {
                 1: '顺义区',
                 2: '石景山区',
@@ -17,17 +16,25 @@ Page({
                 7: '海淀区'
             }
         },
-        selectProv:"选择地区",
+        selectProv: "选择地区",
+        isSelect: false,
         is_load: true,
         is_select: true,
-        userId: getApp().globalData.userInfo.userId || "",
-        selectTab:"收货地址",
+        userId: app.globalData.userInfo.userId || "",
+        selectTab: "收货地址",
         delivery_list: []
     },
     onUnload: function () {
 
     },
     onLoad: function (option) {
+        let isSelect = option.isSelect;
+        console.log(isSelect);
+        if (!!isSelect) {
+            this.setData({
+                isSelect
+            });
+        }
         this.getAddress();
     },
     onReady: function () {
@@ -52,10 +59,21 @@ Page({
 
     },
     handleClick: function (event) {
-        var id = event.currentTarget.id
-        wx.navigateTo({
-            url: `/view/delivery/detail?id=${id}`
-        })
+        var id = event.currentTarget.id;
+        let isSelect = this.data.isSelect;
+        if (!isSelect) {
+            wx.navigateTo({
+                url: `/view/delivery/detail?id=${id}&isSelect=${isSelect}`
+            })
+        } else {
+            //获取收获地址
+            //跳转至  购物车页
+            let address = this.data.delivery_list.filter(item=>{return item.id ==id});
+            app.globalData.shippingAddress = address[0];
+            wx.switchTab({
+                url: "/view/cart/cart"
+            });
+        }
     },
     getAddress: function () {
         request({
@@ -68,20 +86,20 @@ Page({
             });
         });
     },
-    onChange:function (event) {
+    onChange: function (event) {
         let title = event.detail.title;
         this.setData({
-            selectTab:title
+            selectTab: title
         });
     },
-    areaSelect:function (e) {
+    areaSelect: function (e) {
         let selectProv = e.detail.values[0].name;
         this.setData({
             selectProv,
-            popupStatus:false
+            popupStatus: false
         });
     },
-    changePopupStatus:function () {
+    changePopupStatus: function () {
         this.setData({
             popupStatus: true
         });

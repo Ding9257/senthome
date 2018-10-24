@@ -2,8 +2,8 @@ const request = require("./../../util/request").request;
 let app = getApp();
 Page({
     data: {
-        window_width: getApp().globalData.window_width,
-        window_height: getApp().globalData.window_height,
+        window_width: app.globalData.window_width,
+        window_height: app.globalData.window_height,
         list: [],
         userId: "",
         //商品分类
@@ -12,6 +12,7 @@ Page({
         currentPage: 1,
         totalPage: 0,
         page: 10,
+        shopInfo: app.globalData.shopInfo,
         shopCart: app.globalData.shopCart || {},
         productList: []
     },
@@ -20,13 +21,13 @@ Page({
     },
     onLoad: function (option) {
         this.setData({
-            userId: getApp().globalData.userInfo.userId
+            userId: app.globalData.userInfo.userId
         });
         //商品分类
         request({
             url: '/product/typeList',
             method: "POST",
-            data: {}
+            data: {sid: this.shopInfo.id}
         }).then((data) => {
             this.setData({
                 categoryList: data.data,
@@ -74,9 +75,8 @@ Page({
         request({
             url: '/product/listType',
             method: "POST",
-            data: {type: this.data.categoryId, pageNo: this.data.currentPage}
+            data: {type: this.data.categoryId, pageNo: this.data.currentPage, sid: this.data.shopInfo.id}
         }).then((data) => {
-
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {

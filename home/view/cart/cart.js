@@ -17,6 +17,8 @@ Page({
         userId: 1,
         currenTime: "",
         popupStatus: false,
+        shippingAddress: {},
+        shippingAddressType: 0,
         selectedAllStatus: false,
         total: '',
         startX: 0,
@@ -223,6 +225,13 @@ Page({
     onShow: function () {
         this.setData({
             popupStatus: false
+        });
+        let shippingAddress = app.globalData.shippingAddress;
+        console.log(shippingAddress);
+        let shippingAddressType = app.globalData.shippingAddressType;
+        this.setData({
+            shippingAddressType,
+            shippingAddress
         });
         this.getShop();
         //this.reloadData();

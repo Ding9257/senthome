@@ -1,11 +1,12 @@
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
+const app = getApp();
 Page({
     data: {
         order_status_list: constant.order_status_list,
-        window_width: getApp().globalData.window_width,
-        sid: getApp().globalData.sid || "",
-        orderStatusObject:getApp().globalData.orderStatus || "",
+        window_width: app.globalData.window_width,
+        shopInfo: app.globalData.shopInfo,
+        orderStatusObject: app.globalData.orderStatus || "",
         orderStatus: "",
         slider_offset: 0,
         slider_left: 0,
@@ -26,7 +27,7 @@ Page({
     },
     onLoad: function (option) {
         let orderStatus = option.status;
-        console.log("orderStatus",orderStatus);
+        console.log("orderStatus", orderStatus);
         this.setData({
             orderStatus
         });
@@ -53,11 +54,8 @@ Page({
         request({
             url: '/order/list',
             method: "POST",
-            data: {sid: this.data.sid, orderStatus: this.data.orderStatus}
+            data: {sid: this.data.shopInfo.id, status: this.data.orderStatus}
         }).then(res => {
-            this.setData({
-                orderStatus:this.data.orderStatus
-            });
             this.setData({
                 order_list: res.data.orderList
             });

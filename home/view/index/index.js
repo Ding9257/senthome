@@ -3,10 +3,10 @@ const request = require("./../../util/request").request;
 const app = getApp();
 Page({
     data: {
-        window_width: getApp().globalData.window_width,
+        window_width: app.globalData.window_width,
         banner_list: [],
-        shopId: getApp().globalData.shopInfo.Id,
         currentPosition: app.globalData.currentPosition,
+        shopInfo: {},
         category_list: [],
         product_list: [],
         dianZhang_list: []
@@ -22,24 +22,22 @@ Page({
             this.setData({
                 currentPosition: result
             });
-        });
-        this.setData({
-            shopId: getApp().globalData.shopInfo.Id
+            request({
+                url: "/app/getStore",
+                method: "POST",
+                data: {lat, lng}
+            }).then(store => {
+                let shopInfo = store.data;
+                app.globalData.shopInfo = shopInfo;
+                this.setData({
+                    shopInfo
+                });
+            })
         });
         //轮播图
         this.carouselMap();
         //店长推荐
         this.getDianZhangRecommend();
-
-        var category_list = constant.category_list.concat();
-        category_list.splice(0, 1);
-        category_list.push(constant.category_list[0]);
-
-        this.setData({
-            category_list: category_list
-        });
-
-
     },
     onReady: function () {
         console.log(app.globalData.currentPosition);
@@ -66,7 +64,7 @@ Page({
         request({
             url: '/product/list',
             method: "POST",
-            data: {isTop: "1", sid: this.data.shopId}
+            data: {isTop: "1", sid: this.data.shopInfo.id}
         }).then(res => {
             let list = [];
             for (let key in res.data) {
@@ -87,5 +85,58 @@ Page({
                 banner_list: res.data
             });
         })
+    },
+    goToTreasure: function () {
+        //判断是否有数据
+        wx.navigateTo({
+            url: '/view/treasure/index'
+        })
+    },
+    goToTarget: function (e) {
+        let target = e.currentTarget.dataset.target;
+        let url = "", httpUrl = "";
+        switch (target*1) {
+            case 0:
+                url = "/view/category/index";
+                httpUrl = "/product/typeList";
+                break;
+            case 1:
+                url = "/view/treasure/index";
+                httpUrl = "/coupon/list";
+                break;
+            case 2:
+                url = "/view/luckBag/index";
+                httpUrl = "/blessing/list";
+                break;
+        }
+        wx.navigateTo({
+            url
+        });
+
+
+
+        // let data = {};
+        // if (target == 2) {
+        //     data.sid = this.data.shopInfo.id;
+        // }
+        // if (target == 1) {
+        //
+        // }
+        // request({
+        //     url: httpUrl,
+        //     method: "POST",
+        //     data: data
+        // }).then(res => {
+        //     wx.navigateTo({
+        //         url
+        //     })
+        // });
+    },
+    goToshop: function () {
+        //判断是否有商品
+        wx.switchTab({
+            url: "/view/category/index"
+        })
     }
 });
+

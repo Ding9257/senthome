@@ -63,6 +63,9 @@ App({
         //用户当前位置
         currentPosition: "",
         shopCart: {},
+        //收货地址
+        shippingAddressType: 0,//0自提 1送货上门
+        shippingAddress: {},
         //坐标
         coordinate: {},
         open_id: ''
