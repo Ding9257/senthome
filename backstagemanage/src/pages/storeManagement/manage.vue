@@ -1,13 +1,24 @@
 <template>
     <div class="panel">
-        <panel-title :title="$route.meta.title">
-            <el-button @click.stop="on_refresh" size="small">
-                <i class="fa fa-refresh"></i>
-            </el-button>
-            <router-link :to="{name: 'storeManagementAdd'}" tag="span">
-                <el-button type="primary" icon="plus" size="small">添加数据</el-button>
-            </router-link>
-        </panel-title>
+        <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
+            <el-form-item label="门店名称">
+                <el-input v-model="formInline.user" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item label="地址">
+                <el-input v-model="formInline.user" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item label="电话">
+                <el-input v-model="formInline.user" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary">查询</el-button>
+            </el-form-item>
+            <el-form-item>
+                <router-link :to="{name: 'storeManagementAdd'}" tag="span">
+                    <el-button type="primary" icon="plus" size="small">添加数据</el-button>
+                </router-link>
+            </el-form-item>
+        </el-form>
         <div class="panel-body">
             <el-table
                 :data="table_data"
@@ -52,7 +63,11 @@
                         <router-link :to="{name: 'tableUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
-                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row)">删除
+                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row)">
+                            删除
+                        </el-button>
+                        <el-button type="danger" size="small" icon="delete" @click="change_status(props.row.sex)">
+                            {{props.row.sex==1?"启用":"禁用"}}
                         </el-button>
                     </template>
                 </el-table-column>
@@ -87,6 +102,8 @@
     export default {
         data() {
             return {
+                formInline: {},
+                name: "",
                 table_data: null,
                 //当前页码
                 currentPage: 1,
@@ -148,6 +165,9 @@
                     })
                     .catch(() => {
                     })
+            },
+            change_status(status) {
+                console.log(status);
             },
             //页码选择
             handleCurrentChange(val) {
