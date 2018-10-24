@@ -2,7 +2,7 @@ import Dialog from "../../dist/dialog/dialog";
 
 const constant = require("../../util/constant.js");
 const http = require("../../util/http.js");
-
+const app = getApp();
 Page({
     data: {
         color: constant.color,
@@ -22,9 +22,10 @@ Page({
 
     },
     onGotUserInfo: function (e) {
-        getApp().globalData.userInfo = e.detail.userInfo;
+
+        app.globalData.userInfo = e.detail.userInfo;
         this.setData({
-            userInfo: getApp().globalData.userInfo
+            userInfo: app.globalData.userInfo
         });
         console.log(e.detail.errMsg)
         console.log(e.detail.userInfo)
@@ -68,23 +69,23 @@ Page({
             }.bind(this)
         });
     },
-    customer:function () {
+    customer: function () {
         Dialog.confirm({
             title: '客服电话',
-            message:"400123456"
+            message: "400123456"
         }).then(() => {
 
         }).catch(() => {
 
         });
     },
-    getuser:function (e) {
+    getuser: function (e) {
         wx.authorize({
             scope: "scope.userInfo", success: function (res) {
                 wx.getUserInfo({
                     success: function (res) {
                         console.log("getUserInfo:", res);
-                        getApp().globalData.userInfo = res.userInfo;
+                        app.globalData.userInfo = res.userInfo;
                     }
                 });
             }
