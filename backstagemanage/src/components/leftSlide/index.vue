@@ -54,15 +54,31 @@
                     {
                         title: "门店管理",
                         path: "/storeManagement",
+                        icon: "fa-home"
+                    },
+                    {
+                        title: "商品管理",
+                        path: "/product",
                         icon: "fa-home",
                         child: [
                             {
-                                title: "门店管理",
-                                path: "/storeManagement/manage"
+                                title: "商品库",
+                                path: "/product/list"
                             },
                             {
-                                title: "门店信息",
-                                path: "/storeManagement/info"
+                                title: "分类管理",
+                                path: "/product/sort"
+                            }
+                        ]
+                    },
+                    {
+                        title: "订单管理",
+                        path: "/order",
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "订单管理",
+                                path: "/order/list"
                             }
                         ]
                     },

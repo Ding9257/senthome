@@ -25,6 +25,13 @@ import barChartsComponent from 'pages/charts/bar'
 //门店管理
 import storeManageComponent from 'pages/storeManagement/manage'
 import storeManageAddComponent from "pages/storeManagement/manageAdd"
+//商品管理
+import productListComponent from 'pages/product/list'
+import productAddOrUpdateComponent from 'pages/product/addOrUpdate'
+import sortComponent from 'pages/product/sort'
+import sortAddorUpdateComponent from 'pages/product/AorU'
+//订单管理
+import orderListComponent from 'pages/order/list'
 
 Vue.use(VueRouter)
 
@@ -97,8 +104,10 @@ const routes = [
                 }
             },
             //*********demo***********
+
+            //门店管理
             {
-                path: '/storeManagement/manage',
+                path: '/storeManagement',
                 name: 'storeManage',
                 component: storeManageComponent,
                 meta: {
@@ -111,7 +120,81 @@ const routes = [
                 name: "storeManagementAdd",
                 component: storeManageAddComponent,
                 meta: {
-                    title: "添加数据",
+                    title: "添加店铺",
+                    auth: true
+                }
+            },
+            {
+                path: 'storeManagement/update/:id',
+                name: "storeManagementUpdate",
+                component: storeManageAddComponent,
+                meta: {
+                    title: "修改店铺",
+                    auth: true
+                }
+            },
+            //商品管理
+            {
+                path: 'product/list',
+                name: "productList",
+                component: productListComponent,
+                meta: {
+                    title: "商品列表",
+                    auth: true
+                }
+            },
+            {
+                path: 'product/add',
+                name: "productAdd",
+                component: productAddOrUpdateComponent,
+                meta: {
+                    title: "添加商品",
+                    auth: true
+                }
+            },
+            {
+                path: 'product/update/:id',
+                name: "productUpdate",
+                component: productAddOrUpdateComponent,
+                meta: {
+                    title: "修改商品",
+                    auth: true
+                }
+            },
+            {
+                path: 'product/sort',
+                name: "productSortList",
+                component: sortComponent,
+                meta: {
+                    title: "分类管理",
+                    auth: true
+                }
+            },
+            {
+                path: 'product/sort/add',
+                name: "productSortAdd",
+                component: sortAddorUpdateComponent,
+                meta: {
+                    title: "添加分类",
+                    auth: true
+                }
+            },
+            {
+                path: 'product/sort/:id',
+                name: "productSortUpdate",
+                component: sortAddorUpdateComponent,
+                meta: {
+                    title: "修改分类",
+                    auth: true
+                }
+            },
+            //订单管理
+            {
+                path: 'order/list',
+                name: "orderList",
+                component: orderListComponent,
+                meta: {
+                    title: "订单管理",
                     auth: true
                 }
             },
