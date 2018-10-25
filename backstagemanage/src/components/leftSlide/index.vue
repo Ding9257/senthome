@@ -57,6 +57,21 @@
                         icon: "fa-home"
                     },
                     {
+                        title: "平台管理",
+                        path: "/platform",
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "导航管理",
+                                path: "/platform/navigation/list"
+                            },
+                            {
+                                title: "banner管理",
+                                path: "/platform/banner/list"
+                            }
+                        ]
+                    },
+                    {
                         title: "商品管理",
                         path: "/product",
                         icon: "fa-home",
@@ -72,6 +87,11 @@
                         ]
                     },
                     {
+                        title: "会员管理",
+                        path: "/member",
+                        icon: "fa-home"
+                    },
+                    {
                         title: "订单管理",
                         path: "/order",
                         icon: "fa-home",
@@ -81,6 +101,11 @@
                                 path: "/order/list"
                             }
                         ]
+                    },
+                    {
+                        title: "现金券管理",
+                        path: "/cashCoupons/list",
+                        icon: "fa-home",
                     },
                     {
                         title: "表格管理",

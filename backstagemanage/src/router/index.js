@@ -32,6 +32,19 @@ import sortComponent from 'pages/product/sort'
 import sortAddorUpdateComponent from 'pages/product/AorU'
 //订单管理
 import orderListComponent from 'pages/order/list'
+//现金券管理
+import cashCouponsAddorUpdateComponent from 'pages/cashCoupons/addOrUpdate'
+import cashCouponsListComponent from 'pages/cashCoupons/list'
+//平台管理--banner
+import bannerAddorUpdateComponent from 'pages/platform/banner/addOrUpdate'
+import bannerListComponent from 'pages/platform/banner/list'
+//平台管理--navigation
+import navigationUpdateComponent from 'pages/platform/navigation/update'
+import navigationListComponent from 'pages/platform/navigation/list'
+//会员列表
+import memberDetailsComponent from 'pages/member/details'
+import memberListComponent from 'pages/member/list'
+import memberOrderComponent from 'pages/member/order.vue'
 
 Vue.use(VueRouter)
 
@@ -116,7 +129,7 @@ const routes = [
                 }
             },
             {
-                path: 'storeManagement/add',
+                path: '/storeManagement/add',
                 name: "storeManagementAdd",
                 component: storeManageAddComponent,
                 meta: {
@@ -125,7 +138,7 @@ const routes = [
                 }
             },
             {
-                path: 'storeManagement/update/:id',
+                path: '/storeManagement/update/:id',
                 name: "storeManagementUpdate",
                 component: storeManageAddComponent,
                 meta: {
@@ -133,9 +146,56 @@ const routes = [
                     auth: true
                 }
             },
+            //平台管理-导航
+            {
+                path: '/platform/navigation/list',
+                name: 'navigationList',
+                component: navigationListComponent,
+                meta: {
+                    title: "导航列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/navigation/update/:id',
+                name: 'navigationUpdate',
+                component: navigationUpdateComponent,
+                meta: {
+                    title: "修改导航信息",
+                    auth: true
+                }
+            },
+            //平台管理-banner
+            {
+                path: '/platform/banner/list',
+                name: "bannerList",
+                component: bannerListComponent,
+                meta: {
+                    title: "banner列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/banner/update/:id',
+                name: "bannerUpdate",
+                component: bannerAddorUpdateComponent,
+                meta: {
+                    title: "修改banner",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/banner/add',
+                name: "bannerAdd",
+                component: bannerAddorUpdateComponent,
+                meta: {
+                    title: "添加banner",
+                    auth: true
+                }
+            },
             //商品管理
             {
-                path: 'product/list',
+                path: '/product/list',
                 name: "productList",
                 component: productListComponent,
                 meta: {
@@ -144,7 +204,7 @@ const routes = [
                 }
             },
             {
-                path: 'product/add',
+                path: '/product/add',
                 name: "productAdd",
                 component: productAddOrUpdateComponent,
                 meta: {
@@ -153,7 +213,7 @@ const routes = [
                 }
             },
             {
-                path: 'product/update/:id',
+                path: '/product/update/:id',
                 name: "productUpdate",
                 component: productAddOrUpdateComponent,
                 meta: {
@@ -162,7 +222,7 @@ const routes = [
                 }
             },
             {
-                path: 'product/sort',
+                path: '/product/sort',
                 name: "productSortList",
                 component: sortComponent,
                 meta: {
@@ -171,7 +231,7 @@ const routes = [
                 }
             },
             {
-                path: 'product/sort/add',
+                path: '/product/sort/add',
                 name: "productSortAdd",
                 component: sortAddorUpdateComponent,
                 meta: {
@@ -180,7 +240,7 @@ const routes = [
                 }
             },
             {
-                path: 'product/sort/:id',
+                path: '/product/sort/:id',
                 name: "productSortUpdate",
                 component: sortAddorUpdateComponent,
                 meta: {
@@ -188,13 +248,69 @@ const routes = [
                     auth: true
                 }
             },
+            //会员管理
+            {
+                path: '/member',
+                name: "memberList",
+                component: memberListComponent,
+                meta: {
+                    title: "会员列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/member/details/:id',
+                name: "memberDetails",
+                component: memberDetailsComponent,
+                meta: {
+                    title: "会员详情",
+                    auth: true
+                }
+            },
+            {
+                path: '/member/order/:id',
+                name: "memberOrder",
+                component: memberOrderComponent,
+                meta: {
+                    title: "会员订单",
+                    auth: true
+                }
+            },
             //订单管理
             {
-                path: 'order/list',
+                path: '/order/list',
                 name: "orderList",
                 component: orderListComponent,
                 meta: {
                     title: "订单管理",
+                    auth: true
+                }
+            },
+            //现金券管理
+            {
+                path: '/cashCoupons/list',
+                name: 'cashCouponsList',
+                component: cashCouponsListComponent,
+                meta: {
+                    title: "现金券管理",
+                    auth: true
+                }
+            },
+            {
+                path: '/cashCoupons/add',
+                name: 'cashCouponsAdd',
+                component: cashCouponsAddorUpdateComponent,
+                meta: {
+                    title: "添加现金券",
+                    auth: true
+                }
+            },
+            {
+                path: '/cashCoupons/update/:id',
+                name: 'cashCouponsUpdate',
+                component: cashCouponsAddorUpdateComponent,
+                meta: {
+                    title: "修改现金券",
                     auth: true
                 }
             },
@@ -206,7 +322,8 @@ const routes = [
                     title: "柱状图表",
                     auth: true
                 }
-            }]
+            }
+        ]
     }]
 
 const router = new VueRouter({
