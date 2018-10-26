@@ -17,8 +17,8 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
-                    label="id"
+                    prop="orders"
+                    label="排序"
                     width="80">
                 </el-table-column>
                 <el-table-column
@@ -86,9 +86,10 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url:"/productType/list",
+                    data:{}
+                    //page: this.currentPage
                 })
                     .then(({data: {result, page, total}}) => {
                         this.table_data = result

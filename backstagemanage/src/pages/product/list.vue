@@ -22,7 +22,7 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
+                    prop="id"
                     label="id"
                     width="80">
                 </el-table-column>
@@ -32,17 +32,17 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="img"
                     label="商品图片"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
+                    prop="money"
                     label="售价"
                     width="">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
+                    prop="price"
                     label="市场价"
                     width="120">
                 </el-table-column>

@@ -7,29 +7,33 @@
             <el-row>
                 <el-col :span="8">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-form-item label="名店名称:" prop="name">
+                        <el-form-item label="店铺名称:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="名店Logo:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="配送范围:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="门店电话:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="店铺电话:" prop="name">
+                            <el-input v-model="form.mobile" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="营业时间:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.businessHours" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="配送范围:" prop="name">
+                            <el-input v-model="form.distributionScope" placeholder="请输入内容"
+                                      style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="详细地址:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.address" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="状态:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="微信号:" prop="name">
+                            <el-input v-model="form.wxId" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="微信账号:">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="二维码:">
+                            <el-input v-model="form.qrCode" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="所属小区编号:">
+                            <el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交
@@ -75,7 +79,7 @@
                             radius: 1000,
                             extensions: "all"
                         });
-                        geocoder.getAddress([lng ,lat], function(status, result) {
+                        geocoder.getAddress([lng, lat], function (status, result) {
                             console.log(status);
                             console.log(result);
                         });
@@ -93,8 +97,9 @@
             //获取数据
             get_form_data() {
                 this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
+                this.$http({
+                    url: "/store/findOne",
+                    data: {id: this.route_id}
                 })
                     .then(({data}) => {
                         this.form = data
@@ -113,11 +118,19 @@
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
-                    this.$fetch.api_table.save(this.form)
-                        .then(({msg}) => {
-                            this.$message.success(msg)
-                            setTimeout(this.$router.back(), 500)
-                        })
+                    let url = "";
+                    if (!!this.route_id) {
+                        url = "/store/update";
+                    } else {
+                        url = "/store/save";
+                    }
+                    this.$http({
+                        url,
+                        data: this.form
+                    }).then(({msg}) => {
+                        this.$message.success(msg)
+                        setTimeout(this.$router.back(), 500)
+                    })
                         .catch(() => {
                             this.on_submit_loading = false
                         })

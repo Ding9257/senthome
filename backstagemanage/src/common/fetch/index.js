@@ -9,48 +9,50 @@ import {server_base_url} from 'common/config'
 
 //设置用户信息action
 const setUserInfo = function (user) {
-  store.dispatch(SET_USER_INFO, user)
+    store.dispatch(SET_USER_INFO, user)
 }
 
 export default function fetch(options) {
-  return new Promise((resolve, reject) => {
-    // https://github.com/mzabriskie/axios
+    return new Promise((resolve, reject) => {
+        // https://github.com/mzabriskie/axios
 
-    //创建一个axios实例
-    const instance = axios.create({
-      //设置默认根地址
-      baseURL: server_base_url,
-      //设置请求超时设置
-      timeout: 2000,
-      //设置请求时的header
-      headers: {
-        'Github-url': 'https://github.com/zzmhot/vue-admin',
-        'X-Powered-By': 'zzmhot'
-      }
+        //创建一个axios实例
+        const instance = axios.create({
+            //设置默认根地址
+            baseURL: server_base_url,
+            //设置请求超时设置
+            timeout: 2000,
+            method: "POST",
+            //设置请求时的header
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        //请求处理
+        instance(options)
+            .then(({status, data: {code, msg, data}}) => {
+                console.log(status);
+                console.log(data);
+                //请求成功时,根据业务判断状态
+                if (code === port_code.success) {
+                    resolve({code, msg, data})
+                    return false
+                } else if (code === port_code.unlogin) {
+                    setUserInfo(null)
+                    router.replace({name: "login"})
+                }
+                Message.warning(msg)
+                reject({code, msg, data})
+            })
+            .catch((error) => {
+                //请求失败时,根据业务判断状态
+                if (error.response) {
+                    let resError = error.response
+                    let resCode = resError.status
+                    let resMsg = error.message
+                    Message.error('操作失败！错误原因 ' + resMsg)
+                    reject({code: resCode, msg: resMsg})
+                }
+            })
     })
-    //请求处理
-    instance(options)
-      .then(({data: {code, msg, data}}) => {
-        //请求成功时,根据业务判断状态
-        if (code === port_code.success) {
-          resolve({code, msg, data})
-          return false
-        } else if (code === port_code.unlogin) {
-          setUserInfo(null)
-          router.replace({name: "login"})
-        }
-        Message.warning(msg)
-        reject({code, msg, data})
-      })
-      .catch((error) => {
-        //请求失败时,根据业务判断状态
-        if (error.response) {
-          let resError = error.response
-          let resCode = resError.status
-          let resMsg = error.message
-          Message.error('操作失败！错误原因 ' + resMsg)
-          reject({code: resCode, msg: resMsg})
-        }
-      })
-  })
 }

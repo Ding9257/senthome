@@ -29,15 +29,11 @@
                             </el-dialog>
                         </el-form-item>
                         <el-form-item label="商品售价:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="商品市场价:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="商品图片:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-
                         <el-form-item label="商品参数">
                             <el-form-item v-for="(param,index) in form.params" :key="index"
                                           style="padding-bottom: 5px;">

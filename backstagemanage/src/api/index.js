@@ -23,6 +23,14 @@ const install = function (Vue) {
             }
         }
     })
+    Object.defineProperties(Vue.prototype, {
+        $http: {
+            get() {
+                return fetch
+            }
+
+        }
+    })
 }
 
 export default {

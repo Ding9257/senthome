@@ -11,7 +11,7 @@
                 <el-input v-model="formInline.user" placeholder=""></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary">查询</el-button>
+                <el-button type="primary" @click="query()">查询</el-button>
             </el-form-item>
             <el-form-item>
                 <router-link :to="{name: 'storeManagementAdd'}" tag="span">
@@ -28,28 +28,48 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
-                    label="id"
+                    prop="id"
+                    label="店铺id"
                     width="80">
                 </el-table-column>
                 <el-table-column
                     prop="name"
-                    label="门店名称"
+                    label="店铺名称"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
-                    label="微信账号"
+                    prop="mobile"
+                    label="店铺电话"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="businessHours"
+                    label="营业时间"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="distributionScope"
+                    label="配送范围"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
-                    label="电话/配送范围"
+                    prop="address"
+                    label="详细地址"
                     width="">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
-                    label="状态"
+                    prop="wxId"
+                    label="微信号"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="qrCode"
+                    label="二维码"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="areaId"
+                    label="所属小区编号"
                     width="120">
                 </el-table-column>
                 <el-table-column
@@ -59,10 +79,10 @@
                         <router-link :to="{name: 'storeManagementUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
-                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row)">
+                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row.id)">
                             删除
                         </el-button>
-                        <el-button type="danger" size="small" icon="delete" @click="change_status(props.row.sex)">
+                        <el-button type="danger" size="small" icon="delete" @click="change_status(props.row.id)">
                             {{props.row.sex==1?"启用":"禁用"}}
                         </el-button>
                     </template>
@@ -84,7 +104,6 @@
 </template>
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
-    import fetch from 'common/fetch'
 
     export default {
         data() {
@@ -118,35 +137,34 @@
             },
             //获取数据
             get_table_data() {
-                this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
-                })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
-                        this.load_data = false
+                this.load_data = true;
+                this.$http({url: "/store/list", method: "POST", data: {pageNo: this.currentPage}})
+                    .then(({data: {areaList, pageNo, count}}) => {
+                        this.table_data = areaList;
+                        this.currentPage = pageNo;
+                        this.total = count;
+                        this.load_data = false;
                     })
                     .catch(() => {
                         this.load_data = false
                     })
             },
             //单个删除
-            delete_data(item) {
+            delete_data(id) {
                 this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 })
                     .then(() => {
-                        this.load_data = true
-                        this.$fetch.api_table.del(item)
-                            .then(({msg}) => {
-                                this.get_table_data()
-                                this.$message.success(msg)
-                            })
+                        this.load_data = true;
+                        this.$http({
+                            url: "/store/delete",
+                            data: {id}
+                        }).then(({msg}) => {
+                            this.get_table_data();
+                            this.$message.success(msg);
+                        })
                             .catch(() => {
                             })
                     })
@@ -184,6 +202,10 @@
                     })
                     .catch(() => {
                     })
+            },
+            query() {
+                this.currentPage = 1
+                this.get_table_data()
             }
         }
     }
