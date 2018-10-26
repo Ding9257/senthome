@@ -54,15 +54,6 @@ Page({
                 item.progress = progress;
                 list.push(item);
             }
-            let tempList = [{
-                id: 1,
-                name: "本地测试数据",
-                price: 100,
-                collectTime: "2018-10-10 10:10:10",
-                progress: 69,
-                couponDrools: [{rate: 85}]
-            }];
-            list = list.concat(tempList);
             this.setData({
                 treasure_list: list
             });

@@ -27,7 +27,7 @@ Page({
         request({
             url: '/product/typeList',
             method: "POST",
-            data: {sid: this.shopInfo.id}
+            data: {}
         }).then((data) => {
             this.setData({
                 categoryList: data.data,

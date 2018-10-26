@@ -74,19 +74,20 @@ App({
         return new Promise((resolve, reject) => {
             wx.getLocation({
                 success: function (res) {
+                    resolve({lng: res.longitude, lat: res.latitude, result: {}});
                     //逆地理编码
-                    qqmapsdk.reverseGeocoder({
-                        location: {
-                            latitude: res.latitude,
-                            longitude: res.longitude
-                        },
-                        success: function (addressRes) {
-                            resolve({lng: res.longitude, lat: res.latitude, result: addressRes.result});
-                        },
-                        fail: function (err) {
-                            reject(err);
-                        }
-                    });
+                    // qqmapsdk.reverseGeocoder({
+                    //     location: {
+                    //         latitude: res.latitude,
+                    //         longitude: res.longitude
+                    //     },
+                    //     success: function (addressRes) {
+                    //         resolve({lng: res.longitude, lat: res.latitude, result: addressRes.result});
+                    //     },
+                    //     fail: function (err) {
+                    //         reject(err);
+                    //     }
+                    // });
                 },
                 fail: function (err) {
                     //用户不同意授权获取位置

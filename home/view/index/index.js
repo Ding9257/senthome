@@ -1,10 +1,12 @@
-const constant = require("../../util/constant.js");
+const util = require("../../util/util");
 const request = require("./../../util/request").request;
 const app = getApp();
 Page({
     data: {
         window_width: app.globalData.window_width,
-        banner_list: [],
+        banner_list: [
+            {url: "/image/banner.png"}
+        ],
         currentPosition: app.globalData.currentPosition,
         shopInfo: {},
         category_list: [],
@@ -81,9 +83,12 @@ Page({
             method: "POST",
             data: {}
         }).then(res => {
-            this.setData({
-                banner_list: res.data
-            });
+            console.log(res);
+            if (!util.isEmpty(res.data)) {
+                this.setData({
+                    banner_list: res.data
+                });
+            }
         })
     },
     goToTreasure: function () {
@@ -95,7 +100,7 @@ Page({
     goToTarget: function (e) {
         let target = e.currentTarget.dataset.target;
         let url = "", httpUrl = "";
-        switch (target*1) {
+        switch (target * 1) {
             case 0:
                 url = "/view/category/index";
                 httpUrl = "/product/typeList";
@@ -112,7 +117,6 @@ Page({
         wx.navigateTo({
             url
         });
-
 
 
         // let data = {};
