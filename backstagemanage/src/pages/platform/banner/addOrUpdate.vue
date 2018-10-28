@@ -7,30 +7,15 @@
             <el-row>
                 <el-col :span="12">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-form-item label="排序:" prop="name">
-                            <el-input v-model="form.name" placeholder="" style="width: 250px;"></el-input>
+                        <el-form-item label="广告标题:" prop="title">
+                            <el-input v-model="form.title" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="广告标题:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="广告连接:">
+                            <el-input v-model="form.url" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="广告图片:" prop="name">
-                            <el-upload
-                                action="https://jsonplaceholder.typicode.com/posts/"
-                                list-type="picture-card"
-                                :on-preview="handlePictureCardPreview"
-                                :on-success="uploadOk"
-                                :on-remove="handleRemove">
-                                <i class="el-icon-plus"></i>
-                            </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt="">
-                            </el-dialog>
-                        </el-form-item>
-                        <el-form-item label="广告连接:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="显示状态:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="显示状态:">
+                            <el-radio v-model="form.status" label="0">显示</el-radio>
+                            <el-radio v-model="form.status" label="1">隐藏</el-radio>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
@@ -52,24 +37,13 @@
         data() {
             return {
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {
-                    name: null,
-                    dialogVisible: false,
-                    dialogImageUrl: "",
-                    sex: 1,
-                    params: [
-                        {value: "", key: ""}
-                    ],
-                    age: 20,
-                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
-                    address: null,
-                    zip: 412300
-                },
+                form: {},
                 route_id: this.$route.params.id,
+                bannerData: this.$route.params.data,
                 load_data: false,
                 on_submit_loading: false,
                 rules: {
-                    name: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
+                    title: [{required: true, message: '广告标题不能为空', trigger: 'blur'}]
                 }
             }
         },
@@ -79,17 +53,7 @@
         methods: {
             //获取数据
             get_form_data() {
-                this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
-                })
-                    .then(({data}) => {
-                        this.form = data
-                        this.load_data = false
-                    })
-                    .catch(() => {
-                        this.load_data = false
-                    })
+                this.form = this.bannerData;
             },
             removeParam(index) {
                 this.form.params.splice(index, 1);
@@ -118,7 +82,16 @@
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
-                    this.$fetch.api_table.save(this.form)
+                    let url = "";
+                    if (!!this.route_id) {
+                        url = "/picture/update";
+                    } else {
+                        url = "/picture/save";
+                    }
+                    this.$http({
+                        url,
+                        data: this.form
+                    })
                         .then(({msg}) => {
                             this.$message.success(msg)
                             setTimeout(this.$router.back(), 500)

@@ -10,7 +10,7 @@
                         <el-form-item label="分类名称:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="排序:" prop="name">
+                        <el-form-item label="排序:">
                             <el-input v-model="form.orders" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
@@ -33,20 +33,9 @@
         data() {
             return {
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {
-                    name: null,
-                    dialogVisible: false,
-                    dialogImageUrl: "",
-                    sex: 1,
-                    params: [
-                        {value: "", key: ""}
-                    ],
-                    age: 20,
-                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
-                    address: null,
-                    zip: 412300
-                },
+                form: {},
                 route_id: this.$route.params.id,
+                sortData: this.$route.params.data,
                 load_data: false,
                 on_submit_loading: false,
                 rules: {
@@ -60,17 +49,7 @@
         methods: {
             //获取数据
             get_form_data() {
-                this.load_data = true
-                this.$http({
-                    url: ""
-                })
-                    .then(({data}) => {
-                        this.form = data
-                        this.load_data = false
-                    })
-                    .catch(() => {
-                        this.load_data = false
-                    })
+                this.form = this.sortData
             },
             removeParam(index) {
                 this.form.params.splice(index, 1);
@@ -105,7 +84,7 @@
                     } else {
                         url = "/productType/save";
                     }
-                    this.$http({url, data: this.from})
+                    this.$http({url, data: this.form})
                         .then(({msg}) => {
                             this.$message.success(msg)
                             setTimeout(this.$router.back(), 500)

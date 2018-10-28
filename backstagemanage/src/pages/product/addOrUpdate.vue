@@ -15,18 +15,16 @@
                                 <el-option v-for="item in sort" :label="item.name" :value="item.id"></el-option>
                             </el-select>
                         </el-form-item>
-                        <el-form-item label="商品图片:" prop="name">
+                        <el-form-item label="商品图片:">
                             <el-upload
+                                class="avatar-uploader"
                                 action="https://jsonplaceholder.typicode.com/posts/"
-                                list-type="picture-card"
-                                :on-preview="handlePictureCardPreview"
-                                :on-success="uploadOk"
-                                :on-remove="handleRemove">
-                                <i class="el-icon-plus"></i>
+                                :show-file-list="false"
+                                :on-success="handleAvatarSuccess"
+                            >
+                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt="">
-                            </el-dialog>
                         </el-form-item>
                         <el-form-item label="商品售价:" prop="name">
                             <el-input v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
@@ -64,19 +62,7 @@
         data() {
             return {
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {
-                    name: null,
-                    dialogVisible: false,
-                    dialogImageUrl: "",
-                    sex: 1,
-                    params: [
-                        {value: "", key: ""}
-                    ],
-                    age: 20,
-                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
-                    address: null,
-                    zip: 412300
-                },
+                form: {params: []},
                 route_id: this.$route.params.id,
                 load_data: false,
                 on_submit_loading: false,
@@ -86,17 +72,33 @@
             }
         },
         created() {
+            this.getSort();
             this.route_id && this.get_form_data()
         },
         methods: {
             //获取数据
             get_form_data() {
                 this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
+                this.$http({
+                    url: "/product/findOne",
+                    data: {id: this.route_id}
                 })
                     .then(({data}) => {
                         this.form = data
+                        this.load_data = false
+                    })
+                    .catch(() => {
+                        this.load_data = false
+                    })
+            },
+            getSort() {
+                this.load_data = true
+                this.$http({
+                    url: "/productType/list",
+                    data: {}
+                })
+                    .then(({data}) => {
+                        this.sort = data
                         this.load_data = false
                     })
                     .catch(() => {
@@ -155,3 +157,31 @@
         }
     }
 </script>
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>

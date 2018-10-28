@@ -17,48 +17,41 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
+                    prop="id"
                     label="id"
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
+                    prop="title"
                     label="标题"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="url"
                     label="连接"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
                     label="显示状态"
                     width="">
+                    <template slot-scope="scope">{{ scope.row.status==0?"显示":"隐藏" }}</template>
                 </el-table-column>
                 <el-table-column
                     label="操作"
                     width="">
                     <template scope="props">
-                        <router-link :to="{name: 'bannerUpdate', params: {id: props.row.id}}" tag="span">
+                        <router-link :to="{name: 'bannerUpdate', params: {id: props.row.id,data:props.row}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
-                        <el-button type="info" size="small" icon="edit">显示</el-button>
-                        <el-button type="info" size="small" icon="edit">隐藏</el-button>
+                        <el-button type="info" size="small" @click="change_status(props.row.id,0)"
+                                   icon="edit">显示
+                        </el-button>
+                        <el-button type="info" size="small" @click="change_status(props.row.id,1)"
+                                   icon="edit">隐藏
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
-            <bottom-tool-bar>
-                <div slot="page">
-                    <el-pagination
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="10"
-                        layout="total, prev, pager, next"
-                        :total="total">
-                    </el-pagination>
-                </div>
-            </bottom-tool-bar>
         </div>
     </div>
 </template>
@@ -99,14 +92,13 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url: "picture/list",
+                    data: {}
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data}) => {
+                        this.table_data = data;
+                        this.currentPage = 1
                         this.load_data = false
                     })
                     .catch(() => {
@@ -133,8 +125,14 @@
                     .catch(() => {
                     })
             },
-            change_status(status) {
-                console.log(status);
+            change_status(id, status) {
+                this.$http({
+                    url: "/picture/update",
+                    data: {id, status}
+                }).then(({msg}) => {
+                    this.$message.success(msg)
+                    this.get_table_data();
+                })
             },
             //页码选择
             handleCurrentChange(val) {

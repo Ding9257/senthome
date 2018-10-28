@@ -14,22 +14,29 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
-                    label="头像"
+                    prop="id"
+                    label="id"
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
+                    label="头像"
+                    width="80">
+                    <template slot-scope="scope">
+                        <img :src="scope.row.icon"/>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="userName"
                     label="昵称"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="phone"
                     label="手机号"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
+                    prop="createTime"
                     label="注册时间"
                     width="">
                 </el-table-column>
@@ -54,10 +61,10 @@
                             <el-button type="info" size="small" icon="edit">订单</el-button>
                         </router-link>
                         <el-button type="info" size="small" icon="edit"
-                                   @click="setBlackList(props.row.id,props.row.status)">设置黑名单
+                                   @click="setBlackList(props.row.id,1)">设置黑名单
                         </el-button>
                         <el-button type="info" size="small" icon="edit"
-                                   @click="setBlackList(props.row.id,props.row.status)">取消黑名单
+                                   @click="setBlackList(props.row.id,0)">取消黑名单
                         </el-button>
                         <el-button type="info" size="small" icon="edit" @click="delete(props.row.id)">删除</el-button>
                     </template>
@@ -108,7 +115,6 @@
         },
         methods: {
             setBlackList(id, status) {
-                status == 0 ? status = 1 : status = 0;
                 this.$http({url: "/customerInfo/update", data: {userId: id, status}})
                     .then(({msg}) => {
                         this.get_table_data()
@@ -133,14 +139,14 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url: "/customerInfo/list",
+                    data: {pageNo: this.currentPage}
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data: {productList, pageNo, count}}) => {
+                        this.table_data = productList
+                        this.currentPage = pageNo
+                        this.total = count
                         this.load_data = false
                     })
                     .catch(() => {

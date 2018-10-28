@@ -29,23 +29,12 @@
                     label="操作"
                     width="">
                     <template scope="props">
-                        <router-link :to="{name: 'productSortUpdate', params: {id: props.row.id}}" tag="span">
+                        <router-link :to="{name: 'productSortUpdate', params: {id: props.row.id,data:props.row}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
                     </template>
                 </el-table-column>
             </el-table>
-            <bottom-tool-bar>
-                <div slot="page">
-                    <el-pagination
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="10"
-                        layout="total, prev, pager, next"
-                        :total="total">
-                    </el-pagination>
-                </div>
-            </bottom-tool-bar>
         </div>
     </div>
 </template>
@@ -89,12 +78,9 @@
                 this.$http({
                     url:"/productType/list",
                     data:{}
-                    //page: this.currentPage
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data}) => {
+                        this.table_data = data
                         this.load_data = false
                     })
                     .catch(() => {

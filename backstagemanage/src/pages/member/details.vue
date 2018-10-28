@@ -2,28 +2,43 @@
     <div class="panel">
         <div class="panel-body" style="width: 300px;">
             <el-form label-position="left" inline class="demo-table-expand">
-                <el-form-item label="头像">
-                    <span>{{ table_data.icon }}</span>
-                </el-form-item>
-                <el-form-item label="昵称">
-                    <span>{{ table_data.userName }}</span>
-                </el-form-item>
-                <el-form-item label="手机号">
-                    <span>{{ table_data.phone }}</span>
-                </el-form-item>
-                <el-form-item label="注册时间">
-                    <span>{{ table_data.createTime }}</span>
-                </el-form-item>
-                <el-form-item label="黑名单">
-                    <span>{{ table_data.status==0?"不是":"是" }}</span>
-                </el-form-item>
-                <el-form-item label="活动范围">
-                    <span>{{ table_data.address }}</span>
-                </el-form-item>
-                <el-form-item label="备注">
-                    <span>{{ table_data.desc }}</span>
-                </el-form-item>
+                <div>
+                    <el-form-item label="头像">
+                        <span><img :src="table_data.icon"/></span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="昵称">
+                        <span>{{ table_data.userName }}</span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="手机号">
+                        <span>{{ table_data.phone }}</span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="注册时间">
+                        <span>{{ table_data.createTime }}</span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="黑名单">
+                        <span>{{ table_data.status==0?"不是":"是" }}</span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="活动范围">
+                        <span>{{ table_data.address }}</span>
+                    </el-form-item>
+                </div>
+                <div>
+                    <el-form-item label="备注">
+                        <span>{{ table_data.desc }}</span>
+                    </el-form-item>
+                </div>
             </el-form>
+            <el-button @click="$router.back()">返回</el-button>
         </div>
     </div>
 </template>
@@ -64,14 +79,12 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url: "/customerInfo/findOne",
+                    data: {id: this.route_id}
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data}) => {
+                        this.table_data = data[0]
                         this.load_data = false
                     })
                     .catch(() => {

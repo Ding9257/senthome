@@ -8,23 +8,25 @@
                 <el-col :span="12">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
                         <el-form-item label="标题:" prop="name">
-                            <el-input v-model="form.name" placeholder="" style="width: 250px;"></el-input>
+                            <el-input v-model="form.title" placeholder="" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="图标:" prop="name">
+                        <el-form-item label="图标:">
                             <el-upload
+                                class="avatar-uploader"
                                 action="https://jsonplaceholder.typicode.com/posts/"
-                                list-type="picture-card"
-                                :on-preview="handlePictureCardPreview"
-                                :on-success="uploadOk"
-                                :on-remove="handleRemove">
-                                <i class="el-icon-plus"></i>
+                                :show-file-list="false"
+                                :file-list="fileList"
+                                :on-success="handleAvatarSuccess"
+                            >
+                                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt="">
-                            </el-dialog>
                         </el-form-item>
                         <el-form-item label="slogan:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.slogan" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="排序:">
+                            <el-input v-model="form.order" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
@@ -45,20 +47,13 @@
     export default {
         data() {
             return {
+                imageUrl: "https://www.sciencealert.com/images/2018-03/processed/666_web_600.jpg",
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {
-                    name: null,
-                    dialogVisible: false,
-                    dialogImageUrl: "",
-                    sex: 1,
-                    params: [
-                        {value: "", key: ""}
-                    ],
-                    age: 20,
-                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
-                    address: null,
-                    zip: 412300
-                },
+                fileList: [
+                    {url: "https://www.sciencealert.com/images/2018-03/processed/666_web_600.jpg"}
+                ],
+                form: {},
+                navData: this.$route.params.data,
                 route_id: this.$route.params.id,
                 load_data: false,
                 on_submit_loading: false,
@@ -73,23 +68,17 @@
         methods: {
             //获取数据
             get_form_data() {
-                this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
-                })
-                    .then(({data}) => {
-                        this.form = data
-                        this.load_data = false
-                    })
-                    .catch(() => {
-                        this.load_data = false
-                    })
+                this.form = this.navData;
             },
             removeParam(index) {
                 this.form.params.splice(index, 1);
             },
             addParam() {
                 this.form.params.push({key: "", index: ""})
+            },
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+                console.log(this.imageUrl);
             },
             handleRemove(file, fileList) {
                 console.log(file, fileList);
@@ -129,3 +118,31 @@
         }
     }
 </script>
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>

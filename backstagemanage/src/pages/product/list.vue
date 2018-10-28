@@ -113,10 +113,10 @@
             get_table_data() {
                 this.load_data = true;
                 this.$http({url: "/product/listType", method: "POST", data: {pageNo: this.currentPage}})
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data: {productList, pageNo, count}}) => {
+                        this.table_data = productList
+                        this.currentPage = pageNo
+                        this.total = count
                         this.load_data = false
                     })
                     .catch(() => {

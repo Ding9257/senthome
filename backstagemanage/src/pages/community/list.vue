@@ -45,7 +45,8 @@
                     label="操作"
                     width="">
                     <template scope="props">
-                        <router-link :to="{name: 'communityUpdate', params: {id: props.row.id}}" tag="span">
+                        <router-link :to="{name: 'communityUpdate', params: {id: props.row.id,data:props.row}}"
+                                     tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
                     </template>

@@ -14,25 +14,31 @@
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
+                    prop="icon"
                     label="图标"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="title"
                     label="标题"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
+                    prop="slogan"
                     label="slogan"
+                    width="">
+                </el-table-column>
+                <el-table-column
+                    prop="order"
+                    label="排序"
                     width="">
                 </el-table-column>
                 <el-table-column
                     label="操作"
                     width="">
                     <template scope="props">
-                        <router-link :to="{name: 'navigationUpdate', params: {id: props.row.id}}" tag="span">
+                        <router-link :to="{name: 'navigationUpdate', params: {id: props.row.id,data:props.row}}"
+                                     tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
                     </template>
@@ -89,14 +95,14 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url: "/nav/list",
+                    data:{}
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data: {areaList, pageNo, count}}) => {
+                        this.table_data = areaList
+                        this.currentPage = pageNo
+                        this.total = count
                         this.load_data = false
                     })
                     .catch(() => {

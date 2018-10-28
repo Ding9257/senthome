@@ -130,7 +130,6 @@
                     if (!valid) return false
                     this.on_submit_loading = true
                     let url = "";
-                    console.log(this.form);
                     if (!!this.route_id) {
                         url = "/store/update";
                     } else {

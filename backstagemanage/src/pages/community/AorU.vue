@@ -10,11 +10,11 @@
                         <el-form-item label="小区名称:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="小区经度" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="小区经度">
+                            <el-input v-model="form.lng" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="街道纬度:" prop="name">
-                            <el-input v-model="form.mobile" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="街道纬度:">
+                            <el-input v-model="form.lat" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交
@@ -33,18 +33,14 @@
 <script type="text/javascript">
     import {panelTitle} from 'components'
 
+    let that;
     export default {
         data() {
+            that = this;
             return {
-                form: {
-                    name: null,
-                    sex: 1,
-                    age: 20,
-                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
-                    address: null,
-                    zip: 412300
-                },
+                form: {},
                 route_id: this.$route.params.id,
+                communityData: this.$route.params.data,
                 load_data: false,
                 on_submit_loading: false,
                 rules: {
@@ -55,15 +51,17 @@
                 events: {
                     click(e) {
                         let {lng, lat} = e.lnglat;
-                        console.log(e);
-                        var geocoder = new AMap.Geocoder({
-                            radius: 1000,
-                            extensions: "all"
-                        });
-                        geocoder.getAddress([lng, lat], function (status, result) {
-                            console.log(status);
-                            console.log(result);
-                        });
+                        console.log(that.form);
+                        that.form.lng = lng;
+                        that.form.lat = lat;
+                        // var geocoder = new AMap.Geocoder({
+                        //     radius: 1000,
+                        //     extensions: "all"
+                        // });
+                        // geocoder.getAddress([lng, lat], function (status, result) {
+                        //     console.log(status);
+                        //     console.log(result);
+                        // });
                     }
                 }
             }
@@ -77,18 +75,7 @@
             },
             //获取数据
             get_form_data() {
-                this.load_data = true
-                this.$http({
-                    url: "/area/list",
-                    data: {id: this.route_id}
-                })
-                    .then(({data}) => {
-                        this.form = data
-                        this.load_data = false
-                    })
-                    .catch(() => {
-                        this.load_data = false
-                    })
+                this.form = this.communityData
             },
             //时间选择改变时
             on_change_birthday(val) {
@@ -108,8 +95,8 @@
                     this.$http({
                         url,
                         data: this.form
-                    }).then(({msg}) => {
-                        this.$message.success(msg)
+                    }).then(data => {
+                        this.$message.success(data.msg)
                         setTimeout(this.$router.back(), 500)
                     })
                         .catch(() => {

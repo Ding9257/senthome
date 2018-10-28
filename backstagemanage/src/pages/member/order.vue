@@ -1,18 +1,5 @@
 <template>
     <div class="panel">
-        <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
-            <el-form-item label="现金券名称">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary">查询</el-button>
-            </el-form-item>
-            <el-form-item>
-                <router-link :to="{name: 'cashCouponsAdd'}" tag="span">
-                    <el-button type="primary" icon="plus" size="small">添加现金券</el-button>
-                </router-link>
-            </el-form-item>
-        </el-form>
         <div class="panel-body">
             <el-table
                 :data="table_data"
@@ -22,55 +9,64 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
-                    label="id"
+                    prop="orderId"
+                    label="订单编号"
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
-                    label="现金券名称"
+                    prop="sid"
+                    label="店铺编号"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
-                    label="售价"
+                    prop="collectCode"
+                    label="收货码"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
-                    label="发放数量"
-                    width="">
-                </el-table-column>
-                <el-table-column
-                    prop="birthday"
-                    label="剩余数量"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop=""
+                    prop="createTime"
                     label="创建时间"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop=""
-                    label="截止时间"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop=""
-                    label="状态"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    label="操作"
                     width="">
-                    <template scope="props">
-                        <router-link :to="{name: 'cashCouponsUpdate', params: {id: props.row.id}}" tag="span">
-                            <el-button type="info" size="small" icon="edit">修改</el-button>
-                        </router-link>
-                        <el-button type="info" size="small" icon="edit">停止发放</el-button>
-                        <el-button type="info" size="small" icon="edit">删除</el-button>
-                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="collectTime"
+                    label="收货时间"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="message"
+                    label="捎口信"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="tran_id"
+                    label="支付唯一标识"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="status"
+                    label="订单状态"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="orderType"
+                    label="订单类型"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="address.name"
+                    label="收货人姓名"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="address.phone"
+                    label="收货人电话"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                    prop="address.contentAddress"
+                    label="收货人详细地址"
+                    width="120">
                 </el-table-column>
             </el-table>
             <bottom-tool-bar>
@@ -96,6 +92,7 @@
             return {
                 formInline: {},
                 name: "",
+                route_id: this.$route.params.id,
                 table_data: null,
                 //当前页码
                 currentPage: 1,
@@ -114,7 +111,7 @@
             bottomToolBar
         },
         created() {
-            this.get_table_data()
+            this.route_id && this.get_table_data()
         },
         methods: {
             //刷新
@@ -124,14 +121,14 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url: "/order/list",
+                    data: {userId: this.route_id}
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data: {orderList, pageNo, count}}) => {
+                        this.table_data = orderList
+                        this.currentPage = pageNo
+                        this.total = count
                         this.load_data = false
                     })
                     .catch(() => {
