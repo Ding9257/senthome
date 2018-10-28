@@ -6,13 +6,7 @@ Page({
         status: 0,
         banner_list: [{
             banner_id: 0,
-            banner_image: '/image/1933457.jpg'
-        }, {
-            banner_id: 1,
-            banner_image: '/image/1933457.jpg'
-        }, {
-            banner_id: 2,
-            banner_image: '/image/1933457.jpg'
+            banner_image: '/image/banner.png'
         }],
         treasure_list: []
     },

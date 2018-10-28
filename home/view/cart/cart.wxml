@@ -30,15 +30,17 @@
     </view>
 </view>
 <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-    <van-area columns-num="1" area-list="{{ timeLimit }}" bind:confirm="time"/>
+    <van-area columns-num="1" area-list="{{ timeLimit }}" bind:cancel="cancel" bind:confirm="time"/>
 </van-popup>
 <view class="carts-list margin-top">
     <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods" data-object-id="{{item.id}}">
         <view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart=""
               bindtouchmove="" bindtouchend="">
             <!-- 复选框图标 -->
-            <van-icon style="padding-left:10px;line-height:65px;" color="{{item.selected ? '#f9de56' : '#cccece'}}"
-                      name="{{item.selected ? 'passed' : 'check'}}" size="20" catchtap="bindCheckbox"
+            <van-icon style="padding-left:10px;line-height:65px;"
+                      color="{{item.selected || selectedAllStatus ? '#f9de56' : '#cccece'}}"
+                      name="{{item.selected || selectedAllStatus? 'passed' : 'check'}}" size="20"
+                      catchtap="bindCheckbox"
                       data-index="{{index}}"/>
             <!-- 缩略图 -->
             <view>

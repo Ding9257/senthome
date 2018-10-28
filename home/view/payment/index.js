@@ -1,5 +1,7 @@
 const constant = require("../../util/constant.js");
-const http = require("../../util/http.js");
+const request = require("./../../util/request").request;
+const app = getApp();
+import Toast from "../../dist/toast/toast";
 
 Page({
     data: {
@@ -10,6 +12,14 @@ Page({
         total: 0,
         luckBagTotalPrice: 0,
         productList: [],
+        userInfo: {},
+        shopInfo: {},
+        productOrder: [],
+        //代金券实际减少的金额
+        couponPrice: 0,
+        //代金券编号
+        cid: "",
+        typeOrder: 0,
         WAIT_RECEIVE: 0
     },
     onUnload: function (data) {
@@ -18,29 +28,27 @@ Page({
     onLoad: function (data) {
         let total = data.total || 0;
         let productList = JSON.parse(data.product);
-        console.log(productList);
+        let typeOrder = data.typeOrder;
+        let productOrder = [];
+        for (let item of productList) {
+            productOrder.push({pid: item.id, num: item.num});
+        }
         this.setData({
-            userInfo: getApp().globalData.userInfo,
+            userInfo: app.globalData.userInfo,
+            shopInfo: app.globalData.shopInfo,
             productList,
+            productOrder,
+            typeOrder,
             total
         });
 
 
     },
-    onGotUserInfo: function (e) {
-        getApp().globalData.userInfo = e.detail.userInfo;
-        this.setData({
-            userInfo: getApp().globalData.userInfo
-        });
-        console.log(e.detail.errMsg)
-        console.log(e.detail.userInfo)
-        console.log(e.detail.rawData)
-    },
     onReady: function () {
 
     },
     onShow: function () {
-        this.handleLoad();
+
     },
     onHide: function () {
 
@@ -54,24 +62,39 @@ Page({
     onShareAppMessage: function () {
 
     },
-    handleLoad: function () {
-        http.request({
-            is_toast: false,
-            url: '/member/my/find',
-            data: {},
-            success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    data[i].product_image_file = constant.host + data[i].product_image_file;
-                    data[i].product_price = data[i].product_price.toFixed(2);
-                }
-
-                this.setData({
-                    member_total_amount: data.member_total_amount,
-                    WAIT_PAY: data.WAIT_PAY,
-                    WAIT_SEND: data.WAIT_SEND,
-                    WAIT_RECEIVE: data.WAIT_RECEIVE
+    bindCheckout: function () {
+        let userInfo = this.data.userInfo;
+        let shopInfo = this.data.shopInfo;
+        //判断是否使用代金券
+        let data = {
+            userId: userInfo.userId,
+            sid: shopInfo.id,
+            aid: app.globalData.shippingAddress.id,
+            message: this.data.delivery_street,
+            status: 0,
+            orderType: app.globalData.shippingAddressType,
+            typeOrder: this.data.typeOrder,
+            productOrder: this.productOrder,
+            cid: this.data.cid,
+            couponPrice: this.data.couponPrice
+        };
+        request({
+            url: "/weChat/toTakeWxCar",
+            method: "POST",
+            data
+        }).then(data => {
+            console.log(data);
+            app.requestPayment(data).then(ok => {
+                wx.navigateTo({
+                    url: `/view/order/index?status=2`
                 });
-            }.bind(this)
-        });
+            }).catch(err => {
+                wx.navigateTo({
+                    url: `/view/order/index?status=1`
+                });
+            })
+        }).catch(e => {
+            Toast.fail(e.msg);
+        })
     }
 });

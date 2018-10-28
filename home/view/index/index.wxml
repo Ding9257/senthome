@@ -11,7 +11,7 @@
                                 </van-col>
                                 <van-col offset="1" span="18" class="button-text"
                                          style="font-size:14px;padding-top:3px;">
-                                    送到家({{!!currentPosition&&!!currentPosition.address?currentPosition.address:''}})
+                                    送到家({{areaName}})
                                 </van-col>
                                 <van-col span="2">
                                     <image src="/image/all/xl.png"
@@ -26,7 +26,7 @@
         <view style="margin-top:10px;">
             <van-row>
                 <van-col offset="2" span="9">
-                    <image src="{{shopInfo.logo}}}" style="width: 140px; height: 140px;"/>
+                    <image src="{{shopInfo.img}}}" style="width: 140px; height: 140px;"/>
                 </van-col>
                 <van-col offset="1" span="11">
                     <view style="font-size:15px;color:#fff" class="van-ellipsis">{{shopInfo.name}}</view>

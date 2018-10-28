@@ -1,12 +1,13 @@
 const request = require("./../../util/request").request;
+const app = getApp();
 Page({
     data: {
         goods: {},
         id: "",
         shopNum: 0,
         current: 0,
-        width: getApp().globalData.window_width,
-        height: getApp().globalData.window_height,
+        width: app.globalData.window_width,
+        height: app.globalData.window_height,
         galleryHeight: 200
     },
     onLoad: function (options) {

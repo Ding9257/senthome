@@ -20,6 +20,7 @@ Page({
         isSelect: false,
         is_load: true,
         is_select: true,
+        shippingAddressType: 0,
         userId: app.globalData.userInfo.userId || "",
         selectTab: "收货地址",
         delivery_list: []
@@ -68,8 +69,11 @@ Page({
         } else {
             //获取收获地址
             //跳转至  购物车页
-            let address = this.data.delivery_list.filter(item=>{return item.id ==id});
+            let address = this.data.delivery_list.filter(item => {
+                return item.id == id
+            });
             app.globalData.shippingAddress = address[0];
+            app.globalData.shippingAddressType = this.data.shippingAddressType;
             wx.switchTab({
                 url: "/view/cart/cart"
             });
@@ -88,8 +92,15 @@ Page({
     },
     onChange: function (event) {
         let title = event.detail.title;
+        let shippingAddressType = 0;
+        if (title == "店铺自提") {
+            shippingAddressType = 0;
+        } else {
+            shippingAddressType = 1;
+        }
         this.setData({
-            selectTab: title
+            selectTab: title,
+            shippingAddressType
         });
     },
     areaSelect: function (e) {

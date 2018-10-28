@@ -1,5 +1,4 @@
 import Dialog from "../../dist/dialog/dialog";
-
 const constant = require("../../util/constant.js");
 const http = require("../../util/http.js");
 const app = getApp();
@@ -22,14 +21,28 @@ Page({
 
     },
     onGotUserInfo: function (e) {
-
-        app.globalData.userInfo = e.detail.userInfo;
-        this.setData({
-            userInfo: app.globalData.userInfo
+        let user = e.detail.userInfo;
+        wx.login({
+            success: function (loginData) {
+                request({
+                    url: "/customerInfo/login",
+                    method: "POST",
+                    data: {
+                        icon: user.avatarUrl,
+                        userName: user.nickName,
+                        code: loginData.code
+                    }
+                }).then(data => {
+                    let item = data.data;
+                    user.userId = item.userId;
+                    user.phone = item.phone;
+                    app.globalData.userInfo = user;
+                    this.setData({
+                        userInfo: app.globalData.userInfo
+                    });
+                })
+            }
         });
-        console.log(e.detail.errMsg)
-        console.log(e.detail.userInfo)
-        console.log(e.detail.rawData)
     },
     onReady: function () {
 

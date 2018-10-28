@@ -7,7 +7,7 @@ Page({
         banner_list: [
             {url: "/image/banner.png"}
         ],
-        currentPosition: app.globalData.currentPosition,
+        areaNareaNameame: "请选择",
         shopInfo: {},
         category_list: [],
         product_list: [],
@@ -26,26 +26,27 @@ Page({
             });
             request({
                 url: "/app/getStore",
-                method: "POST",
+                method: "get",
                 data: {lat, lng}
             }).then(store => {
-                let shopInfo = store.data;
+                let data = store.data;
+                let areaName = data.areaName;
+                let shopInfo = data.list[0];
                 app.globalData.shopInfo = shopInfo;
+                app.globalData.areaName = areaName;
                 this.setData({
-                    shopInfo
+                    shopInfo,
+                    areaName
                 });
+                //店长推荐
+                this.getDianZhangRecommend();
             })
         });
         //轮播图
         this.carouselMap();
-        //店长推荐
-        this.getDianZhangRecommend();
+
     },
     onReady: function () {
-        console.log(app.globalData.currentPosition);
-        this.setData({
-            currentPosition: app.globalData.currentPosition
-        });
     },
     onShow: function () {
 
@@ -83,7 +84,6 @@ Page({
             method: "POST",
             data: {}
         }).then(res => {
-            console.log(res);
             if (!util.isEmpty(res.data)) {
                 this.setData({
                     banner_list: res.data

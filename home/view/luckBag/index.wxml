@@ -26,9 +26,9 @@
         <view>
             <image src="/image/all/dfd.png" style="width:{{window_width}}px;height:100%;" />
         </view>
-        <view style="position: absolute;bottom:15px;left:{{window_width/2-50}}px;">
+        <view style="position: absolute;bottom:15px;left:{{window_width/2-60}}px;">
             <van-button wx:if="{{luckBagTotalPrice==0}}">立即付款</van-button>
-            <van-button wx:else>立即付款({{luckBagTotalPrice}}元)</van-button>
+            <van-button bindtap="bindCheckout" wx:else>立即付款({{luckBagTotalPrice}}元)</van-button>
         </view>
     </view>
 </view>

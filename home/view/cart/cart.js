@@ -93,9 +93,7 @@ Page({
             minusStatuses: minusStatuses
         });
         var id = this.data.carts[index]["id"];
-        console.log(id);
         let shopCart = app.globalData.shopCart;
-        console.log(shopCart);
         if (!util.isEmpty(shopCart[id])) {
             shopCart[id].num = num
         }
@@ -174,7 +172,7 @@ Page({
         // 计算总金额
         let total = 0, list = [];
         for (var i = 0; i < carts.length; i++) {
-            if (carts[i].selected) {
+            if (carts[i].selected || this.data.selectedAllStatus) {
                 list.push(carts[i]);
                 total += carts[i].num * 1 * carts[i].product.money * 1;
             }
@@ -183,7 +181,7 @@ Page({
         if (total != 0) {
             let product = JSON.stringify(list);
             wx.navigateTo({
-                url: `/view/payment/index?total=${total}&product=${product}`
+                url: `/view/payment/index?typeOrder=0&total=${total}&product=${product}`
             });
         } else {
             Toast.fail('请选择商品');
@@ -219,7 +217,6 @@ Page({
         return cartIds;
     },
     reloadData: function () {
-        // auto login
 
     },
     onShow: function () {
@@ -227,7 +224,6 @@ Page({
             popupStatus: false
         });
         let shippingAddress = app.globalData.shippingAddress;
-        console.log(shippingAddress);
         let shippingAddressType = app.globalData.shippingAddressType;
         this.setData({
             shippingAddressType,
@@ -337,16 +333,13 @@ Page({
             popupStatus: false
         });
     },
+    cancel:function () {
+        this.setData({
+            popupStatus: false
+        });
+    },
     handleShopCart: function (shop = [], cache = {}) {
         let list = [];
-        // for (let item of shop) {
-        //     if (!!cache[item.pid] && !!cache[item.pid].num) {
-        //         let num = item.num + cache[item.id].num;
-        //         item.num = num;
-        //         cache[item.pid] = num;
-        //     }
-        //     list.push(item);
-        // }
         if (!util.isEmpty(cache)) {
             for (let id in cache) {
                 if (!!cache[id] && cache[id].num > 0) {

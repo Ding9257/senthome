@@ -1,21 +1,10 @@
-const constant = require("./util/constant.js");
 const request = require("./util/request.js").request;
-const QQMapWX = require('./util/qqmap-wx-jssdk.min.js');
-const mapKey = require("./config/index").mapKey;
-const qqmapsdk = new QQMapWX({
-    key: mapKey // 必填
-});
-let that;
 App({
     onLaunch: function () {
-        that = this;
         this.getLngLat().then(data => {
-            console.log("getLngLat", data);
             let {lng, lat, result} = data;
             this.globalData.currentPosition = result;
             this.globalData.coordinate = {lng, lat};
-            //获取附近店铺信息
-            //this.getNearbyPosition();
         });
         wx.getSystemInfo({
             success: function (res) {
@@ -23,16 +12,30 @@ App({
                 this.globalData.window_height = res.windowHeight;
             }.bind(this)
         });
-        wx.login({
-            success: function (e) {
-                console.log("login", e);
-            }
-        });
+
         wx.getSetting({
-            success: function (res) {
+            success: function () {
                 wx.getUserInfo({
-                    success: function (res) {
-                        getApp().globalData.userInfo = res.userInfo;
+                    success: function (wxUserInfo) {
+                        let user = wxUserInfo.userInfo;
+                        wx.login({
+                            success: function (loginData) {
+                                request({
+                                    url: "/customerInfo/login",
+                                    method: "POST",
+                                    data: {
+                                        icon: user.avatarUrl,
+                                        userName: user.nickName,
+                                        code: loginData.code
+                                    }
+                                }).then(data => {
+                                    let item = data.data;
+                                    user.userId = item.userId;
+                                    user.phone = item.phone;
+                                    getApp().globalData.userInfo = user;
+                                })
+                            }
+                        });
                     }
                 });
             },
@@ -43,7 +46,7 @@ App({
     },
     globalData: {
         userInfo: {},
-        shopInfo: {id: 1},
+        shopInfo: {},
         orderStatus: {
             "0": "待接单",
             "1": "发货订单",
@@ -60,8 +63,8 @@ App({
         window_height: 0,
         //附近店铺
         nearbyStore: {},
-        //用户当前位置
-        currentPosition: "",
+        //小区名字
+        areaName: "",
         shopCart: {},
         //收货地址
         shippingAddressType: 0,//0自提 1送货上门
@@ -76,18 +79,6 @@ App({
                 success: function (res) {
                     resolve({lng: res.longitude, lat: res.latitude, result: {}});
                     //逆地理编码
-                    // qqmapsdk.reverseGeocoder({
-                    //     location: {
-                    //         latitude: res.latitude,
-                    //         longitude: res.longitude
-                    //     },
-                    //     success: function (addressRes) {
-                    //         resolve({lng: res.longitude, lat: res.latitude, result: addressRes.result});
-                    //     },
-                    //     fail: function (err) {
-                    //         reject(err);
-                    //     }
-                    // });
                 },
                 fail: function (err) {
                     //用户不同意授权获取位置
@@ -96,11 +87,24 @@ App({
             });
         });
     },
-    getNearbyPosition: function () {
-        request({
-            url: "",
-            method: "POST",
-            data: {}
-        }).then()
+    requestPayment: function (data) {
+        return new Promise((resolve, reject) => {
+            wx.requestPayment({
+                appId: data.appId,
+                'timeStamp': data.timeStamp,
+                'nonceStr': data.nonceStr,
+                'package': data.package,
+                'signType': data.MD5,
+                'paySign': data.paySign,
+                'success': function (res) {
+                    resolve(res)
+                },
+                'fail': function (err) {
+                    reject(err)
+                },
+                'complete': function (res) {
+                }
+            })
+        });
     }
 });

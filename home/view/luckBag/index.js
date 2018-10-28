@@ -1,12 +1,13 @@
-const constant = require("../../util/constant.js");
+const app = getApp();
 const request = require("./../../util/request").request;
 
 Page({
     data: {
-        window_width: getApp().globalData.window_width,
-        sid: getApp().globalData.shopInfo.id,
+        window_width: app.globalData.window_width,
+        sid: app.globalData.shopInfo.id,
         luckBagMoneyList: {},
         category_list: [],
+        selectLuckBag: {},
         luckBagTotalPrice: 0
     },
     onUnload: function () {
@@ -14,7 +15,7 @@ Page({
     },
     onLoad: function () {
         this.setData({
-            sid: getApp().globalData.shopInfo.id
+            sid: app.globalData.shopInfo.id
         });
         //获取福袋
         this.getLuckBag();
@@ -45,6 +46,7 @@ Page({
                 sid: this.data.sid
             }
         }).then(res => {
+            console.log(res.data.blessingList);
             let luckBagMoneyList = this.data.luckBagMoneyList || {};
             //计算福袋价格
             let list = [];
@@ -56,7 +58,7 @@ Page({
                 item.luckBagMoney = luckBagMoney;
                 list.push(item);
                 //otherStock  剩余库存
-                luckBagMoneyList[item.id] = {num: 0, luckBagMoney, otherStock: item.otherStock};
+                luckBagMoneyList[item.id] = {num: 0, luckBagMoney, otherStock: item.otherStock, luckBag: item};
             }
             this.setData({
                 category_list: list,
@@ -65,6 +67,7 @@ Page({
         })
     },
     down: function (e) {
+        let selectLuckBag = this.data.selectLuckBag;
         let id = e.currentTarget.id;
         let luckBagMoneyList = this.data.luckBagMoneyList;
         let num = luckBagMoneyList[id].num;
@@ -103,6 +106,20 @@ Page({
         luckBagTotalPrice = luckBagTotalPrice.toFixed(2)
         this.setData({
             luckBagTotalPrice
+        });
+    },
+    bindCheckout: function () {
+        let selectLuckBag = [];
+        let cache = this.data.luckBagMoneyList;
+        for (let id in cache) {
+            if (!!cache[id] && cache[id].num > 0) {
+                selectLuckBag.push({
+                    id: id, num: cache[id].num, luckBagMoney: cache[id].luckBagMoney, product: cache[id].luckBag
+                });
+            }
+        }
+        wx.navigateTo({
+            url: `/view/payment/index?typeOrder=1&total=${this.data.luckBagTotalPrice}&product=${JSON.stringify(selectLuckBag)}`
         });
     }
 });
