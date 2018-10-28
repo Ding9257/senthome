@@ -25,6 +25,10 @@ import barChartsComponent from 'pages/charts/bar'
 //门店管理
 import storeManageComponent from 'pages/storeManagement/manage'
 import storeManageAddComponent from "pages/storeManagement/manageAdd"
+//小区管理
+import communityListComponent from 'pages/community/list'
+import communityAddComponent from 'pages/community/AorU'
+import communityUpdateComponent from 'pages/community/AorU'
 //商品管理
 import productListComponent from 'pages/product/list'
 import productAddOrUpdateComponent from 'pages/product/addOrUpdate'
@@ -32,6 +36,8 @@ import sortComponent from 'pages/product/sort'
 import sortAddorUpdateComponent from 'pages/product/AorU'
 //订单管理
 import orderListComponent from 'pages/order/list'
+//财务管理
+import financeListComponent from 'pages/finance/list'
 //现金券管理
 import cashCouponsAddorUpdateComponent from 'pages/cashCoupons/addOrUpdate'
 import cashCouponsListComponent from 'pages/cashCoupons/list'
@@ -143,6 +149,34 @@ const routes = [
                 component: storeManageAddComponent,
                 meta: {
                     title: "修改店铺",
+                    auth: true
+                }
+            },
+            //小区管理
+            {
+                path: '/community',
+                name: "communityList",
+                component: communityListComponent,
+                meta: {
+                    title: "小区管理",
+                    auth: true
+                }
+            },
+            {
+                path: '/community/add',
+                name: "communityAddList",
+                component: communityAddComponent,
+                meta: {
+                    title: "添加小区",
+                    auth: true
+                }
+            },
+            {
+                path: '/community/update/:id',
+                name: "communityUpdate",
+                component: communityUpdateComponent,
+                meta: {
+                    title: "更新小区",
                     auth: true
                 }
             },
@@ -281,6 +315,16 @@ const routes = [
                 path: '/order/list',
                 name: "orderList",
                 component: orderListComponent,
+                meta: {
+                    title: "订单管理",
+                    auth: true
+                }
+            },
+            //财务管理
+            {
+                path: '/finance',
+                name: "financeList",
+                component: financeListComponent,
                 meta: {
                     title: "订单管理",
                     auth: true

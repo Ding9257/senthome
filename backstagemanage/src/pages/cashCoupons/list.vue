@@ -32,7 +32,7 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="price"
                     label="售价"
                     width="100">
                 </el-table-column>
@@ -47,7 +47,7 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop=""
+                    prop="createTime"
                     label="创建时间"
                     width="120">
                 </el-table-column>
@@ -57,7 +57,7 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop=""
+                    prop="collectTime"
                     label="状态"
                     width="120">
                 </el-table-column>
@@ -124,9 +124,8 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                this.$http({
+                    url:"/coupon/list"
                 })
                     .then(({data: {result, page, total}}) => {
                         this.table_data = result

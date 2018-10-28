@@ -22,20 +22,22 @@ export default function fetch(options) {
             baseURL: server_base_url,
             //设置请求超时设置
             timeout: 10000,
-            method: "POST",
+            method: "post",
             //设置请求时的header
             headers: {
                 "Content-Type": "application/json"
             }
         })
+        if (!options.method) {
+            options.method = "post"
+        }
         //请求处理
         instance(options)
-            .then(({status, data: {code, msg, data}}) => {
-                console.log(status);
+            .then(({data}) => {
                 console.log(data);
                 //请求成功时,根据业务判断状态
-                if (code === port_code.success) {
-                    resolve({code, msg, data})
+                if (data.status === 200) {
+                    resolve(data);
                     return false
                 } else if (code === port_code.unlogin) {
                     setUserInfo(null)

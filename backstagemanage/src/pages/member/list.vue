@@ -34,12 +34,12 @@
                     width="">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
+                    prop="orders"
                     label="成交订单数"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop=""
+                    prop="money"
                     label="消费金额"
                     width="120">
                 </el-table-column>
@@ -48,14 +48,18 @@
                     width="">
                     <template scope="props">
                         <router-link :to="{name: 'memberDetails', params: {id: props.row.id}}" tag="span">
-                            <el-button type="info" size="small" icon="edit">详情没弄</el-button>
+                            <el-button type="info" size="small" icon="edit">详情</el-button>
                         </router-link>
                         <router-link :to="{name: 'memberOrder', params: {id: props.row.id}}" tag="span">
-                            <el-button type="info" size="small" icon="edit">订单没弄</el-button>
+                            <el-button type="info" size="small" icon="edit">订单</el-button>
                         </router-link>
-                        <el-button type="info" size="small" icon="edit">设置黑名单</el-button>
-                        <el-button type="info" size="small" icon="edit">取消黑名单</el-button>
-                        <el-button type="info" size="small" icon="edit">删除</el-button>
+                        <el-button type="info" size="small" icon="edit"
+                                   @click="setBlackList(props.row.id,props.row.status)">设置黑名单
+                        </el-button>
+                        <el-button type="info" size="small" icon="edit"
+                                   @click="setBlackList(props.row.id,props.row.status)">取消黑名单
+                        </el-button>
+                        <el-button type="info" size="small" icon="edit" @click="delete(props.row.id)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -103,6 +107,25 @@
             this.get_table_data()
         },
         methods: {
+            setBlackList(id, status) {
+                status == 0 ? status = 1 : status = 0;
+                this.$http({url: "/customerInfo/update", data: {userId: id, status}})
+                    .then(({msg}) => {
+                        this.get_table_data()
+                        this.$message.success(msg)
+                    })
+                    .catch(() => {
+                    })
+            },
+            delete(id) {
+                this.$http({url: "/customerInfo/delete", data: {id}})
+                    .then(({msg}) => {
+                        this.get_table_data()
+                        this.$message.success(msg)
+                    })
+                    .catch(() => {
+                    })
+            },
             //刷新
             on_refresh() {
                 this.get_table_data()

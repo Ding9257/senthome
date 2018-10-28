@@ -1,35 +1,23 @@
 <template>
     <div class="panel">
-        <div class="panel-body" style="width: 300px;">
-            <el-form label-position="left" inline class="demo-table-expand">
-                <el-form-item label="头像">
-                    <span>{{ table_data.icon }}</span>
-                </el-form-item>
-                <el-form-item label="昵称">
-                    <span>{{ table_data.userName }}</span>
-                </el-form-item>
-                <el-form-item label="手机号">
-                    <span>{{ table_data.phone }}</span>
-                </el-form-item>
-                <el-form-item label="注册时间">
-                    <span>{{ table_data.createTime }}</span>
-                </el-form-item>
-                <el-form-item label="黑名单">
-                    <span>{{ table_data.status==0?"不是":"是" }}</span>
-                </el-form-item>
-                <el-form-item label="活动范围">
-                    <span>{{ table_data.address }}</span>
-                </el-form-item>
-                <el-form-item label="备注">
-                    <span>{{ table_data.desc }}</span>
-                </el-form-item>
-            </el-form>
-        </div>
+        <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
+            <el-form-item label="账单类型">
+                <el-input v-model="formInline.name" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item label="账单时间">
+                <el-input v-model="formInline.name" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item label="账单时间">
+                <el-input v-model="formInline.name" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="query()">下载账单</el-button>
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
-    import fetch from 'common/fetch'
 
     export default {
         data() {
@@ -63,35 +51,34 @@
             },
             //获取数据
             get_table_data() {
-                this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
-                })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
-                        this.load_data = false
+                this.load_data = true;
+                this.$http({url: "/area/list", method: "POST", data: {pageNo: this.currentPage}})
+                    .then(({data: {areaList, pageNo, count}}) => {
+                        this.table_data = areaList;
+                        this.currentPage = pageNo;
+                        this.total = count;
+                        this.load_data = false;
                     })
                     .catch(() => {
                         this.load_data = false
                     })
             },
             //单个删除
-            delete_data(item) {
+            delete_data(id) {
                 this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 })
                     .then(() => {
-                        this.load_data = true
-                        this.$fetch.api_table.del(item)
-                            .then(({msg}) => {
-                                this.get_table_data()
-                                this.$message.success(msg)
-                            })
+                        this.load_data = true;
+                        this.$http({
+                            url: "/store/delete",
+                            data: {id}
+                        }).then(({msg}) => {
+                            this.get_table_data();
+                            this.$message.success(msg);
+                        })
                             .catch(() => {
                             })
                     })
@@ -129,6 +116,10 @@
                     })
                     .catch(() => {
                     })
+            },
+            query() {
+                this.currentPage = 1
+                this.get_table_data()
             }
         }
     }

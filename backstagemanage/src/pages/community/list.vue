@@ -1,20 +1,14 @@
 <template>
     <div class="panel">
         <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
-            <el-form-item label="门店名称">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item label="地址">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item label="电话">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
+            <el-form-item label="小区名称">
+                <el-input v-model="formInline.name" placeholder=""></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="query()">查询</el-button>
             </el-form-item>
             <el-form-item>
-                <router-link :to="{name: 'storeManagementAdd'}" tag="span">
+                <router-link :to="{name: 'communityAddList'}" tag="span">
                     <el-button type="primary" icon="plus" size="small">添加数据</el-button>
                 </router-link>
             </el-form-item>
@@ -28,63 +22,32 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="id"
-                    label="店铺id"
+                    prop="name"
+                    label="小区名称"
                     width="80">
                 </el-table-column>
                 <el-table-column
                     prop="name"
-                    label="店铺名称"
+                    label="相邻街道"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="mobile"
-                    label="店铺电话"
+                    prop="lng"
+                    label="街道经度"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="businessHours"
-                    label="营业时间"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="distributionScope"
-                    label="配送范围"
-                    width="100">
-                </el-table-column>
-                <el-table-column
-                    prop="address"
-                    label="详细地址"
-                    width="">
-                </el-table-column>
-                <el-table-column
-                    prop="wxId"
-                    label="微信号"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="qrCode"
-                    label="二维码"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="areaId"
-                    label="所属小区编号"
+                    prop="lat"
+                    label="街道纬度"
                     width="120">
                 </el-table-column>
                 <el-table-column
                     label="操作"
                     width="">
                     <template scope="props">
-                        <router-link :to="{name: 'storeManagementUpdate', params: {id: props.row.id}}" tag="span">
+                        <router-link :to="{name: 'communityUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
-                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row.id)">
-                            删除
-                        </el-button>
-                        <el-button type="danger" size="small" icon="delete" @click="change_status(props.row.id)">
-                            {{props.row.sex==1?"启用":"禁用"}}
-                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -138,7 +101,7 @@
             //获取数据
             get_table_data() {
                 this.load_data = true;
-                this.$http({url: "/store/list", method: "post", data: {pageNo: this.currentPage}})
+                this.$http({url: "/area/list", method: "POST", data: {pageNo: this.currentPage}})
                     .then(({data: {areaList, pageNo, count}}) => {
                         this.table_data = areaList;
                         this.currentPage = pageNo;

@@ -25,12 +25,12 @@
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
+                    prop="createTime"
                     label="下单时间"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="sex"
+                    prop="orderId"
                     label="订单编号"
                     width="100">
                 </el-table-column>
@@ -60,12 +60,12 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
+                    prop="address.name"
                     label="收货姓名"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
+                    prop="phone"
                     label="收获电话"
                     width="120">
                 </el-table-column>
@@ -80,7 +80,7 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
+                    prop="status"
                     label="状态"
                     width="120">
                 </el-table-column>

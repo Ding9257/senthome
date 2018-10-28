@@ -99,8 +99,9 @@
             //获取数据
             get_form_data() {
                 this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
+                this.$http({
+                    url: "/coupon/findOne",
+                    data: {id: this.route_id}
                 })
                     .then(({data}) => {
                         this.form = data

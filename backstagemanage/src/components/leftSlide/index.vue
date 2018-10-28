@@ -57,6 +57,11 @@
                         icon: "fa-home"
                     },
                     {
+                        title: "小区管理",
+                        path: "/community",
+                        icon: "fa-home"
+                    },
+                    {
                         title: "平台管理",
                         path: "/platform",
                         icon: "fa-home",
@@ -101,6 +106,12 @@
                                 path: "/order/list"
                             }
                         ]
+                    },
+                    //财务管理
+                    {
+                        title: "财务管理",
+                        path: "/finance",
+                        icon: "fa-home",
                     },
                     {
                         title: "现金券管理",

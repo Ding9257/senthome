@@ -130,11 +130,19 @@
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
-                    this.$fetch.api_table.save(this.form)
-                        .then(({msg}) => {
-                            this.$message.success(msg)
-                            setTimeout(this.$router.back(), 500)
-                        })
+                    let url = "";
+                    if (!!this.route_id) {
+                        url = "/product/update";
+                    } else {
+                        url = "/product/save";
+                    }
+                    this.$http({
+                        url,
+                        data: this.from
+                    }).then(({msg}) => {
+                        this.$message.success(msg)
+                        setTimeout(this.$router.back(), 500)
+                    })
                         .catch(() => {
                             this.on_submit_loading = false
                         })

@@ -7,44 +7,14 @@
             <el-row>
                 <el-col :span="8">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-form-item label="店铺名称:" prop="name">
+                        <el-form-item label="小区名称:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="店铺Logo:" prop="name">
-                            <el-input v-model="form.img" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="小区经度" prop="name">
+                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="店铺Logo:">
-                            <el-upload
-                                class="avatar-uploader"
-                                action="https://jsonplaceholder.typicode.com/posts/"
-                                :show-file-list="false"
-                                :on-success="handleAvatarSuccess"
-                            >
-                                <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                            </el-upload>
-                        </el-form-item>
-                        <el-form-item label="店铺电话:" prop="name">
+                        <el-form-item label="街道纬度:" prop="name">
                             <el-input v-model="form.mobile" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="营业时间:" prop="name">
-                            <el-input v-model="form.businessHours" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="配送范围:" prop="name">
-                            <el-input v-model="form.distributionScope" placeholder="请输入内容"
-                                      style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="详细地址:" prop="name">
-                            <el-input v-model="form.address" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="微信号:" prop="name">
-                            <el-input v-model="form.wxId" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="二维码:">
-                            <el-input v-model="form.qrCode" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-                        <el-form-item label="所属小区编号:">
-                            <el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交
@@ -66,11 +36,16 @@
     export default {
         data() {
             return {
-                form: {},
-                imageUrl: "",
+                form: {
+                    name: null,
+                    sex: 1,
+                    age: 20,
+                    birthday: this.$dateFormat(new Date, "yyyy-MM-dd"),
+                    address: null,
+                    zip: 412300
+                },
                 route_id: this.$route.params.id,
                 load_data: false,
-                dialogImageUrl: '',
                 on_submit_loading: false,
                 rules: {
                     name: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
@@ -104,8 +79,7 @@
             get_form_data() {
                 this.load_data = true
                 this.$http({
-                    url: "/store/findOne",
-                    method: "post",
+                    url: "/area/list",
                     data: {id: this.route_id}
                 })
                     .then(({data}) => {
@@ -120,27 +94,22 @@
             on_change_birthday(val) {
                 this.$set(this.form, 'birthday', val)
             },
-            handleAvatarSuccess(res, file) {
-                this.imageUrl = URL.createObjectURL(file.raw);
-                console.log(this.imageUrl);
-            },
             //提交
             on_submit_form() {
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
                     let url = "";
-                    console.log(this.form);
                     if (!!this.route_id) {
-                        url = "/store/update";
+                        url = "/area/update";
                     } else {
-                        url = "/store/save";
+                        url = "/area/save";
                     }
                     this.$http({
                         url,
                         data: this.form
-                    }).then((data) => {
-                        this.$message.success(data.msg)
+                    }).then(({msg}) => {
+                        this.$message.success(msg)
                         setTimeout(this.$router.back(), 500)
                     })
                         .catch(() => {
@@ -148,43 +117,13 @@
                         })
                 })
             }
-        }
-        ,
-        components: {
-            panelTitle
-        }
+        },
+        components: {panelTitle}
     }
 </script>
 <style>
     .amap-wrapper {
         width: 500px;
         height: 500px;
-    }
-
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 6px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .avatar-uploader .el-upload:hover {
-        border-color: #409EFF;
-    }
-
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 178px;
-        height: 178px;
-        line-height: 178px;
-        text-align: center;
-    }
-
-    .avatar {
-        width: 178px;
-        height: 178px;
-        display: block;
     }
 </style>

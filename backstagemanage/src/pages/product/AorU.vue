@@ -11,7 +11,7 @@
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="排序:" prop="name">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input v-model="form.orders" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
@@ -61,8 +61,8 @@
             //获取数据
             get_form_data() {
                 this.load_data = true
-                this.$fetch.api_table.get({
-                    id: this.route_id
+                this.$http({
+                    url: ""
                 })
                     .then(({data}) => {
                         this.form = data
@@ -99,7 +99,13 @@
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
-                    this.$fetch.api_table.save(this.form)
+                    let url = "";
+                    if (!!this.route_id) {
+                        url = "/productType/update";
+                    } else {
+                        url = "/productType/save";
+                    }
+                    this.$http({url, data: this.from})
                         .then(({msg}) => {
                             this.$message.success(msg)
                             setTimeout(this.$router.back(), 500)

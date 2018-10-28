@@ -111,11 +111,8 @@
             },
             //获取数据
             get_table_data() {
-                this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
-                })
+                this.load_data = true;
+                this.$http({url: "/product/listType", method: "POST", data: {pageNo: this.currentPage}})
                     .then(({data: {result, page, total}}) => {
                         this.table_data = result
                         this.currentPage = page
