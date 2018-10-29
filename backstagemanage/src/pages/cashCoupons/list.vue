@@ -125,7 +125,8 @@
             get_table_data() {
                 this.load_data = true
                 this.$http({
-                    url:"/coupon/list"
+                    url:"/coupon/list",
+                    data:{}
                 })
                     .then(({data: {result, page, total}}) => {
                         this.table_data = result

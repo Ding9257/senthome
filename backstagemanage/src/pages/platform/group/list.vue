@@ -1,5 +1,13 @@
 <template>
     <div class="panel">
+        <panel-title :title="$route.meta.title">
+            <el-button @click.stop="on_refresh" size="small">
+                <i class="fa fa-refresh"></i>
+            </el-button>
+            <router-link :to="{name: 'platformGroupAdd'}" tag="span">
+                <el-button type="primary" icon="plus" size="small">添加数据</el-button>
+            </router-link>
+        </panel-title>
         <div class="panel-body">
             <el-table
                 :data="table_data"
@@ -9,64 +17,41 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="orderId"
-                    label="订单编号"
+                    prop="id"
+                    label="id"
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="sid"
-                    label="店铺编号"
+                    prop="name"
+                    label="名称"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="collectCode"
-                    label="收货码"
+                    prop="title"
+                    label="操作人员"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="createTime"
-                    label="创建时间"
-                    width="170">
+                    label="状态"
+                    width="">
+                    <template slot-scope="scope">
+                        {{scope.row.status==0?"启用":"禁用"}}
+                    </template>
                 </el-table-column>
                 <el-table-column
-                    prop="collectTime"
-                    label="收货时间"
-                    width="170">
-                </el-table-column>
-                <el-table-column
-                    prop="message"
-                    label="捎口信"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="tran_id"
-                    label="支付唯一标识"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="status"
-                    label="订单状态"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="orderType"
-                    label="订单类型"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.name"
-                    label="收货人姓名"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.phone"
-                    label="收货人电话"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.contentAddress"
-                    label="收货人详细地址"
-                    width="120">
+                    label="操作"
+                    width="">
+                    <template scope="props">
+                        <router-link :to="{name: 'platformGroupUpdate', params: {id: props.row.id,data:props.row}}"
+                                     tag="span">
+                            <el-button type="info" size="small" icon="edit">修改</el-button>
+                        </router-link>
+                        <el-button type="info" size="small" icon="edit">删除</el-button>
+                        <el-button type="info" size="small" @click="change_status(props.row.id,1)" icon="edit">启用
+                        </el-button>
+                        <el-button type="info" size="small" @click="change_status(props.row.id,1)" icon="edit">禁用
+                        </el-button>
+                    </template>
                 </el-table-column>
             </el-table>
             <bottom-tool-bar>
@@ -92,7 +77,6 @@
             return {
                 formInline: {},
                 name: "",
-                route_id: this.$route.params.id,
                 table_data: null,
                 //当前页码
                 currentPage: 1,
@@ -111,7 +95,7 @@
             bottomToolBar
         },
         created() {
-            this.route_id && this.get_table_data()
+            this.get_table_data()
         },
         methods: {
             //刷新
@@ -122,13 +106,11 @@
             get_table_data() {
                 this.load_data = true
                 this.$http({
-                    url: "/order/list",
-                    data: {userId: this.route_id}
+                    url: "/groups/list",
+                    data: {}
                 })
-                    .then(({data: {orderList, pageNo, count}}) => {
-                        this.table_data = orderList
-                        this.currentPage = pageNo
-                        this.total = count
+                    .then(({data}) => {
+                        this.table_data = data;
                         this.load_data = false
                     })
                     .catch(() => {
@@ -155,8 +137,18 @@
                     .catch(() => {
                     })
             },
-            change_status(status) {
-                console.log(status);
+            change_status(id, status) {
+                this.$http({
+                    url: "/groups/update",
+                    data: {id, status}
+                })
+                    .then((msg) => {
+                        this.$message.success(msg)
+                        this.get_table_data();
+                    })
+                    .catch(() => {
+
+                    })
             },
             //页码选择
             handleCurrentChange(val) {

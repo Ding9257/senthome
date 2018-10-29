@@ -113,32 +113,67 @@
                         path: "/finance",
                         icon: "fa-home",
                     },
+                    //数据统计
+                    {
+                        title: "数据统计",
+                        path: "/data",
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "销量统计",
+                                path: "/data/count"
+                            },
+                            {
+                                title: "销量明细",
+                                path: "/data/detail"
+                            }
+                        ]
+                    },
+                    //平台设置
+                    {
+                        title: "平台设置",
+                        path: "/platform",
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "基本设置",
+                                path: "/platform/set"
+                            },
+                            {
+                                title: "分组管理",
+                                path: "/platform/group"
+                            },
+                            {
+                                title: "操作人员",
+                                path: "/platform/operate"
+                            },
+                            {
+                                title: "操作日志",
+                                path: "/platform/log"
+                            }
+                        ]
+                    },
                     {
                         title: "现金券管理",
                         path: "/cashCoupons/list",
                         icon: "fa-home",
                     },
                     {
-                        title: "表格管理",
-                        path: "/table",
-                        icon: "fa-table",
-                        child: [{
-                            title: "基本表格",
-                            path: "/table/base"
-                        }, {
-                            title: "排序表格",
-                            path: "/table/sort"
-                        }]
-                    },
-                    {
-                        title: "图表管理",
-                        path: "/charts",
-                        icon: "fa-bar-chart-o",
-                        child: [{
-                            title: "柱状图表",
-                            path: "/charts/bar"
-                        }]
-                    }]
+                        title: "社区推广",
+                        path: "/promotion",
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "推广列表",
+                                path: "/promotion/list"
+                            },
+                            {
+                                title: "推广订单",
+                                path: "/promotion/order"
+                            }
+                        ]
+                    }
+                ]
             }
         }
     }

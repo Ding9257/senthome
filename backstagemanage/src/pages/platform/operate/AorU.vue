@@ -7,64 +7,34 @@
             <el-row>
                 <el-col :span="12">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-form-item label="现金券名称:" prop="name">
-                            <el-input v-model="form.name" placeholder="" style="width: 250px;"></el-input>
+                        <el-form-item label="密码:">
+                            <el-input v-model="form.password" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="使用时间限制">
-                            <el-date-picker
-                                v-model="usetime"
-                                type="daterange"
-                                range-separator="至"
-                                start-placeholder="开始日期"
-                                end-placeholder="结束日期">
-                            </el-date-picker>
+                        <el-form-item label="所属分组:">
+                            <el-select v-model="form.groupId" placeholder="请选择">
+                                <el-option
+                                    v-for="item in groups"
+                                    :label="item.name"
+                                    :value="item.id">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
-                        <el-form-item label="缩略图:">
-                            <el-upload
-                                action="https://jsonplaceholder.typicode.com/posts/"
-                                list-type="picture-card"
-                                :on-preview="handlePictureCardPreview"
-                                :on-success="uploadOk"
-                                :on-remove="handleRemove">
-                                <i class="el-icon-plus"></i>
-                            </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt="">
-                            </el-dialog>
+                        <el-form-item label="姓名:">
+                            <el-input v-model="form.userName" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="发放总数:">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="手机号:">
+                            <el-input v-model="form.phone" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="售卖时间限制:">
-                            <el-date-picker
-                                v-model="selltime"
-                                type="daterange"
-                                range-separator="至"
-                                start-placeholder="开始日期"
-                                end-placeholder="结束日期">
-                            </el-date-picker>
+                        <el-form-item label="状态:">
+                            <el-input v-model="form.status" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="售价:">
-                            <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        <el-form-item label="可用权限:">
+                            <el-input v-model="form.power" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="详情:">
-                            <el-input v-model="form.imgContent" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-
-                        <el-form-item label="规则设置">
-                            <el-form-item v-for="(param,index) in form.params||[]" :key="index"
-                                          style="padding-bottom: 5px;">
-                                <el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>
-                                <el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>
-                                <el-button @click.prevent="removeParam(index)">删除</el-button>
-                            </el-form-item>
-                        </el-form-item>
-
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
                                 立即提交
                             </el-button>
-                            <el-button @click="addParam">新增规则</el-button>
                             <el-button @click="$router.back()">取消</el-button>
                         </el-form-item>
                     </el-form>
@@ -80,9 +50,14 @@
     export default {
         data() {
             return {
+                imageUrl: "https://www.sciencealert.com/images/2018-03/processed/666_web_600.jpg",
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
+                fileList: [
+                    {url: "https://www.sciencealert.com/images/2018-03/processed/666_web_600.jpg"}
+                ],
                 form: {},
-                usetime: "",
+                groups: [],
+                navData: this.$route.params.data,
                 route_id: this.$route.params.id,
                 load_data: false,
                 on_submit_loading: false,
@@ -97,17 +72,19 @@
         methods: {
             //获取数据
             get_form_data() {
-                this.load_data = true
+                this.form = this.navData;
+                this.form.groupId = this.navData.groups.id;
+                this.get_group_data();
+            },
+            get_group_data() {
                 this.$http({
-                    url: "/coupon/findOne",
-                    data: {id: this.route_id}
+                    url: "/groups/list",
+                    data: {}
                 })
                     .then(({data}) => {
-                        this.form = data
-                        this.load_data = false
+                        this.groups = data;
                     })
                     .catch(() => {
-                        this.load_data = false
                     })
             },
             removeParam(index) {
@@ -115,6 +92,10 @@
             },
             addParam() {
                 this.form.params.push({key: "", index: ""})
+            },
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+                console.log(this.imageUrl);
             },
             handleRemove(file, fileList) {
                 console.log(file, fileList);
@@ -139,9 +120,9 @@
                     this.on_submit_loading = true
                     let url = "";
                     if (!!this.route_id) {
-                        url = "/coupon/update";
+                        url = "/managerInfo/update";
                     } else {
-                        url = "/coupon/save";
+                        url = "/managerInfo/save";
                     }
                     this.$http({
                         url,
@@ -163,3 +144,31 @@
         }
     }
 </script>
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>

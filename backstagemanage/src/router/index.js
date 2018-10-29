@@ -38,9 +38,21 @@ import sortAddorUpdateComponent from 'pages/product/AorU'
 import orderListComponent from 'pages/order/list'
 //财务管理
 import financeListComponent from 'pages/finance/list'
+//数据统计
+import dataCountListComponent from 'pages/dataCount/list'
+import dataDetaiListComponent from 'pages/dataCount/detail'
+//平台设置
+import platformSetComponent from 'pages/platform/set/AorU'
+import platformGroupListComponent from 'pages/platform/group/list'
+import platformGroupAddComponent from 'pages/platform/group/AorU'
+import platformOperateListComponent from 'pages/platform/operate/list'
+import platformOperateAddComponent from 'pages/platform/operate/AorU'
+import platformLogListComponent from 'pages/platform/log/list'
 //现金券管理
 import cashCouponsAddorUpdateComponent from 'pages/cashCoupons/addOrUpdate'
 import cashCouponsListComponent from 'pages/cashCoupons/list'
+//社区推广
+import promotionListComponent from 'pages/promotion/list'
 //平台管理--banner
 import bannerAddorUpdateComponent from 'pages/platform/banner/addOrUpdate'
 import bannerListComponent from 'pages/platform/banner/list'
@@ -330,6 +342,98 @@ const routes = [
                     auth: true
                 }
             },
+            //数据统计
+            {
+                path: '/data/count',
+                name: "dataCountList",
+                component: dataCountListComponent,
+                meta: {
+                    title: "销量统计",
+                    auth: true
+                }
+            },
+            {
+                path: '/data/detail',
+                name: "dataDetailList",
+                component: dataDetaiListComponent,
+                meta: {
+                    title: "销量明细",
+                    auth: true
+                }
+            },
+            //平台设置
+            {
+                path: '/platform/set',
+                name: "platformSet",
+                component: platformSetComponent,
+                meta: {
+                    title: "基本设置",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/group',
+                name: "platformGroupList",
+                component: platformGroupListComponent,
+                meta: {
+                    title: "分组列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/group/Add',
+                name: "platformGroupAdd",
+                component: platformGroupAddComponent,
+                meta: {
+                    title: "添加分组",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/group/update/:id',
+                name: "platformGroupUpdate",
+                component: platformGroupAddComponent,
+                meta: {
+                    title: "修改分组",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/operate',
+                name: "platformOperateList",
+                component: platformOperateListComponent,
+                meta: {
+                    title: "操作人员列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/operate/update/:id',
+                name: "platformOperateUpdate",
+                component: platformOperateAddComponent,
+                meta: {
+                    title: "修改操作人员",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/operate/add',
+                name: "platformOperateAdd",
+                component: platformOperateAddComponent,
+                meta: {
+                    title: "添加操作人员",
+                    auth: true
+                }
+            },
+            {
+                path: '/platform/log',
+                name: "platformLogList",
+                component: platformLogListComponent,
+                meta: {
+                    title: "操作日志",
+                    auth: true
+                }
+            },
             //现金券管理
             {
                 path: '/cashCoupons/list',
@@ -358,12 +462,13 @@ const routes = [
                     auth: true
                 }
             },
+            //社区推广
             {
-                path: '/charts/bar',
-                name: 'chartsBar',
-                component: barChartsComponent,
+                path: '/promotion/list',
+                name: 'promotionList',
+                component: promotionListComponent,
                 meta: {
-                    title: "柱状图表",
+                    title: "推广列表",
                     auth: true
                 }
             }

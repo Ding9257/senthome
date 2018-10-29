@@ -1,71 +1,54 @@
 <template>
     <div class="panel">
+        <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
+            <el-form-item label="商品名称">
+                <el-input v-model="formInline.user" placeholder=""></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button @click="get_table_data()" type="primary">查询</el-button>
+            </el-form-item>
+        </el-form>
         <div class="panel-body">
             <el-table
-                :data="table_data"
+                :data="table_data.ordersList"
                 v-loading="load_data"
                 element-loading-text="拼命加载中"
                 border
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="orderId"
-                    label="订单编号"
+                    prop="id"
+                    label="订单号"
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="sid"
-                    label="店铺编号"
+                    prop="name"
+                    label="门店"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="collectCode"
-                    label="收货码"
+                    prop="img"
+                    label="商品名称"
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="createTime"
-                    label="创建时间"
-                    width="170">
+                    prop="money"
+                    label="商品编号"
+                    width="">
                 </el-table-column>
                 <el-table-column
-                    prop="collectTime"
-                    label="收货时间"
-                    width="170">
-                </el-table-column>
-                <el-table-column
-                    prop="message"
-                    label="捎口信"
+                    prop="price"
+                    label="数量"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="tran_id"
-                    label="支付唯一标识"
+                    prop=""
+                    label="售价"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="status"
-                    label="订单状态"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="orderType"
-                    label="订单类型"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.name"
-                    label="收货人姓名"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.phone"
-                    label="收货人电话"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="address.contentAddress"
-                    label="收货人详细地址"
+                    prop=""
+                    label="成交时间"
                     width="120">
                 </el-table-column>
             </el-table>
@@ -91,8 +74,8 @@
         data() {
             return {
                 formInline: {},
+                value6: "",
                 name: "",
-                route_id: this.$route.params.id,
                 table_data: null,
                 //当前页码
                 currentPage: 1,
@@ -111,7 +94,7 @@
             bottomToolBar
         },
         created() {
-            this.route_id && this.get_table_data()
+            this.get_table_data()
         },
         methods: {
             //刷新
@@ -120,13 +103,10 @@
             },
             //获取数据
             get_table_data() {
-                this.load_data = true
-                this.$http({
-                    url: "/order/list",
-                    data: {userId: this.route_id}
-                })
-                    .then(({data: {orderList, pageNo, count}}) => {
-                        this.table_data = orderList
+                this.load_data = true;
+                this.$http({url: "/data/dataList", method: "POST", data: this.form})
+                    .then(({data: {productList, pageNo, count}}) => {
+                        this.table_data = productList
                         this.currentPage = pageNo
                         this.total = count
                         this.load_data = false
@@ -154,19 +134,23 @@
                     })
                     .catch(() => {
                     })
-            },
+            }
+            ,
             change_status(status) {
                 console.log(status);
-            },
+            }
+            ,
             //页码选择
             handleCurrentChange(val) {
                 this.currentPage = val
                 this.get_table_data()
-            },
+            }
+            ,
             //批量选择
             on_batch_select(val) {
                 this.batch_select = val
-            },
+            }
+            ,
             //批量删除
             on_batch_del() {
                 this.$confirm('此操作将批量删除选择数据, 是否继续?', '提示', {
@@ -190,9 +174,3 @@
         }
     }
 </script>
-<style>
-    .el-form--inline .el-form-item__label {
-        display: inline-block;
-        float: left;
-    }
-</style>
