@@ -31,6 +31,8 @@ import Plugins from 'plugins'
 import App from './App'
 //导入mock数据
 import './mock'
+//设置全局变量host
+import {server_base_url} from './common/config'
 //导入地图
 import VueAMap from 'vue-amap';
 
@@ -49,9 +51,9 @@ VueAMap.initAMapApiLoader({
     plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor', "Geocoder"],
     v: '1.4.4'
 });
-
 //发布后是否显示提示
 Vue.config.productionTip = false
+Vue.prototype.config = {hosts: server_base_url};
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

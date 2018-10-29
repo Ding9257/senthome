@@ -7,7 +7,7 @@
             <el-row>
                 <el-col :span="12">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-form-item label="商品名称:" prop="name">
+                        <el-form-item label="商品名称:">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="商品分类">
@@ -18,7 +18,8 @@
                         <el-form-item label="商品图片:">
                             <el-upload
                                 class="avatar-uploader"
-                                action="https://jsonplaceholder.typicode.com/posts/"
+                                :action="action"
+                                name="files"
                                 :show-file-list="false"
                                 :on-success="handleAvatarSuccess"
                             >
@@ -26,10 +27,10 @@
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
-                        <el-form-item label="商品售价:" prop="name">
+                        <el-form-item label="商品售价:">
                             <el-input v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="商品市场价:" prop="name">
+                        <el-form-item label="商品市场价:">
                             <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="商品参数">
@@ -61,8 +62,9 @@
     export default {
         data() {
             return {
-                sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {params: []},
+                action: `${this.config.hosts}/app/upload`,
+                sort: [],
+                form: {},
                 route_id: this.$route.params.id,
                 load_data: false,
                 on_submit_loading: false,
@@ -105,28 +107,17 @@
                         this.load_data = false
                     })
             },
+            handleAvatarSuccess(response, file, fileList) {
+                console.log(file);
+                console.log(fileList);
+            },
             removeParam(index) {
                 this.form.params.splice(index, 1);
             },
             addParam() {
                 this.form.params.push({key: "", index: ""})
             },
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
-            },
-            uploadOk(response, file, fileList) {
-                console.log(response);
-                console.log(file);
-                console.log(fileList);
-            },
-            //时间选择改变时
-            on_change_birthday(val) {
-                this.$set(this.form, 'birthday', val)
-            },
+
             //提交
             on_submit_form() {
                 this.$refs.form.validate((valid) => {

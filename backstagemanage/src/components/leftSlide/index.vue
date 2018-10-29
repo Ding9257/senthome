@@ -132,7 +132,7 @@
                     //平台设置
                     {
                         title: "平台设置",
-                        path: "/platform",
+                        path: "/platform/1",
                         icon: "fa-home",
                         child: [
                             {
