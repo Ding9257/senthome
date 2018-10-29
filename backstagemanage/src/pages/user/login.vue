@@ -55,7 +55,7 @@
                     if (!valid) return false
                     this.load_data = true
                     this.set_user_info({
-                        user: {name:"sss"},
+                        user: {name: "sss", id: 1},
                         login: true
                     })
                     setTimeout(this.$router.push({path: '/'}), 500)

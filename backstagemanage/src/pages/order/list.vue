@@ -1,14 +1,23 @@
 <template>
     <div class="panel">
         <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
-            <el-form-item label="订单号">
-                <el-input v-model="formInline.user" placeholder="订单号"></el-input>
+            <el-form-item label="订单状态">
+                <el-select v-model="formInline.status" placeholder="请选择">
+                    <el-option
+                        v-for="item in orderStatus"
+                        :label="item.name"
+                        :value="item.status">
+                    </el-option>
+                </el-select>
             </el-form-item>
-            <el-form-item label="会员信息">
-                <el-input v-model="formInline.user" placeholder="会员信息"></el-input>
+            <el-form-item label="订单号">
+                <el-input v-model="formInline.orderId" placeholder="订单号"></el-input>
+            </el-form-item>
+            <el-form-item label="用户编号">
+                <el-input v-model="formInline.userId" placeholder="用户编号"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary">查询</el-button>
+                <el-button @click="on_refresh()" type="primary">查询</el-button>
             </el-form-item>
         </el-form>
         <div class="panel-body">
@@ -20,7 +29,7 @@
                 @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="排序"
+                    prop="id"
                     label="id"
                     width="80">
                 </el-table-column>
@@ -35,62 +44,35 @@
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="age"
-                    label="商品图"
-                    width="">
-                </el-table-column>
-                <el-table-column
-                    prop="birthday"
-                    label="商品名称"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="birthday"
-                    label="商品售价"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="birthday"
-                    label="商品数量"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="birthday"
-                    label="昵称"
-                    width="120">
-                </el-table-column>
-                <el-table-column
                     prop="address.name"
                     label="收货姓名"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="phone"
+                    prop="address.phone"
                     label="收获电话"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
-                    label="支付/配送"
+                    prop="address.contentAddress"
+                    label="详细地址"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="birthday"
-                    label="订单总额"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="status"
+                    prop=""
                     label="状态"
                     width="120">
-                </el-table-column>
-
-                <el-table-column
-                    label="操作"
-                    width="200">
                     <template scope="props">
-                        <el-button type="info" size="small" icon="edit">备注</el-button>
-                        <el-button type="info" size="small" icon="edit">关闭订单</el-button>
+                        {{orderStatus.filter(item=>{return item.status == props.row.status})[0].name}}
+                    </template>
+                </el-table-column>
+                <el-table-column v-
+                                 label="操作"
+                                 width="">
+                    <template scope="props" v-if="props.row.status==3">
+                        <!--<el-button type="info" @click="remark(props.row.id)" size="small" icon="edit">备注</el-button>-->
+                        <el-button type="info" @click="refund(props.row.id,6)" size="small" icon="edit">确认退款</el-button>
+                        <el-button type="info" @click="refund(props.row.id,9)" size="small" icon="edit">取消退款</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -110,12 +92,27 @@
 </template>
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
-    import fetch from 'common/fetch'
+    import {mapGetters, mapActions} from 'vuex'
+    import {GET_USER_INFO} from 'store/getters/type'
+    import {SET_USER_INFO} from 'store/actions/type'
 
     export default {
         data() {
             return {
-                formInline: {},
+                orderStatus: [
+                    {status: "", name: "全部"},
+                    {status: 0, name: "待接单"},
+                    {status: 1, name: "发货订单"},
+                    {status: 2, name: "自提订单"},
+                    {status: 3, name: "待退款"},
+                    {status: 4, name: "取消订单"},
+                    {status: 5, name: "失效订单"},
+                    {status: 6, name: "已退款"},
+                    {status: 7, name: "完成订单"},
+                    {status: 8, name: "待付款"},
+                    {status: 9, name: "待收货"}
+                ],
+                formInline: {status: ""},
                 name: "",
                 table_data: null,
                 //当前页码
@@ -137,7 +134,47 @@
         created() {
             this.get_table_data()
         },
+        computed: {
+            ...mapGetters({
+                get_user_info: GET_USER_INFO
+            })
+        },
         methods: {
+            ...mapActions({
+                set_user_info: SET_USER_INFO
+            }),
+            remark(id) {
+            },
+            close(id) {
+                this.load_data = true
+                this.$http({
+                    url: "/order/delete",
+                    data: {id, managerId: this.get_user_info.user.id}
+                })
+                    .then(({data: {count, pageNo, orderList}}) => {
+                        this.table_data = orderList
+                        this.currentPage = pageNo
+                        this.total = count
+                        this.load_data = false
+                    })
+                    .catch((err) => {
+                        this.load_data = false
+                    })
+            },
+            refund(id, status) {
+                this.load_data = true
+                this.$http({
+                    url: "/order/update",
+                    data: {id, managerId: this.get_user_info.user.id, status}
+                })
+                    .then(({data}) => {
+                        this.load_data = false
+                        this.get_table_data()
+                    })
+                    .catch((err) => {
+                        this.load_data = false
+                    })
+            },
             //刷新
             on_refresh() {
                 this.get_table_data()
@@ -145,14 +182,16 @@
             //获取数据
             get_table_data() {
                 this.load_data = true
-                this.$fetch.api_table.list({
-                    page: this.currentPage,
-                    length: this.length
+                let param = this.formInline;
+                param.pageNo = this.currentPage;
+                this.$http({
+                    url: "/order/list",
+                    data: param
                 })
-                    .then(({data: {result, page, total}}) => {
-                        this.table_data = result
-                        this.currentPage = page
-                        this.total = total
+                    .then(({data: {count, pageNo, orderList}}) => {
+                        this.table_data = orderList
+                        this.currentPage = pageNo
+                        this.total = count
                         this.load_data = false
                     })
                     .catch(() => {

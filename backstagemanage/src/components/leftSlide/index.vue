@@ -102,76 +102,98 @@
                         icon: "fa-home",
                         child: [
                             {
+                                title: "成交详情",
+                                path: "/order/clinch"
+                            },
+                            {
                                 title: "订单管理",
-                                path: "/order/list"
+                                path:
+                                    "/order/list"
                             }
                         ]
                     },
                     //财务管理
                     {
                         title: "财务管理",
-                        path: "/finance",
-                        icon: "fa-home",
-                    },
+                        path:
+                            "/finance",
+                        icon:
+                            "fa-home",
+                    }
+                    ,
                     //数据统计
                     {
                         title: "数据统计",
-                        path: "/data",
-                        icon: "fa-home",
-                        child: [
-                            {
-                                title: "销量统计",
-                                path: "/data/count"
-                            },
-                            {
-                                title: "销量明细",
-                                path: "/data/detail"
-                            }
-                        ]
-                    },
+                        path:
+                            "/data",
+                        icon:
+                            "fa-home",
+                        child:
+                            [
+                                {
+                                    title: "销量统计",
+                                    path: "/data/count"
+                                },
+                                {
+                                    title: "销量明细",
+                                    path: "/data/detail"
+                                }
+                            ]
+                    }
+                    ,
                     //平台设置
                     {
                         title: "平台设置",
-                        path: "/platform/1",
-                        icon: "fa-home",
-                        child: [
-                            {
-                                title: "基本设置",
-                                path: "/platform/set"
-                            },
-                            {
-                                title: "分组管理",
-                                path: "/platform/group"
-                            },
-                            {
-                                title: "操作人员",
-                                path: "/platform/operate"
-                            },
-                            {
-                                title: "操作日志",
-                                path: "/platform/log"
-                            }
-                        ]
-                    },
+                        path:
+                            "/platform/1",
+                        icon:
+                            "fa-home",
+                        child:
+                            [
+                                {
+                                    title: "基本设置",
+                                    path: "/platform/set"
+                                },
+                                {
+                                    title: "分组管理",
+                                    path: "/platform/group"
+                                },
+                                {
+                                    title: "操作人员",
+                                    path: "/platform/operate"
+                                },
+                                {
+                                    title: "操作日志",
+                                    path: "/platform/log"
+                                }
+                            ]
+                    }
+                    ,
                     {
                         title: "现金券管理",
-                        path: "/cashCoupons/list",
-                        icon: "fa-home",
-                    },
+                        path:
+                            "/cashCoupons/list",
+                        icon:
+                            "fa-home",
+                    }
+                    ,
                     {
                         title: "社区推广",
-                        path: "/promotion",
-                        icon: "fa-home",
-                        child: [
-                            {
-                                title: "推广列表",
-                                path: "/promotion/list"
-                            },
-                            {
-                                title: "推广订单",
-                                path: "/promotion/order"
-                            }
-                        ]
+                        path:
+                            "/promotion",
+                        icon:
+                            "fa-home",
+                        child:
+                            [
+                                {
+                                    title: "推广列表",
+                                    path: "/promotion/list"
+                                },
+                                {
+                                    title: "推广订单",
+                                    path: "/promotion/order"
+                                }
+                            ]
                     }
                 ]
             }

@@ -36,6 +36,7 @@ import sortComponent from 'pages/product/sort'
 import sortAddorUpdateComponent from 'pages/product/AorU'
 //订单管理
 import orderListComponent from 'pages/order/list'
+import orderClinchComponent from 'pages/order/clinch'
 //财务管理
 import financeListComponent from 'pages/finance/list'
 //数据统计
@@ -329,6 +330,15 @@ const routes = [
                 component: orderListComponent,
                 meta: {
                     title: "订单管理",
+                    auth: true
+                }
+            },
+            {
+                path: '/order/clinch',
+                name: "orderClinch",
+                component: orderClinchComponent,
+                meta: {
+                    title: "成交详情",
                     auth: true
                 }
             },

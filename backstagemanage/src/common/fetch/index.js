@@ -39,22 +39,17 @@ export default function fetch(options) {
                 if (data.status === 200) {
                     resolve(data);
                     return false
-                } else if (code === port_code.unlogin) {
+                } else if (100 === port_code.unlogin) {
                     setUserInfo(null)
                     router.replace({name: "login"})
                 }
-                Message.warning(msg)
-                reject({code, msg, data})
+                Message.warning(data.msg)
+                reject(data)
             })
-            .catch((error) => {
+            .catch((err) => {
                 //请求失败时,根据业务判断状态
-                if (error.response) {
-                    let resError = error.response
-                    let resCode = resError.status
-                    let resMsg = error.message
-                    Message.error('操作失败！错误原因 ' + resMsg)
-                    reject({code: resCode, msg: resMsg})
-                }
+                Message.error('操作失败！')
+                reject(err)
             })
     })
 }
