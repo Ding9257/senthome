@@ -49,7 +49,17 @@
                     {
                         title: "主页",
                         path: "/home",
-                        icon: "fa-home"
+                        icon: "fa-home",
+                        child: [
+                            {
+                                title: "订单描述",
+                                path: "/home/order"
+                            },
+                            {
+                                title: "商品销量",
+                                path: "/home/product"
+                            }
+                        ]
                     },
                     {
                         title: "门店管理",

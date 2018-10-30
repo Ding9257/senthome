@@ -53,7 +53,7 @@ VueAMap.initAMapApiLoader({
 });
 //发布后是否显示提示
 Vue.config.productionTip = false
-Vue.prototype.config = {hosts: server_base_url};
+Vue.prototype.config = {hosts: server_base_url, fileUploadUrl: `${server_base_url}/app/upload`};
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

@@ -9,7 +9,8 @@ import 'nprogress/nprogress.css'
 import viewPageComponent from 'pages/App'
 
 //home
-import homeComponent from 'pages/home'
+import homeComponent from 'pages/home/index'
+import homeProductList from 'pages/home/product'
 //404
 import noPageComponent from 'pages/error/404'
 //login
@@ -54,6 +55,7 @@ import cashCouponsAddorUpdateComponent from 'pages/cashCoupons/addOrUpdate'
 import cashCouponsListComponent from 'pages/cashCoupons/list'
 //社区推广
 import promotionListComponent from 'pages/promotion/list'
+import promotionOrderListComponent from 'pages/promotion/order'
 //平台管理--banner
 import bannerAddorUpdateComponent from 'pages/platform/banner/addOrUpdate'
 import bannerListComponent from 'pages/platform/banner/list'
@@ -90,11 +92,20 @@ const routes = [
         component: viewPageComponent,
         children: [
             {
-                path: '/home',
+                path: '/home/order',
                 name: 'home',
                 component: homeComponent,
                 meta: {
-                    title: "主页",
+                    title: "订单描述",
+                    auth: true
+                }
+            },
+            {
+                path: '/home/product',
+                name: 'homeProductList',
+                component: homeProductList,
+                meta: {
+                    title: "订单描述",
                     auth: true
                 }
             },
@@ -479,6 +490,15 @@ const routes = [
                 component: promotionListComponent,
                 meta: {
                     title: "推广列表",
+                    auth: true
+                }
+            },
+            {
+                path: '/promotion/order',
+                name: 'promotionOrderList',
+                component: promotionOrderListComponent,
+                meta: {
+                    title: "推广订单",
                     auth: true
                 }
             }

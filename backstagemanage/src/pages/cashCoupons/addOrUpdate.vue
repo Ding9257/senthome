@@ -12,33 +12,29 @@
                         </el-form-item>
                         <el-form-item label="使用时间限制">
                             <el-date-picker
-                                v-model="usetime"
-                                type="daterange"
-                                range-separator="至"
-                                start-placeholder="开始日期"
-                                end-placeholder="结束日期">
+                                v-model="form.useTime"
+                                type="datetime"
+                                @change="useTimeChange"
+                                placeholder="选择日期时间">
                             </el-date-picker>
                         </el-form-item>
                         <el-form-item label="缩略图:">
                             <el-upload
-                                action="https://jsonplaceholder.typicode.com/posts/"
-                                list-type="picture-card"
-                                :on-preview="handlePictureCardPreview"
-                                :on-success="uploadOk"
-                                :on-remove="handleRemove">
-                                <i class="el-icon-plus"></i>
+                                class="avatar-uploader"
+                                :action="action"
+                                name="files"
+                                :show-file-list="false"
+                                :on-success="handleAvatarSuccess"
+                            >
+                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt="">
-                            </el-dialog>
-                        </el-form-item>
-                        <el-form-item label="发放总数:">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="售卖时间限制:">
                             <el-date-picker
-                                v-model="selltime"
-                                type="daterange"
+                                v-model="form.selltime"
+                                type="datetimerange"
+                                @change="sellTimeChange"
                                 range-separator="至"
                                 start-placeholder="开始日期"
                                 end-placeholder="结束日期">
@@ -47,15 +43,12 @@
                         <el-form-item label="售价:">
                             <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="详情:">
-                            <el-input v-model="form.imgContent" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
-
                         <el-form-item label="规则设置">
-                            <el-form-item v-for="(param,index) in form.params||[]" :key="index"
+                            <el-form-item v-for="(param,index) in form.couponDrools" :key="index"
                                           style="padding-bottom: 5px;">
-                                <el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>
-                                <el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>
+                                <el-input v-model="param.people" placeholder="人数" style="width: 120px;"></el-input>
+                                <el-input v-model="param.rate" placeholder="中奖概率" style="width: 120px;"></el-input>
+                                <el-input v-model="param.rateRobot" placeholder="机器概率" style="width: 120px;"></el-input>
                                 <el-button @click.prevent="removeParam(index)">删除</el-button>
                             </el-form-item>
                         </el-form-item>
@@ -76,18 +69,23 @@
 <script type="text/javascript">
     import {panelTitle} from 'components'
     import ElFormItem from "element-ui/packages/form/src/form-item";
+    import moment from "moment"
 
     export default {
         data() {
             return {
-                sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {},
+                action: this.config.fileUploadUrl,
+                form: {
+                    couponDrools: [
+                        {people: "", rate: "", rateRobot: ""}
+                    ]
+                },
                 usetime: "",
                 route_id: this.$route.params.id,
                 load_data: false,
                 on_submit_loading: false,
                 rules: {
-                    name: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
+                    name: [{required: true, message: '名称不能为空', trigger: 'blur'}]
                 }
             }
         },
@@ -104,6 +102,8 @@
                 })
                     .then(({data}) => {
                         this.form = data
+                        console.log(moment(data.times));
+                        this.form.useTime = moment(data.times);
                         this.load_data = false
                     })
                     .catch(() => {
@@ -114,23 +114,21 @@
                 this.form.params.splice(index, 1);
             },
             addParam() {
-                this.form.params.push({key: "", index: ""})
+                this.form.params.push({people: "", rate: "", rateRobot: ""})
             },
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
+            handleAvatarSuccess(response, file, fileList) {
+                this.form.img = `/image/${response.data}`;
             },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
+            useTimeChange() {
+                this.form.times = moment(this.form.useTime).format("YYYY年MM月DD日 HH:mm:ss")
             },
-            uploadOk(response, file, fileList) {
-                console.log(response);
-                console.log(file);
-                console.log(fileList);
-            },
-            //时间选择改变时
-            on_change_birthday(val) {
-                this.$set(this.form, 'birthday', val)
+            sellTimeChange() {
+                let startTime = this.form.selltime[0];
+                let endTime = this.form.selltime[1];
+                let createTime = moment(startTime).format("YYYY年MM月DD日 HH:mm:ss");
+                let collectTime = moment(endTime).format("YYYY年MM月DD日 HH:mm:ss");
+                this.form.createTime = createTime;
+                this.form.collectTime = collectTime;
             },
             //提交
             on_submit_form() {

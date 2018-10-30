@@ -1,24 +1,12 @@
 <template>
     <div class="panel">
-        <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
-            <el-form-item label="现金券名称">
-                <el-input v-model="formInline.name" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button @click="get_table_data()" type="primary">查询</el-button>
-            </el-form-item>
-            <el-form-item>
-                <router-link :to="{name: 'cashCouponsAdd'}" tag="span">
-                    <el-button type="primary" icon="plus" size="small">添加现金券</el-button>
-                </router-link>
-            </el-form-item>
-        </el-form>
         <div class="panel-body">
             <el-table
                 :data="table_data"
                 v-loading="load_data"
                 element-loading-text="拼命加载中"
                 border
+                @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
                     prop="id"
@@ -26,42 +14,41 @@
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
-                    label="现金券名称"
+                    prop="cid"
+                    label="代金券编号"
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="price"
-                    label="售价"
+                    prop="num"
+                    label="数量"
                     width="100">
-                </el-table-column>
-                <el-table-column
-                    prop="createTime"
-                    label="创建时间"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="collectTime"
-                    label="截止时间"
-                    width="120">
                 </el-table-column>
                 <el-table-column
                     prop=""
                     label="状态"
-                    width="120">
-                    <template scope="props">{{props.row.status}}</template>
+                    width="">
+                    <template scope="props">{{props.row.status==1?"已付款":"未支付"}}</template>
                 </el-table-column>
                 <el-table-column
-                    label="操作"
+                    prop=""
+                    label="结果"
                     width="">
-                    <template scope="props">
-                        <router-link :to="{name: 'cashCouponsUpdate', params: {id: props.row.id}}" tag="span">
-                            <el-button type="info" size="small" icon="edit">修改</el-button>
-                        </router-link>
-                        <el-button type="info" size="small" icon="edit">停止发放</el-button>
-                        <el-button type="info" size="small" @click="delete_data(props.row.id)" icon="edit">删除
-                        </el-button>
-                    </template>
+                    <template scope="props">{{props.row.result==1?"已中奖":props.row.result==2?"已失败":"参与中"}</template>
+                </el-table-column>
+                <el-table-column
+                    prop="createTime"
+                    label="创建时间"
+                    width="">
+                </el-table-column>
+                <el-table-column
+                    prop="customerInfo"
+                    label="用户信息"
+                    width="">
+                </el-table-column>
+                <el-table-column
+                    prop="coupon"
+                    label="代金券"
+                    width="">
                 </el-table-column>
             </el-table>
         </div>
@@ -70,7 +57,6 @@
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
     import fetch from 'common/fetch'
-    import moment from "moment"
 
     export default {
         data() {
@@ -106,25 +92,17 @@
             get_table_data() {
                 this.load_data = true
                 this.$http({
-                    url: "/coupon/list",
-                    data: this.formInline
+                    url: "/extension/findOne",
+                    data: {}
+                }).then(({data}) => {
+                    this.table_data = data
+                    this.load_data = false
+                }).catch(() => {
+                    this.load_data = false
                 })
-                    .then(({data}) => {
-                        let list = [];
-                        for (let item of data) {
-                            item.status = moment(item.collectTime).valueOf() > moment().valueOf() ? "出售中" : "完成";
-                            list.push(item)
-                        }
-                        this.table_data = list;
-                        this.load_data = false
-                    })
-                    .catch(() => {
-                        this.load_data = false
-                    })
             },
             //单个删除
             delete_data(id) {
-                console.log(id);
                 this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
@@ -133,16 +111,52 @@
                     .then(() => {
                         this.load_data = true
                         this.$http({
-                            url: "/coupon/delete",
+                            url: "/managerInfo/delete",
                             data: {id}
                         })
                             .then(({msg}) => {
                                 this.get_table_data()
                                 this.$message.success(msg)
-                                this.load_data = false;
                             })
                             .catch(() => {
-                                this.load_data = false;
+                            })
+                    })
+                    .catch(() => {
+                    })
+            },
+            change_status(id, status) {
+                this.$http({
+                    url: "/managerInfo/update",
+                    data: {id, status}
+                }).then(({msg}) => {
+                    this.$message.success(msg)
+                    this.get_table_data()
+                })
+            },
+            //页码选择
+            handleCurrentChange(val) {
+                this.currentPage = val
+                this.get_table_data()
+            },
+            //批量选择
+            on_batch_select(val) {
+                this.batch_select = val
+            },
+            //批量删除
+            on_batch_del() {
+                this.$confirm('此操作将批量删除选择数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                })
+                    .then(() => {
+                        this.load_data = true
+                        this.$fetch.api_table.batch_del(this.batch_select)
+                            .then(({msg}) => {
+                                this.get_table_data()
+                                this.$message.success(msg)
+                            })
+                            .catch(() => {
                             })
                     })
                     .catch(() => {
