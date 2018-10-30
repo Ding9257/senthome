@@ -56,7 +56,7 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         loader: 'url-loader',
         query: {
-          limit: 1000,
+          limit: 800000,
           name: utils.assetsPath('fonts/[hash:8].[ext]')
         }
       }

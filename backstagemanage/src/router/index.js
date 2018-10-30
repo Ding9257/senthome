@@ -88,7 +88,7 @@ const routes = [
     },
     {
         path: '/',
-        redirect: '/home',
+        redirect: '/home/order',
         component: viewPageComponent,
         children: [
             {

@@ -46,7 +46,7 @@
     import fetch from 'common/fetch'
     import moment from "moment"
 
-    const formatData = "YYYY年MM月DD日";
+    const formatData = "YYYY-MM-DD";
     let _this;
     export default {
         data() {
