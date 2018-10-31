@@ -27,7 +27,7 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="title"
+                    prop="managerList.userName"
                     label="操作人员"
                     width="100">
                 </el-table-column>
@@ -47,7 +47,7 @@
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
                         <el-button type="info" size="small" icon="edit">删除</el-button>
-                        <el-button type="info" size="small" @click="change_status(props.row.id,1)" icon="edit">启用
+                        <el-button type="info" size="small" @click="change_status(props.row.id,0)" icon="edit">启用
                         </el-button>
                         <el-button type="info" size="small" @click="change_status(props.row.id,1)" icon="edit">禁用
                         </el-button>

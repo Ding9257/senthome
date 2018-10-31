@@ -10,29 +10,26 @@
                         <el-form-item label="售空图标:">
                             <el-upload
                                 class="avatar-uploader"
-                                action="https://jsonplaceholder.typicode.com/posts/"
+                                :action="action"
+                                name="files"
                                 :show-file-list="false"
-                                :on-success="handleAvatarSuccess"
+                                :on-success="handleAvatarSuccess1"
                             >
-                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <img v-if="form.sellOut" :src="`${hosts}${form.sellOut}`" class="avatar">
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
                         <el-form-item label="加载图标:">
                             <el-upload
                                 class="avatar-uploader"
-                                action="https://jsonplaceholder.typicode.com/posts/"
+                                :action="action"
+                                name="files"
                                 :show-file-list="false"
-                                :on-success="handleAvatarSuccess"
+                                :on-success="handleAvatarSuccess2"
                             >
-                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <img v-if="form.loading" :src="`${hosts}${form.loading}`" class="avatar">
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
-                        </el-form-item>
-                        <el-form-item>
-                            <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
-                                立即提交
-                            </el-button>
                         </el-form-item>
                     </el-form>
                 </el-col>
@@ -47,6 +44,8 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
+                action: this.config.fileUploadUrl,
                 form: {},
                 navData: this.$route.params.data,
                 route_id: this.$route.params.id,
@@ -58,7 +57,7 @@
             }
         },
         created() {
-            this.route_id && this.get_form_data()
+            this.get_form_data()
         },
         methods: {
             //获取数据
@@ -69,7 +68,10 @@
                     data: {}
                 })
                     .then(({data}) => {
-                        this.form = data;
+                        this.form = {
+                            sellOut: data[0].url,
+                            loading: data[1].url
+                        }
                         this.load_data = false
                     })
                     .catch(() => {
@@ -82,27 +84,27 @@
             addParam() {
                 this.form.params.push({key: "", index: ""})
             },
-            handleAvatarSuccess(res, file) {
-                this.imageUrl = URL.createObjectURL(file.raw);
-                console.log(this.imageUrl);
+            handleAvatarSuccess1(response, file) {
+                this.form.sellOut = `/image/${response.data}`;
+                this.on_submit_form(1,this.form.sellOut)
+            },
+            handleAvatarSuccess2(response, file) {
+                this.form.loading = `/image/${response.data}`;
+                this.on_submit_form(2,this.form.loading)
             },
             //提交
-            on_submit_form() {
-                this.$refs.form.validate((valid) => {
-                    if (!valid) return false
-                    this.on_submit_loading = true
-                    this.$http({
-                        url: "/icon/update",
-                        data: this.form
-                    })
-                        .then(({msg}) => {
-                            this.$message.success(msg);
-                            this.get_table_data();
-                        })
-                        .catch(() => {
-                            this.on_submit_loading = false
-                        })
+            on_submit_form(id, url) {
+                this.$http({
+                    url: "/icon/update",
+                    data: {id, url}
                 })
+                    .then(({msg}) => {
+                        this.$message.success(msg);
+                    })
+                    .catch(() => {
+
+                    })
+
             }
         },
         components: {

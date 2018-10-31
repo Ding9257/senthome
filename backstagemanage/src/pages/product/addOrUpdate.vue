@@ -15,9 +15,6 @@
                                 <el-option v-for="item in sort" :label="item.name" :value="item.id"></el-option>
                             </el-select>
                         </el-form-item>
-                        <el-form-item label="商品加价">
-                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
                         <el-form-item label="商品图片:">
                             <el-upload
                                 class="avatar-uploader"
@@ -26,7 +23,7 @@
                                 :show-file-list="false"
                                 :on-success="handleAvatarSuccess"
                             >
-                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <img v-if="form.img" :src="`${hosts}${form.img}`" class="avatar">
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
@@ -36,20 +33,20 @@
                         <el-form-item label="商品市场价:">
                             <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="商品参数">
-                            <el-form-item v-for="(param,index) in form.params" :key="index"
-                                          style="padding-bottom: 5px;">
-                                <el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>
-                                <el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>
-                                <el-button @click.prevent="removeParam(index)">删除</el-button>
-                            </el-form-item>
-                        </el-form-item>
+                        <!--<el-form-item label="商品参数">-->
+                            <!--<el-form-item v-for="(param,index) in form.params" :key="index"-->
+                                          <!--style="padding-bottom: 5px;">-->
+                                <!--<el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>-->
+                                <!--<el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>-->
+                                <!--<el-button @click.prevent="removeParam(index)">删除</el-button>-->
+                            <!--</el-form-item>-->
+                        <!--</el-form-item>-->
 
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">
                                 立即提交
                             </el-button>
-                            <el-button @click="addParam">新增商品参数</el-button>
+                            <!--<el-button @click="addParam">新增商品参数</el-button>-->
                             <el-button @click="$router.back()">取消</el-button>
                         </el-form-item>
                     </el-form>
@@ -65,6 +62,7 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
                 action: `${this.config.hosts}/app/upload`,
                 sort: [],
                 form: {},
@@ -111,8 +109,7 @@
                     })
             },
             handleAvatarSuccess(response, file, fileList) {
-                console.log(file);
-                console.log(fileList);
+                this.form.img = `/image/${response.data}`;
             },
             removeParam(index) {
                 this.form.params.splice(index, 1);
@@ -134,7 +131,7 @@
                     }
                     this.$http({
                         url,
-                        data: this.from
+                        data: this.form
                     }).then(({msg}) => {
                         this.$message.success(msg)
                         setTimeout(this.$router.back(), 500)

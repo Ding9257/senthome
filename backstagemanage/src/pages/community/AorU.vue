@@ -7,10 +7,13 @@
             <el-row>
                 <el-col :span="8">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+                        <el-form-item label="地区:">
+                            <el-input v-model="form.area" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
                         <el-form-item label="小区名称:" prop="name">
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
-                        <el-form-item label="小区经度">
+                        <el-form-item label="街道经度">
                             <el-input v-model="form.lng" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="街道纬度:">
@@ -38,7 +41,7 @@
         data() {
             that = this;
             return {
-                form: {},
+                form: {lng: "", lat: ""},
                 route_id: this.$route.params.id,
                 communityData: this.$route.params.data,
                 load_data: false,
@@ -46,12 +49,11 @@
                 rules: {
                     name: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
                 },
-                zoom: 12,
-                center: [121.59996, 31.197646],
+                zoom: 10,
+                center: [116.65, 40.13],
                 events: {
                     click(e) {
                         let {lng, lat} = e.lnglat;
-                        console.log(that.form);
                         that.form.lng = lng;
                         that.form.lat = lat;
                         // var geocoder = new AMap.Geocoder({

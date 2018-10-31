@@ -2,13 +2,13 @@
     <div class="panel">
         <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
             <el-form-item label="门店名称">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
+                <el-input v-model="formInline.name" placeholder=""></el-input>
             </el-form-item>
             <el-form-item label="地址">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
+                <el-input v-model="formInline.address" placeholder=""></el-input>
             </el-form-item>
             <el-form-item label="电话">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
+                <el-input v-model="formInline.mobile" placeholder=""></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="query()">查询</el-button>
@@ -73,8 +73,14 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
+                    prop=""
+                    label="状态"
+                    width="120">
+                    <template scope="props">{{props.row.status==1?"禁用":"启用"}}</template>
+                </el-table-column>
+                <el-table-column
                     label="操作"
-                    width="">
+                    width="260">
                     <template scope="props">
                         <router-link :to="{name: 'storeManagementUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
@@ -138,7 +144,7 @@
             //获取数据
             get_table_data() {
                 this.load_data = true;
-                this.$http({url: "/store/list", method: "post", data: {pageNo: this.currentPage}})
+                this.$http({url: "/store/list", method: "post", data: {pageNo: this.currentPage, ...this.formInline}})
                     .then(({data: {areaList, pageNo, count}}) => {
                         this.table_data = areaList;
                         this.currentPage = pageNo;
@@ -171,8 +177,16 @@
                     .catch(() => {
                     })
             },
-            change_status(status) {
-                console.log(status);
+            change_status(id) {
+                this.$http({
+                    url: "/store/update",
+                    data: {id, status: 1}
+                }).then(({msg}) => {
+                    this.get_table_data();
+                    this.$message.success(msg);
+                })
+                    .catch(() => {
+                    })
             },
             //页码选择
             handleCurrentChange(val) {

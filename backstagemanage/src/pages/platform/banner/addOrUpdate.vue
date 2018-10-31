@@ -7,8 +7,23 @@
             <el-row>
                 <el-col :span="12">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+                        <el-form-item label="排序:">
+                            <el-input v-model="form.orders" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
                         <el-form-item label="广告标题:" prop="title">
                             <el-input v-model="form.title" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="缩略图:">
+                            <el-upload
+                                class="avatar-uploader"
+                                :action="action"
+                                name="files"
+                                :show-file-list="false"
+                                :on-success="handleAvatarSuccess"
+                            >
+                                <img v-if="form.name" :src="`${hosts}${form.name}`" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            </el-upload>
                         </el-form-item>
                         <el-form-item label="广告连接:">
                             <el-input v-model="form.url" placeholder="请输入内容" style="width: 250px;"></el-input>
@@ -36,15 +51,21 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
+                action: this.config.fileUploadUrl,
                 sort: [{id: 1, name: "分类1"}, {id: 2, name: "分类2"}],
-                form: {},
+                form: {orders: ""},
                 route_id: this.$route.params.id,
-                bannerData: this.$route.params.data,
-                load_data: false,
-                on_submit_loading: false,
-                rules: {
-                    title: [{required: true, message: '广告标题不能为空', trigger: 'blur'}]
-                }
+                bannerData:
+                this.$route.params.data,
+                load_data:
+                    false,
+                on_submit_loading:
+                    false,
+                rules:
+                    {
+                        title: [{required: true, message: '广告标题不能为空', trigger: 'blur'}]
+                    }
             }
         },
         created() {
@@ -68,10 +89,8 @@
                 this.dialogImageUrl = file.url;
                 this.dialogVisible = true;
             },
-            uploadOk(response, file, fileList) {
-                console.log(response);
-                console.log(file);
-                console.log(fileList);
+            handleAvatarSuccess(response, file, fileList) {
+                this.form.name = `/image/${response.data}`;
             },
             //时间选择改变时
             on_change_birthday(val) {

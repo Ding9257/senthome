@@ -26,7 +26,16 @@
                             <el-input v-model="form.phone" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="状态:">
-                            <el-input v-model="form.status" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-select v-model="form.status" placeholder="请选择">
+                                <el-option
+                                    label="启用"
+                                    value="2">
+                                </el-option>
+                                <el-option
+                                    label="禁用"
+                                    value="1">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                         <el-form-item label="可用权限:">
                             <el-input v-model="form.power" placeholder="请输入内容" style="width: 250px;"></el-input>
@@ -67,6 +76,7 @@
             }
         },
         created() {
+            this.get_group_data();
             this.route_id && this.get_form_data()
         },
         methods: {
@@ -74,7 +84,7 @@
             get_form_data() {
                 this.form = this.navData;
                 this.form.groupId = this.navData.groups.id;
-                this.get_group_data();
+
             },
             get_group_data() {
                 this.$http({

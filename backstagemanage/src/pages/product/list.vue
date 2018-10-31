@@ -32,9 +32,12 @@
                     width="120">
                 </el-table-column>
                 <el-table-column
-                    prop="img"
+                    prop=""
                     label="商品图片"
                     width="100">
+                    <template scope="props">
+                        <img :src="`${hosts}${props.row.img}`" />
+                    </template>
                 </el-table-column>
                 <el-table-column
                     prop="money"
@@ -82,6 +85,7 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
                 formInline: {},
                 name: "",
                 table_data: null,

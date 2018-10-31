@@ -26,7 +26,7 @@
                                 :show-file-list="false"
                                 :on-success="handleAvatarSuccess"
                             >
-                                <img v-if="form.img" :src="form.img" class="avatar">
+                                <img v-if="form.img" :src="`${hosts}${form.img}`" class="avatar">
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
@@ -74,6 +74,7 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
                 action: this.config.fileUploadUrl,
                 form: {
                     couponDrools: [
@@ -102,7 +103,6 @@
                 })
                     .then(({data}) => {
                         this.form = data
-                        console.log(moment(data.times));
                         this.form.useTime = moment(data.times);
                         this.load_data = false
                     })
@@ -114,19 +114,19 @@
                 this.form.params.splice(index, 1);
             },
             addParam() {
-                this.form.params.push({people: "", rate: "", rateRobot: ""})
+                this.form.couponDrools.push({people: "", rate: "", rateRobot: ""})
             },
             handleAvatarSuccess(response, file, fileList) {
                 this.form.img = `/image/${response.data}`;
             },
             useTimeChange() {
-                this.form.times = moment(this.form.useTime).format("YYYY年MM月DD日 HH:mm:ss")
+                this.form.times = moment(this.form.useTime).format("YYYY-MM-DD HH:mm:ss")
             },
             sellTimeChange() {
                 let startTime = this.form.selltime[0];
                 let endTime = this.form.selltime[1];
-                let createTime = moment(startTime).format("YYYY年MM月DD日 HH:mm:ss");
-                let collectTime = moment(endTime).format("YYYY年MM月DD日 HH:mm:ss");
+                let createTime = moment(startTime).format("YYYY-MM-DD HH:mm:ss");
+                let collectTime = moment(endTime).format("YYYY-MM-DD HH:mm:ss");
                 this.form.createTime = createTime;
                 this.form.collectTime = collectTime;
             },

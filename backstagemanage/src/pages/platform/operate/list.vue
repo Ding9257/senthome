@@ -37,9 +37,10 @@
                     width="">
                 </el-table-column>
                 <el-table-column
-                    prop="status"
+                    prop=""
                     label="状态"
                     width="">
+                    <template scope="props">{{props.row.status==1?"禁用":"启用"}}</template>
                 </el-table-column>
                 <el-table-column
                     label="操作"
@@ -51,7 +52,7 @@
                         </router-link>
                         <el-button type="info" size="small" @click="delete_data(props.row.id)" icon="edit">删除
                         </el-button>
-                        <el-button type="info" size="small" @click="change_status(props.row.id,0)" icon="edit">启用
+                        <el-button type="info" size="small" @click="change_status(props.row.id,2)" icon="edit">启用
                         </el-button>
                         <el-button type="info" size="small" @click="change_status(props.row.id,1)" icon="edit">禁用
                         </el-button>

@@ -22,6 +22,11 @@
                     width="80">
                 </el-table-column>
                 <el-table-column
+                    prop="orders"
+                    label="排序"
+                    width="120">
+                </el-table-column>
+                <el-table-column
                     prop="title"
                     label="标题"
                     width="120">
@@ -48,6 +53,9 @@
                         </el-button>
                         <el-button type="info" size="small" @click="change_status(props.row.id,1)"
                                    icon="edit">隐藏
+                        </el-button>
+                        <el-button type="info" size="small" @click="delete_data(props.row.id)"
+                                   icon="edit">删除
                         </el-button>
                     </template>
                 </el-table-column>
@@ -106,7 +114,7 @@
                     })
             },
             //单个删除
-            delete_data(item) {
+            delete_data(id) {
                 this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
@@ -114,7 +122,10 @@
                 })
                     .then(() => {
                         this.load_data = true
-                        this.$fetch.api_table.del(item)
+                        this.$http({
+                            url: "/picture/delete",
+                            data: {id}
+                        })
                             .then(({msg}) => {
                                 this.get_table_data()
                                 this.$message.success(msg)

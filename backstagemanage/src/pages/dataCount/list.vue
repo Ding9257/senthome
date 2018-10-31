@@ -1,7 +1,7 @@
 <template>
     <div class="panel">
         <el-form :inline="true" :model="formInline" class="panel-title" style="padding-top: 10px;">
-            <el-form-item label="交易额">
+            <el-form-item label="交易时间">
                 <el-date-picker
                     v-model="formInline.time"
                     type="daterange"
@@ -38,7 +38,7 @@
                     width="80">
                 </el-table-column>
                 <el-table-column
-                    prop="name"
+                    prop="store"
                     label="门店"
                     width="120">
                 </el-table-column>
@@ -48,7 +48,7 @@
                     width="100">
                 </el-table-column>
                 <el-table-column
-                    prop="money"
+                    prop="mixMoney"
                     label="交易额"
                     width="">
                 </el-table-column>
@@ -58,17 +58,6 @@
                     width="120">
                 </el-table-column>
             </el-table>
-            <bottom-tool-bar>
-                <div slot="page">
-                    <el-pagination
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-size="10"
-                        layout="total, prev, pager, next"
-                        :total="total">
-                    </el-pagination>
-                </div>
-            </bottom-tool-bar>
         </div>
     </div>
 </template>
@@ -111,10 +100,8 @@
             get_table_data() {
                 this.load_data = true;
                 this.$http({url: "/data/dataList", method: "POST", data: this.form})
-                    .then(({data: {productList, pageNo, count}}) => {
-                        this.table_data = productList
-                        this.currentPage = pageNo
-                        this.total = count
+                    .then(({data}) => {
+                        this.table_data = data
                         this.load_data = false
                     })
                     .catch(() => {

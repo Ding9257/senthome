@@ -5,10 +5,13 @@
                 <el-input v-model="formInline.name" placeholder=""></el-input>
             </el-form-item>
             <el-form-item label="账单时间">
-                <el-input v-model="formInline.name" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item label="账单时间">
-                <el-input v-model="formInline.name" placeholder=""></el-input>
+                <el-date-picker
+                    v-model="value6"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期">
+                </el-date-picker>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="query()">下载账单</el-button>
