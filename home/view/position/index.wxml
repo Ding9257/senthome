@@ -30,11 +30,12 @@
             </view>
         </view>
         <view wx:if="{{selectTab=='店铺自提'}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"
-              wx:for="{{delivery_list}}"
+              wx:for="{{shopMention}}"
               wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg ">
                 <view class="weui-media-box__title">{{delivery.name}} {{delivery.phone}}</view>
-                <view class="weui-media-box__desc address">{{delivery.contentAddress}}</view>
+                <view class="weui-media-box__title">营业时间：{{delivery.businessHours}}</view>
+                <view class="weui-media-box__desc address">{{delivery.address}}</view>
             </view>
         </view>
     </view>

@@ -7,6 +7,7 @@ Page({
     data: {
         goods: {},
         current: 0,
+        hosts: app.globalData.hosts,
         num: 0,
         width: getApp().globalData.window_width,
         height: getApp().globalData.window_height,

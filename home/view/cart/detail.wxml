@@ -1,14 +1,16 @@
-<import src="/component/quantity/index.wxml" />
-<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000" style="height:{{galleryHeight}}px;">
-    <block wx:for="{{goods.images}}" wx:key="">
-      <swiper-item>
-        <image src="{{item}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="{{index}}"/>
+<import src="/component/quantity/index.wxml"/>
+<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000"
+        style="height:{{galleryHeight}}px;">
+    <swiper-item>
+        <image src="{{hosts+goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage"
+               data-current="0"/>
     </swiper-item>
-    </block>
 </swiper>
 <view class="summary">
-	<text class="title">{{goods.name}}</text>
-	<text class="price">￥ {{goods.money}} <text style="text-decoration:line-through;">￥ {{goods.price}}</text></text>
+    <text class="title">{{goods.name}}</text>
+    <text class="price">￥ {{goods.money}}
+        <text style="text-decoration:line-through;">￥ {{goods.price}}</text>
+    </text>
 </view>
 <view class="margin-top summary" style="text-align:left;">
     <view style="text-align:center;">商品详情</view>
@@ -19,15 +21,15 @@
 <view class="footer">
     <view class="opt-buttons">
         <view>
-            <image src="/image/all/gwc.png" style="width:35px;height:35px;float:left;" />
+            <image src="/image/all/gwc.png" style="width:35px;height:35px;float:left;"/>
             <text style="display:inline-block:width:25px;font-size:14px;">￥{{sumPrice}}</text>
         </view>
         <view class="button-group">
             <view class="in-line">添加商品</view>
-            <view class="shop-add-down"  style="margin-top:5px;">
-                <image src="/image/all/-.png" style="float:left;" id="{{goods.id}}" catchtap="down" />
-                    <text>{{num}}</text>
-                <image src="/image/all/+.png" style="float:right;" id="{{goods.id}}" catchtap="add" />
+            <view class="shop-add-down" style="margin-top:5px;">
+                <image src="/image/all/-.png" style="float:left;" id="{{goods.id}}" catchtap="down"/>
+                <text>{{num}}</text>
+                <image src="/image/all/+.png" style="float:right;" id="{{goods.id}}" catchtap="add"/>
             </view>
         </view>
     </view>

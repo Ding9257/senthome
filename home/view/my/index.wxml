@@ -84,6 +84,6 @@
     </view>
   </view>
   <view class="weui-cells weui-cells_after-title margin-top">
-    <button class="out-button">退出登录</button>
+    <button bindtap="out" class="out-button">退出登录</button>
   </view>
 </view>

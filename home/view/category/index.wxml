@@ -17,7 +17,7 @@
         <view class="category-right-item" style="margin: 7px 0 0 7px;width: {{window_width - 114}}px;"
               wx:for="{{productList}}" wx:for-item="product" wx:key="{{product.id}}">
             <van-col span="6">
-                <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{product.img}}"/>
+                <image style="padding:5px 0 0 5px;width:60px;height:60px;" src="{{hosts+product.img}}"/>
             </van-col>
             <van-col span="16">
                 <view class="van-ellipsis">

@@ -20,7 +20,7 @@ Page({
         isSelect: false,
         is_load: true,
         is_select: true,
-        shippingAddressType: 0,
+        shippingAddressType: 2,
         userId: app.globalData.userInfo.userId || "",
         selectTab: "收货地址",
         delivery_list: []
@@ -69,14 +69,35 @@ Page({
         } else {
             //获取收获地址
             //跳转至  购物车页
-            let address = this.data.delivery_list.filter(item => {
-                return item.id == id
-            });
-            app.globalData.shippingAddress = address[0];
-            app.globalData.shippingAddressType = this.data.shippingAddressType;
-            wx.switchTab({
-                url: "/view/cart/cart"
-            });
+            console.log(this.shippingAddressType);
+            if (this.data.shippingAddressType == 1 || this.data.shippingAddressType == 2) {
+                let address = this.data.delivery_list.filter(item => {
+                    return item.id == id
+                });
+                app.globalData.shippingAddress = address[0];
+                let shippingAddressType = 1;
+                app.globalData.shippingAddressType = shippingAddressType;
+                this.setData({
+                    shippingAddressType
+                });
+            } else {
+                let address = this.data.shopMention.filter(item => {
+                    return item.id == id
+                });
+                let shippingAddressType = 0;
+                app.globalData.shippingAddressType = shippingAddressType;
+                this.setData({
+                    shippingAddressType
+                });
+                app.globalData.shopInfo = address[0];
+            }
+            console.log(app.globalData.shippingAddressType);
+            // wx.switchTab({
+            //     url: "/view/cart/cart"
+            // });
+            wx.navigateBack({
+                delta: 1
+            })
         }
     },
     getAddress: function () {
@@ -92,15 +113,33 @@ Page({
     },
     onChange: function (event) {
         let title = event.detail.title;
-        let shippingAddressType = 0;
+        let shippingAddressType = 2;
         if (title == "店铺自提") {
+            this.getStore();
             shippingAddressType = 0;
         } else {
+            this.getAddress()
             shippingAddressType = 1;
         }
         this.setData({
             selectTab: title,
             shippingAddressType
+        });
+    },
+    getStore: function () {
+        app.getLngLat().then(data => {
+            let {lng, lat, result} = data;
+            app.globalData.currentPosition = result;
+            request({
+                url: "/app/getStore",
+                method: "get",
+                data: {lat, lng}
+            }).then(store => {
+                let data = store.data;
+                this.setData({
+                    shopMention: data.list
+                });
+            })
         });
     },
     areaSelect: function (e) {

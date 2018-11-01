@@ -4,6 +4,7 @@ const app = getApp();
 Page({
     data: {
         window_width: app.globalData.window_width,
+        hosts: app.globalData.hosts,
         banner_list: [
             {url: "/image/banner.png"}
         ],
@@ -18,38 +19,49 @@ Page({
     },
     onLoad: function () {
         //获取定位
-        app.getLngLat().then(data => {
-            let {lng, lat, result} = data;
-            app.globalData.currentPosition = result;
-            this.setData({
-                currentPosition: result
-            });
-            request({
-                url: "/app/getStore",
-                method: "get",
-                data: {lat, lng}
-            }).then(store => {
-                let data = store.data;
-                let areaName = data.areaName;
-                let shopInfo = data.list[0];
-                app.globalData.shopInfo = shopInfo;
-                app.globalData.areaName = areaName;
+        if (util.isEmpty(this.shopInfo)) {
+            app.getLngLat().then(data => {
+                let {lng, lat, result} = data;
+                app.globalData.currentPosition = result;
                 this.setData({
-                    shopInfo,
-                    areaName
+                    currentPosition: result
                 });
-                //店长推荐
-                this.getDianZhangRecommend();
-            })
-        });
+                request({
+                    url: "/app/getStore",
+                    method: "get",
+                    data: {lat, lng}
+                }).then(store => {
+                    let data = store.data;
+                    let areaName = data.areaName;
+                    let shopInfo = data.list[0];
+                    app.globalData.shopInfo = shopInfo;
+                    app.globalData.areaName = areaName;
+                    this.setData({
+                        shopInfo,
+                        areaName
+                    });
+                })
+            });
+        }
+        //店长推荐
+        this.getDianZhangRecommend();
         //轮播图
         this.carouselMap();
 
     },
     onReady: function () {
+        let shopInfo = app.globalData.shopInfo
+        app.globalData.shopInfo = shopInfo;
+        this.setData({
+            shopInfo
+        })
     },
     onShow: function () {
-
+        let shopInfo = app.globalData.shopInfo
+        app.globalData.shopInfo = shopInfo;
+        this.setData({
+            shopInfo
+        })
     },
     onHide: function () {
 
@@ -69,6 +81,7 @@ Page({
             method: "POST",
             data: {isTop: "1", sid: this.data.shopInfo.id}
         }).then(res => {
+            console.log(res);
             let list = [];
             for (let key in res.data) {
                 list = list.concat(res.data[key]);

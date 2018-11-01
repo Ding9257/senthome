@@ -6,12 +6,16 @@
                 <image style="width:15px;height:20px;" src="/image/all/dw.png"/>
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view wx:if="{{!!shippingAddress.name}}" class="weui-media-box__title">
+                <view wx:if="{{shippingAddressType==1&&!!shippingAddress.name}}" class="weui-media-box__title">
                     <view class="address-font-size">{{shippingAddress.name}}</view>
                     <view class="address-font-size">{{shippingAddress.phone}}</view>
                     <view class="address-font-size">{{shippingAddress.contentAddress}}</view>
                 </view>
-                <view wx:else class="weui-media-box__title">
+                <view wx:if="{{shippingAddressType==0&&!!shopInfo.name}}" class="weui-media-box__title">
+                    <view class="address-font-size">{{shopInfo.name}}</view>
+                    <view class="address-font-size">{{shopInfo.address}}</view>
+                </view>
+                <view wx:if="{{shippingAddressType==2}}" class="weui-media-box__title">
                     <view class="address-font-size" style="font-size:16px;">地址为空</view>
                 </view>
             </view>
@@ -44,7 +48,7 @@
                       data-index="{{index}}"/>
             <!-- 缩略图 -->
             <view>
-                <image class="carts-image" src="{{item.product.img}}" mode="aspectFill"/>
+                <image class="carts-image" src="{{hosts+item.product.img}}" mode="aspectFill"/>
             </view>
             <view class="carts-text">
                 <!-- 商品标题 -->

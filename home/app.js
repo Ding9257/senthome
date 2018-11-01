@@ -63,11 +63,12 @@ App({
         window_height: 0,
         //附近店铺
         nearbyStore: {},
+        hosts: "https://www.shunbokj.cn:8080",
         //小区名字
         areaName: "",
         shopCart: {},
         //收货地址
-        shippingAddressType: 0,//0自提 1送货上门
+        shippingAddressType: 2,//0自提 1送货上门 2带选择
         shippingAddress: {},
         //坐标
         coordinate: {},

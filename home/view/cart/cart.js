@@ -6,6 +6,7 @@ const app = getApp();
 Page({
     data: {
         carts: [],
+        hosts: app.globalData.hosts,
         timeLimit: {
             province_list: {
                 1: '10:00-12:00',
@@ -17,14 +18,19 @@ Page({
         userId: 1,
         currenTime: "",
         popupStatus: false,
+        shopInfo: {},
         shippingAddress: {},
-        shippingAddressType: 0,
+        shippingAddressType: 2,
         selectedAllStatus: false,
         total: '',
         startX: 0,
         itemLefts: []
     },
     onLoad: function (option) {
+        let shopInfo = app.globalData.shopInfo;
+        this.setData({
+            shopInfo
+        })
         let redirectTo = option.redirectTo;
         if (!!redirectTo) {
             wx.navigateTo({
@@ -224,13 +230,23 @@ Page({
             popupStatus: false
         });
         let shippingAddress = app.globalData.shippingAddress;
+        let shopInfo = app.globalData.shopInfo;
         let shippingAddressType = app.globalData.shippingAddressType;
+        console.log(shippingAddressType);
         this.setData({
             shippingAddressType,
+            shopInfo,
             shippingAddress
         });
         this.getShop();
         //this.reloadData();
+    },
+    onReady: function () {
+        let shippingAddressType = app.globalData.shippingAddressType;
+        console.log(shippingAddressType);
+        this.setData({
+            shippingAddressType
+        });
     },
     sum: function () {
         var carts = this.data.carts;
@@ -333,7 +349,7 @@ Page({
             popupStatus: false
         });
     },
-    cancel:function () {
+    cancel: function () {
         this.setData({
             popupStatus: false
         });

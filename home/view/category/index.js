@@ -4,6 +4,7 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
+        hosts: app.globalData.hosts,
         list: [],
         userId: "",
         //商品分类
@@ -29,6 +30,7 @@ Page({
             method: "POST",
             data: {}
         }).then((data) => {
+            console.log(data);
             this.setData({
                 categoryList: data.data,
                 categoryId: data.data[0]
@@ -62,6 +64,7 @@ Page({
     handleCategory: function (event) {
         //选择的商品分类
         var categoryId = event.currentTarget.id;
+        console.log(categoryId);
         var productList = [];
         let currentPage = 1;
         this.setData({
@@ -77,6 +80,7 @@ Page({
             method: "POST",
             data: {type: this.data.categoryId, pageNo: this.data.currentPage, sid: this.data.shopInfo.id}
         }).then((data) => {
+            console.log(data);
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {

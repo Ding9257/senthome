@@ -1,7 +1,10 @@
 import Dialog from "../../dist/dialog/dialog";
+
 const constant = require("../../util/constant.js");
 const http = require("../../util/http.js");
+const request = require("./../../util/request").request;
 const app = getApp();
+let _this;
 Page({
     data: {
         color: constant.color,
@@ -14,6 +17,7 @@ Page({
 
     },
     onLoad: function () {
+        _this = this;
         this.setData({
             userInfo: getApp().globalData.userInfo
         });
@@ -37,11 +41,17 @@ Page({
                     user.userId = item.userId;
                     user.phone = item.phone;
                     app.globalData.userInfo = user;
-                    this.setData({
+                    _this.setData({
                         userInfo: app.globalData.userInfo
                     });
                 })
             }
+        });
+    },
+    out: function () {
+        app.globalData.userInfo = {};
+        this.setData({
+            userInfo: {}
         });
     },
     onReady: function () {

@@ -3,7 +3,7 @@
         <view style="padding-top:10px;">
             <van-row class="center">
                 <van-col offset="1" span="22">
-                    <navigator open-type="navigate" url="/view/position/index">
+                    <navigator open-type="navigate" url="/view/position/index?isSelect=true">
                         <button class="button-radius">
                             <van-row>
                                 <van-col>
@@ -26,7 +26,7 @@
         <view style="margin-top:10px;">
             <van-row>
                 <van-col offset="2" span="9">
-                    <image src="{{shopInfo.img}}}" style="width: 140px; height: 140px;"/>
+                    <image src="{{hosts+shopInfo.img}}" style="width: 140px; height: 140px;"/>
                 </van-col>
                 <van-col offset="1" span="11">
                     <view style="font-size:15px;color:#fff" class="van-ellipsis">{{shopInfo.name}}</view>
@@ -45,9 +45,9 @@
                     <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000"
                             duration="500">
                         <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.id}}">
-                            <image alt="{{banner.name}}"
+                            <image alt="{{banner.url}}"
                                    style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;"
-                                   src="{{banner.url}}"/>
+                                   src="{{hosts+banner.name}}"/>
                         </swiper-item>
                     </swiper>
                 </van-col>
@@ -60,20 +60,20 @@
                 <van-col span="10" offset="1">
                     <!-- 商品选购 -->
                     <view bindtap="goToshop">
-                        <image src="/image/all/spxg.png" style="width:{{window_width/2-20}}px;height: 140px;"/>
+                        <image src="/image/all/1.png" style="width:{{window_width/2-20}}px;height: 140px;"/>
                     </view>
                 </van-col>
                 <van-col span="10" offset="1">
                     <view>
                         <!-- 轻松夺宝 -->
                         <view data-target="1" bindtap="goToTarget">
-                            <image src="/image/all/qsdb.png" style="width:{{window_width/2-20}}px; height:65px;"/>
+                            <image src="/image/all/2.png" style="width:{{window_width/2-20}}px; height:65px;"/>
                         </view>
                     </view>
                     <view style="padding-top:3px;">
                         <!-- 惊喜福袋 -->
                         <view data-target="2" bindtap="goToTarget">
-                            <image src="/image/all/jxfd.png" style="width:{{window_width/2-20}}px; height:65px;"/>
+                            <image src="/image/all/3.png" style="width:{{window_width/2-20}}px; height:65px;"/>
                         </view>
                     </view>
                 </van-col>
@@ -85,8 +85,11 @@
                 <navigator class="scroll-view-item_H" url="/view/cart/detail?id={{item.id}}"
                            wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
                     <view style="text-align:center;">
-                        <image class="" src="{{item.img}}"/>
-                        <view class="text-wrap" style="font-size:12px;display:block">{{item.details}}</view>
+                        <image class="" src="{{hosts+item.img}}"/>
+                        <view class="van-ellipsis" style="font-size:12px;display:block">{{item.name}}</view>
+                        <view style="text-align: center;color:#FADE55;" style="font-size:12px;display:block">
+                            ￥{{item.money}}
+                        </view>
                     </view>
                 </navigator>
             </scroll-view>
