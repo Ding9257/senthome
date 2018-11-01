@@ -91,16 +91,17 @@ App({
     requestPayment: function (data) {
         return new Promise((resolve, reject) => {
             wx.requestPayment({
-                appId: data.appId,
+                'appId': data.appId,
                 'timeStamp': data.timeStamp,
                 'nonceStr': data.nonceStr,
                 'package': data.package,
-                'signType': data.MD5,
+                'signType': "MD5",
                 'paySign': data.paySign,
                 'success': function (res) {
                     resolve(res)
                 },
                 'fail': function (err) {
+                    console.log(err);
                     reject(err)
                 },
                 'complete': function (res) {

@@ -74,7 +74,7 @@ Page({
             status: 0,
             orderType: app.globalData.shippingAddressType,
             typeOrder: this.data.typeOrder,
-            productOrder: this.productOrder,
+            productOrder: this.data.productOrder,
             cid: this.data.cid,
             couponPrice: this.data.couponPrice
         };
@@ -83,14 +83,14 @@ Page({
             method: "POST",
             data
         }).then(data => {
-            console.log(data);
-            app.requestPayment(data).then(ok => {
+            app.requestPayment(data.data).then(ok => {
                 wx.navigateTo({
-                    url: `/view/order/index?status=2`
+                    url: `/view/order/index?activeStatus=2`
                 });
             }).catch(err => {
+                Toast.fail(err.msg);
                 wx.navigateTo({
-                    url: `/view/order/index?status=1`
+                    url: `/view/order/index?activeStatus=1`
                 });
             })
         }).catch(e => {

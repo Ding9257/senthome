@@ -16,7 +16,7 @@
       </navigator>
     </navigator>
     <view class="weui-media-box weui-media-box_appmsg order" style="padding-left: 15px;">
-      <navigator url="/view/order/index?status=1" class="order-item">
+      <navigator url="/view/order/index?activeStatus=1" class="order-item">
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/mine/dfk.png" />
@@ -25,7 +25,7 @@
         </view>
         代付款
       </navigator>
-      <navigator url="/view/order/index?status=2" class="order-item">
+      <navigator url="/view/order/index?activeStatus=2" class="order-item">
         <view class="order-item-icon">
           <view style="position: relative; display:inline-block;">
             <image class="order-item-icon-image" src="/image/mine/dsh.png" />
@@ -43,7 +43,7 @@
           </view>
           代评价
       </navigator>
-      <navigator url="/view/order/index?status=3" class="order-item">
+      <navigator url="/view/order/index?activeStatus=3" class="order-item">
         <view class="order-item-icon">
           <image class="order-item-icon-image" src="/image/mine/sh.png" />
         </view>

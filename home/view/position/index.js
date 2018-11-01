@@ -59,6 +59,11 @@ Page({
     handleLoad: function () {
 
     },
+    cancel: function () {
+        this.setData({
+            popupStatus: false
+        });
+    },
     handleClick: function (event) {
         var id = event.currentTarget.id;
         let isSelect = this.data.isSelect;
@@ -91,10 +96,6 @@ Page({
                 });
                 app.globalData.shopInfo = address[0];
             }
-            console.log(app.globalData.shippingAddressType);
-            // wx.switchTab({
-            //     url: "/view/cart/cart"
-            // });
             wx.navigateBack({
                 delta: 1
             })

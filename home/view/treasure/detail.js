@@ -1,3 +1,5 @@
+import Toast from "../../dist/toast/toast";
+
 const request = require("./../../util/request").request;
 const app = getApp();
 Page({
@@ -40,6 +42,25 @@ Page({
         shopNum++;
         this.setData({
             shopNum
+        });
+    },
+    goBuy: function () {
+        let data = this.data;
+        let cid = data.id;
+        let userId = app.globalData.userInfo.id;
+        let num = data.shopNum;
+        request({
+            url: '/weChat/toTakeWxCoupon',
+            method: "POST",
+            data: {cid,userId,num,status:0,result:0}
+        }).then(data=>{
+            app.requestPayment(data.data).then(ok => {
+                wx.navigateTo({
+                    url: `/view/index/index`
+                });
+            }).catch(err => {
+                Toast.fail(e.msg);
+            })
         });
     },
     getTreasureDetail: function (id) {

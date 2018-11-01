@@ -1,21 +1,22 @@
-<import src="/component/quantity/index.wxml" />
-<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000" style="height:{{galleryHeight}}px;">
+<import src="/component/quantity/index.wxml"/>
+<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000"
+        style="height:{{galleryHeight}}px;">
     <block>
-      <swiper-item>
-        <image src="{{goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="1"/>
-    </swiper-item>
+        <swiper-item>
+            <image src="{{goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="1"/>
+        </swiper-item>
     </block>
 </swiper>
 <view class="treasure">
-	<text class="title" style="font-size:16px;">{{goods.name}}</text>
-	<text class="price" style="font-size:14px;">夺宝价：￥ {{goods.price}} </text>
-	<text style="font-size:14px;">截止时间：{{goods.collectTime}}</text>
-	<view style="width:90%;margin-top:10px;">
-	    <van-progress color="#E7F72A" percentage="{{goods.progress}}" />
-	</view>
-	<view style="margin-top:10px;">
-	    <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
-	</view>
+    <text class="title" style="font-size:16px;">{{goods.name}}</text>
+    <text class="price" style="font-size:14px;">夺宝价：￥ {{goods.price}}</text>
+    <text style="font-size:14px;">截止时间：{{goods.collectTime}}</text>
+    <view style="width:90%;margin-top:10px;">
+        <van-progress color="#E7F72A" percentage="{{goods.progress}}"/>
+    </view>
+    <view style="margin-top:10px;">
+        <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
+    </view>
 </view>
 
 <view class="margin-top summary" style="padding-bottom:40px;">
@@ -28,11 +29,12 @@
         <van-col span="12">
             <text style="font-size:14px">购买数量:</text>
             <view class="custom-button" bindtap="down">-</view>
-                {{shopNum}}
+            {{shopNum}}
             <view class="custom-button" bindtap="add">+</view>
         </van-col>
         <van-col span="12">
-            <van-button>立即购买</van-button>
+            <van-button bindtap="goBuy">立即购买</van-button>
         </van-col>
     </van-row>
 </view>
+<van-toast id="van-toast"/>

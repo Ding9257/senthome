@@ -1,4 +1,4 @@
-<van-dialog id="van-dialog" />
+<van-dialog id="van-dialog"/>
 <view class="container">
     <view class="">
         <van-row>
@@ -15,7 +15,7 @@
         </van-row>
         <van-row>
             <van-col offset="1" span="5">收货码</van-col>
-            <van-col span="18">{{order.collectCode}}</van-col>
+            <van-col span="18">{{!!order.collectCode?order.collectCode:""}}</van-col>
         </van-row>
         <van-row>
             <van-col offset="1" span="5">下单时间</van-col>
@@ -23,7 +23,7 @@
         </van-row>
         <van-row>
             <van-col offset="1" span="5">收货时间</van-col>
-            <van-col span="18">{{order.collectTime}}</van-col>
+            <van-col span="18">{{!!order.collectTime?order.collectTime:""}}</van-col>
         </van-row>
     </view>
     <view class="margin-top background">
@@ -60,9 +60,9 @@
             </van-row>
         </view>
         <view class="border">
-           <van-row>
-               <van-col offset="1" span="19">商品总额￥{{order.total}}</van-col>
-           </van-row>
+            <van-row>
+                <van-col offset="1" span="19">商品总额￥{{order.total}}</van-col>
+            </van-row>
         </view>
     </view>
     <view class="margin-top background">
@@ -75,11 +75,11 @@
                 </van-row>
             </view>
             <view class="border">
-                 <van-row>
-                     <van-col offset="1" span="23">
-                         {{order.message}}
-                     </van-col>
-                 </van-row>
+                <van-row>
+                    <van-col offset="1" span="23">
+                        {{!!order.message?order.message:""}}
+                    </van-col>
+                </van-row>
             </view>
         </view>
     </view>

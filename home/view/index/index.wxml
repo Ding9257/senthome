@@ -25,10 +25,10 @@
         </view>
         <view style="margin-top:10px;">
             <van-row>
-                <van-col offset="2" span="9">
-                    <image src="{{hosts+shopInfo.img}}" style="width: 140px; height: 140px;"/>
+                <van-col offset="1" span="6">
+                    <image src="{{hosts+shopInfo.img}}" style="width: 100px; height: 100px;border-radius:10px;"/>
                 </van-col>
-                <van-col offset="1" span="11">
+                <van-col offset="1" span="16">
                     <view style="font-size:15px;color:#fff" class="van-ellipsis">{{shopInfo.name}}</view>
                     <view style="font-size:12px;color:#fff;margin-top:15px;" class="van-ellipsis">
                         {{'营业时间：'+!!shopInfo.businessHours?shopInfo.businessHours:''}}
@@ -60,27 +60,29 @@
                 <van-col span="10" offset="1">
                     <!-- 商品选购 -->
                     <view bindtap="goToshop">
-                        <image src="/image/all/1.png" style="width:{{window_width/2-20}}px;height: 140px;"/>
+                        <image src="/image/all/1.png" style="width:{{window_width/2-imgWidth}}px;height: 182px;"/>
                     </view>
                 </van-col>
-                <van-col span="10" offset="1">
+                <van-col span="12" style="padding-left: 20px;display: inline-block;">
                     <view>
                         <!-- 轻松夺宝 -->
                         <view data-target="1" bindtap="goToTarget">
-                            <image src="/image/all/2.png" style="width:{{window_width/2-20}}px; height:65px;"/>
+                            <image src="/image/all/2.png" style="width:{{window_width/2-imgWidth+10}}px; height:85px;"/>
                         </view>
                     </view>
-                    <view style="padding-top:3px;">
+                    <view style="padding-top:6px;">
                         <!-- 惊喜福袋 -->
                         <view data-target="2" bindtap="goToTarget">
-                            <image src="/image/all/3.png" style="width:{{window_width/2-20}}px; height:65px;"/>
+                            <image src="/image/all/3.png" style="width:{{window_width/2-imgWidth+10}}px; height:85px;"/>
                         </view>
                     </view>
                 </van-col>
             </van-row>
         </view>
         <view style="padding-top:10px;">
-            <view class="text-center">店长推荐</view>
+            <view class="text-center">
+                <image src="/image/all/4.png" style="width:{{window_width-150}}px; height:55px;"/>
+            </view>
             <scroll-view class="scroll-view" scroll-x>
                 <navigator class="scroll-view-item_H" url="/view/cart/detail?id={{item.id}}"
                            wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">

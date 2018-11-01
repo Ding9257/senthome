@@ -7,28 +7,33 @@
             <text>惊喜开福袋</text>
         </view>
     </view>
-    <view class="index-category" style="padding-top:10px;">
-        <navigator class="index-category-item" wx:for="{{category_list}}" wx:for-item="category" wx:key="{{category.id}}">
-          <view class="index-category-item-icon" style="position: relative;">
-            <image class="index-category-item-icon-image" src="/image/all/fd.png" />
-            <view style="position: absolute;top:-15px;right:-30px;border-radius: 30px;background:#F6E65D;color:red;">{{category.luckBagMoney}}元</view>
-          </view>
-          <view style="padding-top:20px;">
-          <view class="shop-add-down" style="margin:0 auto;">
-              <image src="/image/all/-.png" style="float:left;" id="{{category.id}}" catchtap="down" />
-                  <text>{{luckBagMoneyList[category.id].num}}</text>
-              <image src="/image/all/+.png" style="float:right;" id="{{category.id}}" catchtap="add" />
-          </view>
-          </view>
+    <view class="index-category" style="padding-top:10px;padding-bottom: 135px;">
+        <navigator class="index-category-item" wx:for="{{category_list}}" wx:for-item="category"
+                   wx:key="{{category.id}}">
+            <view class="index-category-item-icon" style="position: relative;">
+                <image class="index-category-item-icon-image" src="/image/all/fd.png"/>
+                <view style="position: absolute;top:-15px;right:-30px;border-radius: 30px;background:#F6E65D;color:red;">
+                    {{category.luckBagMoney}}元
+                </view>
+            </view>
+            <view style="padding-top:20px;">
+                <view class="shop-add-down" style="margin:0 auto;">
+                    <image src="/image/all/-.png" style="float:left;" id="{{category.id}}" catchtap="down"/>
+                    <text>{{luckBagMoneyList[category.id].num}}</text>
+                    <image src="/image/all/+.png" style="float:right;" id="{{category.id}}" catchtap="add"/>
+                </view>
+            </view>
         </navigator>
     </view>
     <view class="footer">
         <view>
-            <image src="/image/all/dfd.png" style="width:{{window_width}}px;height:100%;" />
+            <image src="/image/all/dfd.png" style="width:{{window_width}}px;height:145px;"/>
         </view>
-        <view style="position: absolute;bottom:15px;left:{{window_width/2-60}}px;">
-            <van-button wx:if="{{luckBagTotalPrice==0}}">立即付款</van-button>
-            <van-button bindtap="bindCheckout" wx:else>立即付款({{luckBagTotalPrice}}元)</van-button>
+        <view style="position: relative;bottom:15px;display: block;">
+            <view class="payment">
+                <van-button wx:if="{{luckBagTotalPrice==0}}">立即付款</van-button>
+                <van-button bindtap="bindCheckout" wx:else>立即付款({{luckBagTotalPrice}}元)</van-button>
+            </view>
         </view>
     </view>
 </view>

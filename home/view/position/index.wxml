@@ -17,7 +17,7 @@
         </view>
     </view>
     <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-        <van-area columns-num="1" area-list="{{ areaList }}" bind:confirm="areaSelect"/>
+        <van-area columns-num="1" area-list="{{ areaList }}" bind:cancel="cancel" bind:confirm="areaSelect"/>
     </van-popup>
     <view class="weui-panel weui-panel_access">
         <view wx:if="{{selectTab=='店铺自提'}}" style="height:30px;line-height:30px;padding-left:10px;">附近的自提点</view>

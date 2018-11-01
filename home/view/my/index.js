@@ -58,7 +58,7 @@ Page({
 
     },
     onShow: function () {
-        this.handleLoad();
+        //this.handleLoad();
     },
     onHide: function () {
 

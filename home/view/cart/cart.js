@@ -232,7 +232,6 @@ Page({
         let shippingAddress = app.globalData.shippingAddress;
         let shopInfo = app.globalData.shopInfo;
         let shippingAddressType = app.globalData.shippingAddressType;
-        console.log(shippingAddressType);
         this.setData({
             shippingAddressType,
             shopInfo,
@@ -243,7 +242,6 @@ Page({
     },
     onReady: function () {
         let shippingAddressType = app.globalData.shippingAddressType;
-        console.log(shippingAddressType);
         this.setData({
             shippingAddressType
         });

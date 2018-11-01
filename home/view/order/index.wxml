@@ -1,13 +1,15 @@
 <view class="container">
     <view class="footer">
-      <van-tabs active="{{orderStatus}}" bind:change="onChange">
-        <van-tab title="全部订单"></van-tab>
-        <van-tab title="代付款"></van-tab>
-        <van-tab title="待收货"></van-tab>
-        <van-tab title="退款/售后"></van-tab>
-      </van-tabs>
+        <van-tabs active="{{activeStatus}}" bind:change="onChange">
+            <van-tab title="全部订单"></van-tab>
+            <van-tab title="代付款"></van-tab>
+            <van-tab title="待收货"></van-tab>
+            <van-tab title="退款/售后"></van-tab>
+        </van-tabs>
     </view>
-    <scroll-view style="width:100%;margin-top:40px;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower">
+    <scroll-view style="width:100%;margin-top:40px;height: {{window_height}}px" scroll-y="true"
+                 bindscrolltoupper="upper"
+                 bindscrolltolower="lower">
         <view class="margin-top" wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.id}}">
             <view class="border">
                 <van-row>
@@ -19,19 +21,24 @@
                 <navigator url="/view/order/detail?id={{order.id}}">
                     <van-row>
                         <van-col offset="1" span="19">
-                            <image src="/image/1933457.jpg" style="width:30px;height:30px;vertical-align:middle;" />
+                            <view wx:if="{{order.productOrderResultsList.length>0}}">
+                                <image wx:for="{{order.productOrderResultsList}}" wx:for-item="product"
+                                        src="{{hosts+product.img}}"
+                                        style="width:30px;height:30px;vertical-align:middle;"/>
+                            </view>
                         </van-col>
-                        <van-col span="4" style="text-align:center;">
-                            <van-icon name="arrow" />
+                        <van-col span="4" style="float:right">
+                            <van-icon style="padding-right: 15px;" name="arrow"/>
                         </van-col>
                     </van-row>
                 </navigator>
             </view>
             <view class="border">
-               <van-row>
-                   <van-col offset="1" span="19">共{{order.productOrderList.num}}件商品  ￥{{order.productOrderList.money}}</van-col>
-                   <van-col span="4"></van-col>
-               </van-row>
+                <van-row>
+                    <van-col offset="1" span="19">共{{order.count}}件商品 ￥{{order.countMoney}}
+                    </van-col>
+                    <van-col span="4"></van-col>
+                </van-row>
             </view>
         </view>
     </scroll-view>

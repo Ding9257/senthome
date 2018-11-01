@@ -34,7 +34,7 @@
     flex-direction: column;
     align-items: center;
     height: 250rpx;
-    background: #F1E22D;
+    background: #FADE55;
 }
 
 .userinfo-avatar {

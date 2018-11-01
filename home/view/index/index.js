@@ -5,6 +5,7 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
+        imgWidth:30,
         banner_list: [
             {url: "/image/banner.png"}
         ],

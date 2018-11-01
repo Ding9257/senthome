@@ -21,16 +21,45 @@ Page({
 
     },
     onLoad: function (option) {
+        // let productList = [];
+        // this.setData({
+        //     userId: app.globalData.userInfo.userId,
+        //     productList
+        // });
+        // //商品分类
+        // request({
+        //     url: '/product/typeList',
+        //     method: "POST",
+        //     data: {sid: this.data.shopInfo.id}
+        // }).then((data) => {
+        //     console.log(data);
+        //     this.setData({
+        //         categoryList: data.data,
+        //         categoryId: data.data[0]
+        //     });
+        //     this.getShop();
+        // }).catch(err => {
+        //     console.log(err);
+        // });
+    },
+    onReady: function () {
+
+    },
+    onShow: function () {
+        let productList = [];
         this.setData({
-            userId: app.globalData.userInfo.userId
+            shopCart: app.globalData.shopCart,
+            productList
         });
-        //商品分类
+        let shopInfo = app.globalData.shopInfo;
+        this.setData({
+            shopInfo
+        })
         request({
             url: '/product/typeList',
             method: "POST",
-            data: {}
+            data: {sid: shopInfo.id, status: 1}
         }).then((data) => {
-            console.log(data);
             this.setData({
                 categoryList: data.data,
                 categoryId: data.data[0]
@@ -40,31 +69,21 @@ Page({
             console.log(err);
         });
     },
-    onReady: function () {
-        console.log("onReady");
-    },
-    onShow: function () {
-        console.log("show");
-        this.setData({
-            shopCart: app.globalData.shopCart
-        });
-    },
     onHide: function () {
-        console.log("onHide");
+
     },
     onPullDownRefresh: function () {
-        console.log("onPullDownRefresh");
+
     },
     onReachBottom: function () {
-        console.log("onReachBottom");
+
     },
     onShareAppMessage: function () {
-        console.log("onShareAppMessage");
+
     },
     handleCategory: function (event) {
         //选择的商品分类
         var categoryId = event.currentTarget.id;
-        console.log(categoryId);
         var productList = [];
         let currentPage = 1;
         this.setData({
@@ -78,9 +97,8 @@ Page({
         request({
             url: '/product/listType',
             method: "POST",
-            data: {type: this.data.categoryId, pageNo: this.data.currentPage, sid: this.data.shopInfo.id}
+            data: {type: this.data.categoryId, pageNo: this.data.currentPage, sid: this.data.shopInfo.id, status: 1}
         }).then((data) => {
-            console.log(data);
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {
