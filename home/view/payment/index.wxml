@@ -11,12 +11,13 @@
         <view class="border cell">
             <van-row>
                 <van-col span="6">代金券</van-col>
-                <navigator url="/view/voucher/index">
-                    <van-col span="18" style="text-align:right;">
-                        <text>0张可用代金券</text>
+                <van-col span="18" style="text-align:right;">
+                    <view bindtap="openPopup">
+                        <text wx:if="{{!!couponText}}">{{couponText}}</text>
+                        <text wx:else>{{couponUseNum}}张可用代金券</text>
                         <van-icon name="arrow"/>
-                    </van-col>
-                </navigator>
+                    </view>
+                </van-col>
             </van-row>
         </view>
     </view>
@@ -63,4 +64,7 @@
         </van-row>
     </view>
 </view>
+<van-popup show="{{ popupStatus }}" z-index="9999999" position="bottom">
+    <van-area columns-num="1" area-list="{{ couponProvinceList }}" bind:cancel="cancel" bind:confirm="offer"/>
+</van-popup>
 <van-toast id="van-toast"/>

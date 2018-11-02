@@ -6,6 +6,8 @@
     "van-col": "./../../dist/col/index",
     "van-icon": "./../../dist/icon/index",
     "van-toast": "./../../dist/toast/index",
+    "van-popup": "./../../dist/popup/index",
+    "van-area": "./../../dist/area/index",
     "van-button": "./../../dist/button/index"
   }
 }

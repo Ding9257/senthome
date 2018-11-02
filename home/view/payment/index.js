@@ -1,11 +1,9 @@
-const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
 const app = getApp();
 import Toast from "../../dist/toast/toast";
 
 Page({
     data: {
-        color: constant.color,
         member_total_amount: parseFloat(0).toFixed(2),
         WAIT_PAY: 0,
         WAIT_SEND: 0,
@@ -14,16 +12,48 @@ Page({
         productList: [],
         userInfo: {},
         shopInfo: {},
+        couponList: {},
+        couponProvinceList: {
+            1: '10:00-12:00',
+            2: '12:00-14:00',
+            3: '14:00-16:00'
+        },
+        popupStatus: false,
         productOrder: [],
-        //代金券实际减少的金额
-        couponPrice: 0,
         //代金券编号
         cid: "",
+        //代金券实际减少的金额
+        couponPrice: 0,
+        couponText: "",
+        couponUseNum: 0,
         typeOrder: 0,
         WAIT_RECEIVE: 0
     },
     onUnload: function (data) {
 
+    },
+    openPopup: function () {
+        if (this.data.couponUseNum > 0) {
+            this.setData({
+                popupStatus: true
+            });
+        }
+    },
+    cancel: function () {
+        this.setData({
+            popupStatus: false
+        });
+    },
+    offer: function (e) {
+        let id = e.detail.values[0].code;
+        let cid = this.data.couponList[id].cid;
+        let coupon = this.data.couponList[id].coupon;
+        let couponPrice = coupon.reduceMoney;
+        let couponText = `满${coupon.money}减${couponPrice}`;
+        this.setData({
+            cid, couponPrice, couponText,
+            popupStatus: false
+        });
     },
     onLoad: function (data) {
         let total = data.total || 0;
@@ -34,21 +64,47 @@ Page({
             productOrder.push({pid: item.id, num: item.num});
         }
         this.setData({
-            userInfo: app.globalData.userInfo,
-            shopInfo: app.globalData.shopInfo,
             productList,
             productOrder,
             typeOrder,
             total
         });
-
-
+    },
+    getCoupon: function () {
+        request({
+            url: "/coupon/findByCoupon",
+            method: "POST",
+            data: {userId: this.data.userInfo.userId}
+        }).then(data => {
+            let object = {};
+            let list = {};
+            let total = this.data.total;
+            let couponUseNum = 0;
+            for (let item of data.data) {
+                if (total >= item.coupon.money) {
+                    couponUseNum++;
+                    object[item.id] = `满${item.coupon.money}减${item.coupon.reduceMoney}`;
+                    list[item.id] = item;
+                }
+            }
+            if (couponUseNum > 0) {
+                this.setData({
+                    couponProvinceList: {province_list: object},
+                    couponUseNum,
+                    couponList: list
+                })
+            }
+        })
     },
     onReady: function () {
 
     },
     onShow: function () {
-
+        this.setData({
+            shopInfo: app.globalData.shopInfo,
+            userInfo: app.globalData.userInfo
+        });
+        this.getCoupon();
     },
     onHide: function () {
 

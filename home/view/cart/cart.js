@@ -44,11 +44,12 @@ Page({
             title: '操作中',
             mask: true
         });
-        var index = parseInt(e.currentTarget.dataset.index);
-        var num = this.data.carts[index]["num"];
+        let index = parseInt(e.currentTarget.dataset.index);
+        let num = this.data.carts[index]["num"];
         // 如果只有0件了，就删除
         num--;
-        var carts = this.data.carts;
+        let carts = this.data.carts;
+        let id = this.data.carts[index]["id"];
         if (num >= 1) {
             // 只有大于一件的时候，才能normal状态，否则disable状态
             var minusStatus = num <= 1 ? 'disabled' : 'normal';
@@ -63,14 +64,15 @@ Page({
                 minusStatuses: minusStatuses
             });
         } else {
-            let id = this.data.carts[index]["id"];
-            carts = carts.splice(index, 1);
-            this.delete(id);
+            carts.splice(index, 1);
+            this.setData({
+                carts: carts
+            });
         }
-        var id = this.data.carts[index]["id"];
         let shopCart = app.globalData.shopCart;
         if (!util.isEmpty(shopCart[id])) {
-            shopCart[id].num = num
+            shopCart[id].num = num;
+            app.globalData.shopCart = shopCart;
         }
         wx.hideLoading();
         this.sum();
@@ -89,7 +91,7 @@ Page({
         // 购物车数据
         var carts = this.data.carts;
         carts[index].num = num;
-        carts[index].selected = true;
+        //carts[index].selected = true;
         // 按钮可用状态
         var minusStatuses = this.data.minusStatuses;
         minusStatuses[index] = minusStatus;
@@ -101,7 +103,8 @@ Page({
         var id = this.data.carts[index]["id"];
         let shopCart = app.globalData.shopCart;
         if (!util.isEmpty(shopCart[id])) {
-            shopCart[id].num = num
+            shopCart[id].num = num;
+            app.globalData.shopCart = shopCart;
         }
         wx.hideLoading();
         this.sum();
@@ -144,7 +147,6 @@ Page({
         this.setData({
             carts: carts
         });
-        // update database
 
         wx.hideLoading();
 
@@ -258,11 +260,11 @@ Page({
         total = total.toFixed(2);
         // 写回经点击修改后的数组
         this.setData({
-            carts: carts,
             total: total
         });
     },
     showGoods: function (e) {
+        return false;
         // 点击购物车某件商品跳转到商品详情
         var objectId = e.currentTarget.dataset.objectId;
         wx.navigateTo({

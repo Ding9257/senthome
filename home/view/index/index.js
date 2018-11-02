@@ -48,7 +48,6 @@ Page({
         this.getDianZhangRecommend();
         //轮播图
         this.carouselMap();
-
     },
     onReady: function () {
         let shopInfo = app.globalData.shopInfo
@@ -82,7 +81,6 @@ Page({
             method: "POST",
             data: {isTop: "1", sid: this.data.shopInfo.id}
         }).then(res => {
-            console.log(res);
             let list = [];
             for (let key in res.data) {
                 list = list.concat(res.data[key]);

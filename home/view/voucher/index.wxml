@@ -8,8 +8,8 @@
                     <van-col span="14">
                         <view style="border-right: solid 1px #f8d748;height: 60px;">
                             <text style="font-size:20px;">￥</text>
-                            <text style="font-size:36px;">{{item.price}}</text>
-                            <text style="font-size:12px;padding-left:15px;display: inline-block;">{{item.factor}}</text>
+                            <text style="font-size:36px;">{{item.coupon.reduceMoney}}</text>
+                            <text style="font-size:12px;padding-left:15px;display: inline-block;">满{{item.coupon.money}}使用</text>
                         </view>
                     </van-col>
                     <van-col offset="3" span="7">

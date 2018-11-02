@@ -20,11 +20,11 @@ Page({
 
     },
     onShow: function () {
-        let userId = app.globalData.userInfo.id;
+        let userId = app.globalData.userInfo.userId;
         this.setData({
             userId
         });
-        this.getOrder();
+        this.getOrder(userId);
     },
     onHide: function () {
 
@@ -38,13 +38,14 @@ Page({
     onShareAppMessage: function () {
 
     },
-    getOrder: function () {
+    getOrder: function (userId) {
         request({
             url: '/coupon/findByCoupon',
             method: "POST",
-            data: {userId: this.data.userId}
+            data: {userId}
         }).then(res => {
-
+            console.log(res);
+            this.setData({voucherList: res.data})
         })
     }
 });
