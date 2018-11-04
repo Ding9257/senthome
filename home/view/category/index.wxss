@@ -1,72 +1,72 @@
 .category-left {
-  width: 100px;
-  height: 100%;
-  background: #fff;
+    width: 180rpx;
+    height: 100%;
+    background: #fff;
+    border-right: #ddd 1rpx solid;
 }
 
 .category-left-item {
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-bottom: #ddd 1rpx solid;
-  border-right: #ddd 1rpx solid;
+    height: 86rpx;
+    line-height: 86rpx;
+    background-color: #fff;
+    text-align: center;
+    border-bottom: #ddd 1rpx solid;
 }
 
 .category-left-item-active {
-  background: #e8e8ed;
-  border-left: #c81623 2px solid;
-  border-right: #e8e8ed 1rpx solid;
+    background: #f9f9f9;
+
 }
 
 .category-left-item-bottom {
-  border-right: #ddd 1rpx solid;
+    border-right: #ddd 1rpx solid;
 }
 
 .category-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
 }
 
 .category-right-item {
-  border: #ddd 1rpx solid;
-  background: #fff;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border-radius: 4px;
-  overflow: hidden;
+    border-bottom: #ddd 1rpx solid;
+    border-left: #ddd 1rpx solid;
+    background: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
 }
 
 .category-right-item-name {
-  margin-top: 5px;
-  padding-left: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    font-size: 24rpx;
+    font-family: "Microsoft YaHei";
+    color:#3b3b3b;
 }
 
 .category-right-item-price {
-  color: #c81623;
-  margin-top: 2px;
-  margin-bottom: 8px;
-  padding-left: 3px;
+    font-size: 22rpx;
+    font-family: "Microsoft YaHei";
+    color:#fc0438;
 }
 
 .van-card {
-    width:100%;
+    width: 100%;
 }
+
 .shop-add-down {
-    width:70px;
-    height:25px;
-    line-height:25px;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
 }
-.shop-add-down image{
-    width:20px;
-    height:20px;
+
+.shop-add-down image {
+    width: 20px;
+    height: 20px;
 }
+
 .shop-add-down text {
-    display:inline-block;
-    width:30px;
-    text-align:center;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
 }

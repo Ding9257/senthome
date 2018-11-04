@@ -21,26 +21,7 @@ Page({
 
     },
     onLoad: function (option) {
-        // let productList = [];
-        // this.setData({
-        //     userId: app.globalData.userInfo.userId,
-        //     productList
-        // });
-        // //商品分类
-        // request({
-        //     url: '/product/typeList',
-        //     method: "POST",
-        //     data: {sid: this.data.shopInfo.id}
-        // }).then((data) => {
-        //     console.log(data);
-        //     this.setData({
-        //         categoryList: data.data,
-        //         categoryId: data.data[0]
-        //     });
-        //     this.getShop();
-        // }).catch(err => {
-        //     console.log(err);
-        // });
+
     },
     onReady: function () {
 

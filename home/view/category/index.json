@@ -6,6 +6,7 @@
     "van-col": "./../../dist/col/index",
     "van-tab": "./../../dist/tab/index",
     "van-tabs": "./../../dist/tabs/index",
+    "no-merchant": "./../../component/nomerchant/index",
     "van-button": "./../../dist/button/index"
   }
 }

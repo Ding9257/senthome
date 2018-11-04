@@ -1,98 +1,114 @@
-<view class="weui-panel weui-panel_access">
-    <view class="weui-panel__bd margin-top" style="border:dashed 3px #f8d549;">
-        <view class="weui-media-box weui-media-box_appmsg"
-              hover-class="weui-cell_active">
-            <view style="width:20px" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image style="width:15px;height:20px;" src="/image/all/dw.png"/>
+<view wx:if="{{!!shopInfo&&!!shopInfo.name}}">
+    <view wx:if="{{carts.length>0}}">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd margin-top" style="border:dashed 3px #f8d549;">
+                <view class="weui-media-box weui-media-box_appmsg"
+                      hover-class="weui-cell_active">
+                    <view style="width:20px" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image style="width:15px;height:20px;" src="/image/all/dw.png"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view wx:if="{{shippingAddressType==1&&!!shippingAddress.name}}" class="weui-media-box__title">
+                            <view class="address-font-size">{{shippingAddress.name}}</view>
+                            <view class="address-font-size">{{shippingAddress.phone}}</view>
+                            <view class="address-font-size">{{shippingAddress.contentAddress}}</view>
+                        </view>
+                        <view wx:if="{{shippingAddressType==0&&!!shopInfo.name}}" class="weui-media-box__title">
+                            <view class="address-font-size">{{shopInfo.name}}</view>
+                            <view class="address-font-size">{{shopInfo.address}}</view>
+                        </view>
+                        <view wx:if="{{shippingAddressType==2}}" class="weui-media-box__title">
+                            <view class="address-font-size" style="font-size:16px;">地址为空</view>
+                        </view>
+                    </view>
+                    <navigator open-type="navigate" url="/view/position/index?isSelect=true">
+                        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size:12px;">
+                            {{!!shippingAddress.name?'修改':'选择'}}
+                        </view>
+                    </navigator>
+                </view>
             </view>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view wx:if="{{shippingAddressType==1&&!!shippingAddress.name}}" class="weui-media-box__title">
-                    <view class="address-font-size">{{shippingAddress.name}}</view>
-                    <view class="address-font-size">{{shippingAddress.phone}}</view>
-                    <view class="address-font-size">{{shippingAddress.contentAddress}}</view>
-                </view>
-                <view wx:if="{{shippingAddressType==0&&!!shopInfo.name}}" class="weui-media-box__title">
-                    <view class="address-font-size">{{shopInfo.name}}</view>
-                    <view class="address-font-size">{{shopInfo.address}}</view>
-                </view>
-                <view wx:if="{{shippingAddressType==2}}" class="weui-media-box__title">
-                    <view class="address-font-size" style="font-size:16px;">地址为空</view>
-                </view>
-            </view>
-            <navigator open-type="navigate" url="/view/position/index?isSelect=true">
-                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size:12px;">
-                    {{!!shippingAddress.name?'修改':'选择'}}
-                </view>
-            </navigator>
         </view>
-    </view>
-</view>
-<view class="weui-cells weui-cells_after-title margin-top">
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd address-font-size">提货时间</view>
-        <view class="weui-cell__ft order-info" bindtap="selectTime">{{!!currenTime?currenTime:"请选择时间"}}</view>
-    </view>
-</view>
-<van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-    <van-area columns-num="1" area-list="{{ timeLimit }}" bind:cancel="cancel" bind:confirm="time"/>
-</van-popup>
-<view class="carts-list margin-top">
-    <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods" data-object-id="{{item.id}}">
-        <view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart=""
-              bindtouchmove="" bindtouchend="">
-            <!-- 复选框图标 -->
-            <van-icon style="padding-left:10px;line-height:65px;"
-                      color="{{item.selected || selectedAllStatus ? '#f9de56' : '#cccece'}}"
-                      name="{{item.selected || selectedAllStatus? 'passed' : 'check'}}" size="20"
-                      catchtap="bindCheckbox"
-                      data-index="{{index}}"/>
-            <!-- 缩略图 -->
-            <view>
-                <image class="carts-image" src="{{hosts+item.product.img}}" mode="aspectFill"/>
+        <view class="weui-cells weui-cells_after-title margin-top">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd address-font-size">{{shippingAddressType!=0?"收货时间":"提货时间"}}</view>
+                <view class="weui-cell__ft order-info" bindtap="selectTime">{{!!currenTime?currenTime:"请选择时间"}}</view>
             </view>
-            <view class="carts-text">
-                <!-- 商品标题 -->
-                <text class="carts-title">{{item.product.name}}</text>
-                <view class="carts-subtitle">
-                    <!-- 价格 -->
-                    <text class="carts-price">{{item.product.money}}</text>
-                    <!-- 数量加减 -->
-                    <view class="shop-add-down">
-                        <image src="/image/all/-.png" style="float:left;" data-index="{{index}}"
-                               catchtap="bindMinus"/>
-                        <text>{{item.num}}</text>
-                        <image src="/image/all/+.png" style="float:right;" data-index="{{index}}"
-                               catchtap="bindPlus"/>
+        </view>
+        <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
+            <van-area columns-num="1" area-list="{{ timeLimit }}" bind:cancel="cancel" bind:confirm="time"/>
+        </van-popup>
+        <view class="carts-list">
+            <view wx:for="{{carts}}" class="carts-container" wx:key="index" bindtap="showGoods"
+                  data-object-id="{{item.id}}">
+                <view class="carts-item" style="left: {{itemLefts[index]}}px;" data-index="{{index}}" bindtouchstart=""
+                      bindtouchmove="" bindtouchend="">
+                    <!-- 复选框图标 -->
+                    <van-icon style="padding-left:10px;line-height:65px;"
+                              color="{{item.selected || selectedAllStatus ? '#f9de56' : '#cccece'}}"
+                              name="{{item.selected || selectedAllStatus? 'passed' : 'check'}}" size="20"
+                              catchtap="bindCheckbox"
+                              data-index="{{index}}"/>
+                    <!-- 缩略图 -->
+                    <view>
+                        <image class="carts-image" src="{{hosts+item.product.img}}" mode="aspectFill"/>
+                    </view>
+                    <view class="carts-text">
+                        <!-- 商品标题 -->
+                        <text class="carts-title">{{item.product.name}}</text>
+                        <view class="carts-subtitle">
+                            <!-- 价格 -->
+                            <text class="carts-price">{{item.product.money}}</text>
+                            <!-- 数量加减 -->
+                            <view class="shop-add-down">
+                                <image src="/image/all/-.png" style="float:left;" data-index="{{index}}"
+                                       catchtap="bindMinus"/>
+                                <text>{{item.num}}</text>
+                                <image src="/image/all/+.png" style="float:right;" data-index="{{index}}"
+                                       catchtap="bindPlus"/>
+                            </view>
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
-</view>
-
-<view class="message">
-    <form bindsubmit="handleSubmit">
-        <view class="weui-cells weui-cells_after-title margin-top">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">捎口信:</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <textarea name="delivery_street" class="weui-textarea" placeholder="如果您需要小店的其他商品请留言"
-                              style="height: 3.3em" value="{{delivery_street}}"/>
+        <view style="background-color: #fff;margin-top: 4rpx">
+            <view class="message-title left-dis">捎口信</view>
+            <view style="height: 200rpx;border-top: solid 1px #efefef;">
+                <view style="padding: 35rpx">
+            <textarea maxlength="50" name="delivery_street" class="message-desc" placeholder-class="message-desc"
+                      placeholder="如果您需要小店的其他商品请留言"
+                      style="height: 165rpx" value="{{delivery_street}}"/>
                 </view>
             </view>
         </view>
-    </form>
-</view>
 
-<view class="carts-footer">
-    <view class="select-and-amount" bindtap="bindSelectAll" style="padding-left:10px;">
-        <van-icon size="20" color="{{selectedAllStatus ? '#f9de56' : '#cccece'}}"
-                  name="{{selectedAllStatus ? 'passed' : 'check'}}"/>
-        <text>全选</text>
-        <text>{{total}}</text>
+        <view class="carts-footer">
+            <view class="select-and-amount" bindtap="bindSelectAll" style="padding-left:10px;">
+                <van-icon size="20" color="{{selectedAllStatus ? '#f9de56' : '#cccece'}}"
+                          name="{{selectedAllStatus ? 'passed' : 'check'}}"/>
+                <text>全选</text>
+                <text>{{total}}</text>
+            </view>
+            <view class="button" bindtap="bindCheckout">选好了</view>
+        </view>
+        <van-toast id="van-toast"/>
     </view>
-    <view class="button" bindtap="bindCheckout">选好了</view>
+    <view wx:else style="background-color: #fff;height: {{window_height}}px;">
+        <view style="height: 2rpx;background-color: #f1f1f1"></view>
+        <view style="text-align: center;padding-top: 190rpx;">
+            <image src="/image/new/gwc.png" style="width:230rpx;height: 230rpx;"/>
+        </view>
+        <view style="padding-top: 80rpx;text-align: center;">
+            <text style="font-family: 'Microsoft YaHei';font-size: 32rpx;color:#999999;">暂时没有商品哦！</text>
+        </view>
+        <view style="padding-top: 30rpx;text-align: center;">
+            <view bindtap="go_to_cat" style="border-radius: 10rpx;border:solid 1px #ffd600;margin: 0 auto;width:170rpx;height: 70rpx;line-height:70rpx;font-family: 'Microsoft YaHei';font-size: 32rpx;color:#ffd600;">
+                去看看
+            </view>
+        </view>
+    </view>
 </view>
-<van-toast id="van-toast"/>
+<view wx:else>
+    <no-merchant></no-merchant>
+</view>

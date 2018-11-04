@@ -5,11 +5,12 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
-        imgWidth:30,
+        imgWidth: 30,
         banner_list: [
             {url: "/image/banner.png"}
         ],
         areaNareaNameame: "请选择",
+        shopCart: {},
         shopInfo: {},
         category_list: [],
         product_list: [],
@@ -83,11 +84,24 @@ Page({
             data: {isTop: "1", sid: this.data.shopInfo.id}
         }).then(res => {
             let list = [];
+            let shopCart = app.globalData.shopCart;
+            console.log(res.data);
             for (let key in res.data) {
-                list = list.concat(res.data[key]);
+                let items = res.data[key];
+                if (!util.isEmpty(items)) {
+                    list = list.concat(items);
+                    for (let item of items) {
+                        if (util.isEmpty(shopCart[item.id])) {
+                            shopCart[item.id] = {num: 0, otherStock: item.otherStock, product: item};
+                        }
+                    }
+                }
+
             }
+            app.globalData.shopCart = shopCart;
             this.setData({
-                dianZhang_list: list
+                dianZhang_list: list,
+                shopCart
             });
         })
     },
@@ -130,29 +144,23 @@ Page({
         wx.navigateTo({
             url
         });
-
-
-        // let data = {};
-        // if (target == 2) {
-        //     data.sid = this.data.shopInfo.id;
-        // }
-        // if (target == 1) {
-        //
-        // }
-        // request({
-        //     url: httpUrl,
-        //     method: "POST",
-        //     data: data
-        // }).then(res => {
-        //     wx.navigateTo({
-        //         url
-        //     })
-        // });
     },
     goToshop: function () {
         //判断是否有商品
         wx.switchTab({
             url: "/view/category/index"
+        })
+    },
+    addShop: function (e) {
+        let id = e.target.dataset.id;
+        let shopCart = this.data.shopCart;
+        let num = shopCart[id].num;
+        //判断是否大于库存
+        num++;
+        shopCart[id].num = num;
+        app.globalData.shopCart = shopCart;
+        this.setData({
+            shopCart
         })
     }
 });

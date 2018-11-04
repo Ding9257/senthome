@@ -5,6 +5,8 @@ import Toast from './../../dist/toast/toast';
 const app = getApp();
 Page({
     data: {
+        window_width: app.globalData.window_width,
+        window_height: app.globalData.window_height,
         carts: [],
         hosts: app.globalData.hosts,
         timeLimit: {
@@ -366,5 +368,10 @@ Page({
             }
         }
         return {currentShop: shop, shopCart: cache};
+    },
+    go_to_cat: function () {
+        wx.switchTab({
+            url: '/view/category/index'
+        });
     }
 })

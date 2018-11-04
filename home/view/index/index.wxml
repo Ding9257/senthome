@@ -1,4 +1,4 @@
-<view class="container">
+<view wx:if="{{!!shopInfo&&!!shopInfo.name}}" class="container">
     <view class="top">
         <view style="height: 400rpx;background: #ffd600;">
             <view style="padding-top:10px;">
@@ -74,24 +74,30 @@
             <view style="padding-top:25rpx;padding-left: 30rpx;">
                 <scroll-view class="scroll-view" scroll-x>
                     <view class="scroll-view-item_H" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-                        <navigator  url="/view/cart/detail?id={{item.id}}">
-                            <view style="text-align:center;height: 300rpx;background-color: #fff;">
+
+                        <view style="text-align:center;height: 300rpx;background-color: #fff;">
+                            <navigator url="/view/cart/detail?id={{item.id}}">
                                 <view>
                                     <image src="{{hosts+item.img}}" style="width: 156rpx;height: 156rpx"/>
                                 </view>
-                                <view class="van-ellipsis"
-                                      style="font-size:20rpx;font-family: 'Microsoft YaHei';color:#3b3b3b;">
-                                    {{item.name}}
-                                </view>
-                                <view style="text-align: left;color:#fc0438;font-size:20rpx;">
-                                    <text>￥{{item.money}}</text>
-                                    <image style="width: 32rpx;height: 32rpx;float: right" src="/image/all/gwc.png" />
-                                </view>
+                            </navigator>
+                            <view class="van-ellipsis"
+                                  style="font-size:20rpx;font-family: 'Microsoft YaHei';color:#3b3b3b;">
+                                {{item.name}}
                             </view>
-                        </navigator>
+                            <view style="text-align: left;color:#fc0438;font-size:20rpx;">
+                                <text>￥{{item.money}}</text>
+                                <image bindtap="addShop" data-id="{{item.id}}"
+                                       style="width: 32rpx;height: 32rpx;float: right" src="/image/all/gwc.png"/>
+                            </view>
+                        </view>
+
                     </view>
                 </scroll-view>
             </view>
         </view>
     </view>
+</view>
+<view wx:else>
+    <no-merchant></no-merchant>
 </view>

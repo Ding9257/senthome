@@ -4,6 +4,7 @@
     "van-popup": "./../../dist/popup/index",
     "van-area": "./../../dist/area/index",
     "van-toast": "./../../dist/toast/index",
+    "no-merchant": "./../../component/nomerchant/index",
     "van-icon": "./../../dist/icon/index"
   }
 }

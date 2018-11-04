@@ -122,5 +122,8 @@ Page({
         wx.navigateTo({
             url: `/view/payment/index?typeOrder=1&total=${this.data.luckBagTotalPrice}&product=${JSON.stringify(selectLuckBag)}`
         });
+    },
+    go_to_payment:function () {
+
     }
 });

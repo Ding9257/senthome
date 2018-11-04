@@ -1,0 +1,27 @@
+.img {
+    padding-top: 190rpx;
+    text-align: center;
+}
+
+.img image {
+    width: 230rpx;
+    height: 230rpx;
+}
+.mer-text{
+    padding-top: 80rpx;
+    text-align: center;
+}
+.mer-text text{
+    font-size: 32rpx;
+    font-family: "Microsoft YaHei";
+    color:#999999;
+}
+.change-address{
+    width: 170rpx;height: 70rpx;line-height: 70rpx;
+    border: solid 1px #ffd600;
+    font-size: 30rpx;font-family:"Microsoft YaHei";
+    color: #ffd600;
+    text-align: center;
+    border-radius: 10rpx;
+    margin: 0 auto;
+}

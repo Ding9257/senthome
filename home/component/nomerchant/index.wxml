@@ -1,0 +1,12 @@
+<view>
+    <view style="height: 2px;background-color: #ededed"></view>
+    <view class="img">
+        <image src="/image/new/jzsb.png"/>
+    </view>
+    <view class="mer-text">
+        <text>抱歉，当前位置暂未开通服务~</text>
+    </view>
+    <view style="padding-top: 30rpx;">
+        <view bindtap="changeAddress" class="change-address">换个地址</view>
+    </view>
+</view>
