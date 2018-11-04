@@ -1,30 +1,27 @@
 .index-category {
     overflow: hidden;
-    padding-bottom: 100px;
 }
 
 .index-category-item {
     float: left;
-    width: 33.33%;
+    width: 82rpx;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 8px;
+    padding-bottom: 60rpx;
+    padding-right: 98rpx;
 }
 
 .index-category-item-icon {
     position: relative;
-    margin-left: -25px;
-    margin-bottom: 5px;
+    margin-left: -41rpx;
     left: 50%;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
+    width: 82rpx;
+    height: 86rpx;
 }
 
 .index-category-item-icon-image {
-    margin-top: 10px;
-    width: 60px;
-    height: 60px;
+    width: 82rpx;
+    height: 86rpx;
+    padding-left: 19rpx;
 }
 
 .index-product {
@@ -151,14 +148,7 @@ page {
 
 .footer {
     width: 100%;
-    height: 145px;
-    bottom: 0;
-}
-
-.footer button {
-    border-radius: 30px;
-    background: #F6E65D;
-    color: #D84031;
+    height: 262rpx;
 }
 
 .custom-button {
@@ -173,9 +163,9 @@ page {
 }
 
 .shop-add-down {
-    width: 70px;
-    height: 25px;
-    line-height: 25px;
+    width: 120rpx;
+    height: 26rpx;
+    line-height: 26rpx;
 }
 
 .shop-add-down image {
@@ -185,7 +175,9 @@ page {
 
 .shop-add-down text {
     display: inline-block;
-    width: 30px;
+    color: #fffffd;
+    font-size: 26rpx;
+    font-family: "Microsoft YaHei";
     text-align: center;
 }
 
@@ -193,6 +185,40 @@ page {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding-bottom: 70px;
+    padding-bottom: 48px;
     transform: translate(-50%, -50%);
+}
+.payment view{
+    width:425rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+    background: #f7c748;
+    color: #c94237;
+    text-align: center;
+}
+.luck-rule {
+    text-align: center;
+    background-color: #e8be89;width:140rpx;line-height: 36rpx;clear:both;height:36rpx;border-radius: 10rpx;font-family: 'Microsoft YaHei';font-size: 20rpx;color:#ccda33;
+}
+.luck-title {
+    width: 414rpx;
+    height: 112rpx;
+}
+
+.outer :after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.luck-price {
+    position: absolute;top:-10rpx;
+    right: -20px;
+    background:#F6E65D;color:red;
+    font-size: 20rpx;
+    width:35rpx;height: 35rpx;
+    border-radius: 35rpx;
 }

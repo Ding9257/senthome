@@ -1,5 +1,4 @@
 const constant = require("../../util/constant.js");
-const notification = require('../../util/notification.js');
 const storage = require("../../util/storage.js");
 const Quantity = require('../../component/quantity/index');
 
@@ -27,15 +26,8 @@ Page(Object.assign({}, Quantity, {
             }
         ]
     },
-    onUnload: function () {
-        notification.remove('notification_cart_index_load', this);
-    },
     onLoad: function () {
-        // notification.on('notification_cart_index_load', this, function (data) {
-        //     this.handleLoad();
-        // });
-        //
-        // this.handleLoad();
+
     },
     onReady: function () {
 

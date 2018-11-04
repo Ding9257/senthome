@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "佳到家",
-  "navigationBarBackgroundColor": "#FADE56",
+  "navigationBarBackgroundColor": "#ffd600",
   "usingComponents": {
     "van-card": "./../../dist/card/index",
     "van-row": "./../../dist/row/index",

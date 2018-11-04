@@ -19,6 +19,7 @@ Page({
 
     },
     onLoad: function () {
+        console.log(this.data.window_width);
         //获取定位
         if (util.isEmpty(this.shopInfo)) {
             app.getLngLat().then(data => {

@@ -1,5 +1,4 @@
 const constant = require("../../util/constant.js");
-const notification = require('../../util/notification.js');
 const http = require("../../util/http.js");
 const storage = require("../../util/storage.js");
 const Quantity = require('../../component/quantity/index');
@@ -111,33 +110,6 @@ Page(Object.assign({}, Quantity, {
     handleFavor: function () {
         wx.showToast({
             title: '收藏成功',
-            icon: 'success',
-            duration: 1500
-        });
-    },
-    handleAddCart: function () {
-        if (this.data.product_id == '') {
-            return;
-        }
-
-        storage.addCart({
-            sku_id: this.data.sku_id,
-            product_id: this.data.product_id,
-            product_name: this.data.product_name,
-            product_image_file: constant.host + this.data.product_image_file,
-            product_price: this.data.product_price,
-            product_quantity: this.data.product_quantity,
-            product_stock: this.data.product_quantity.max
-        });
-
-        this.setData({
-            cart_count: storage.getCart().length
-        });
-
-        notification.emit('notification_cart_index_load', '');
-
-        wx.showToast({
-            title: '加入成功',
             icon: 'success',
             duration: 1500
         });

@@ -1,101 +1,97 @@
 <view class="container">
     <view class="top">
-        <view style="padding-top:10px;">
-            <van-row class="center">
-                <van-col offset="1" span="22">
-                    <navigator open-type="navigate" url="/view/position/index?isSelect=true">
-                        <button class="button-radius">
-                            <van-row>
-                                <van-col>
-                                    <image src="/image/all/dw.png" class="button-img"/>
-                                </van-col>
-                                <van-col offset="1" span="18" class="button-text"
-                                         style="font-size:14px;padding-top:3px;">
-                                    送到家({{areaName}})
-                                </van-col>
-                                <van-col span="2">
+        <view style="height: 400rpx;background: #ffd600;">
+            <view style="padding-top:10px;">
+                <van-row>
+                    <van-col offset="1" span="22">
+                        <view class="positioning">
+                            <navigator open-type="navigate" url="/view/position/index?isSelect=true">
+                                <view style="float: left;">
+                                    <image style="height: 30rpx;width:20rpx;padding-left: 30rpx;"
+                                           src="/image/all/dw.png"/>
+                                </view>
+                                <view style="padding-left: 20rpx;" class="text">送到家({{areaName}})</view>
+                                <view style="float: right;">
                                     <image src="/image/all/xl.png"
-                                           style="position: absolute;width:8px;height:5px;padding-top:13px;right:10px;"/>
-                                </van-col>
-                            </van-row>
-                        </button>
-                    </navigator>
-                </van-col>
-            </van-row>
-        </view>
-        <view style="margin-top:10px;">
-            <van-row>
-                <van-col offset="1" span="6">
-                    <image src="{{hosts+shopInfo.img}}" style="width: 100px; height: 100px;border-radius:10px;"/>
-                </van-col>
-                <van-col offset="1" span="16">
-                    <view style="font-size:15px;color:#fff" class="van-ellipsis">{{shopInfo.name}}</view>
-                    <view style="font-size:12px;color:#fff;margin-top:15px;" class="van-ellipsis">
+                                           style="height: 14rpx;width:20rpx;padding-right: 50rpx;"/>
+                                </view>
+                            </navigator>
+                        </view>
+                    </van-col>
+                </van-row>
+            </view>
+            <view style="margin-top:20rpx;" class="shopInfo">
+                <view style="padding-left: 90rpx;width: 140rpx; height: 140rpx;">
+                    <image src="{{hosts+shopInfo.img}}" style="width: 140rpx; height: 140rpx;border-radius:10rpx;"/>
+                </view>
+                <view style="padding-left: 36rpx;padding-top:16rpx;width:{{window_width-140-90-36}}px">
+                    <view style="font-size:30rpx;" class="van-ellipsis text">{{shopInfo.name}}</view>
+                    <view style="font-size:20rpx;" class="van-ellipsis text">
                         {{'营业时间：'+!!shopInfo.businessHours?shopInfo.businessHours:''}}
                     </view>
-                    <view style="font-size:13px;color:#fff;margin-top:15px;" class="van-ellipsis">
+                    <view style="font-size:20rpx;" class="van-ellipsis text">
                         {{'商店地址：'+!!shopInfo.address?shopInfo.address:''}}
                     </view>
-                </van-col>
-            </van-row>
+
+                </view>
+            </view>
         </view>
-        <view style="padding-bottom:10px;" class="page-section page-section-spacing swiper">
-            <van-row>
-                <van-col offset="1" span="22">
-                    <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000"
-                            duration="500">
-                        <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.id}}">
-                            <image alt="{{banner.url}}"
-                                   style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;"
-                                   src="{{hosts+banner.name}}"/>
-                        </swiper-item>
-                    </swiper>
-                </van-col>
-            </van-row>
+        <view class="banner" style="left:30rpx">
+            <swiper indicator-dots="true" indicator-color="#fff" indicator-active-color="#a6a6a4" autoplay="false"
+                    interval="5000"
+                    duration="500">
+                <swiper-item class="slide-image" wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.id}}">
+                    <image alt="{{banner.url}}"
+                           style="width: 100%; height:100%;"
+                           src="{{hosts+banner.name}}"/>
+                </swiper-item>
+            </swiper>
         </view>
     </view>
     <view style="background: #fff;">
-        <view style="padding-top:10px">
+        <view style="padding-top:20rpx;padding-left:30rpx">
             <van-row>
-                <van-col span="10" offset="1">
-                    <!-- 商品选购 -->
-                    <view bindtap="goToshop">
-                        <image src="/image/all/1.png" style="width:{{window_width/2-imgWidth}}px;height: 182px;"/>
-                    </view>
-                </van-col>
-                <van-col span="12" style="padding-left: 20px;display: inline-block;">
-                    <view>
+                <!-- 商品选购 -->
+                <view bindtap="goToshop" style="display: inline-block">
+                    <image class="img-shadow" src="/image/all/1.png" style="width:330rpx;height: 334rpx;"/>
+                </view>
+                <view style="display: inline-block;padding-left: 25rpx;">
+                    <view data-target="1" bindtap="goToTarget">
                         <!-- 轻松夺宝 -->
-                        <view data-target="1" bindtap="goToTarget">
-                            <image src="/image/all/2.png" style="width:{{window_width/2-imgWidth+10}}px; height:85px;"/>
-                        </view>
+                        <image class="img-shadow" src="/image/all/2.png" style="width:332rpx; height:157rpx;"/>
                     </view>
-                    <view style="padding-top:6px;">
+                    <view style="padding-top:8rpx;" data-target="2" bindtap="goToTarget">
                         <!-- 惊喜福袋 -->
-                        <view data-target="2" bindtap="goToTarget">
-                            <image src="/image/all/3.png" style="width:{{window_width/2-imgWidth+10}}px; height:85px;"/>
-                        </view>
+                        <image class="img-shadow" src="/image/all/3.png" style="width:332rpx; height:157rpx;"/>
                     </view>
-                </van-col>
+                </view>
             </van-row>
         </view>
-        <view style="padding-top:10px;">
+        <view style="padding-top:60rpx;">
             <view class="text-center">
-                <image src="/image/all/4.png" style="width:{{window_width-150}}px; height:55px;"/>
+                <image src="/image/all/4.png" style="width:376rpx; height:72rpx;"/>
             </view>
-            <scroll-view class="scroll-view" scroll-x>
-                <navigator class="scroll-view-item_H" url="/view/cart/detail?id={{item.id}}"
-                           wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-                    <view style="text-align:center;">
-                        <image class="" src="{{hosts+item.img}}"/>
-                        <view class="van-ellipsis" style="font-size:12px;display:block">{{item.name}}</view>
-                        <view style="text-align: center;color:#FADE55;" style="font-size:12px;display:block">
-                            ￥{{item.money}}
-                        </view>
+            <view style="padding-top:25rpx;padding-left: 30rpx;">
+                <scroll-view class="scroll-view" scroll-x>
+                    <view class="scroll-view-item_H" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
+                        <navigator  url="/view/cart/detail?id={{item.id}}">
+                            <view style="text-align:center;height: 300rpx;background-color: #fff;">
+                                <view>
+                                    <image src="{{hosts+item.img}}" style="width: 156rpx;height: 156rpx"/>
+                                </view>
+                                <view class="van-ellipsis"
+                                      style="font-size:20rpx;font-family: 'Microsoft YaHei';color:#3b3b3b;">
+                                    {{item.name}}
+                                </view>
+                                <view style="text-align: left;color:#fc0438;font-size:20rpx;">
+                                    <text>￥{{item.money}}</text>
+                                    <image style="width: 32rpx;height: 32rpx;float: right" src="/image/all/gwc.png" />
+                                </view>
+                            </view>
+                        </navigator>
                     </view>
-                </navigator>
-            </scroll-view>
+                </scroll-view>
+            </view>
         </view>
     </view>
-
 </view>

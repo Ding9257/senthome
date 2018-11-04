@@ -4,6 +4,7 @@ const request = require("./../../util/request").request;
 Page({
     data: {
         window_width: app.globalData.window_width,
+        window_height: app.globalData.window_height,
         sid: app.globalData.shopInfo.id,
         luckBagMoneyList: {},
         category_list: [],

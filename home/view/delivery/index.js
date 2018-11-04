@@ -1,4 +1,3 @@
-const notification = require('../../util/notification.js');
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
 
