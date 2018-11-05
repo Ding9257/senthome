@@ -2,6 +2,7 @@ const request = require("./../../util/request").request;
 const app = getApp();
 import Toast from "../../dist/toast/toast";
 
+let _this;
 Page({
     data: {
         member_total_amount: parseFloat(0).toFixed(2),
@@ -104,6 +105,7 @@ Page({
 
     },
     onShow: function () {
+        _this = this;
         this.setData({
             shopInfo: app.globalData.shopInfo,
             userInfo: app.globalData.userInfo
@@ -151,11 +153,14 @@ Page({
                         method: "POST",
                         data
                     }).then(data => {
+                        let orderId = data.data.id;
                         app.requestPayment(data.data).then(ok => {
+                            _this.change_status(orderId, 0);
                             wx.navigateTo({
                                 url: `/view/order/index?activeStatus=2`
                             });
                         }).catch(err => {
+                            _this.change_status(orderId, 8);
                             Toast.fail(err.msg);
                             wx.navigateTo({
                                 url: `/view/order/index?activeStatus=1`
@@ -170,7 +175,15 @@ Page({
                 Toast.fail(loginErr.errMsg)
             }
         });
-
+    },
+    change_status: function (id, status) {
+        request({
+            url: "/order/update",
+            method: "POST",
+            data: {id, status}
+        }).then(data => {
+            console.log(data);
+        })
     },
     message_put: function (e) {
         let message = e.detail.value;
