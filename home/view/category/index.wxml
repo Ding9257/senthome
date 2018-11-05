@@ -49,3 +49,4 @@
 <view wx:else>
     <no-merchant></no-merchant>
 </view>
+<van-toast id="van-toast"/>

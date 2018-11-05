@@ -7,6 +7,7 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
+        message: "",
         carts: [],
         hosts: app.globalData.hosts,
         timeLimit: {
@@ -20,6 +21,7 @@ Page({
         userId: 1,
         currenTime: "",
         popupStatus: false,
+        userInfo: app.globalData.userInfo,
         shopInfo: {},
         shippingAddress: {},
         shippingAddressType: 2,
@@ -86,6 +88,13 @@ Page({
         });
         var index = parseInt(e.currentTarget.dataset.index);
         var num = this.data.carts[index].num;
+        let otherStock = this.data.carts[index].otherStock;
+        //判断不能大于库存
+        if (num == otherStock) {
+            Toast.fail("已达最大库存");
+            wx.hideLoading();
+            return false;
+        }
         // 自增
         num++;
         // 只有大于一件的时候，才能normal状态，否则disable状态
@@ -178,6 +187,16 @@ Page({
         this.sum();
     },
     bindCheckout: function () {
+        //登录
+        if (util.isEmpty(this.data.userInfo)) {
+            Toast.fail('请登录');
+            return false
+        }
+        //选择地址
+        if (this.data.shippingAddressType == 2) {
+            Toast.fail('请选择地址');
+            return false
+        }
         let carts = this.data.carts;
         // 计算总金额
         let total = 0, list = [];
@@ -188,10 +207,11 @@ Page({
             }
         }
         total = total.toFixed(2);
+        let message = this.data.message;
         if (total != 0) {
             let product = JSON.stringify(list);
             wx.navigateTo({
-                url: `/view/payment/index?typeOrder=0&total=${total}&product=${product}`
+                url: `/view/payment/index?typeOrder=0&total=${total}&product=${product}&message=${message}`
             });
         } else {
             Toast.fail('请选择商品');
@@ -234,10 +254,12 @@ Page({
             popupStatus: false
         });
         let shippingAddress = app.globalData.shippingAddress;
+        let userInfo = app.globalData.userInfo;
         let shopInfo = app.globalData.shopInfo;
         let shippingAddressType = app.globalData.shippingAddressType;
         this.setData({
             shippingAddressType,
+            userInfo,
             shopInfo,
             shippingAddress
         });
@@ -362,7 +384,7 @@ Page({
             for (let id in cache) {
                 if (!!cache[id] && cache[id].num > 0) {
                     shop.push({
-                        id: id, num: cache[id].num, product: cache[id].product
+                        id: id, num: cache[id].num, product: cache[id].product, otherStock: cache[id].otherStock
                     });
                 }
             }
@@ -373,5 +395,9 @@ Page({
         wx.switchTab({
             url: '/view/category/index'
         });
+    },
+    message_put: function (e) {
+        let message = e.detail.value;
+        this.setData({message});
     }
 })

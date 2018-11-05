@@ -1,11 +1,14 @@
 const util = require("../../util/util");
 const request = require("./../../util/request").request;
+import Toast from './../../dist/toast/toast';
+
 const app = getApp();
 Page({
     data: {
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
         imgWidth: 30,
+        shopDefaultImg:"/image/new/tx.png",
         banner_list: [
             {url: "/image/banner.png"}
         ],
@@ -17,10 +20,9 @@ Page({
         dianZhang_list: []
     },
     onUnload: function () {
-
+        console.log(31321321);
     },
     onLoad: function () {
-        console.log(this.data.window_width);
         //获取定位
         if (util.isEmpty(this.shopInfo)) {
             app.getLngLat().then(data => {
@@ -43,30 +45,35 @@ Page({
                         shopInfo,
                         areaName
                     });
+                    //店长推荐
+                    this.getDianZhangRecommend();
                 })
             });
         }
-        //店长推荐
-        this.getDianZhangRecommend();
         //轮播图
         this.carouselMap();
     },
     onReady: function () {
-        let shopInfo = app.globalData.shopInfo
+        let shopInfo = app.globalData.shopInfo;
         app.globalData.shopInfo = shopInfo;
         this.setData({
             shopInfo
         })
     },
     onShow: function () {
+        // wx.setTabBarBadge({
+        //     index: 2,
+        //     text: '10'
+        // })
         let shopInfo = app.globalData.shopInfo
         app.globalData.shopInfo = shopInfo;
         this.setData({
             shopInfo
         })
+        this.getDianZhangRecommend();
     },
     onHide: function () {
-
+        console.log("onHide");
     },
     onPullDownRefresh: function () {
 
@@ -92,7 +99,7 @@ Page({
                     list = list.concat(items);
                     for (let item of items) {
                         if (util.isEmpty(shopCart[item.id])) {
-                            shopCart[item.id] = {num: 0, otherStock: item.otherStock, product: item};
+                            shopCart[item.id] = {num: 0, otherStock: item.stock, product: item};
                         }
                     }
                 }
@@ -127,6 +134,7 @@ Page({
     goToTarget: function (e) {
         let target = e.currentTarget.dataset.target;
         let url = "", httpUrl = "";
+        let data = {};
         switch (target * 1) {
             case 0:
                 url = "/view/category/index";
@@ -139,23 +147,63 @@ Page({
             case 2:
                 url = "/view/luckBag/index";
                 httpUrl = "/blessing/list";
+                data.sid = this.data.shopInfo.id;
                 break;
         }
-        wx.navigateTo({
-            url
-        });
+        request({
+            url: httpUrl,
+            method: "post",
+            data
+        }).then(data => {
+            if (target == 2) {
+                if (data.data.count > 0) {
+                    wx.navigateTo({
+                        url
+                    });
+                } else {
+                    Toast.fail('店铺装修中');
+                }
+            }
+            if (target == 1) {
+                if (data.data.length > 0) {
+                    wx.navigateTo({
+                        url
+                    });
+                } else {
+                    Toast.fail('店铺装修中');
+                }
+            }
+        })
     },
     goToshop: function () {
         //判断是否有商品
-        wx.switchTab({
-            url: "/view/category/index"
-        })
+        let shopInfo = app.globalData.shopInfo;
+        request({
+            url: '/product/typeList',
+            method: "POST",
+            data: {sid: shopInfo.id, status: 1}
+        }).then((data) => {
+            if (data.data.length > 0) {
+                wx.switchTab({
+                    url: "/view/category/index"
+                })
+            } else {
+                Toast.fail('店铺装修中');
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     },
     addShop: function (e) {
         let id = e.target.dataset.id;
         let shopCart = this.data.shopCart;
         let num = shopCart[id].num;
-        //判断是否大于库存
+        let otherStock = shopCart[id].otherStock;
+        //判断不能大于库存
+        if (num == otherStock) {
+            Toast.fail("已达最大库存");
+            return false;
+        }
         num++;
         shopCart[id].num = num;
         app.globalData.shopCart = shopCart;

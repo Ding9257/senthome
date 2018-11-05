@@ -1,4 +1,5 @@
 const request = require("./../../util/request").request;
+import Toast from './../../dist/toast/toast';
 let app = getApp();
 Page({
     data: {
@@ -84,7 +85,7 @@ Page({
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {
                 if (!this.data.shopCart[item.id]) {
-                    this.data.shopCart[item.id] = {num: 0, otherStock: item.otherStock, product: item};
+                    this.data.shopCart[item.id] = {num: 0, otherStock: item.stock, product: item};
                 }
             }
             this.setData({
@@ -120,7 +121,14 @@ Page({
     add: function (e) {
         let id = e.currentTarget.id;
         let shopCart = this.data.shopCart;
-        let num = shopCart[id].num + 1;
+        let num = shopCart[id].num;
+        let otherStock = shopCart[id].otherStock;
+        //判断不能大于库存
+        if (num == otherStock) {
+            Toast.fail("已达最大库存");
+            return false;
+        }
+        num++;
         shopCart[id].num = num;
         app.globalData.shopCart = shopCart;
         this.setData({

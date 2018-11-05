@@ -21,7 +21,7 @@ Page({
         is_load: true,
         is_select: true,
         shippingAddressType: 2,
-        userId: app.globalData.userInfo.userId || "",
+        userInfo: app.globalData.userInfo,
         selectTab: "收货地址",
         delivery_list: []
     },
@@ -36,12 +36,13 @@ Page({
                 isSelect
             });
         }
-        this.getAddress();
     },
     onReady: function () {
         console.log("onReady");
     },
     onShow: function () {
+        let userInfo = app.globalData.userInfo;
+        this.setData({userInfo})
         this.getAddress();
     },
     onHide: function () {
@@ -102,10 +103,11 @@ Page({
         }
     },
     getAddress: function () {
+        console.log(this.data.userInfo);
         request({
             url: '/address/list',
             method: "POST",
-            data: {userId: this.data.user}
+            data: {userId: this.data.userInfo.userId}
         }).then(res => {
             this.setData({
                 delivery_list: res.data

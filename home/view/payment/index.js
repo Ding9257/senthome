@@ -10,7 +10,8 @@ Page({
         total: 0,
         luckBagTotalPrice: 0,
         productList: [],
-        userInfo: {},
+        userInfo: app.globalData.userInfo,
+        message: "",
         shopInfo: {},
         couponList: {},
         couponProvinceList: {
@@ -59,6 +60,8 @@ Page({
         let total = data.total || 0;
         let productList = JSON.parse(data.product);
         let typeOrder = data.typeOrder;
+        let message = data.message;
+        console.log(message);
         let productOrder = [];
         for (let item of productList) {
             productOrder.push({pid: item.id, num: item.num});
@@ -67,6 +70,7 @@ Page({
             productList,
             productOrder,
             typeOrder,
+            message,
             total
         });
     },
@@ -134,23 +138,42 @@ Page({
             cid: this.data.cid,
             couponPrice: this.data.couponPrice
         };
-        request({
-            url: "/weChat/toTakeWxCar",
-            method: "POST",
-            data
-        }).then(data => {
-            app.requestPayment(data.data).then(ok => {
-                wx.navigateTo({
-                    url: `/view/order/index?activeStatus=2`
-                });
-            }).catch(err => {
-                Toast.fail(err.msg);
-                wx.navigateTo({
-                    url: `/view/order/index?activeStatus=1`
-                });
-            })
-        }).catch(e => {
-            Toast.fail(e.msg);
-        })
+        wx.login({
+            success: function (res) {
+                let code = res.code;
+                request({
+                    url: "/customerInfo/code",
+                    method: "get",
+                    data: {code}
+                }).then(codeOk => {
+                    request({
+                        url: "/weChat/toTakeWxCar",
+                        method: "POST",
+                        data
+                    }).then(data => {
+                        app.requestPayment(data.data).then(ok => {
+                            wx.navigateTo({
+                                url: `/view/order/index?activeStatus=2`
+                            });
+                        }).catch(err => {
+                            Toast.fail(err.msg);
+                            wx.navigateTo({
+                                url: `/view/order/index?activeStatus=1`
+                            });
+                        })
+                    }).catch(e => {
+                        Toast.fail(e.msg);
+                    })
+                })
+            },
+            fail: function (loginErr) {
+                Toast.fail(loginErr.errMsg)
+            }
+        });
+
+    },
+    message_put: function (e) {
+        let message = e.detail.value;
+        this.setData({message});
     }
 });

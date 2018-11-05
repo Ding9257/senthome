@@ -1,5 +1,7 @@
 const constant = require("../../util/constant.js");
 const util = require('../../util/util.js');
+import Toast from './../../dist/toast/toast';
+
 const request = require("./../../util/request").request;
 
 Page({
@@ -8,6 +10,7 @@ Page({
         color: constant.color,
         address: {},
         delivery_province: "",
+        area: "",
         city: "",
         delivery_area: "",
         popupStatus: 0,//0关闭  1打开区域 2 打开城市
@@ -103,14 +106,6 @@ Page({
             }
         }
 
-        if (this.data.area == '') {
-            util.showFailToast({
-                title: '请选择省市区'
-            });
-
-            return;
-        }
-
         if (contentAddress == '') {
             util.showFailToast({
                 title: '请输入详细地址'
@@ -119,8 +114,7 @@ Page({
             return;
         }
         let city = this.data.city;
-        let prov = this.data.delivery_province;
-        let area = this.data.delivery_area;
+        let area = this.data.area;
         let url = "";
         let id = this.data.id;
         if (!!id) {
@@ -131,7 +125,7 @@ Page({
         request({
             url,
             method: "POST",
-            data: {id, name, phone, contentAddress, userId: getApp().globalData.userInfo.userId, city}
+            data: {id, name, phone, contentAddress, userId: getApp().globalData.userInfo.userId, city, address: area}
         }).then(res => {
             wx.navigateBack({
                 delta: 1
@@ -144,36 +138,37 @@ Page({
             method: "POST",
             data: {id: this.data.id}
         }).then(res => {
+            let data = res.data[0]
             this.setData({
-                address: res.data[0]
+                address: data,
+                city: data.city,
+                area: data.address
             });
         });
     },
     del: function () {
-        return false;
         request({
-            url: '/address/list',
+            url: '/address/delete',
             method: "POST",
             data: {id: this.data.id}
         }).then(res => {
-            this.setData({
-                address: res.data[0]
-            });
+            wx.navigateBack({
+                delta: 1
+            })
+        }).catch(err => {
+            Toast.fail(err.msg)
         });
     },
     popupSelect: function (e) {
         let name = e.detail.values[0].name;
-        let address = this.data.address;
         if (this.data.popupStatus == 1) {
-            address.areaName = name;
             this.setData({
-                address,
+                area: name,
                 popupStatus: 0
             });
         } else {
-            address.cityName = name;
             this.setData({
-                address,
+                city: name,
                 popupStatus: 0
             });
         }

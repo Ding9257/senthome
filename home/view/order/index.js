@@ -6,6 +6,7 @@ Page({
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
         hosts: app.globalData.hosts,
+        userInfo: app.globalData.userInfo,
         shopInfo: app.globalData.shopInfo,
         orderStatusObject: app.globalData.orderStatus || "",
         orderStatus: "",
@@ -32,7 +33,6 @@ Page({
     },
     onLoad: function (option) {
         let activeStatus = option.activeStatus;
-        console.log(activeStatus);
         if (!util.isEmpty(activeStatus)) {
             let orderStatus = "";
             if (activeStatus == 1) {
@@ -56,8 +56,10 @@ Page({
     },
     onShow: function () {
         let shopInfo = app.globalData.shopInfo;
+        let userInfo = app.globalData.userInfo;
         this.setData({
-            shopInfo
+            shopInfo,
+            userInfo
         })
         this.getOrder();
     },
@@ -74,10 +76,16 @@ Page({
 
     },
     getOrder: function () {
+        console.log(this.data.userInfo);
         request({
             url: '/order/list1',
             method: "POST",
-            data: {sid: this.data.shopInfo.id, status: this.data.orderStatus, pageNo: this.data.currentPage}
+            data: {
+                sid: this.data.shopInfo.id,
+                status: this.data.orderStatus,
+                pageNo: this.data.currentPage,
+                userId: this.data.userInfo.userId
+            }
         }).then(res => {
             let totalPage = Math.ceil(res.data.count / this.data.page);
             let order_list = this.data.order_list || [];

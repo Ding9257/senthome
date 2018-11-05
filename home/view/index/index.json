@@ -5,6 +5,7 @@
     "van-card": "./../../dist/card/index",
     "van-row": "./../../dist/row/index",
     "van-col": "./../../dist/col/index",
+    "van-toast": "./../../dist/toast/index",
     "no-merchant": "./../../component/nomerchant/index",
     "van-button": "./../../dist/button/index"
   }

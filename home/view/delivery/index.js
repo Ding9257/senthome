@@ -1,24 +1,26 @@
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
-
+const app = getApp();
 Page({
     data: {
         color: constant.color,
         is_load: true,
         is_select: true,
-        userId: getApp().globalData.userInfo.userId || "",
+        userInfo: app.globalData.userInfo,
         delivery_list: []
     },
     onUnload: function () {
 
     },
     onLoad: function (option) {
-        this.getAddress();
+
     },
     onReady: function () {
         console.log("onReady");
     },
     onShow: function () {
+        let userInfo = app.globalData.userInfo;
+        this.setData({userInfo});
         this.getAddress();
     },
     onHide: function () {
@@ -46,7 +48,7 @@ Page({
         request({
             url: '/address/list',
             method: "POST",
-            data: {userId: this.data.user}
+            data: {userId: this.data.userInfo.userId}
         }).then(res => {
             this.setData({
                 delivery_list: res.data

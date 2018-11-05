@@ -29,7 +29,7 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells weui-cells_after-title margin-top">
+        <view class="weui-cells weui-cells_after-title" style="margin-top: 5rpx;">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd address-font-size">{{shippingAddressType!=0?"收货时间":"提货时间"}}</view>
                 <view class="weui-cell__ft order-info" bindtap="selectTime">{{!!currenTime?currenTime:"请选择时间"}}</view>
@@ -76,9 +76,9 @@
             <view class="message-title left-dis">捎口信</view>
             <view style="height: 200rpx;border-top: solid 1px #efefef;">
                 <view style="padding: 35rpx">
-            <textarea maxlength="50" name="delivery_street" class="message-desc" placeholder-class="message-desc"
-                      placeholder="如果您需要小店的其他商品请留言"
-                      style="height: 165rpx" value="{{delivery_street}}"/>
+            <textarea maxlength="50" name="message" class="message-desc" placeholder-class="message-desc"
+                      placeholder="如果您需要小店的其他商品请留言" bindinput="message_put"
+                      style="height: 165rpx" value="{{message}}"/>
                 </view>
             </view>
         </view>
@@ -103,7 +103,8 @@
             <text style="font-family: 'Microsoft YaHei';font-size: 32rpx;color:#999999;">暂时没有商品哦！</text>
         </view>
         <view style="padding-top: 30rpx;text-align: center;">
-            <view bindtap="go_to_cat" style="border-radius: 10rpx;border:solid 1px #ffd600;margin: 0 auto;width:170rpx;height: 70rpx;line-height:70rpx;font-family: 'Microsoft YaHei';font-size: 32rpx;color:#ffd600;">
+            <view bindtap="go_to_cat"
+                  style="border-radius: 10rpx;border:solid 1px #ffd600;margin: 0 auto;width:170rpx;height: 70rpx;line-height:70rpx;font-family: 'Microsoft YaHei';font-size: 32rpx;color:#ffd600;">
                 去看看
             </view>
         </view>

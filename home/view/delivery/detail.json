@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-popup": "./../../dist/popup/index",
     "van-area": "./../../dist/area/index",
+    "van-toast": "./../../dist/toast/index",
     "van-icon": "./../../dist/icon/index"
   }
 }

@@ -24,7 +24,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <view class="weui-select weui-select_in-select-after">
-                        <text class="weui-input">{{address.cityName}}</text>
+                        <text class="weui-input">{{city}}</text>
                     </view>
                 </view>
             </view>
@@ -34,7 +34,7 @@
                 </view>
                 <view class="weui-cell__bd">
                     <view class="weui-select weui-select_in-select-after">
-                        <text class="weui-input">{{address.areaName}}</text>
+                        <text class="weui-input">{{area}}</text>
                     </view>
                 </view>
             </view>
@@ -53,7 +53,7 @@
                     formType="submit">
                 保存
             </button>
-            <button bindtap="del" class="footer-add" style="background:#fff;color:#b47631;width:90%;margin-top:10px;">
+            <button wx:if="{{!!id}}" bindtap="del" class="footer-add" style="background:#fff;color:#b47631;width:90%;margin-top:10px;">
                 删除
             </button>
         </view>
@@ -62,3 +62,4 @@
 <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
     <van-area columns-num="1" area-list="{{ vanPopupList }}" bind:confirm="popupSelect"/>
 </van-popup>
+<van-toast id="van-toast"/>

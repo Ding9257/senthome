@@ -1,4 +1,5 @@
 const request = require("./util/request.js").request;
+const util = require("./util/util");
 App({
     onLaunch: function () {
         this.getLngLat().then(data => {
@@ -25,7 +26,7 @@ App({
                                     method: "POST",
                                     data: {
                                         icon: user.avatarUrl,
-                                        userName: user.nickName,
+                                        userName: util.removeEmoji(user.nickName),
                                         code: loginData.code
                                     }
                                 }).then(data => {

@@ -1,5 +1,6 @@
 const app = getApp();
 const request = require("./../../util/request").request;
+import Toast from './../../dist/toast/toast';
 
 Page({
     data: {
@@ -47,7 +48,6 @@ Page({
                 sid: this.data.sid
             }
         }).then(res => {
-            console.log(res.data.blessingList);
             let luckBagMoneyList = this.data.luckBagMoneyList || {};
             //计算福袋价格
             let list = [];
@@ -56,10 +56,12 @@ Page({
                 for (let product of item.productList) {
                     luckBagMoney = luckBagMoney + product.money * 1;
                 }
-                item.luckBagMoney = luckBagMoney;
+                let tempProfit = item.profit;
+                let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.1;
+                item.luckBagMoney = (luckBagMoney * profit).toFixed(2);
                 list.push(item);
                 //otherStock  剩余库存
-                luckBagMoneyList[item.id] = {num: 0, luckBagMoney, otherStock: item.otherStock, luckBag: item};
+                luckBagMoneyList[item.id] = {num: 0, luckBagMoney, otherStock: item.stock, luckBag: item};
             }
             this.setData({
                 category_list: list,
@@ -88,9 +90,10 @@ Page({
         let num = luckBagMoneyList[id].num;
         let otherStock = luckBagMoneyList[id].otherStock;
         //判断不能大于库存
-        // if (num == otherStock) {
-        //     return false;
-        // }
+        if (num == otherStock) {
+            Toast.fail("已达最大库存");
+            return false;
+        }
         luckBagMoneyList[id].num = num + 1;
         this.setData({
             luckBagMoneyList
@@ -123,7 +126,7 @@ Page({
             url: `/view/payment/index?typeOrder=1&total=${this.data.luckBagTotalPrice}&product=${JSON.stringify(selectLuckBag)}`
         });
     },
-    go_to_payment:function () {
+    go_to_payment: function () {
 
     }
 });

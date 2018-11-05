@@ -2,6 +2,7 @@ import Dialog from "../../dist/dialog/dialog";
 import Toast from './../../dist/toast/toast';
 
 const request = require("./../../util/request").request;
+const util = require("./../../util/util");
 const app = getApp();
 let _this;
 Page({
@@ -9,6 +10,7 @@ Page({
         member_total_amount: parseFloat(0).toFixed(2),
         WAIT_PAY: 0,
         shopInfo: app.globalData.shopInfo,
+        userInfo: app.globalData.userInfo,
         WAIT_SEND: 0,
         WAIT_RECEIVE: 0
     },
@@ -31,7 +33,7 @@ Page({
                     method: "POST",
                     data: {
                         icon: user.avatarUrl,
-                        userName: user.nickName,
+                        userName: util.removeEmoji(user.nickName),
                         code: loginData.code
                     }
                 }).then(data => {
@@ -58,12 +60,15 @@ Page({
 
     },
     onShow: function () {
+        // wx.removeTabBarBadge({
+        //     index: 2
+        // })
         this.setData({
             userInfo: app.globalData.userInfo,
             shopInfo: app.globalData.shopInfo
         });
     },
-    onHide: function () {
+    onHide: function (e) {
 
     },
     onPullDownRefresh: function () {
@@ -98,5 +103,13 @@ Page({
                 });
             }
         });
+    },
+    navigator: function (e) {
+        if (!util.isEmpty(this.data.userInfo)) {
+            let url = e.currentTarget.dataset.url;
+            wx.navigateTo({url});
+        } else {
+            Toast.fail("请登录");
+        }
     }
 });
