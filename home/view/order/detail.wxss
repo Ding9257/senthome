@@ -25,3 +25,12 @@
 .background {
     background:#fff;
 }
+.order-button{
+    width:200rpx;
+    height:30px;
+    float: right;
+    line-height: 30px;
+    border:solid 1px #f9de55;
+    text-align: center;
+    margin: 10px 5px;
+}

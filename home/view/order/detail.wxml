@@ -48,7 +48,7 @@
         </view>
         <view class="border" wx:for="{{order.productOrderResultsList}}" wx:for-item="item" wx:key="{{item.id}}">
             <van-row>
-                <van-col offset="1" span="11">
+                <van-col class="van-ellipsis" offset="1" span="11">
                     {{item.name}}
                 </van-col>
                 <van-col span="6" style="text-align:center;">
@@ -87,16 +87,16 @@
     <view class="footer">
         <!-- 取消订单 =4   待退款=3 -->
         <view wx:if="{{order.status==4 ||order.status==3 }}">
-            <van-button bindtap="del">删除订单</van-button>
+            <view class="order-button" bindtap="del">删除订单</view>
         </view>
         <!-- 待付款 -->
         <view wx:if="{{order.status==8}}">
-            <van-button bindtap="paymentCancel">取消订单</van-button>
-            <van-button bindtap="goPayment">去付款</van-button>
+            <view class="order-button" bindtap="goPayment">去付款</view>
+            <view class="order-button" bindtap="paymentCancel">取消订单</view>
         </view>
         <!-- 待收货 -->
         <view wx:if="{{order.status==9}}">
-            <van-button bindtap="paidCancel">取消订单</van-button>
+            <view class="order-button" bindtap="paidCancel">取消订单</view>
         </view>
     </view>
 </view>

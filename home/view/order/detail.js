@@ -61,10 +61,7 @@ Page({
                 method: "POST",
                 data: {id: this.data.id}
             }).then(res => {
-                //跳转界面
-                wx.navigateTo({
-                    url: '/view/order/index'
-                })
+                this.getOrder(this.data.id);
             });
         }).catch(() => {
 
@@ -79,10 +76,7 @@ Page({
                 method: "POST",
                 data: {id: this.data.id, status: 4}
             }).then(res => {
-                //跳转界面
-                wx.navigateTo({
-                    url: '/view/order/index'
-                })
+                this.getOrder(this.data.id);
             });
         }).catch(() => {
 
@@ -96,9 +90,10 @@ Page({
         });
     },
     goPayment: function () {
+        //缺接口
         console.log("goPayment");
-        wx.reLaunch({
-            url: '/view/cart/cart?redirectTo=/view/payment/index'
-        })
+        // wx.reLaunch({
+        //     url: '/view/cart/cart?redirectTo=/view/payment/index'
+        // })
     }
 });

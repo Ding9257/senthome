@@ -1,4 +1,5 @@
 <view wx:if="{{!!shopInfo&&!!shopInfo.name}}" class="container" style="background-color: #fff;">
+    <!--<view wx:if="1" class="container" style="background-color: #fff;">-->
     <view class="top">
         <view style="height: 400rpx;background: #ffd600;">
             <view style="padding-top:10px;">
