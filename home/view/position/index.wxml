@@ -1,51 +1,60 @@
-<view class="container">
-    <view class="header"></view>
-    <view class="margin-top">
+<view class="container" style="background-color: #fff;">
+    <view style="border-top:solid 1px #999999;">
         <van-tabs bind:change="onChange">
             <van-tab title="收货地址"></van-tab>
             <van-tab title="店铺自提"></van-tab>
         </van-tabs>
     </view>
-    <view class="weui-cells weui-cells_after-title margin-top">
+    <view class="weui-cells weui-cells_after-title" style="margin-top: 2px;">
         <view bindtap="changePopupStatus" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__hd">
                 <image src="/image/all/dw.png"
                        style="margin-right: 5px; margin-top: 5px; width:11px; height: 15px;"></image>
             </view>
-            <view class="weui-cell__bd">{{selectProv}}</view>
+            <view class="weui-cell__bd" style="font-family: 'Microsoft YaHei';font-size: 22rpx;color:#999999;">
+                {{selectProv}}
+            </view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
+    </view>
+    <view wx:if="{{selectTab=='店铺自提'}}"
+          style="background-color: #efefef;height:60rpx;line-height:60rpx;padding-left:62rpx;font-family: 'Microsoft YaHei';font-size: 22rpx;color:#999999;">
+        附近的自提点
+    </view>
+    <view>
+        <view wx:if="{{selectTab=='收货地址'}}" wx:for="{{delivery_list}}"
+              style="height: 150rpx;border-bottom: solid 1px #999999;"
+              wx:for-item="delivery" wx:key="{{delivery.id}}" bindtap="handleClick">
+            <view style="padding-top: 28rpx;padding-left: 20rpx;">
+                <view class="address-font">{{delivery.name}} {{delivery.phone}}</view>
+                <view class="address-font address">{{delivery.contentAddress}}</view>
+            </view>
+        </view>
+        <view wx:if="{{selectTab=='店铺自提'}}" wx:for="{{shopMention}}"
+              style="height: 150rpx;border-bottom: solid 1px #999999;"
+              wx:for-item="delivery" wx:key="{{delivery.id}}" bindtap="handleClick">
+            <view style="padding-top: 28rpx;padding-left: 20rpx;">
+                <view class="address-font" style="font-size: 24rpx;">{{delivery.name}}</view>
+                <view class="address-font">营业时间：{{delivery.businessHours}}</view>
+                <view class="address-font address">{{delivery.address}}</view>
+            </view>
+        </view>
+        <view wx:if="{{selectTab=='收货地址'&&delivery_list.length==0}}">
+            <view style="padding-top: 146rpx;text-align: center;border-top: solid 1px #999999;">
+                <image src="/image/all/dw.png" style="height: 230rpx;width: 230rpx;"/>
+            </view>
+            <view style="font-size: 32rpx;font-family: 'Microsoft YaHei';color:#999999;text-align: center">
+                没有收货地址哦，赶快创建一个把吧
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{selectTab=='收货地址'}}" class="footer">
+        <!--navigator-->
+        <navigator url="/view/delivery/detail" class="footer-add">
+            新增地址
+        </navigator>
     </view>
     <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
         <van-area columns-num="1" area-list="{{ areaList }}" bind:cancel="cancel" bind:confirm="areaSelect"/>
     </van-popup>
-    <view class="weui-panel weui-panel_access">
-        <view wx:if="{{selectTab=='店铺自提'}}" style="height:30px;line-height:30px;padding-left:10px;">附近的自提点</view>
-        <view wx:if="{{selectTab=='收货地址'}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"
-              wx:for="{{delivery_list}}"
-              wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg ">
-                <view class="weui-media-box__title">{{delivery.name}} {{delivery.phone}}</view>
-                <view class="weui-media-box__desc address">{{delivery.contentAddress}}</view>
-            </view>
-        </view>
-        <view wx:if="{{selectTab=='店铺自提'}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"
-              wx:for="{{shopMention}}"
-              wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg ">
-                <view class="weui-media-box__title">{{delivery.name}} {{delivery.phone}}</view>
-                <view class="weui-media-box__title">营业时间：{{delivery.businessHours}}</view>
-                <view class="weui-media-box__desc address">{{delivery.address}}</view>
-            </view>
-        </view>
-    </view>
-    <view class="no-data" wx:if="{{is_load && delivery_list.length == 0}}">
-        <image src="/image/empty.svg" class="no-data-image-icon"></image>
-        <view class="no-data-text">当前没有数据</view>
-    </view>
-    <view wx:if="{{selectTab=='收货地址'}}" class="footer">
-        <navigator url="/view/delivery/detail" class="footer-add">
-            新增收货地址
-        </navigator>
-    </view>
 </view>

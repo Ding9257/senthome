@@ -45,12 +45,23 @@ page {
 }
 
 .footer {
-	background: #f9f9f9;
-	width: 100%;
 	position: fixed;
-	line-height:50px;
-	text-align:center;
+	height: 110rpx;
+	line-height:110rpx;
 	bottom: 0;
+}
+.footer view {
+	display: inline-block;
+}
+.footer-button {
+	width: 200rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	color: #3b3b3b;
+	background-color: #ffd600;
+	font-size: 26rpx;
+	text-align: center;
+	font-family: "Microsoft YaHei";
 }
 
 .add-cart {
@@ -162,14 +173,43 @@ page {
 .treasure text {
     display:block;
 }
-.footer button {
-    color:#fff;
-    background:#f9de56;
-}
+
 .custom-button {
     display: inline-block;
     width:20px;height:20px;
     border-radius: 30px;background:#F6E65D;
     text-align:center;line-height: 20px;
     overflow: hidden;
+}
+.text-desc {
+	padding-bottom: 10rpx;
+}
+.text-desc view {
+	display: inline-block;
+}
+.text-desc .title {
+	width: 200rpx;
+	text-align: right;
+}
+.text-desc .content {
+	padding-left: 20rpx;
+}
+.van-progress__pivot {
+	visibility: hidden;
+}
+.shop-add-down {
+	width: 70px;
+	height: 25px;
+	line-height: 25px;
+}
+
+.shop-add-down image {
+	width: 20px;
+	height: 20px;
+}
+
+.shop-add-down text {
+	display: inline-block;
+	width: 30px;
+	text-align: center;
 }

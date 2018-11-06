@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style="background-color: #fff;">
     <view class="page-section page-section-spacing swiper">
         <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
             <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">

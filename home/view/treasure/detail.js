@@ -1,10 +1,12 @@
 import Toast from "../../dist/toast/toast";
 
+const moment = require("./../../util/moment");
 const request = require("./../../util/request").request;
 const app = getApp();
 Page({
     data: {
         goods: {},
+        hosts: app.globalData.hosts,
         id: "",
         shopNum: 0,
         current: 0,
@@ -13,9 +15,6 @@ Page({
         galleryHeight: 200
     },
     onLoad: function (options) {
-        // wx.setNavigationBarTitle({
-        //     title: options.product_name//页面标题为路由参数
-        // });
         let id = options.id;
         this.setData({
             id
@@ -47,13 +46,13 @@ Page({
     goBuy: function () {
         let data = this.data;
         let cid = data.id;
-        let userId = app.globalData.userInfo.id;
+        let userId = app.globalData.userInfo.userId;
         let num = data.shopNum;
         request({
             url: '/weChat/toTakeWxCoupon',
             method: "POST",
-            data: {cid,userId,num,status:0,result:0}
-        }).then(data=>{
+            data: {cid, userId, num, status: 0, result: 0}
+        }).then(data => {
             app.requestPayment(data.data).then(ok => {
                 wx.navigateTo({
                     url: `/view/index/index`
@@ -72,8 +71,8 @@ Page({
             let item = res.data;
             let currentTimestamp = moment().valueOf();
             let collectTimestamp = moment(item.collectTime).valueOf();
-            let progress = currentTimestamp / item.collectTimestamp * 100;
-            item.progress = progress;
+            let progress = currentTimestamp / collectTimestamp * 100;
+            item.progress = progress.toFixed(2) * 1;
             this.setData({
                 goods: item
             });

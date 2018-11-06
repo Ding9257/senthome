@@ -1,40 +1,50 @@
 <import src="/component/quantity/index.wxml"/>
-<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000"
-        style="height:{{galleryHeight}}px;">
-    <block>
-        <swiper-item>
-            <image src="{{goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-current="1"/>
-        </swiper-item>
-    </block>
-</swiper>
-<view class="treasure">
-    <text class="title" style="font-size:16px;">{{goods.name}}</text>
-    <text class="price" style="font-size:14px;">夺宝价：￥ {{goods.price}}</text>
-    <text style="font-size:14px;">截止时间：{{goods.collectTime}}</text>
-    <view style="width:90%;margin-top:10px;">
-        <van-progress color="#E7F72A" percentage="{{goods.progress}}"/>
+<view style="background-color: #fff;">
+    <view style="border-top: solid 2px #efefef;">
+        <image src="{{hosts+goods.img}}" style="width:100%;height:400rpx;"/>
     </view>
-    <view style="margin-top:10px;">
-        <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
+    <view style="font-size: 30px;font-family: 'Microsoft YaHei';color:#3b3b3b;padding: 0 20rpx;">
+        {{goods.name}}
     </view>
-</view>
+    <view class="text-desc" style="padding-top: 30rpx;padding-top: solid 1px #efefef;">
+        <view class="title">夺宝价:</view>
+        <view class="content" style="font-family: 'Microsoft YaHei';color: #f90202;font-size:30rpx;">￥{{goods.price}}
+        </view>
+    </view>
+    <view class="text-desc">
+        <view class="title">截止时间:</view>
+        <view class="content" style="font-family: 'Microsoft YaHei';color: #999999;font-size:20rpx;">
+            {{goods.collectTime}}
+        </view>
+    </view>
+    <view style="padding: 0 20rpx;">
+        <view>
+            <van-progress color="linear-gradient(to right, #ffd600, #ffd600)" show-pivot="false"
+                          percentage="{{goods.progress}}"/>
+        </view>
+        <view style="padding-bottom: 40rpx;">
+            <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
+        </view>
+    </view>
+    <view style="text-align:center;color:#3b3b3b;font-size: 28rpx;padding-top: 40rpx;border-top: solid 1rpx #efefef;">
+        图片详情
+    </view>
+    <view>
+        <image style="width:100vw;height:{{height}}rpx" src="{{goods.imgContent}}"/>
+    </view>
 
-<view class="margin-top summary" style="padding-bottom:40px;">
-    <view style="text-align:center;color:#f6c993">图片详情</view>
-    <image style="width:100vw;height:{{height}}rpx" src="{{goods.imgContent}}"/>
+    <view class="footer">
+        <view style="padding-left: 20rpx;">
+            <text style="font-size:26rpx;color: #3b3b3b;font-family: 'Microsoft YaHei'">购买数量:</text>
+            <view class="shop-add-down">
+                <image src="/image/all/-.png" style="float:left;" catchtap="down"/>
+                <text>{{shopNum}}</text>
+                <image src="/image/all/+.png" style="float:right;" catchtap="add"/>
+            </view>
+        </view>
+        <view style="float: right;">
+            <view class="footer-button" bindtap="goBuy">立即购买</view>
+        </view>
+    </view>
+    <van-toast id="van-toast"/>
 </view>
-
-<view class="footer">
-    <van-row>
-        <van-col span="12">
-            <text style="font-size:14px">购买数量:</text>
-            <view class="custom-button" bindtap="down">-</view>
-            {{shopNum}}
-            <view class="custom-button" bindtap="add">+</view>
-        </van-col>
-        <van-col span="12">
-            <van-button bindtap="goBuy">立即购买</van-button>
-        </van-col>
-    </van-row>
-</view>
-<van-toast id="van-toast"/>
