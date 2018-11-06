@@ -12,3 +12,31 @@
 .van-tab--active{
  color:#fbdf5c;
 }
+.treasure-item {
+    height: 170rpx;
+    width: 100%;
+    padding-top: 30rpx;
+    border-bottom:solid 1px #EDECED;
+}
+
+.in-line {
+    display: inline-block;
+}
+.text {
+     width: 20px;
+    height: 20px;
+    background-color: #da332d;
+}
+.treasure-font{
+    font-size: 24rpx;
+    font-family: "Microsoft YaHei";
+    color: #3d3d3d;
+}
+.van-progress__pivot {
+    visibility: hidden;
+}
+.van-tabs__line {
+    width:150rpx !important;
+    margin-left:50rpx;
+    height:3px;
+}

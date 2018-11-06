@@ -1,36 +1,51 @@
 <view class="container">
-  <view class="page-section page-section-spacing swiper">
-    <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
-      <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
-        <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;" src="{{banner.banner_image}}" />
-      </swiper-item>
-    </swiper>
-  </view>
-  <view>
-    <van-tabs bind:disabled="onClickDisabled">
-      <van-tab title="热门夺宝"></van-tab>
-      <van-tab title="即将结束" ></van-tab>
-      <van-tab title="金额顺序"></van-tab>
-    </van-tabs>
-  </view>
-  <view>
-    <van-row wx:for="{{treasure_list}}" wx:key="{{item.id}}">
-        <navigator  open-type="navigate" url="/view/treasure/detail?id={{item.id}}" style="margin-top:5px;">
-          <van-col span="6">
-            <image class="img" src="{{item.img}}" />
-          </van-col>
-          <van-col span="16" offset="1"  class="col">
-            <text>{{item.name}}</text>
-            <text>截止时间:{{item.collectTime}}</text>
-            <text>夺宝价：￥{{item.price}}</text>
-            <view style="margin-top:5px;">
-                <van-progress color="#E7F72A" percentage="{{item.progress}}" />
-            </view>
-            <view>
-                <text class="winning" style="float:right;margin-top:10px;">当前{{item.couponDrools[0].rate}}人，中奖率50%</text>
-            </view>
-          </van-col>
-      </navigator>
-    </van-row>
-  </view>
+    <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
+            <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
+                <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;"
+                       src="{{banner.banner_image}}"/>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view>
+        <van-tabs bind:disabled="onClickDisabled">
+            <van-tab title="热门夺宝"></van-tab>
+            <van-tab title="即将结束"></van-tab>
+            <van-tab title="金额顺序"></van-tab>
+        </van-tabs>
+    </view>
+    <view>
+        <view wx:for="{{treasure_list}}" wx:key="{{item.id}}">
+            <navigator open-type="navigate" url="/view/treasure/detail?id={{item.id}}">
+                <view class="treasure-item">
+                    <van-row>
+                        <van-col offset="1" span="5">
+                            <image style="width:140rpx;height:140rpx;" src="{{hosts+item.img}}"/>
+                        </van-col>
+                        <van-col span="16">
+                            <view style="padding-left: 25rpx;">
+                                <view class="treasure-font van-ellipsis" style="font-size: 24rpx;color:#999999;">
+                                    {{item.name}}
+                                </view>
+                                <view class="treasure-font" style="font-size: 16rpx;color:#999999;padding-top: 10rpx;">
+                                    截止时间:{{item.collectTime}}
+                                </view>
+                                <view class="treasure-font" style="font-size: 16rpx;padding-top: 10rpx;color:#999999;">
+                                    夺宝价：
+                                    <text style="color:#fc0438;">￥{{item.price}}</text>
+                                </view>
+                                <view style="padding-top: 10rpx;">
+                                    <van-progress color="linear-gradient(to right, #ffd600, #ffd600)" show-pivot="false"
+                                                  percentage="{{item.progress}}"/>
+                                </view>
+                                <view class="treasure-font" style="font-size: 12rpx;float: right;">
+                                    当前{{item.num}}人，中奖率{{item.oddsOfWinning}}
+                                </view>
+                            </view>
+                        </van-col>
+                    </van-row>
+                </view>
+            </navigator>
+        </view>
+    </view>
 </view>
