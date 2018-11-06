@@ -207,6 +207,10 @@ Page({
             }
         }
         total = total.toFixed(2);
+        if (this.data.shippingAddressType == 1 && total < 20) {
+            Toast.fail('送货上门需大于20元');
+            return false
+        }
         let message = this.data.message;
         if (total != 0) {
             let product = JSON.stringify(list);

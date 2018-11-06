@@ -1,5 +1,5 @@
 <view class="luck-back-img" style="height: 100vh;">
-    <view style="padding:21rpx 60rpx;">
+    <view style="padding:25rpx 0 0 64rpx;">
         <view class="luck-rule">
             活动规则
         </view>

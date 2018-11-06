@@ -1,85 +1,82 @@
 <van-dialog id="van-dialog"/>
 <view class="container">
-    <view class="">
-        <van-row>
-            <view class="order-status">
-                <van-col offset="1" span="11">{{orderStatus[order.status]}}</van-col>
-                <van-col span="12">{{order.createTime}}</van-col>
-            </view>
-        </van-row>
+    <view class="order-status">
+        <view style="padding-top: 40rpx">
+            <view style="font-size: 30rpx;padding-left: 40rpx;display: inline-block;">{{orderStatus[order.status]}}</view>
+            <view style="font-size: 22rpx;float: right;padding-right: 40rpx;display: inline-block;">{{order.createTime}}</view>
+        </view>
+        <view style="padding-top: 20rpx;padding-left: 40rpx;font-size: 22rpx">
+
+        </view>
     </view>
-    <view class="margin-top background">
-        <van-row>
-            <van-col offset="1" span="5">订单号</van-col>
-            <van-col span="18">{{order.orderId}}</van-col>
-        </van-row>
-        <van-row>
-            <van-col offset="1" span="5">收货码</van-col>
-            <van-col span="18">{{!!order.collectCode?order.collectCode:""}}</van-col>
-        </van-row>
-        <van-row>
-            <van-col offset="1" span="5">下单时间</van-col>
-            <van-col span="18">{{order.createTime}}</van-col>
-        </van-row>
-        <van-row>
-            <van-col offset="1" span="5">收货时间</van-col>
-            <van-col span="18">{{!!order.collectTime?order.collectTime:""}}</van-col>
-        </van-row>
+    <view style="height: 10rpx;background-color: #EDECED"></view>
+    <view class="order-num">
+        <view class="text-desc" style="padding-top: 30rpx;">
+            <view class="title">订单号:</view>
+            <view class="content">{{order.orderId}}</view>
+        </view>
+        <view class="text-desc">
+            <view class="title">收货码:</view>
+            <view class="content">{{!!order.collectCode?order.collectCode:""}}</view>
+        </view>
+        <view class="text-desc">
+            <view class="title">下单时间:</view>
+            <view class="content">{{order.createTime}}</view>
+        </view>
+        <view class="text-desc">
+            <view class="title">收货时间:</view>
+            <view class="content">{{!!order.collectTime?order.collectTime:""}}</view>
+        </view>
     </view>
-    <view class="margin-top background">
-        <van-row>
-            <van-col offset="1" span="5">收货人</van-col>
-            <van-col span="18">{{order.address.name}}</van-col>
-        </van-row>
-        <van-row>
-            <van-col offset="1" span="5">电话</van-col>
-            <van-col span="18">{{order.address.phone}}</van-col>
-        </van-row>
-        <van-row>
-            <van-col offset="1" span="5">收货地址</van-col>
-            <van-col span="18">{{order.address.address}}</van-col>
-        </van-row>
+    <view style="height: 10rpx;background-color: #EDECED"></view>
+    <view class="order-num" style="height: 160rpx">
+        <view class="text-desc" style="padding-top: 30rpx;">
+            <view class="title">收货人:</view>
+            <view class="content">{{order.address.name}}</view>
+        </view>
+        <view class="text-desc">
+            <view class="title">电话:</view>
+            <view class="content">{{order.address.phone}}</view>
+        </view>
+        <view class="text-desc">
+            <view class="title">收货地址:</view>
+            <view class="content">{{order.address.address}}</view>
+        </view>
     </view>
-    <view class="margin-top background">
+
+    <view class="background" style="margin-top: 10rpx;">
         <view class="border">
             <van-row>
-                <van-col offset="1" span="19">费用明细</van-col>
+                <van-col offset="1" span="19" style="font-family: 'Microsoft YaHei';font-size: 26rpx;color:#999999">费用明细</van-col>
             </van-row>
         </view>
         <view class="border" wx:for="{{order.productOrderResultsList}}" wx:for-item="item" wx:key="{{item.id}}">
             <van-row>
-                <van-col class="van-ellipsis" offset="1" span="11">
+                <van-col class="van-ellipsis" offset="1" span="11" style="font-family: 'Microsoft YaHei';font-size: 26rpx;color:#3b3b3b">
                     {{item.name}}
                 </van-col>
                 <van-col span="6" style="text-align:center;">
                     *{{item.num}}
                 </van-col>
-                <van-col span="6" style="text-align:center;">
-                    {{item.money}}
+                <van-col span="6" style="text-align:center;font-family: 'Microsoft YaHei';font-size: 24rpx;color:#fc0438">
+                    ￥{{item.money}}
                 </van-col>
             </van-row>
         </view>
         <view class="border">
-            <van-row>
-                <van-col offset="1" span="19">商品总额￥{{order.total}}</van-col>
+            <van-row style="font-family: 'Microsoft YaHei';font-size: 26rpx;color:#3b3b3b">
+                <van-col offset="1" span="17" style="">商品总额</van-col>
+                <van-col span="6" style="text-align:center;font-family: 'Microsoft YaHei';font-size: 24rpx;color:#fc0438">￥{{order.total}}</van-col>
             </van-row>
         </view>
     </view>
-    <view class="margin-top background">
-        <view>
-            <view class="border">
-                <van-row>
-                    <van-col offset="1" span="11">
-                        捎口信
-                    </van-col>
-                </van-row>
-            </view>
-            <view class="border">
-                <van-row>
-                    <van-col offset="1" span="23">
-                        {{!!order.message?order.message:""}}
-                    </van-col>
-                </van-row>
+
+    <view style="margin-top: 10rpx;background-color: #fff;">
+        <view class="message-title left-dis">捎口信</view>
+        <view style="height: 200rpx;border-top: solid 1px #efefef;">
+            <view style="padding: 35rpx">
+            <view class="message-desc"
+                  style="height: 165rpx" value="{{message}}">{{!!order.message?order.message:""}}</view>
             </view>
         </view>
     </view>
@@ -91,7 +88,7 @@
         </view>
         <!-- 待付款 -->
         <view wx:if="{{order.status==8}}">
-            <view class="order-button" bindtap="goPayment">去付款</view>
+            <view class="order-button" style="color:#ffd600;border:solid 2px #ffd600;" bindtap="goPayment">去付款</view>
             <view class="order-button" bindtap="paymentCancel">取消订单</view>
         </view>
         <!-- 待收货 -->

@@ -7,39 +7,47 @@
             <van-tab title="退款/售后"></van-tab>
         </van-tabs>
     </view>
-    <scroll-view style="width:100%;margin-top:40px;height: {{window_height}}px" scroll-y="true"
-                 bindscrolltoupper="upper"
-                 bindscrolltolower="lower">
-        <view class="margin-top" wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.id}}">
-            <view class="border">
-                <van-row>
-                    <van-col offset="1" span="19">{{order.createTime}}</van-col>
-                    <van-col span="4">{{orderStatusObject[order.status]}}</van-col>
-                </van-row>
-            </view>
-            <view class="border">
+    <view wx:if="{{order_list.length>0}}">
+        <scroll-view style="width:100%;margin-top:40px;height: {{window_height}}px" scroll-y="true"
+                     bindscrolltoupper="upper"
+                     bindscrolltolower="lower">
+            <view wx:for="{{order_list}}" wx:for-item="order" wx:key="{{order.id}}"
+                  style="background-color: #fff;margin-bottom: 10rpx;">
                 <navigator url="/view/order/detail?id={{order.id}}">
-                    <van-row>
-                        <van-col offset="1" span="19">
+                    <view class="order-time-status">
+                        <view style="float: left;padding-left: 20rpx">{{order.createTime}}</view>
+                        <view style="float: right;padding-right: 20rpx">{{orderStatusObject[order.status]}}</view>
+                    </view>
+                    <view class="order-content order-border">
+                        <view style="width:{{window_width-40}}px;" class="order-img">
                             <view wx:if="{{order.productOrderResultsList.length>0}}">
                                 <image wx:for="{{order.productOrderResultsList}}" wx:for-item="product"
-                                        src="{{hosts+product.img}}"
-                                        style="width:30px;height:30px;vertical-align:middle;"/>
+                                       src="{{hosts+product.img}}"
+                                       style="vertical-align:middle;"/>
                             </view>
-                        </van-col>
-                        <van-col span="4" style="float:right">
-                            <van-icon style="padding-right: 15px;" name="arrow"/>
-                        </van-col>
-                    </van-row>
+                        </view>
+                        <view style="width:40px;">
+                            <van-icon style="padding-left: 20rpx;" name="arrow"/>
+                        </view>
+                    </view>
+                    <view class="order-product order-border">
+                        <view style="padding-left:20rpx;font-family: 'Microsoft YaHei';font-size: 22rpx;color: #999999;">
+                            共{{order.count}}件商品
+                        </view>
+                        <view style="padding-left:45rpx;font-family: 'Microsoft YaHei';font-size: 28rpx;color: #fc0438;">
+                            ￥{{order.countMoney}}
+                        </view>
+                    </view>
                 </navigator>
             </view>
-            <view class="border">
-                <van-row>
-                    <van-col offset="1" span="19">共{{order.count}}件商品 ￥{{order.countMoney}}
-                    </van-col>
-                    <van-col span="4"></van-col>
-                </van-row>
-            </view>
+        </scroll-view>
+    </view>
+    <view wx:else>
+        <view style="border-top: solid 2px #EFEFEF;padding-top:198rpx;text-align: center;">
+            <image src="/image/new/qd.png" style="width: 230rpx;height:230rpx" />
         </view>
-    </scroll-view>
+        <view style="text-align: center;font-family: 'Microsoft YaHei';font-size: 32rpx;color:#999999;padding-top: 80rpx;">
+            您还没有订单噢！
+        </view>
+    </view>
 </view>

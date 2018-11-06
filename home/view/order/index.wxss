@@ -15,3 +15,40 @@
 	position: fixed;
 	top: 0;
 }
+.order-time-status {
+	height: 78rpx;
+	line-height: 78rpx;
+	font-family: "Microsoft YaHei";
+	font-size: 22rpx;
+	color: #999999;
+}
+.order-time-status view {
+	display: inline-block;
+}
+.order-content {
+	height: 130rpx;
+	line-height: 130rpx;
+}
+.order-content view {
+	display: inline-block;
+}
+.order-img image {
+	height: 120rpx;
+	width: 120rpx;
+	padding-right: 20rpx;
+}
+.order-border {
+	border-top: solid 2rpx #EDECED;
+}
+.order-product {
+	height: 78rpx;
+	line-height: 78rpx;
+}
+.order-product view {
+	display: inline-block;
+}
+.van-tabs__line {
+	width:150rpx !important;
+	margin-left:15rpx;
+	height:3px;
+}
