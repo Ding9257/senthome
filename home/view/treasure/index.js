@@ -52,7 +52,7 @@ Page({
                 item.oddsOfWinning = 0;
                 if (!util.isEmpty(item.couponDrools)) {
                     for (let i = 0; item.couponDrools.length; i++) {
-                        let {people, rate} = item.couponDrools[i];
+                        let {people, rate, num} = item.couponDrools[i];
                         if (i == 0) {
                             item.oddsOfWinning = rate;
                         }

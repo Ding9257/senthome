@@ -26,8 +26,11 @@
               style="height: 150rpx;border-bottom: solid 1px #999999;"
               wx:for-item="delivery" wx:key="{{delivery.id}}" bindtap="handleClick">
             <view style="padding-top: 28rpx;padding-left: 20rpx;">
-                <view class="address-font">{{delivery.name}} {{delivery.phone}}</view>
-                <view class="address-font address">{{delivery.contentAddress}}</view>
+                <view class="address-font" style="font-size:26rpx;color:#3b3b3b;">
+                    <text>{{delivery.name}}</text>
+                    <text style="padding-left: 40rpx;">{{delivery.phone}}</text>
+                    </view>
+                <view class="address-font address" style="font-size:26rpx;color: #999999;padding-top: 30rpx;">{{delivery.contentAddress}}</view>
             </view>
         </view>
         <view wx:if="{{selectTab=='店铺自提'}}" wx:for="{{shopMention}}"
@@ -41,7 +44,7 @@
         </view>
         <view wx:if="{{selectTab=='收货地址'&&delivery_list.length==0}}">
             <view style="padding-top: 146rpx;text-align: center;border-top: solid 1px #999999;">
-                <image src="/image/all/dw.png" style="height: 230rpx;width: 230rpx;"/>
+                <image src="/image/new/5.png" style="height: 230rpx;width: 230rpx;"/>
             </view>
             <view style="font-size: 32rpx;font-family: 'Microsoft YaHei';color:#999999;text-align: center">
                 没有收货地址哦，赶快创建一个把吧

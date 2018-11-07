@@ -34,10 +34,33 @@ Page({
         request({
             url: '/coupon/findByUserId',
             method: "POST",
-            data: {userId: app.globalData.userInfo.id, result: this.data.result}
+            data: {userId: app.globalData.userInfo.userId, result: this.data.result}
         }).then(res => {
+            let list = [];
+            for (let tempItem of res.data) {
+                let item = tempItem.coupon;
+                let currentTimestamp = moment().valueOf();
+                let collectTimestamp = moment(item.collectTime).valueOf();
+                let progress = currentTimestamp / collectTimestamp * 100;
+                tempItem.progress = progress.toFixed(2) * 1;
+                tempItem.oddsOfWinning = 0;
+                if (!util.isEmpty(item.couponDrools)) {
+                    for (let i = 0; item.couponDrools.length; i++) {
+                        let {people, rate, num} = item.couponDrools[i];
+                        if (i == 0) {
+                            tempItem.oddsOfWinning = rate;
+                        }
+                        if (num > people) {
+                            tempItem.oddsOfWinning = rate;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                list.push(tempItem);
+            }
             this.setData({
-                treasure_list: res.data
+                treasure_list: list
             });
         })
     },

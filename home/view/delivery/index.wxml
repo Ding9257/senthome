@@ -1,22 +1,34 @@
-<view class="container">
-  <view class="header"></view>
-  <view class="weui-panel weui-panel_access">
-    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{delivery_list}}"
-    wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}"  bindtap="handleClick">
-      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg ">
-        <view class="weui-media-box__title">{{delivery.name}} {{delivery.phone}}</view>
-        <view class="weui-media-box__desc address">{{delivery.contentAddress}}</view>
-      </view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+<view class="container" style="background-color: #fff;">
+    <view wx:for="{{delivery_list}}"
+          style="height: 150rpx;border-bottom: solid 2rpx #999999;padding: 30rpx 0 0 20rpx;"
+          wx:for-item="delivery" id="{{delivery.id}}" wx:key="{{delivery.id}}" bindtap="handleClick">
+        <view style="height: 80rpx;" class="address-item">
+            <!--<view style="height: 80rpx;width: 6px;background-color: #ffd600"></view>-->
+            <view style="width: {{window_width-100}}px;height: 80rpx;">
+                <view style="font-size:26rpx;color:#3b3b3b;display: block;height: 40rpx;">
+                    <text>{{delivery.name}}</text>
+                    <text style="padding-left: 40rpx;">{{delivery.phone}}</text>
+                </view>
+                <view class="van-ellipsis" style="font-size:26rpx;color: #999999;padding-top: 30rpx;display: block;height: 40rpx;">
+                    {{delivery.contentAddress}}
+                </view>
+            </view>
+            <view style="width:40px;float: right;height: 40rpx;line-height: 40rpx;padding-top: 40rpx;">
+                <view style="font-size: 20rpx;font-family: 'Microsoft YaHei';color:#999999;display: inline-block;padding-top: -5rpx;">
+                    修改
+                    <van-icon name="arrow"/>
+                </view>
+
+            </view>
+        </view>
     </view>
-  </view>
-  <view class="no-data" wx:if="{{is_load && delivery_list.length == 0}}">
-    <image src="/image/empty.svg" class="no-data-image-icon"></image>
-    <view class="no-data-text">当前没有数据</view>
-  </view>
-  <view class="footer">
-    <navigator url="/view/delivery/detail" class="footer-add">
-      新增收货地址
-    </navigator>
-  </view>
+    <view class="no-data" wx:if="{{is_load && delivery_list.length == 0}}">
+        <image src="/image/empty.svg" class="no-data-image-icon"></image>
+        <view class="no-data-text">当前没有数据</view>
+    </view>
+    <view class="footer">
+        <navigator url="/view/delivery/detail" class="footer-add">
+            新增收货地址
+        </navigator>
+    </view>
 </view>

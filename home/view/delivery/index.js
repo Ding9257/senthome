@@ -3,6 +3,7 @@ const request = require("./../../util/request").request;
 const app = getApp();
 Page({
     data: {
+        window_width: app.globalData.window_width,
         color: constant.color,
         is_load: true,
         is_select: true,

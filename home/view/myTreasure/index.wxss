@@ -9,3 +9,22 @@
     font-size:12px;
     text-align: right;
 }
+.treasure-item {
+    height: 170rpx;
+    width: 100%;
+    padding-top: 30rpx;
+    border-bottom:solid 1px #EDECED;
+}
+.treasure-font{
+    font-size: 24rpx;
+    font-family: "Microsoft YaHei";
+    color: #3d3d3d;
+}
+.van-progress__pivot {
+    visibility: hidden;
+}
+.van-tabs__line {
+    width:150rpx !important;
+    margin-left:50rpx;
+    height:3px;
+}

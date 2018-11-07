@@ -1,18 +1,32 @@
 .footer-add {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
-  color: #fff;
-  text-align: center;
-  background-color: #c81623;
-  border-radius: 0px;
+    width: 710rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    text-align: center;
+    border-radius: 10rpx;
 }
 
 .province-city-area {
-  position: absolute;
-  width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    position: absolute;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.address {
+    padding: 0 20rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+}
+.address view {
+    display: inline-block;
+}
+.message-desc {
+    font-family: "Microsoft YaHei";
+    font-size: 26rpx;
+    color: #3b3b3b;
+}
+textarea {
+    width:150px;
 }

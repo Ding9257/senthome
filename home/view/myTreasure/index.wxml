@@ -1,40 +1,45 @@
 <view class="container">
-  <view>
-    <van-tabs bind:disabled="onClickDisabled">
-      <van-tab title="正在夺宝"></van-tab>
-      <van-tab title="成功夺宝" ></van-tab>
-      <van-tab title="夺宝失败"></van-tab>
-    </van-tabs>
-  </view>
-  <view>
-    <van-row wx:for="{{treasure_list}}" wx:key="{{item.cid}}">
-        <navigator  open-type="navigate" url="/view/treasure/detail?id={{item.cid}}" style="margin-top:5px;">
-          <van-col span="6">
-            <image class="img" src="{{item.coupon.img}}" />
-          </van-col>
-          <van-col span="16" offset="1"  class="col">
-            <text>{{item.coupon.name}}</text>
-            <text>截止时间:{{item.coupon.collectTime}}</text>
-            <view>
-                <van-row>
-                    <van-col span="14">
-                        <text>夺宝价：￥{{item.coupon.price}}</text>
-                    </van-col>
-                    <van-col span="10">
-                        <text>夺宝价数量:{{item.num}}</text>
-                    </van-col>
-                </van-row>
-            </view>
-            <!--
-            <view style="margin-top:5px;">
-                <van-progress color="#FADE56" percentage="{{item.oddsOfWinning}}" />
-            </view>
-            <view>
-                <text class="winning" style="float:right;margin-top:10px;">当前326人，中奖率50%</text>
-            </view>
-            -->
-          </van-col>
-      </navigator>
-    </van-row>
-  </view>
+    <view>
+        <van-tabs bind:disabled="onClickDisabled">
+            <van-tab title="正在夺宝"></van-tab>
+            <van-tab title="成功夺宝"></van-tab>
+            <van-tab title="夺宝失败"></van-tab>
+        </van-tabs>
+    </view>
+    <view>
+        <van-row wx:for="{{treasure_list}}" wx:key="{{item.cid}}">
+            <navigator open-type="navigate" url="/view/treasure/detail?id={{item.cid}}">
+                <view class="treasure-item">
+                    <van-row>
+                        <van-col offset="1" span="5">
+                            <image style="width:140rpx;height:140rpx;" src="{{hosts+item.coupon.img}}"/>
+                        </van-col>
+                        <van-col span="16">
+                            <view style="padding-left: 25rpx;">
+                                <view class="treasure-font van-ellipsis" style="font-size: 24rpx;color:#999999;">
+                                    {{item.coupon.name}}
+                                </view>
+                                <view class="treasure-font" style="font-size: 16rpx;color:#999999;padding-top: 10rpx;">
+                                    截止时间:{{item.coupon.collectTime}}
+                                </view>
+                                <view class="treasure-font" style="font-size: 16rpx;padding-top: 10rpx;color:#999999;">
+                                    夺宝价：
+                                    <text style="color:#fc0438;">￥{{item.coupon.price}}</text>
+                                    <text style="float: right;padding-right: 20rpx;">夺宝价数量:{{item.num}}</text>
+                                </view>
+                                <view wx:if="{{result==0}}"></view>
+                                <view style="padding-top: 10rpx;">
+                                    <van-progress color="linear-gradient(to right, #ffd600, #ffd600)" show-pivot="false"
+                                                  percentage="{{item.progress}}"/>
+                                </view>
+                                <view class="treasure-font" style="font-size: 12rpx;float: right;">
+                                    当前{{item.num}}人，中奖率{{item.oddsOfWinning}}
+                                </view>
+                            </view>
+                        </van-col>
+                    </van-row>
+                </view>
+            </navigator>
+        </van-row>
+    </view>
 </view>

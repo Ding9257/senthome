@@ -1,59 +1,71 @@
-<view class="container">
+<view class="container" style="background-color: #fff;">
     <form bindsubmit="handleSubmit">
         <view class="header"></view>
-        <view class="weui-cells weui-cells_after-title margin-top">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">收货人:</view>
-                </view>
-                <view class="weui-cell__bd">
+        <van-row>
+            <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;">
+                <van-col offset="1" span="6">收货人</van-col>
+                <van-col span="15">
                     <input name="name" class="weui-input" placeholder="收货人姓名" value="{{address.name}}"/>
-                </view>
+                </van-col>
             </view>
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">手机号码:</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input name="phone" class="weui-input" placeholder="请输入手机号码" value="{{address.phone}}"/>
-                </view>
+        </van-row>
+        <van-row>
+            <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;">
+                <van-col offset="1" span="6">手机号码</van-col>
+                <van-col span="15">
+                    <input name="phone" class="weui-input" placeholder="请输入手机号码"
+                           value="{{address.phone}}"/>
+                </van-col>
             </view>
-            <view class="weui-cell weui-cell_select" bindtap="handlDialogOpenCity">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">所在城市</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view class="weui-select weui-select_in-select-after">
-                        <text class="weui-input">{{city}}</text>
-                    </view>
-                </view>
+        </van-row>
+        <van-row>
+            <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;"
+                  bindtap="handlDialogOpenCity">
+                <van-col offset="1" span="6">所在城市</van-col>
+                <van-col span="15">
+                    <text class="weui-input">{{!!city?city:"请选择"}}</text>
+                </van-col>
+                <van-col span="2">
+                    <van-icon name="arrow"/>
+                </van-col>
             </view>
-            <view class="weui-cell weui-cell_select" bindtap="handlDialogOpenArea">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">所在地区</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view class="weui-select weui-select_in-select-after">
-                        <text class="weui-input">{{area}}</text>
-                    </view>
-                </view>
+        </van-row>
+        <van-row>
+            <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;"
+                  bindtap="handlDialogOpenArea">
+                <van-col offset="1" span="6">所在地区</van-col>
+                <van-col span="15">
+                    <text class="weui-input">{{!!area?area:"请选择"}}</text>
+                </van-col>
+                <van-col span="2">
+                    <van-icon name="arrow"/>
+                </van-col>
             </view>
-
-            <view class="weui-cells weui-cells_after-title">
-                <view class="weui-cell">
-                    <view class="weui-cell__bd">
-                        <textarea name="contentAddress" class="weui-textarea" placeholder="请输入详细地址"
-                                  style="height: 3.3em" value="{{address.contentAddress}}"/>
-                    </view>
-                </view>
+        </van-row>
+        <van-row>
+            <view style="height: 200rpx;border-bottom: solid 1px #c9c9c9;padding-top: 20rpx;">
+                <van-col offset="1" span="6">详细地址</van-col>
+                <van-col span="15">
+                   <textarea name="contentAddress" maxlength="50" class="message-desc" placeholder-class="message-desc"
+                             placeholder="请输入街道门牌号等详细信息" bindinput="message_put"
+                             style="height:200rpx;width: {{window_width-150}}px;" value="{{address.contentAddress}}"/>
+                </van-col>
+            </view>
+        </van-row>
+        <view style="height: 98rpx;line-height: 98rpx;">
+            <view style="float: left;display: inline-block;">设为默认地址</view>
+            <view style="float: right;display: inline-block;padding-top: 24rpx;padding-right: 20rpx;" bindtap="setDefault">
+                <image src="{{isDefault?'/image/new/on.png':'/image/new/off.png'}}"
+                       style="width: 96rpx;height: 50rpx;"/>
             </view>
         </view>
         <view>
-            <button style="background:#f9de56;color:#000;width:90%;margin-top:10px;" class="footer-add"
+            <button style="background:#ffd600;margin-top: 80rpx;" class="footer-add"
                     formType="submit">
                 保存
             </button>
-            <button wx:if="{{!!id}}" bindtap="del" class="footer-add" style="background:#fff;color:#b47631;width:90%;margin-top:10px;">
+            <button wx:if="{{!!id}}" bindtap="del" class="footer-add"
+                    style="background:#fff;margin-top:30rpx;">
                 删除
             </button>
         </view>

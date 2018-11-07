@@ -2,13 +2,17 @@ const constant = require("../../util/constant.js");
 const util = require('../../util/util.js');
 import Toast from './../../dist/toast/toast';
 
+const app = getApp();
+
 const request = require("./../../util/request").request;
 
 Page({
     data: {
+        window_width: app.globalData.window_width,
         id: "",
         color: constant.color,
         address: {},
+        isDefault: false,
         delivery_province: "",
         area: "",
         city: "",
@@ -178,5 +182,11 @@ Page({
             popupStatus: 2,
             vanPopupList: this.data.cityList
         });
+    },
+    setDefault: function () {
+        let isDefault = !this.data.isDefault;
+        this.setData({
+            isDefault
+        })
     }
 });
