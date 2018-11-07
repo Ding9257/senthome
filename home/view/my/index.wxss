@@ -20,8 +20,8 @@
 }
 
 .order-item-icon-image {
-    width: 30px;
-    height: 30px;
+    width: 42rpx;
+    height: 42rpx;
 }
 
 .out-button {
@@ -38,13 +38,16 @@
 }
 
 .userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
+    width: 106rpx;
+    height: 106rpx;
     margin: 20rpx;
     border-radius: 50%;
 }
 
 .userinfo-nickname {
+    padding-top: 20rpx;
+    font-family: "Microsoft YaHei";
+    font-size: 32rpx;
     color: #fff;
 }
 
@@ -56,4 +59,26 @@
 
 .free-btn-bordernone::after {
     border: none;
+}
+.black-frame {
+    height: 10rpx;
+    background-color: #efefef;
+}
+.my-item {
+    background-color: #fff;
+    font-family: "Microsoft YaHei";
+    font-size: 26rpx;
+    color: #3b3b3b;
+    height: 98rpx;
+    line-height: 98rpx;
+    padding: 0 20rpx;border-bottom: solid 1px #efefef;
+}
+.my-item .icon {
+    width: 30rpx;
+    height: 30rpx;
+    padding-right: 20rpx;
+}
+.my-item .go {
+    width: 18rpx;
+    height: 34rpx;
 }

@@ -1,6 +1,6 @@
 <van-dialog id="van-dialog"/>
 <van-toast id="van-toast"/>
-<view wx:if="{{!!shopInfo&&!!shopInfo.name}}" class="container">
+<view wx:if="{{!!shopInfo.name}}" class="container">
     <view class="userinfo">
         <image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/logo.png'}}"
                background-size="cover" bindtap="chooseImage"></image>
@@ -9,19 +9,25 @@
                 bindgetuserinfo="onGotUserInfo">点击登录
         </button>
     </view>
-    <view class="weui-cells weui-cells_after-title margin-top">
-        <view bindtap="navigator" data-url="/view/order/index?order_flow=ALL" class="weui-cell weui-cell_access"
-              hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
-                <image src="/image/mine/db.png"
-                       style="margin-right: 5px; margin-top: 5px; width: 20px; height: 20px;"></image>
+    <view class="black-frame"></view>
+    <view class="weui-cells weui-cells_after-title">
+        <van-row>
+            <view style="height:98rpx;line-height: 98rpx;padding: 0 20rpx;border-bottom: solid 1px #efefef;">
+                <van-col span="12">
+                    <view style="font-size: 26rpx;font-family: 'Microsoft YaHei';color: #3b3b3b">
+                        我的订单
+                    </view>
+                </van-col>
+                <van-col span="12">
+                    <view bindtap="navigator" data-url="/view/order/index" style="float: right;">
+                        <view class=" weui-cell__ft_in-access "
+                              style="font-family: 'Microsoft YaHei';font-size:26rpx;color: #999999;">查看全部订单
+                        </view>
+                    </view>
+                </van-col>
             </view>
-            <view class="weui-cell__bd">我的订单</view>
-            <view bindtap="navigator" data-url="/view/order/index">
-                <view class="weui-cell__ft weui-cell__ft_in-access order-info">查看全部订单</view>
-            </view>
-        </view>
-        <view class="weui-media-box weui-media-box_appmsg order" style="padding-left: 15px;">
+        </van-row>
+        <view class=" weui-media-box_appmsg order" style="font-size: 26rpx;color:3b3b3b;font-family: 'Microsoft YaHei'">
             <view bindtap="navigator" data-url="/view/order/index?activeStatus=1" class="order-item">
                 <view class="order-item-icon">
                     <view style="position: relative; display:inline-block;">
@@ -63,45 +69,63 @@
             </view>
         </view>
     </view>
-    <view class="weui-cells weui-cells_after-title margin-top">
-        <view bindtap="navigator" data-url="/view/myTreasure/index" class="weui-cell weui-cell_access"
-              hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
-                <image src="/image/mine/db.png"
-                       style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd">我的夺宝</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    <view class="black-frame"></view>
+    <van-row>
+        <view class="my-item" bindtap="navigator" data-url="/view/myTreasure/index">
+            <van-col span="12">
+                <view>
+                    <image src="/image/mine/db.png" class="icon" />我的夺宝
+                </view>
+            </van-col>
+            <van-col span="12">
+                <view style="float: right;">
+                    <image src="/image/all/xyb.png" class="go" />
+                </view>
+            </van-col>
         </view>
-        <view bindtap="navigator" data-url="/view/voucher/index" class="weui-cell weui-cell_access"
-              hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
-                <image src="/image/mine/djq.png"
-                       style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd">待金券</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </van-row>
+    <van-row>
+        <view class="my-item" bindtap="navigator" data-url="/view/voucher/index">
+            <van-col span="12">
+                <view>
+                    <image src="/image/mine/djq.png" class="icon" />待金券
+                </view>
+            </van-col>
+            <van-col span="12">
+                <view style="float: right;">
+                    <image src="/image/all/xyb.png" class="go" />
+                </view>
+            </van-col>
         </view>
-    </view>
-    <view class="weui-cells weui-cells_after-title margin-top">
-        <view bindtap="navigator" data-url="/view/delivery/index" class="weui-cell weui-cell_access"
-              hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
-                <image src="/image/mine/shdz.png"
-                       style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd">收货地址</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </van-row>
+    <van-row>
+        <view class="my-item" bindtap="navigator" data-url="/view/delivery/index">
+            <van-col span="12">
+                <view>
+                    <image src="/image/mine/shdz.png" class="icon" />收货地址
+                </view>
+            </van-col>
+            <van-col span="12">
+                <view style="float: right;">
+                    <image src="/image/all/xyb.png" class="go"/>
+                </view>
+            </van-col>
         </view>
-        <view bindtap="customer" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
-                <image src="/image/mine/kf.png"
-                       style="margin-right: 5px; margin-top: 5px; width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd">客服电话</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </van-row>
+    <van-row>
+        <view class="my-item" bindtap="customer">
+            <van-col span="12">
+                <view>
+                    <image src="/image/mine/kf.png" class="icon" />客服电话
+                </view>
+            </van-col>
+            <van-col span="12">
+                <view style="float: right;">
+                    <image src="/image/all/xyb.png" class="go"/>
+                </view>
+            </van-col>
         </view>
-    </view>
+    </van-row>
     <view wx:if="{{!!userInfo.nickName}}" class="weui-cells weui-cells_after-title margin-top">
         <button bindtap="out" class="out-button">退出登录</button>
     </view>

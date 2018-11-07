@@ -271,7 +271,7 @@
     padding-left: 36rpx;
 }
 page {
-    background-color: #efefef;
+    background-color: #fff;
 }
 .message-desc {
     font-family: "Microsoft YaHei";

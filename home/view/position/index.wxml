@@ -47,7 +47,7 @@
                 <image src="/image/new/5.png" style="height: 230rpx;width: 230rpx;"/>
             </view>
             <view style="font-size: 32rpx;font-family: 'Microsoft YaHei';color:#999999;text-align: center">
-                没有收货地址哦，赶快创建一个把吧
+                没有收货地址哦，赶快创建一个吧
             </view>
         </view>
     </view>
