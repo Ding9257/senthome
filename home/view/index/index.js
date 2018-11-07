@@ -20,7 +20,7 @@ Page({
         dianZhang_list: []
     },
     onUnload: function () {
-        console.log(31321321);
+
     },
     onLoad: function () {
         //获取定位
@@ -92,7 +92,6 @@ Page({
         }).then(res => {
             let list = [];
             let shopCart = app.globalData.shopCart;
-            console.log(res.data);
             for (let key in res.data) {
                 let items = res.data[key];
                 if (!util.isEmpty(items)) {

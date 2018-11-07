@@ -49,7 +49,10 @@ function requestP(options = {}) {
         sessionId: state.sessionId,
         Accept: 'application/json;charset=UTF-8'
     }, options.header);
-
+    wx.showLoading({
+        title: '操作中',
+        mask: true
+    });
     return new Promise((res, rej) => {
         wx.request({
             url: `${host}${url}`,
@@ -77,7 +80,9 @@ function requestP(options = {}) {
             fail(err) {
                 rej(err);
             },
-            complete
+            complete(s) {
+                wx.hideLoading();
+            }
         });
     });
 }
