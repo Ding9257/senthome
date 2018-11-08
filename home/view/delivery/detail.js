@@ -14,8 +14,10 @@ Page({
         address: {},
         isDefault: false,
         delivery_province: "",
+        community: "",//小区
         area: "",
         city: "",
+        areaId: "",
         delivery_area: "",
         popupStatus: 0,//0关闭  1打开区域 2 打开城市
         areaList: {
@@ -36,6 +38,9 @@ Page({
                 3: '重庆市',
                 4: '天津市'
             }
+        },
+        CommunityList: {
+            province_list: {}
         },
         vanPopupList: {},
         province_city_area: [0, 0, 0],
@@ -74,12 +79,6 @@ Page({
     },
     onShareAppMessage: function () {
 
-    },
-    handlDialogOpenArea: function () {
-        this.setData({
-            popupStatus: 1,
-            vanPopupList: this.data.areaList
-        });
     },
     handleSubmit: function (event) {
         var name = event.detail.value.name;
@@ -129,7 +128,16 @@ Page({
         request({
             url,
             method: "POST",
-            data: {id, name, phone, contentAddress, userId: getApp().globalData.userInfo.userId, city, address: area}
+            data: {
+                id,
+                name,
+                phone,
+                contentAddress,
+                userId: getApp().globalData.userInfo.userId,
+                city,
+                address: area,
+                areaId: this.data.areaId
+            }
         }).then(res => {
             wx.navigateBack({
                 delta: 1
@@ -163,30 +171,69 @@ Page({
             Toast.fail(err.msg)
         });
     },
-    popupSelect: function (e) {
-        let name = e.detail.values[0].name;
-        if (this.data.popupStatus == 1) {
-            this.setData({
-                area: name,
-                popupStatus: 0
-            });
-        } else {
-            this.setData({
-                city: name,
-                popupStatus: 0
-            });
-        }
-    },
     handlDialogOpenCity: function () {
         this.setData({
             popupStatus: 2,
             vanPopupList: this.data.cityList
         });
     },
+    handlDialogOpenArea: function () {
+        this.setData({
+            popupStatus: 1,
+            vanPopupList: this.data.areaList
+        });
+    },
+    handlDialogOpenCommunity: function () {
+        this.setData({
+            popupStatus: 3,
+            vanPopupList: this.data.areaList
+        });
+    },
+    popupSelect: function (e) {
+        let name = e.detail.values[0].name;
+        if (this.data.popupStatus == 1) {
+            //获取该地区下的小区
+            this.getCommunity(name);
+            this.setData({
+                area: name,
+                popupStatus: 0
+            });
+        }
+        if (this.data.popupStatus == 2) {
+            this.setData({
+                city: name,
+                popupStatus: 0
+            });
+        }
+        if (this.data.popupStatus == 3) {
+            //选择小区
+            let areaId = e.detail.values[0].code;
+            this.setData({
+                areaId,
+                community: name,
+                popupStatus: 0
+            });
+        }
+    },
     setDefault: function () {
         let isDefault = !this.data.isDefault;
         this.setData({
             isDefault
+        })
+    },
+    getCommunity: function (area) {
+        request({
+            url: "/area/list",
+            method: "POST",
+            data: {area}
+        }).then(data => {
+            let province_list = {};
+            for (let item of data.data) {
+                province_list[item.id] = item.name;
+            }
+            this.setData({
+                CommunityList: {province_list}
+            })
         })
     }
 });

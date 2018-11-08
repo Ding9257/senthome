@@ -71,8 +71,15 @@ Page({
             let item = res.data;
             let currentTimestamp = moment().valueOf();
             let collectTimestamp = moment(item.collectTime).valueOf();
-            let progress = currentTimestamp / collectTimestamp * 100;
-            item.progress = progress.toFixed(2) * 1;
+            item.isOver = false;
+            item.progress = 100;
+            //判断活动是否结束
+            if (currentTimestamp >= collectTimestamp) {
+                item.isOver = true;
+            } else {
+                let progress = currentTimestamp / collectTimestamp * 100;
+                item.progress = progress.toFixed(2) * 1;
+            }
             this.setData({
                 goods: item
             });

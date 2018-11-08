@@ -33,7 +33,7 @@
         <image style="width:100vw;height:{{height}}rpx" src="{{goods.imgContent}}"/>
     </view>
 
-    <view class="footer">
+    <view class="footer" wx:if="{{!goods.isOver}}">
         <view style="padding-left: 20rpx;">
             <text style="font-size:26rpx;color: #3b3b3b;font-family: 'Microsoft YaHei'">购买数量:</text>
             <view class="shop-add-down">

@@ -32,10 +32,22 @@
         </van-row>
         <van-row>
             <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;"
-                  bindtap="handlDialogOpenArea">
+                  bindtap="handlDialogOpenrea">
                 <van-col offset="1" span="6">所在地区</van-col>
                 <van-col span="15">
                     <text class="weui-input">{{!!area?area:"请选择"}}</text>
+                </van-col>
+                <van-col span="2">
+                    <van-icon name="arrow"/>
+                </van-col>
+            </view>
+        </van-row>
+        <van-row>
+            <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;"
+                  bindtap="handlDialogOpenCommunity">
+                <van-col offset="1" span="6">所在小区</van-col>
+                <van-col span="15">
+                    <text class="weui-input">{{!!community?community:"请选择"}}</text>
                 </van-col>
                 <van-col span="2">
                     <van-icon name="arrow"/>
