@@ -10,6 +10,7 @@ Page({
         id: "",
         shopNum: 0,
         current: 0,
+        isShowWinning: false,
         width: app.globalData.window_width,
         height: app.globalData.window_height,
         galleryHeight: 200
@@ -75,6 +76,9 @@ Page({
             item.progress = 100;
             //判断活动是否结束
             if (currentTimestamp >= collectTimestamp) {
+                this.setData({
+                    isShowWinning: true
+                })
                 item.isOver = true;
             } else {
                 let progress = currentTimestamp / collectTimestamp * 100;
@@ -83,6 +87,11 @@ Page({
             this.setData({
                 goods: item
             });
+        })
+    },
+    onClose: function () {
+        this.setData({
+            isShowWinning: false
         })
     }
 });

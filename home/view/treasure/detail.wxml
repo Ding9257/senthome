@@ -47,4 +47,25 @@
         </view>
     </view>
     <van-toast id="van-toast"/>
+    <van-popup show="{{ isShowWinning }}" bind:click-overlay="onClose">
+        <view class="winning">
+            <view class="winning-name">本期获奖名单</view>
+            <view class="winning-content">
+                <view wx:for="{{goods.ids}}" wx:key="{{item.id}}">
+                    <van-row>
+                        <van-col span="12">
+                            <text class="winning-name">{{item.name}}</text>
+                        </van-col>
+                        <van-col span="12">
+                            <text class="winning-phone">{{item.phone}}</text>
+                        </van-col>
+                    </van-row>
+                </view>
+            </view>
+            <view class="winning-footer">
+                <text style="color: #3b3b3b;">恭喜以上获奖用户</text>
+                <text style="color: #f1a825;padding-left: 20rpx;">奖品将在24小时内自动发放至个人中心请及时查收。</text>
+            </view>
+        </view>
+    </van-popup>
 </view>

@@ -1,5 +1,5 @@
 page {
-	background: #eee;
+	background: #fff;
 }
 
 /*swiper images*/
@@ -212,4 +212,23 @@ page {
 	display: inline-block;
 	width: 30px;
 	text-align: center;
+}
+.winning {
+	text-align: center;
+	font-family: "Microsoft YaHei";
+}
+.winning-content {
+	padding-top: 32rpx;
+}
+.winning-name {
+	color:#3b3b3b;
+	font-size: 26rpx;
+}
+.winning-phone {
+	color:#aa8f1e;
+	font-size: 24rpx;
+	padding-left: 32rpx;
+}
+.winning-footer {
+	font-size: 18rpx;
 }
