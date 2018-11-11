@@ -7,6 +7,7 @@ Page({
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
         status: 0,
+        orderType: "",
         banner_list: [{
             banner_id: 0,
             banner_image: '/image/banner.png'
@@ -41,7 +42,7 @@ Page({
         request({
             url: '/coupon/list',
             method: "POST",
-            data: {}
+            data: {orderType: this.data.orderType}
         }).then(res => {
             let list = [];
             for (let item of res.data) {
@@ -70,5 +71,22 @@ Page({
                 treasure_list: list
             });
         })
+    },
+    onChange: function (event) {
+        let title = event.detail.title;
+        let orderType = this.data.orderType;
+        if (title == "热门夺宝") {
+            orderType = "";
+        }
+        if (title == "即将结束") {
+            orderType = 1;
+        }
+        if (title == "金额降序") {
+            orderType = 2;
+        }
+        this.setData({
+            orderType
+        });
+        this.getTreasure();
     }
 });

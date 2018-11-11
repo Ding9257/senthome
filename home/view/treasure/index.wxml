@@ -8,10 +8,10 @@
         </swiper>
     </view>
     <view>
-        <van-tabs bind:disabled="onClickDisabled">
+        <van-tabs bind:change="onChange">
             <van-tab title="热门夺宝"></van-tab>
             <van-tab title="即将结束"></van-tab>
-            <van-tab title="金额顺序"></van-tab>
+            <van-tab title="金额降序"></van-tab>
         </van-tabs>
     </view>
     <view>
