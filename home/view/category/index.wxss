@@ -38,11 +38,7 @@
     overflow: hidden;
 }
 
-.category-right-item-name {
-    font-size: 24rpx;
-    font-family: "Microsoft YaHei";
-    color:#3b3b3b;
-}
+
 
 .category-right-item-price {
     font-size: 22rpx;
@@ -69,4 +65,30 @@
     display: inline-block;
     width: 30px;
     text-align: center;
+}
+.tab-filter {
+    border-bottom: solid 1px #ddd;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}
+.tab-filter view{
+    display: inline-block;
+    /*border-bottom: solid 1px #ddd;*/
+}
+.tab-filter .tab-item{
+    font-family: "Microsoft YaHei";
+    font-size: 28rpx;
+    height: 86rpx;
+    line-height: 86rpx;
+    text-align: center;
+    color:#3b3b3b;
+}
+.tab-filter .tab-item-img {
+    width: 14rpx;
+    height: 18rpx;
+}
+.tab-item_active {
+    color: #ffd600 !important;
 }

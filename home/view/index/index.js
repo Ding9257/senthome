@@ -8,7 +8,7 @@ Page({
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
         imgWidth: 30,
-        shopDefaultImg:"/image/new/tx.png",
+        shopDefaultImg: "/image/new/tx.png",
         banner_list: [
             {url: "/image/banner.png"}
         ],
@@ -23,54 +23,27 @@ Page({
 
     },
     onLoad: function () {
-        //获取定位
-        if (util.isEmpty(this.shopInfo)) {
-            app.getLngLat().then(data => {
-                let {lng, lat, result} = data;
-                app.globalData.currentPosition = result;
-                this.setData({
-                    currentPosition: result
-                });
-                request({
-                    url: "/app/getStore",
-                    method: "get",
-                    data: {lat, lng}
-                }).then(store => {
-                    let data = store.data;
-                    let areaName = data.areaName;
-                    let shopInfo = data.list[0];
-                    app.globalData.shopInfo = shopInfo;
-                    app.globalData.areaName = areaName;
-                    this.setData({
-                        shopInfo,
-                        areaName
-                    });
-                    //店长推荐
-                    this.getDianZhangRecommend();
-                })
-            });
-        }
-        //轮播图
-        this.carouselMap();
+
     },
     onReady: function () {
-        let shopInfo = app.globalData.shopInfo;
-        app.globalData.shopInfo = shopInfo;
-        this.setData({
-            shopInfo
-        })
+
     },
     onShow: function () {
         // wx.setTabBarBadge({
         //     index: 2,
         //     text: '10'
         // })
-        let shopInfo = app.globalData.shopInfo
-        app.globalData.shopInfo = shopInfo;
+        let shopInfo = app.globalData.shopInfo;
+        let areaName = app.globalData.areaName;
         this.setData({
-            shopInfo
+            shopInfo,
+            areaName
         })
-        this.getDianZhangRecommend();
+        if (!util.isEmpty(shopInfo)) {
+            this.getDianZhangRecommend();
+        }
+        //轮播图
+        this.carouselMap();
     },
     onHide: function () {
         console.log("onHide");

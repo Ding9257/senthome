@@ -12,7 +12,7 @@ Page({
         id: "",
         color: constant.color,
         address: {},
-        isDefault: false,
+        isDefault: 0,
         delivery_province: "",
         community: "",//小区
         area: "",
@@ -133,9 +133,10 @@ Page({
                 name,
                 phone,
                 contentAddress,
-                userId: getApp().globalData.userInfo.userId,
+                userId: app.globalData.userInfo.userId,
                 city,
                 address: area,
+                status: this.data.isDefault,
                 areaId: this.data.areaId
             }
         }).then(res => {
@@ -154,6 +155,7 @@ Page({
             this.setData({
                 address: data,
                 city: data.city,
+                isDefault: data.status,
                 area: data.address
             });
         });
@@ -171,6 +173,11 @@ Page({
             Toast.fail(err.msg)
         });
     },
+    cancel: function () {
+        this.setData({
+            popupStatus: 0
+        });
+    },
     handlDialogOpenCity: function () {
         this.setData({
             popupStatus: 2,
@@ -186,7 +193,7 @@ Page({
     handlDialogOpenCommunity: function () {
         this.setData({
             popupStatus: 3,
-            vanPopupList: this.data.areaList
+            vanPopupList: this.data.CommunityList
         });
     },
     popupSelect: function (e) {
@@ -216,7 +223,7 @@ Page({
         }
     },
     setDefault: function () {
-        let isDefault = !this.data.isDefault;
+        let isDefault = this.data.isDefault == 0 ? 1 : 0;
         this.setData({
             isDefault
         })

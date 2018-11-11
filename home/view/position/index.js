@@ -23,7 +23,8 @@ Page({
         shippingAddressType: 2,
         userInfo: app.globalData.userInfo,
         selectTab: "收货地址",
-        delivery_list: []
+        delivery_list: [],
+        shopMention: []
     },
     onUnload: function () {
 
@@ -118,7 +119,7 @@ Page({
         let title = event.detail.title;
         let shippingAddressType = 2;
         if (title == "店铺自提") {
-            this.getStore();
+            //this.getStore();
             shippingAddressType = 0;
         } else {
             this.getAddress()
@@ -129,20 +130,15 @@ Page({
             shippingAddressType
         });
     },
-    getStore: function () {
-        app.getLngLat().then(data => {
-            let {lng, lat, result} = data;
-            app.globalData.currentPosition = result;
-            request({
-                url: "/app/getStore",
-                method: "get",
-                data: {lat, lng}
-            }).then(store => {
-                let data = store.data;
-                this.setData({
-                    shopMention: data.list
-                });
-            })
+    getStore: function (area) {
+        request({
+            url: "/area/listStore",
+            method: "post",
+            data: {area}
+        }).then(data => {
+            this.setData({
+                shopMention: data.data
+            });
         });
     },
     areaSelect: function (e) {
@@ -151,6 +147,7 @@ Page({
             selectProv,
             popupStatus: false
         });
+        this.getStore(selectProv)
     },
     changePopupStatus: function () {
         this.setData({

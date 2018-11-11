@@ -2,11 +2,6 @@ const request = require("./util/request.js").request;
 const util = require("./util/util");
 App({
     onLaunch: function () {
-        this.getLngLat().then(data => {
-            let {lng, lat, result} = data;
-            this.globalData.currentPosition = result;
-            this.globalData.coordinate = {lng, lat};
-        });
         wx.getSystemInfo({
             success: function (res) {
                 this.globalData.window_width = res.windowWidth;
@@ -34,6 +29,7 @@ App({
                                     user.userId = item.userId;
                                     user.phone = item.phone;
                                     getApp().globalData.userInfo = user;
+                                    this.getDefaultAddress(item.userId);
                                 })
                             }
                         });
@@ -44,6 +40,40 @@ App({
                 console.log("getSetting is error", err);
             }
         });
+    },
+    getDefaultAddress: function (userId) {
+        request({
+            url: "/address/list",
+            method: "post",
+            data: {userId, status: 0}
+        }).then(res => {
+            //判断是否有默认收货地址
+            if (res.data.length >= 1) {
+                //有默认收货地址
+                let address = res.data[0];
+                let areaId = address.areaId;
+                this.getAreaStore(areaId, 2);
+            } else {
+                //无默认收货地址
+                this.getAreaStore("", 1);
+            }
+        })
+    },
+    getAreaStore: function (areaId, type = 2) {
+        this.getLngLat().then(LngLat => {
+            let {lng, lat} = LngLat;
+            request({
+                url: "/app/getStore",
+                method: "post",
+                data: {areaId, type, lng, lat}
+            }).then(store => {
+                let data = store.data;
+                let areaName = data.areaName;
+                let shopInfo = data.list[0];
+                app.globalData.shopInfo = shopInfo;
+                app.globalData.areaName = areaName;
+            })
+        })
     },
     globalData: {
         userInfo: {},

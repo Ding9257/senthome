@@ -32,7 +32,7 @@
         </van-row>
         <van-row>
             <view style="height: 40px;line-height: 40px;border-bottom: solid 1px #c9c9c9;"
-                  bindtap="handlDialogOpenrea">
+                  bindtap="handlDialogOpenArea">
                 <van-col offset="1" span="6">所在地区</van-col>
                 <van-col span="15">
                     <text class="weui-input">{{!!area?area:"请选择"}}</text>
@@ -84,6 +84,6 @@
     </form>
 </view>
 <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-    <van-area columns-num="1" area-list="{{ vanPopupList }}" bind:confirm="popupSelect"/>
+    <van-area columns-num="1" area-list="{{ vanPopupList }}" bind:cancel="cancel" bind:confirm="popupSelect"/>
 </van-popup>
 <van-toast id="van-toast"/>

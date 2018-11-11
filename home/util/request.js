@@ -62,15 +62,19 @@ function requestP(options = {}) {
             dataType,
             responseType,
             success(r) {
-                const isSuccess = isHttpSuccess(r.statusCode);
-
-                if (isSuccess) {  // 成功的请求状态
-                    res(r.data);
+                if (isHttpSuccess(r.statusCode)) {  // 成功的请求状态
+                    if (isHttpSuccess(r.data.status)) {
+                        res(r.data);
+                    } else {
+                        wx.showToast({
+                            title: r.data.msg,
+                            icon: 'none',
+                            duration: 1000,
+                            mask: true
+                        })
+                        rej(r.data)
+                    }
                 } else {
-                    console.log({
-                        msg: `网络错误:${r.statusCode}`,
-                        detail: r
-                    });
                     rej({
                         msg: `网络错误:${r.statusCode}`,
                         detail: r

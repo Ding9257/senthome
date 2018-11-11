@@ -1,5 +1,6 @@
 const request = require("./../../util/request").request;
 import Toast from './../../dist/toast/toast';
+
 let app = getApp();
 Page({
     data: {
@@ -14,6 +15,9 @@ Page({
         currentPage: 1,
         totalPage: 0,
         page: 10,
+        tab_JG_status: 0,
+        orderTitle: "综合排序",
+        orderType: "",
         shopInfo: app.globalData.shopInfo,
         shopCart: app.globalData.shopCart || {},
         productList: []
@@ -46,7 +50,7 @@ Page({
                 categoryList: data.data,
                 categoryId: data.data[0]
             });
-            this.getShop();
+            //this.getShop();
         }).catch(err => {
             console.log(err);
         });
@@ -79,7 +83,13 @@ Page({
         request({
             url: '/product/listType',
             method: "POST",
-            data: {type: this.data.categoryId, pageNo: this.data.currentPage, sid: this.data.shopInfo.id, status: 1}
+            data: {
+                type: this.data.categoryId,
+                pageNo: this.data.currentPage,
+                sid: this.data.shopInfo.id,
+                status: 1,
+                orderType: this.data.orderType
+            }
         }).then((data) => {
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
@@ -158,5 +168,39 @@ Page({
         }).then(res => {
 
         });
+    },
+    tabSelectZH: function () {
+        this.setData({
+            orderType: "",
+            orderTitle: "综合排序"
+        });
+        this.getShop();
+    },
+    tabSelectJG: function () {
+        let tab_JG_status = this.data.tab_JG_status;
+        let orderTitle = this.data.orderTitle;
+        let orderType = this.data.orderType;
+        if (orderTitle == "按价格") {
+            orderType = orderType == 1 ? 2 : 1;
+        } else {
+            if (tab_JG_status == 0) {
+                orderType = 1;
+            } else {
+                orderType = tab_JG_status;
+            }
+        }
+        this.setData({
+            tab_JG_status: orderType,
+            orderType,
+            orderTitle: "按价格"
+        });
+        this.getShop();
+    },
+    tabSelectXL: function () {
+        this.setData({
+            orderType: 3,
+            orderTitle: "按销量"
+        });
+        this.getShop();
     }
 });
