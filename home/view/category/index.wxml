@@ -17,7 +17,7 @@
               style="width: {{(window_width - 90)/3}}px;">
             按价格
             <image class="tab-item-img"
-                   src="{{orderTitle!='按价格'?'/image/new/jg.png':tab_JG_status==1?'/image/new/off.png':'/image/new/on.png'}}"/>
+                   src="{{orderTitle!='按价格'?'/image/new/jg.png':tab_JG_status==1?'/image/new/down.png':'/image/new/top.png'}}"/>
         </view>
         <view bindtap="tabSelectXL" class="tab-item {{orderTitle=='按销量'?'tab-item_active':''}}"
               style="width: {{(window_width - 90)/3}}px;">

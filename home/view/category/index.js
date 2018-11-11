@@ -50,7 +50,7 @@ Page({
                 categoryList: data.data,
                 categoryId: data.data[0]
             });
-            //this.getShop();
+            this.getShop();
         }).catch(err => {
             console.log(err);
         });
@@ -172,6 +172,8 @@ Page({
     tabSelectZH: function () {
         this.setData({
             orderType: "",
+            currentPage: 1,
+            productList: [],
             orderTitle: "综合排序"
         });
         this.getShop();
@@ -192,6 +194,8 @@ Page({
         this.setData({
             tab_JG_status: orderType,
             orderType,
+            currentPage: 1,
+            productList: [],
             orderTitle: "按价格"
         });
         this.getShop();
@@ -199,7 +203,9 @@ Page({
     tabSelectXL: function () {
         this.setData({
             orderType: 3,
-            orderTitle: "按销量"
+            orderTitle: "按销量",
+            currentPage: 1,
+            productList: []
         });
         this.getShop();
     }

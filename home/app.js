@@ -1,7 +1,9 @@
 const request = require("./util/request.js").request;
 const util = require("./util/util");
+let _this;
 App({
     onLaunch: function () {
+        _this = this;
         wx.getSystemInfo({
             success: function (res) {
                 this.globalData.window_width = res.windowWidth;
@@ -29,7 +31,7 @@ App({
                                     user.userId = item.userId;
                                     user.phone = item.phone;
                                     getApp().globalData.userInfo = user;
-                                    this.getDefaultAddress(item.userId);
+                                    _this.getDefaultAddress(item.userId);
                                 })
                             }
                         });
@@ -52,15 +54,15 @@ App({
                 //有默认收货地址
                 let address = res.data[0];
                 let areaId = address.areaId;
-                this.getAreaStore(areaId, 2);
+                _this.getAreaStore(areaId, 2);
             } else {
                 //无默认收货地址
-                this.getAreaStore("", 1);
+                _this.getAreaStore("", 1);
             }
         })
     },
     getAreaStore: function (areaId, type = 2) {
-        this.getLngLat().then(LngLat => {
+        _this.getLngLat().then(LngLat => {
             let {lng, lat} = LngLat;
             request({
                 url: "/app/getStore",
