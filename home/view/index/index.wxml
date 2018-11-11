@@ -11,7 +11,7 @@
                                     <image style="height: 30rpx;width:20rpx;padding-left: 30rpx;"
                                            src="/image/all/dw.png"/>
                                 </view>
-                                <view style="padding-left: 20rpx;" class="text">送到家({{areaName}})</view>
+                                <view style="padding-left: 20rpx;" class="text">送到家({{!!areaName?areaName:'切换地址'}})</view>
                                 <view style="float: right;">
                                     <image src="/image/all/xl.png"
                                            style="height: 14rpx;width:20rpx;padding-right: 50rpx;"/>

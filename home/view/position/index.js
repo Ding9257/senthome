@@ -31,7 +31,6 @@ Page({
     },
     onLoad: function (option) {
         let isSelect = option.isSelect;
-        console.log(isSelect);
         if (!!isSelect) {
             this.setData({
                 isSelect
@@ -39,7 +38,7 @@ Page({
         }
     },
     onReady: function () {
-        console.log("onReady");
+
     },
     onShow: function () {
         let userInfo = app.globalData.userInfo;
@@ -76,7 +75,6 @@ Page({
         } else {
             //获取收获地址
             //跳转至  购物车页
-            console.log(this.shippingAddressType);
             if (this.data.shippingAddressType == 1 || this.data.shippingAddressType == 2) {
                 let address = this.data.delivery_list.filter(item => {
                     return item.id == id
@@ -104,7 +102,6 @@ Page({
         }
     },
     getAddress: function () {
-        console.log(this.data.userInfo);
         request({
             url: '/address/list',
             method: "POST",

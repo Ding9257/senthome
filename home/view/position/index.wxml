@@ -24,7 +24,7 @@
     <view>
         <view wx:if="{{selectTab=='收货地址'}}" wx:for="{{delivery_list}}"
               style="height: 150rpx;border-bottom: solid 1px #999999;"
-              wx:for-item="delivery" wx:key="{{delivery.id}}" bindtap="handleClick">
+              wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view style="padding-top: 28rpx;padding-left: 20rpx;">
                 <view class="address-font" style="font-size:26rpx;color:#3b3b3b;">
                     <text>{{delivery.name}}</text>
@@ -35,7 +35,7 @@
         </view>
         <view wx:if="{{selectTab=='店铺自提'}}" wx:for="{{shopMention}}"
               style="height: 150rpx;border-bottom: solid 1px #999999;"
-              wx:for-item="delivery" wx:key="{{delivery.id}}" bindtap="handleClick">
+              wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view style="padding-top: 28rpx;padding-left: 20rpx;">
                 <view class="address-font" style="font-size: 24rpx;">{{delivery.name}}</view>
                 <view class="address-font">营业时间：{{delivery.businessHours}}</view>
