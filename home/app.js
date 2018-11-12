@@ -107,6 +107,15 @@ App({
         coordinate: {},
         open_id: ''
     },
+    shopCartClear: function () {
+        let shopCart = getApp().globalData.shopCart;
+        if(!util.isEmpty(shopCart)){
+            for (let id in shopCart) {
+                shopCart[id].num = 0;
+            }
+            getApp().globalData.shopCart = shopCart;
+        }
+    },
     getLngLat: function () {
         return new Promise((resolve, reject) => {
             wx.getLocation({

@@ -61,7 +61,9 @@ Page({
                 method: "POST",
                 data: {id: this.data.id}
             }).then(res => {
-                this.getOrder(this.data.id);
+                wx.navigateBack({
+                    delta: 1
+                })
             });
         }).catch(() => {
 

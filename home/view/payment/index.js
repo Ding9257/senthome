@@ -139,6 +139,7 @@ Page({
             cid: this.data.cid,
             couponPrice: this.data.couponPrice
         };
+        app.shopCartClear();
         wx.login({
             success: function (res) {
                 let code = res.code;
@@ -155,13 +156,13 @@ Page({
                         let orderId = data.data.orderId;
                         app.requestPayment(data.data).then(ok => {
                             _this.change_status(orderId, 0);
-                            wx.navigateTo({
+                            wx.redirectTo({
                                 url: `/view/order/index?activeStatus=2`
                             });
                         }).catch(err => {
                             _this.change_status(orderId, 8);
                             Toast.fail(err.msg);
-                            wx.navigateTo({
+                            wx.redirectTo({
                                 url: `/view/order/index?activeStatus=1`
                             });
                         })
