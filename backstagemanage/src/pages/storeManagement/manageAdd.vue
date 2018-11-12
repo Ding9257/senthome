@@ -72,9 +72,9 @@
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
-                        <el-form-item label="所属小区编号:">
-                            <el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>
-                        </el-form-item>
+                        <!--<el-form-item label="所属小区编号:">-->
+                            <!--<el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>-->
+                        <!--</el-form-item>-->
                         <el-form-item>
                             <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交
                             </el-button>

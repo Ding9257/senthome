@@ -124,7 +124,6 @@ App({
     requestPayment: function (data) {
         return new Promise((resolve, reject) => {
             wx.requestPayment({
-                'appId': data.appId,
                 'timeStamp': data.timeStamp,
                 'nonceStr': data.nonceStr,
                 'package': data.package,

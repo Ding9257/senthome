@@ -62,7 +62,6 @@ Page({
         let productList = JSON.parse(data.product);
         let typeOrder = data.typeOrder;
         let message = data.message;
-        console.log(message);
         let productOrder = [];
         for (let item of productList) {
             productOrder.push({pid: item.id, num: item.num});
@@ -153,7 +152,7 @@ Page({
                         method: "POST",
                         data
                     }).then(data => {
-                        let orderId = data.data.id;
+                        let orderId = data.data.orderId;
                         app.requestPayment(data.data).then(ok => {
                             _this.change_status(orderId, 0);
                             wx.navigateTo({

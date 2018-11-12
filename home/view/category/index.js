@@ -91,6 +91,17 @@ Page({
                 orderType: this.data.orderType
             }
         }).then((data) => {
+            if (!data.data.count > 0) {
+                wx.showToast({
+                    title: "店铺装修中",
+                    icon: 'none',
+                    duration: 1000,
+                    mask: true
+                })
+                wx.switchTab({
+                    url: '/view/index/index'
+                });
+            }
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
             for (let item of data.data.productList) {

@@ -76,7 +76,6 @@ Page({
 
     },
     getOrder: function () {
-        console.log(this.data.userInfo);
         request({
             url: '/order/list1',
             method: "POST",

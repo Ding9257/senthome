@@ -22,7 +22,7 @@ Page({
     onUnload: function () {
 
     },
-    onLoad: function () {
+    onLoad: function (option) {
 
     },
     onReady: function () {
