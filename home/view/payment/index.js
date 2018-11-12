@@ -175,11 +175,11 @@ Page({
             }
         });
     },
-    change_status: function (id, status) {
+    change_status: function (orderId, status) {
         request({
             url: "/order/update",
             method: "POST",
-            data: {id, status}
+            data: {orderId, status}
         }).then(data => {
             console.log(data);
         })

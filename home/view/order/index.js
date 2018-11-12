@@ -49,7 +49,7 @@ Page({
                 orderStatus
             });
         }
-
+        this.getOrder();
     },
     onReady: function () {
 
@@ -61,7 +61,6 @@ Page({
             shopInfo,
             userInfo
         })
-        this.getOrder();
     },
     onHide: function () {
 
@@ -108,7 +107,6 @@ Page({
         this.getOrder();
     },
     lower: function (e) {
-        console.log(e);
         if (this.data.currentPage != this.data.totalPage) {
             this.setData({
                 currentPage: this.data.currentPage + 1

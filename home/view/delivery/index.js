@@ -1,5 +1,6 @@
 const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
+const util = require("../../util/util");
 const app = getApp();
 Page({
     data: {
@@ -46,14 +47,16 @@ Page({
         })
     },
     getAddress: function () {
-        request({
-            url: '/address/list',
-            method: "POST",
-            data: {userId: this.data.userInfo.userId}
-        }).then(res => {
-            this.setData({
-                delivery_list: res.data
+        if (!util.isEmpty(this.data.userInfo.userId)) {
+            request({
+                url: '/address/list',
+                method: "POST",
+                data: {userId: this.data.userInfo.userId}
+            }).then(res => {
+                this.setData({
+                    delivery_list: res.data
+                });
             });
-        });
+        }
     }
 });
