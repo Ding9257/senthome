@@ -19,14 +19,14 @@
                         <view style="float: right;padding-right: 20rpx">{{orderStatusObject[order.status]}}</view>
                     </view>
                     <view class="order-content order-border">
-                        <view style="width:{{window_width-40}}px;" class="order-img">
+                        <view style="width:{{window_width-50}}px;" class="order-img">
                             <view wx:if="{{order.productOrderResultsList.length>0}}">
                                 <image wx:for="{{order.productOrderResultsList}}" wx:for-item="product"
                                        src="{{hosts+product.img}}"
                                        style="vertical-align:middle;"/>
                             </view>
                         </view>
-                        <view style="width:40px;">
+                        <view style="width:40px;float: right;">
                             <van-icon style="padding-left: 20rpx;" name="arrow"/>
                         </view>
                     </view>

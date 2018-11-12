@@ -230,7 +230,7 @@ Page({
     },
     getCommunity: function (area) {
         request({
-            url: "/area/list",
+            url: "/area/listNoPage",
             method: "POST",
             data: {area}
         }).then(data => {

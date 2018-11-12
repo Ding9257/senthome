@@ -151,12 +151,17 @@ Page({
         var index = parseInt(e.currentTarget.dataset.index);
         //原始的icon状态
         var selected = this.data.carts[index]["selected"] || false;
+        let selectedAllStatus = this.data.selectedAllStatus;
+        if (selectedAllStatus && selected) {
+            selectedAllStatus = false;
+        }
         var carts = this.data.carts;
         // 对勾选状态取反
         carts[index]["selected"] = !selected;
         // 写回经点击修改后的数组
         this.setData({
-            carts: carts
+            carts: carts,
+            selectedAllStatus
         });
 
         wx.hideLoading();

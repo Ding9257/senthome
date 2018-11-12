@@ -276,5 +276,6 @@ page {
 .message-desc {
     font-family: "Microsoft YaHei";
     font-size: 26rpx;
+    z-index:10;
     color: #3b3b3b;
 }

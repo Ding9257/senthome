@@ -66,14 +66,14 @@ App({
             let {lng, lat} = LngLat;
             request({
                 url: "/app/getStore",
-                method: "post",
+                method: "get",
                 data: {areaId, type, lng, lat}
             }).then(store => {
                 let data = store.data;
                 let areaName = data.areaName;
-                let shopInfo = data.list[0];
-                app.globalData.shopInfo = shopInfo;
-                app.globalData.areaName = areaName;
+                let shopInfo = data.list.length > 0 ? data.list[0] : {};
+                getApp().globalData.shopInfo = shopInfo;
+                getApp().globalData.areaName = areaName;
             })
         })
     },
