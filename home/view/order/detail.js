@@ -1,6 +1,9 @@
+import Toast from "../../dist/toast/toast"
+
 const request = require("./../../util/request").request;
 import Dialog from './../../dist/dialog/dialog';
 
+let _this;
 Page({
     data: {
         window_width: getApp().globalData.window_width,
@@ -23,7 +26,7 @@ Page({
 
     },
     onShow: function (option) {
-
+        _this = this;
     },
     onHide: function () {
 
@@ -92,10 +95,27 @@ Page({
         });
     },
     goPayment: function () {
-        //缺接口
-        console.log("goPayment");
-        // wx.reLaunch({
-        //     url: '/view/cart/cart?redirectTo=/view/payment/index'
-        // })
-    }
+        let againPayment = this.data.order;
+        request({
+            url: "/weChat/toTakeWxCar",
+            method: "POST",
+            data: againPayment
+        }).then(res => {
+            app.requestPayment(res.data).then(ok => {
+                Toast.fail("支付成功");
+                _this.change_status(againPayment.orderId, 0).then(() => {
+                    _this.getOrder(_this.data.id)
+                });
+            }).catch(err => {
+                Toast.fail(err.msg);
+            })
+        })
+    },
+    change_status: function (orderId, status) {
+        return request({
+            url: "/order/update",
+            method: "POST",
+            data: {orderId, status}
+        })
+    },
 });
