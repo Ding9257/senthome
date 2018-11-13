@@ -76,7 +76,8 @@
             <view class="message-title left-dis">捎口信</view>
             <view style="height: 200rpx;border-top: solid 1px #efefef;">
                 <view style="padding: 35rpx">
-            <textarea wx:if="{{!popupStatus}}" maxlength="50" name="message" class="message-desc" placeholder-class="message-desc"
+            <textarea wx:if="{{!popupStatus}}" maxlength="50" name="message" class="message-desc"
+                      placeholder-class="message-desc"
                       placeholder="如果您需要小店的其他商品请留言" bindinput="message_put"
                       style="height: 165rpx" value="{{message}}"/>
                 </view>

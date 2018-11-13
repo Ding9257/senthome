@@ -65,7 +65,7 @@
             </view>
         </van-row>
         <view style="height: 98rpx;line-height: 98rpx;">
-            <view style="float: left;display: inline-block;">设为默认地址</view>
+            <view style="float: left;display: inline-block;padding-left: 30rpx;">设为默认地址</view>
             <view style="float: right;display: inline-block;padding-top: 24rpx;padding-right: 20rpx;" bindtap="setDefault">
                 <image src="{{isDefault?'/image/new/on.png':'/image/new/off.png'}}"
                        style="width: 96rpx;height: 50rpx;"/>

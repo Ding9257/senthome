@@ -262,7 +262,7 @@
     line-height: 78rpx;
 	font-size: 26rpx;
     font-family: "Microsoft YaHei";
-    color:#999999;
+    color:#3b3b3b;
 }
 .message-content {
 
@@ -277,5 +277,5 @@ page {
     font-family: "Microsoft YaHei";
     font-size: 26rpx;
     z-index:10;
-    color: #3b3b3b;
+    color: #999999;
 }

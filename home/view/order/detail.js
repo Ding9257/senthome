@@ -1,16 +1,16 @@
-import Toast from "../../dist/toast/toast"
-
+const app = getApp();
 const request = require("./../../util/request").request;
 import Dialog from './../../dist/dialog/dialog';
+import Toast from "./../../dist/toast/toast"
 
 let _this;
 Page({
     data: {
-        window_width: getApp().globalData.window_width,
-        sid: getApp().globalData.sid || "",
+        window_width: app.globalData.window_width,
+        sid: app.globalData.sid || "",
         order: {},
         id: "",
-        orderStatus: getApp().globalData.orderStatus
+        orderStatus: app.globalData.orderStatus
     },
     onUnload: function () {
 
@@ -97,7 +97,7 @@ Page({
     goPayment: function () {
         let againPayment = this.data.order;
         request({
-            url: "/weChat/toTakeWxCar",
+            url: "/weChat/toTakeWxCarReset",
             method: "POST",
             data: againPayment
         }).then(res => {
@@ -107,7 +107,7 @@ Page({
                     _this.getOrder(_this.data.id)
                 });
             }).catch(err => {
-                Toast.fail(err.msg);
+                Toast.fail("付款失败");
             })
         })
     },

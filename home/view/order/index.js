@@ -101,13 +101,14 @@ Page({
             return item.title == title
         })[0].status;
         this.setData({
+            currentPage: 1,
             orderStatus: status,
             order_list: []
         });
         this.getOrder();
     },
     lower: function (e) {
-        if (this.data.currentPage != this.data.totalPage) {
+        if (this.data.currentPage < this.data.totalPage) {
             this.setData({
                 currentPage: this.data.currentPage + 1
             });
