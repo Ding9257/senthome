@@ -8,6 +8,7 @@
     "van-tab": "./../../dist/tab/index",
     "van-tabs": "./../../dist/tabs/index",
     "van-dialog": "./../../dist/dialog/index",
+    "van-toast": "./../../dist/toast/index",
     "van-button": "./../../dist/button/index"
   }
 }

@@ -40,3 +40,15 @@
 	position: fixed;
 	bottom: 0;
 }
+.border-desc {
+    color: #3b3b3b;
+}
+.border-content {
+    color: #E4E4E4;
+}
+.message-desc {
+    font-family: "Microsoft YaHei";
+    font-size: 26rpx;
+    z-index:10;
+    color: #999999;
+}

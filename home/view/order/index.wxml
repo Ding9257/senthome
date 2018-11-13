@@ -21,7 +21,7 @@
                     <view class="order-content order-border">
                         <view style="width:{{window_width-50}}px;" class="order-img">
                             <view wx:if="{{order.productOrderResultsList.length>0}}">
-                                <image wx:for="{{order.productOrderResultsList}}" wx:for-item="product"
+                                <image wx:for="{{order.productOrderResultsList}}" wx:for-item="product" wx:key="{{product.id}}"
                                        src="{{hosts+product.img}}"
                                        style="vertical-align:middle;"/>
                             </view>
