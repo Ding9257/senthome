@@ -23,7 +23,7 @@ Page({
         order_list: [],
         orderStatusList: [
             {title: "全部订单", status: ""},
-            {title: "代付款", status: 8},
+            {title: "待付款", status: 8},
             {title: "待收货", status: 9},
             {title: "退款/售后", status: 3}
         ]
