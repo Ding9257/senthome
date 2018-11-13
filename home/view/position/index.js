@@ -5,6 +5,7 @@ const app = getApp();
 Page({
     data: {
         color: constant.color,
+        window_width: app.globalData.window_width,
         popupStatus: false,
         areaList: {
             province_list: {

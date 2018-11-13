@@ -60,11 +60,21 @@ Page({
 
     },
     onShow: function () {
+        if(app.globalData.isShowToast){
+            wx.showToast({
+                title: "请先登录",
+                icon: 'none',
+                duration: 1000,
+                mask: true
+            });
+            app.globalData.isShowToast = false;
+        }
         // wx.removeTabBarBadge({
         //     index: 2
         // })
+        let userInfo = app.globalData.userInfo;
         this.setData({
-            userInfo: app.globalData.userInfo,
+            userInfo,
             shopInfo: app.globalData.shopInfo
         });
     },

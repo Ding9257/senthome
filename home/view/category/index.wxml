@@ -1,6 +1,6 @@
 <view wx:if="{{!!shopInfo&&!!shopInfo.name}}" class="container" style="background-color: #fff;">
     <!--<view wx:if="1" class="container" style="background-color: #fff;">-->
-    <scroll-view class="category-left" scroll-y="true">
+    <scroll-view class="category-left" style="width: 90px;" scroll-y="true">
         <view class="category-left-item {{categoryId == item ? 'category-left-item-active' : ''}}"
               wx:for="{{categoryList}}" wx:for-item="item" wx:key="{{item}}" bindtap="handleCategory" id="{{item}}">
             <view wx:if="{{categoryId == item}}"
@@ -41,15 +41,19 @@
                     </navigator>
                 </view>
                 <view style="position: relative;">
-                    <view style="position: absolute;left:10px;top:20repx;">
+                    <view style="position: absolute;left:0px;top:20rpx;">
                         <text class="category-right-item-price">￥{{product.money}}</text>
                     </view>
-                    <view style="position: absolute;right:-10px;top:20rpx;">
-                        <view class="shop-add-down">
+                    <view style="position: absolute;right:0px;top:20rpx;">
+                        <view wx:if="{{!!shopCart[product.id]&&shopCart[product.id].num>0}}" class="shop-add-down">
                             <image src="/image/all/-.png" style="float:left;" id="{{product.id}}"
                                    data-index="{{index}}" catchtap="down"/>
                             <text>{{!!shopCart[product.id]?shopCart[product.id].num:0}}</text>
                             <image src="/image/all/+.png" style="float:right;" id="{{product.id}}"
+                                   data-index="{{index}}" catchtap="add"/>
+                        </view>
+                        <view wx:else class="shop-add-down">
+                            <image src="/image/all/gwc.png" style="float:right;" id="{{product.id}}"
                                    data-index="{{index}}" catchtap="add"/>
                         </view>
                     </view>

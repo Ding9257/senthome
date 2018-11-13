@@ -7,7 +7,7 @@
                     <van-col offset="1" span="22">
                         <view class="positioning">
                             <navigator open-type="navigate" url="/view/position/index?isSelect=true">
-                                <view style="float: left;">
+                                <view style="float: left;margin-top: 5rpx;">
                                     <image style="height: 30rpx;width:20rpx;padding-left: 30rpx;"
                                            src="/image/all/dw.png"/>
                                 </view>
@@ -21,7 +21,7 @@
                     </van-col>
                 </van-row>
             </view>
-            <view style="margin-top:20rpx;" class="shopInfo">
+            <view style="margin-top:10rpx;" class="shopInfo">
                 <view style="padding-left: 90rpx;width: 140rpx; height: 140rpx;">
                     <image src="{{!!shopInfo.img?hosts+shopInfo.img:shopDefaultImg}}"
                            style="width: 140rpx; height: 140rpx;border-radius:10rpx;"/>
@@ -29,10 +29,10 @@
                 <view style="padding-left: 36rpx;padding-top:16rpx;width:{{window_width-140-90-36}}px">
                     <view style="font-size:30rpx;" class="van-ellipsis text">{{shopInfo.name}}</view>
                     <view style="font-size:20rpx;" class="van-ellipsis text">
-                        {{'营业时间：'+!!shopInfo.businessHours?shopInfo.businessHours:''}}
+                        {{!!shopInfo.businessHours?'营业时间：'+shopInfo.businessHours:''}}
                     </view>
                     <view style="font-size:20rpx;" class="van-ellipsis text">
-                        {{'商店地址：'+!!shopInfo.address?shopInfo.address:''}}
+                        {{!!shopInfo.address?'商店地址：'+shopInfo.address:''}}
                     </view>
                 </view>
             </view>
@@ -50,7 +50,7 @@
         </view>
     </view>
     <view style="background: #fff;">
-        <view style="padding-top:20rpx;padding-left:30rpx">
+        <view style="padding-top:10rpx;padding-left:30rpx">
             <van-row>
                 <!-- 商品选购 -->
                 <view bindtap="goToshop" style="display: inline-block">
@@ -75,7 +75,7 @@
             <view style="padding-top:25rpx;padding-left: 30rpx;">
                 <scroll-view class="scroll-view" scroll-x>
                     <view class="scroll-view-item_H" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-                        <view style="text-align:center;height: 300rpx;background-color: #fff;">
+                        <view style="text-align:center;height: 310rpx;background-color: #fff;">
                             <navigator url="/view/cart/detail?id={{item.id}}">
                                 <view>
                                     <image src="{{hosts+item.img}}" style="width: 156rpx;height: 156rpx"/>
@@ -85,7 +85,7 @@
                                   style="font-size:20rpx;font-family: 'Microsoft YaHei';color:#3b3b3b;">
                                 {{item.name}}
                             </view>
-                            <view style="text-align: left;color:#fc0438;font-size:20rpx;">
+                            <view style="text-align: left;color:#fc0438;font-size:20rpx;padding-top: 20rpx;">
                                 <text>￥{{item.money}}</text>
                                 <image bindtap="addShop" data-id="{{item.id}}"
                                        style="width: 32rpx;height: 32rpx;float: right" src="/image/all/gwc.png"/>

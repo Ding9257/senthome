@@ -346,23 +346,16 @@ Page({
         });
     },
     getShop: function () {
-        let userId = this.data.userId;
         let data = this.handleShopCart([], app.globalData.shopCart);
+        if (!util.isEmpty(data.currentShop) && util.isEmpty(this.data.userInfo)) {
+            app.globalData.isShowToast = true;
+            wx.switchTab({
+                url: '/view/my/index'
+            })
+        }
         this.setData({
             carts: data.currentShop
         });
-
-        // request({
-        //     url: '/productOrder/list',
-        //     method: "POST",
-        //     data: {}
-        // }).then(res => {
-        //     let data = this.handleShopCart(res.data, app.globalData.shopCart);
-        //     app.globalData.shopCart = data.shopCart;
-        //     this.setData({
-        //         carts: data.currentShop
-        //     });
-        // })
     },
     onClose: function () {
         let popupStatus = this.data.popupStatus;

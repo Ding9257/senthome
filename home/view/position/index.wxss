@@ -28,12 +28,13 @@
 .van-tabs__line {
     width: 150rpx !important;
     margin-left: 110rpx;
-    height: 3px;
+    height: 2px;
 }
 
 .van-tab {
     font-family: "Microsoft YaHei";
     font-size: 28rpx;
+    border-bottom:solid 2px #efefef;
     color: #3b3b3b;
 }
 .address-font {

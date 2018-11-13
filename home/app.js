@@ -79,7 +79,40 @@ App({
     },
     globalData: {
         userInfo: {},
-        shopInfo: {},
+        shopInfo: {
+            address:
+                "顺义后沙峪绿地自由港A座102",
+            areaId:
+                "1",
+            areaName:
+                null,
+            businessHours:
+                "16:43:00-23:59:59",
+            distributionScope:
+                "绿地自由港",
+            id:
+                2,
+            img:
+                "/image/未标题-1.jpg",
+            mobile:
+                "15901368371",
+            name:
+                "华润万家",
+            pageNo:
+                null,
+            pushStatus:
+                "0",
+            qrCode:
+                null,
+            rate:
+                null,
+            status:
+                "0",
+            user_id:
+                "2",
+            wxId:
+                "WQ872459456"
+        },
         orderStatus: {
             "0": "已支付",//待接单
             "1": "已发货",//发货订单
@@ -105,11 +138,12 @@ App({
         shippingAddress: {},
         //坐标
         coordinate: {},
-        open_id: ''
+        open_id: '',
+        isShowToast: false
     },
     shopCartClear: function () {
         let shopCart = getApp().globalData.shopCart;
-        if(!util.isEmpty(shopCart)){
+        if (!util.isEmpty(shopCart)) {
             for (let id in shopCart) {
                 shopCart[id].num = 0;
             }
