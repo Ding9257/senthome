@@ -88,7 +88,7 @@
         <view class="my-item" bindtap="navigator" data-url="/view/voucher/index">
             <van-col span="12">
                 <view>
-                    <image src="/image/mine/djq.png" class="icon" />待金券
+                    <image src="/image/mine/djq.png" class="icon" />代金券
                 </view>
             </van-col>
             <van-col span="12">
