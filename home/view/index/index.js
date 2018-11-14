@@ -8,7 +8,7 @@ Page({
         window_width: app.globalData.window_width,
         hosts: app.globalData.hosts,
         imgWidth: 30,
-        shopDefaultImg: "/image/new/tx.png",
+        shopDefaultImg: "/image/new/mr.png",
         banner_list: [
             {url: "/image/banner.png"}
         ],

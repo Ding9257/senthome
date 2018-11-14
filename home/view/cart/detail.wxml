@@ -1,36 +1,39 @@
 <import src="/component/quantity/index.wxml"/>
-<swiper class="images" indicator-dots="true" autoplay="true" interval="5000" duration="1000"
-        style="height:{{galleryHeight}}px;">
-    <swiper-item>
-        <image src="{{hosts+goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage"
-               data-current="0"/>
-    </swiper-item>
-</swiper>
-<view class="summary">
-    <text class="title">{{goods.name}}</text>
-    <text class="price">￥ {{goods.money}}
-        <text style="text-decoration:line-through;">￥ {{goods.price}}</text>
-    </text>
-</view>
-<view class="margin-top summary" style="text-align:left;">
-    <view style="text-align:center;">商品详情</view>
-    <view class="padding-left-20">品牌：{{goods.brand}}</view>
-    <view class="padding-left-20">产品规格：{{goods.specifications}}</view>
-</view>
 
+<image src="{{hosts+goods.img}}" mode="aspectFill" class="swiper-image" bindtap="previewImage"
+       data-current="0"/>
+
+<view style="text-align: center;">
+    <view style="font-size: 38rpx;color: #3b3b3b">{{goods.name}}</view>
+    <view>
+        <text class="price">￥ {{goods.money}}
+            <text wx:if="{{goods.money != goods.price}}" style="text-decoration:line-through;">￥ {{goods.price}}</text>
+        </text>
+    </view>
+</view>
+<view style="height: 2px;background-color: #efefef;"></view>
+<view style="text-align:center;color: #3b3b3b">商品详情</view>
+<view class="product-detail">
+    <view class="key">品牌</view>
+    <view class="value">{{goods.brand}}</view>
+</view>
+<view class="product-detail" style="margin-top: 36rpx;">
+    <view class="key">产品规格</view>
+    <view class="value">{{goods.specifications}}</view>
+</view>
 <view class="footer">
-    <view class="opt-buttons">
-        <view>
-            <image src="/image/all/gwc.png" style="width:35px;height:35px;float:left;"/>
-            <text style="display:inline-block:width:25px;font-size:14px;">￥{{sumPrice}}</text>
-        </view>
-        <view class="button-group">
-            <view class="in-line">添加商品</view>
-            <view class="shop-add-down" style="margin-top:5px;">
-                <image src="/image/all/-.png" style="float:left;" id="{{goods.id}}" catchtap="down"/>
-                <text>{{num}}</text>
-                <image src="/image/all/+.png" style="float:right;" id="{{goods.id}}" catchtap="add"/>
-            </view>
+    <view style="position: absolute;bottom: 0;left: 20rpx;">
+        <image src="/image/all/gwc.png" style="width:113rpx;height:113rpx;float:left;"/>
+    </view>
+    <view style="display: inline-block;margin: 20rpx;padding-left: 113rpx;">
+        <text style="display:inline-block:width:25px;font-size:26rpx;color: #fc0438;font-family: 'Microsoft YaHei'">￥{{sumPrice}}</text>
+    </view>
+    <view style="display: inline-block;float: right;margin: 20rpx 30rpx;">
+        <view class="in-line" style="display: inline-block">添加商品</view>
+        <view class="shop-add-down" style="margin-top:5px;display: inline-block;">
+            <image src="/image/all/-.png" style="float:left;" id="{{goods.id}}" catchtap="down"/>
+            <text>{{num}}</text>
+            <image src="/image/all/+.png" style="float:right;" id="{{goods.id}}" catchtap="add"/>
         </view>
     </view>
 </view>

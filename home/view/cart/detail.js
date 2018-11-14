@@ -17,7 +17,7 @@ Page({
     },
     onLoad: function (options) {
         wx.setNavigationBarTitle({
-            title: options.product_name//页面标题为路由参数
+            title: options.name//页面标题为路由参数
         });
         that = this;
         var id = options.id;

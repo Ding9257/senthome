@@ -1,5 +1,5 @@
 page {
-	background: #eee;
+	background: #fff;
 }
 
 /*swiper images*/
@@ -9,7 +9,7 @@ page {
 
 .swiper-image {
 	width: 100%;
-	height: 100%;
+	height: 620rpx;
 }
 
 /*contains title & price*/
@@ -18,7 +18,6 @@ page {
 	flex-direction: column; 
 	justify-content: space-between;
 	background: white;
-	margin: 20rpx 0;
 	text-align:center;
 }
 
@@ -31,8 +30,8 @@ page {
 
 /*goods price*/
 .price {
-	color: #f60;
-	margin: 10rpx;
+	color: #fc0438;
+	font-size: 48rpx;
 }
 
 /*详情图片底部边距*/
@@ -45,14 +44,10 @@ page {
 }
 
 .footer {
-	background: #f9f9f9;
-	width: 100%;
-	display: flex; 
-	flex-direction: row; 
-	justify-content: space-between;
 	position: fixed;
 	bottom: 0;
 }
+
 
 .add-cart {
 	float: right;
@@ -170,4 +165,17 @@ page {
     display:inline-block;
     width:30px;
     text-align:center;
+}
+.product-detail view{
+	display: inline-block;
+	font-size: 26rpx;
+}
+.product-detail .key {
+	width: 60px;
+	padding-left: 30rpx;
+	color: #999999;
+}
+.product-detail .value {
+	color: #3b3b3b;
+	padding-left: 50rpx
 }

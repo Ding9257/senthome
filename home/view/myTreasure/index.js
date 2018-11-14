@@ -1,4 +1,6 @@
 const request = require("./../../util/request").request;
+const moment = require("./../../util/moment");
+const util = require("./../../util/util");
 let app = getApp();
 Page({
     data: {
@@ -64,7 +66,7 @@ Page({
             });
         })
     },
-    onClickDisabled: function (e) {
+    onChange: function (e) {
         if (e.detail.title == "正在夺宝") {
             this.setData({
                 result: 0

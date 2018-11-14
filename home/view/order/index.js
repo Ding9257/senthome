@@ -32,6 +32,12 @@ Page({
 
     },
     onLoad: function (option) {
+        let shopInfo = app.globalData.shopInfo;
+        let userInfo = app.globalData.userInfo;
+        this.setData({
+            shopInfo,
+            userInfo
+        })
         let activeStatus = option.activeStatus;
         if (!util.isEmpty(activeStatus)) {
             let orderStatus = "";

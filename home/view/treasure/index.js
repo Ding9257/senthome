@@ -66,7 +66,7 @@ Page({
                 }
                 list.push(item);
             }
-
+            console.log(list);
             this.setData({
                 treasure_list: list
             });

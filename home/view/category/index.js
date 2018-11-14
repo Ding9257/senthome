@@ -7,6 +7,7 @@ Page({
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
         hosts: app.globalData.hosts,
+        shopDefaultImg: "/image/new/zw.png",
         list: [],
         userId: "",
         //商品分类

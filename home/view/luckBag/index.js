@@ -57,11 +57,18 @@ Page({
                     luckBagMoney = luckBagMoney + product.money * 1;
                 }
                 let tempProfit = item.profit;
-                let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.1;
-                item.luckBagMoney = (luckBagMoney * profit).toFixed(2);
+                console.log(luckBagMoney);
+                let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.01;
+                console.log(profit);
+                item.luckBagMoney = (luckBagMoney * (1 - profit)).toFixed(2);
                 list.push(item);
                 //otherStock  剩余库存
-                luckBagMoneyList[item.id] = {num: 0, luckBagMoney, otherStock: item.stock, luckBag: item};
+                luckBagMoneyList[item.id] = {
+                    num: 0,
+                    luckBagMoney: item.luckBagMoney,
+                    otherStock: item.stock,
+                    luckBag: item
+                };
             }
             this.setData({
                 category_list: list,
@@ -103,6 +110,7 @@ Page({
     countLuckBagTotalPrice: function () {
         let luckBagTotalPrice = 0;
         let luckBagMoneyList = this.data.luckBagMoneyList;
+        console.log(luckBagMoneyList);
         for (let key in luckBagMoneyList) {
             let product = luckBagMoneyList[key];
             luckBagTotalPrice = luckBagTotalPrice + (product.num * product.luckBagMoney);

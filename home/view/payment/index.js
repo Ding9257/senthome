@@ -64,7 +64,12 @@ Page({
         let message = data.message;
         let productOrder = [];
         for (let item of productList) {
-            productOrder.push({pid: item.id, num: item.num});
+            if (typeOrder == 0) {
+                productOrder.push({pid: item.id, num: item.num});
+            }
+            if (typeOrder == 1) {
+                productOrder.push({bid: item.id, num: item.num});
+            }
         }
         this.setData({
             productList,
@@ -139,42 +144,36 @@ Page({
             cid: this.data.cid,
             couponPrice: this.data.couponPrice
         };
-        app.shopCartClear();
-        wx.login({
-            success: function (res) {
-                let code = res.code;
-                request({
-                    url: "/customerInfo/code",
-                    method: "get",
-                    data: {code}
-                }).then(codeOk => {
-                    request({
-                        url: "/weChat/toTakeWxCar",
-                        method: "POST",
-                        data
-                    }).then(data => {
-                        let orderId = data.data.orderId;
-                        app.requestPayment(data.data).then(ok => {
-                            _this.change_status(orderId, 0);
-                            wx.redirectTo({
-                                url: `/view/order/index?activeStatus=2`
-                            });
-                        }).catch(err => {
-                            _this.change_status(orderId, 8);
-                            Toast.fail(err.msg);
-                            wx.redirectTo({
-                                url: `/view/order/index?activeStatus=1`
-                            });
-                        })
-                    }).catch(e => {
-                        Toast.fail(e.msg);
-                    })
-                })
-            },
-            fail: function (loginErr) {
-                Toast.fail(loginErr.errMsg)
-            }
-        });
+
+        let url = ""
+        if (data.typeOrder == 1) {
+            url = "/weChat/toTakeWxBless"
+        }
+        if (data.typeOrder == 0) {
+            app.shopCartClear();
+            url = "/weChat/toTakeWxCar"
+        }
+        request({
+            url,
+            method: "POST",
+            data
+        }).then(data => {
+            let orderId = data.data.orderId;
+            app.requestPayment(data.data).then(ok => {
+                _this.change_status(orderId, 0);
+                wx.redirectTo({
+                    url: `/view/order/index?activeStatus=2`
+                });
+            }).catch(err => {
+                _this.change_status(orderId, 8);
+                Toast.fail(err.msg);
+                wx.redirectTo({
+                    url: `/view/order/index?activeStatus=1`
+                });
+            })
+        }).catch(e => {
+            Toast.fail(e.msg);
+        })
     },
     change_status: function (orderId, status) {
         request({

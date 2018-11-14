@@ -1,6 +1,6 @@
 <view class="container">
     <view>
-        <van-tabs bind:disabled="onClickDisabled">
+        <van-tabs bind:change="onChange">
             <van-tab title="正在夺宝"></van-tab>
             <van-tab title="成功夺宝"></van-tab>
             <van-tab title="夺宝失败"></van-tab>

@@ -48,16 +48,16 @@
     </view>
     <van-toast id="van-toast"/>
     <van-popup show="{{ isShowWinning }}" bind:click-overlay="onClose">
-        <view class="winning">
+        <view class="winning" style="width:{{width-40}}px;">
             <view class="winning-name">本期获奖名单</view>
             <view class="winning-content">
                 <view wx:for="{{goods.ids}}" wx:key="{{item.id}}">
                     <van-row>
                         <van-col span="12">
-                            <text class="winning-name">{{item.name}}</text>
+                            <text style="float: right" class="winning-name">{{item.name}}</text>
                         </van-col>
                         <van-col span="12">
-                            <text class="winning-phone">{{item.phone}}</text>
+                            <text style="float: left" class="winning-phone">{{item.phone}}</text>
                         </van-col>
                     </van-row>
                 </view>

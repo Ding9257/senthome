@@ -12,7 +12,7 @@ Page({
         id: "",
         color: constant.color,
         address: {},
-        isDefault: 0,
+        isDefault: 1,
         delivery_province: "",
         community: "",//小区
         area: "",
@@ -152,6 +152,7 @@ Page({
             data: {id: this.data.id}
         }).then(res => {
             let data = res.data[0]
+            console.log(data);
             this.setData({
                 address: data,
                 city: data.city,

@@ -31,7 +31,8 @@
               wx:for="{{productList}}" wx:for-item="product" wx:key="{{product.id}}">
             <van-col span="6">
                 <view>
-                    <image style="width:140rpx;height:140rpx;" src="{{hosts+product.img}}"/>
+                    <image style="width:140rpx;height:140rpx;margin-top: 12rpx;margin-left: 12rpx;"
+                           src="{{!!product.img?hosts+product.img:shopDefaultImg}}"/>
                 </view>
             </van-col>
             <van-col offset="1" span="15">

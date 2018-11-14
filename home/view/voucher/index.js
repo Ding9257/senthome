@@ -5,10 +5,7 @@ Page({
         window_width: getApp().globalData.window_width - 20,
         sid: getApp().globalData.sid || "",
         userId: "",
-        voucherList: [
-            {id: 1, price: 100, factor: "满200使用"},
-            {id: 1, price: 100, factor: "满200使用"}
-        ]
+        voucherList: []
     },
     onUnload: function () {
 
@@ -44,7 +41,6 @@ Page({
             method: "POST",
             data: {userId}
         }).then(res => {
-            console.log(res);
             this.setData({voucherList: res.data})
         })
     }

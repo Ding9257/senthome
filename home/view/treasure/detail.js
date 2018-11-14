@@ -1,4 +1,4 @@
-import Toast from "../../dist/toast/toast";
+import Toast from "./../../dist/toast/toast";
 
 const moment = require("./../../util/moment");
 const request = require("./../../util/request").request;
@@ -55,11 +55,14 @@ Page({
             data: {cid, userId, num, status: 0, result: 0}
         }).then(data => {
             app.requestPayment(data.data).then(ok => {
-                wx.navigateTo({
-                    url: `/view/index/index`
-                });
+                Toast.fail("购买成功");
+                setTimeout(() => {
+                    wx.switchTab({
+                        url: '/view/index/index'
+                    });
+                }, 500)
             }).catch(err => {
-                Toast.fail(e.msg);
+                Toast.fail(err.msg);
             })
         });
     },
