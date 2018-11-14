@@ -47,7 +47,7 @@ Page({
         }).then(res => {
             let total = 0;
             res.data.productOrderResultsList.forEach(item => {
-                total = total + item.price * item.num
+                total = total + item.money * item.num
             });
             res.data.total = total;
             this.setData({
