@@ -11,7 +11,7 @@
                                     <image style="height: 30rpx;width:20rpx;padding-left: 30rpx;"
                                            src="/image/all/dw.png"/>
                                 </view>
-                                <view style="padding-left: 20rpx;" class="text">{{!!areaName?areaName:'切换地址'}}</view>
+                                <view style="padding-left: 20rpx;" class="text">{{areaName}}</view>
                                 <view style="float: right;">
                                     <image src="/image/all/xl.png"
                                            style="height: 14rpx;width:20rpx;padding-right: 50rpx;"/>
@@ -42,9 +42,9 @@
                     interval="5000"
                     duration="500">
                 <swiper-item class="slide-image" wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.id}}">
-                    <image alt="{{banner.url}}"
+                    <image alt="{{banner.name}}"
                            style="width: 100%; height:100%;"
-                           src="{{hosts+banner.name}}"/>
+                           src="{{hosts+banner.url}}"/>
                 </swiper-item>
             </swiper>
         </view>
@@ -75,7 +75,7 @@
             <view style="padding-top:25rpx;padding-left: 30rpx;">
                 <scroll-view class="scroll-view" scroll-x>
                     <view class="scroll-view-item_H" wx:for="{{dianZhang_list}}" wx:key="{{item.id}}">
-                        <view style="text-align:center;height: 310rpx;background-color: #fff;">
+                        <view style="text-align:center;height: 360rpx;background-color: #fff;">
                             <navigator url="/view/cart/detail?id={{item.id}}">
                                 <view>
                                     <image src="{{hosts+item.img}}" style="width: 156rpx;height: 156rpx"/>
@@ -85,7 +85,10 @@
                                   style="font-size:20rpx;font-family: 'Microsoft YaHei';color:#3b3b3b;">
                                 {{item.name}}
                             </view>
-                            <view style="text-align: left;color:#fc0438;font-size:20rpx;padding-top: 20rpx;">
+                            <view style="font-family: 'Microsoft YaHei';font-size: 16rpx;color: #999999;text-align: left;">
+                                <text style="text-decoration:line-through;">￥ {{item.price}}</text>
+                            </view>
+                            <view style="text-align: left;color:#fc0438;font-size:20rpx;">
                                 <text>￥{{item.money}}</text>
                                 <image bindtap="addShop" data-id="{{item.id}}"
                                        style="width: 32rpx;height: 32rpx;float: right" src="/image/all/gwc.png"/>

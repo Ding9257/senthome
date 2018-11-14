@@ -2,7 +2,7 @@
 <van-toast id="van-toast"/>
 <view wx:if="{{!!shopInfo.name}}" class="container">
     <view class="userinfo">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/logo.png'}}"
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/new/tx.png'}}"
                background-size="cover" bindtap="chooseImage"></image>
         <text wx:if="{{!!userInfo.userId}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
         <button class="free-btn-bordernone" wx:else open-type="getUserInfo" lang="zh_CN"

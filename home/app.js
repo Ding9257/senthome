@@ -64,6 +64,7 @@ App({
     getAreaStore: function (areaId, type = 2) {
         _this.getLngLat().then(LngLat => {
             let {lng, lat} = LngLat;
+            getApp().globalData.coordinate = {lng, lat};
             request({
                 url: "/app/getStore",
                 method: "get",

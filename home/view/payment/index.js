@@ -131,7 +131,7 @@ Page({
             userId: userInfo.userId,
             sid: shopInfo.id,
             aid: app.globalData.shippingAddress.id,
-            message: this.data.delivery_street,
+            message: this.data.message,
             status: 0,
             orderType: app.globalData.shippingAddressType,
             typeOrder: this.data.typeOrder,

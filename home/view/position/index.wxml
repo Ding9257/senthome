@@ -42,7 +42,7 @@
               style="height: 170rpx;border-bottom: solid 1px #999999;"
               wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view style="padding-top: 28rpx;padding-left: 20rpx;">
-                <view class="address-font" style="font-size: 24rpx;">{{delivery.name}}</view>
+                <view class="address-font" style="font-size: 24rpx;">{{delivery.name}} -- {{delivery.distance}}Km</view>
                 <view class="address-font" style="padding-top: 19rpx;">营业时间：{{delivery.businessHours}}</view>
                 <view class="address-font address" style="padding-top: 19rpx;">{{delivery.address}}</view>
             </view>

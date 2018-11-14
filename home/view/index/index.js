@@ -86,7 +86,7 @@ Page({
     },
     carouselMap: function () {
         request({
-            url: '/picture/list',
+            url: '/icon/list',
             method: "POST",
             data: {}
         }).then(res => {

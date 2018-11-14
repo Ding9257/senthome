@@ -80,12 +80,12 @@ page {
 }
 
 .scroll-view {
-    height: 260rpx;
+    height: 280rpx;
     white-space: nowrap;
 }
 
 .scroll-view-item_H {
-    height: 260rpx;
+    height: 280rpx;
     width: 166rpx;
     padding-right: 44rpx;
     display: inline-block;

@@ -44,8 +44,9 @@ Page({
     },
     onShow: function () {
         let userInfo = app.globalData.userInfo;
-        this.setData({userInfo})
+        this.setData({userInfo});
         this.getAddress();
+        this.getDistrict();
     },
     onHide: function () {
 
@@ -103,6 +104,19 @@ Page({
             })
         }
     },
+    getDistrict: function () {
+        request({
+            url: "/area/getDistrict",
+            method: "get",
+            data: {...app.globalData.coordinate}
+        }).then(data => {
+            let selectProv = data.data;
+            this.setData({
+                selectProv
+            });
+            this.getStore(selectProv);
+        })
+    },
     getAddress: function () {
         if (!util.isEmpty(this.data.userInfo.userId)) {
             request({
@@ -135,10 +149,17 @@ Page({
         request({
             url: "/area/listStore",
             method: "post",
-            data: {area}
+            data: {area, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
         }).then(data => {
+            let list = [];
+            for (let item of data.data) {
+                let distance = item.juli;
+                distance = (distance / 1000).toFixed(2);
+                item.distance = distance;
+                list.push(item);
+            }
             this.setData({
-                shopMention: data.data
+                shopMention: list
             });
         });
     },
