@@ -6,9 +6,10 @@
 <view style="text-align: center;">
     <view style="font-size: 38rpx;color: #3b3b3b">{{goods.name}}</view>
     <view>
-        <text class="price">￥ {{goods.money}}
-            <text wx:if="{{goods.money != goods.price}}" style="text-decoration:line-through;">￥ {{goods.price}}</text>
-        </text>
+        <viwe style="padding-top: 20rpx;" class="price">￥ {{goods.money}}</viwe>
+        <view wx:if="{{goods.money != goods.price}}"
+              style="text-decoration:line-through;font-size: 28rpx;color: #999999;">￥ {{goods.price}}
+        </view>
     </view>
 </view>
 <view style="height: 2px;background-color: #efefef;"></view>
@@ -22,11 +23,13 @@
     <view class="value">{{goods.specifications}}</view>
 </view>
 <view class="footer">
-    <view style="position: absolute;bottom: 0;left: 20rpx;">
-        <image src="/image/all/gwc.png" style="width:113rpx;height:113rpx;float:left;"/>
+    <view style="position: absolute;bottom: 26rpx;left: 20rpx;">
+        <image src="/image/all/gwc.png" style="width:60rpx;height:60rpx;float:left;"/>
     </view>
-    <view style="display: inline-block;margin: 20rpx;padding-left: 113rpx;">
-        <text style="display:inline-block:width:25px;font-size:26rpx;color: #fc0438;font-family: 'Microsoft YaHei'">￥{{sumPrice}}</text>
+    <view style="position: absolute;bottom: 26rpx;left: 113rpx;">
+        <text style="display:inline-block:width:25px;font-size:26rpx;color: #fc0438;font-family: 'Microsoft YaHei'">
+            ￥{{sumPrice}}
+        </text>
     </view>
     <view style="display: inline-block;float: right;margin: 20rpx 30rpx;">
         <view class="in-line" style="display: inline-block">添加商品</view>
