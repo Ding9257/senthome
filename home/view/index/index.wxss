@@ -134,7 +134,7 @@ page {
 
 .top {
     position: relative;
-    height: 580rpx;
+    height: 570rpx;
     background-color: #fff;
 }
 
@@ -170,11 +170,11 @@ page {
 }
 .shopInfo .text{
     font-family:"Microsoft YaHei";
-    color: #efefef;
+    color: #333333;
 }
 .banner {
     position: absolute;
-    top: 270rpx;
+    top: 260rpx;
     height: 360rpx;
     width: 690rpx;
 }

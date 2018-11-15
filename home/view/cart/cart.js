@@ -356,6 +356,19 @@ Page({
         this.setData({
             carts: data.currentShop
         });
+        this.defaultSelected();
+    },
+    defaultSelected: function () {
+        var selectedAllStatus = true;
+        var carts = this.data.carts;
+        for (var i = 0; i < carts.length; i++) {
+            carts[i]["selected"] = selectedAllStatus;
+        }
+        this.setData({
+            selectedAllStatus: true,
+            carts: carts
+        });
+        this.sum();
     },
     onClose: function () {
         let popupStatus = this.data.popupStatus;

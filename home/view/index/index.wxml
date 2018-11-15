@@ -50,7 +50,7 @@
         </view>
     </view>
     <view style="background: #fff;">
-        <view style="padding-top:10rpx;padding-left:30rpx">
+        <view style="padding-left:30rpx">
             <van-row>
                 <!-- 商品选购 -->
                 <view bindtap="goToshop" style="display: inline-block">

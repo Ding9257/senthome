@@ -1,38 +1,51 @@
 <view wx:if="{{!!shopInfo&&!!shopInfo.name}}">
     <view wx:if="{{carts.length>0}}">
-        <view class="weui-panel weui-panel_access">
+        <view class="weui-panel weui-panel_access" style="background-color:#EDECED;padding-bottom: 10px;">
             <view class="weui-panel__bd margin-top" style="border:dashed 3px #f8d549;">
                 <view class="weui-media-box weui-media-box_appmsg"
                       hover-class="weui-cell_active">
                     <view style="width:20px" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image style="width:15px;height:20px;" src="/image/all/dw.png"/>
+                        <image style="width:20px;height:25px;padding-top: 40rpx;" src="/image/all/dw.png"/>
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <view wx:if="{{shippingAddressType==1&&!!shippingAddress.name}}" class="weui-media-box__title">
-                            <view class="address-font-size">{{shippingAddress.name}}</view>
-                            <view class="address-font-size">{{shippingAddress.phone}}</view>
-                            <view class="address-font-size">{{shippingAddress.contentAddress}}</view>
+                            <view class="address-font-size" style="font-size: 30rpx;">{{shippingAddress.name}}</view>
+                            <view class="address-font-size" style="font-size: 20rpx;">{{shippingAddress.phone}}</view>
+                            <view class="address-font-size" style="font-size: 20rpx;">
+                                {{shippingAddress.contentAddress}}
+                            </view>
                         </view>
                         <view wx:if="{{shippingAddressType==0&&!!shopInfo.name}}" class="weui-media-box__title">
-                            <view class="address-font-size">{{shopInfo.name}}</view>
-                            <view class="address-font-size">{{shopInfo.address}}</view>
+                            <view class="address-font-size" style="font-size: 30rpx;">{{shopInfo.name}}</view>
+                            <view class="address-font-size" style="font-size: 20rpx;">
+                                {{!!shopInfo.businessHours?'营业时间：'+shopInfo.businessHours:''}}
+                            </view>
+                            <view class="address-font-size" style="font-size: 20rpx;">
+                                {{!!shopInfo.address?'商店地址：'+shopInfo.address:''}}
+                            </view>
                         </view>
                         <view wx:if="{{shippingAddressType==2}}" class="weui-media-box__title">
                             <view class="address-font-size" style="font-size:16px;">地址为空</view>
                         </view>
                     </view>
                     <navigator open-type="navigate" url="/view/position/index?isSelect=true">
-                        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size:12px;">
+                        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size:20rpx;color:#999999;">
                             {{!!shippingAddress.name?'修改':'选择'}}
                         </view>
                     </navigator>
                 </view>
             </view>
         </view>
-        <view class="weui-cells weui-cells_after-title" style="margin-top: 5rpx;">
+        <view class="weui-cells weui-cells_after-title" style="border-bottom: solid 1px #efefef;">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd address-font-size">{{shippingAddressType!=0?"收货时间":"提货时间"}}</view>
-                <view class="weui-cell__ft order-info" bindtap="selectTime">{{!!currenTime?currenTime:"请选择时间"}}</view>
+                <view class="weui-cell__bd address-font-size"
+                      style="font-family: 'Microsoft YaHei';font-size: 26rpx;color: #3b3b3b;">
+                    {{shippingAddressType!=0?"收货时间":"提货时间"}}
+                </view>
+                <view class="weui-cell__ft order-info"
+                      style="font-family: 'Microsoft YaHei';font-size: 26rpx;color: #999999;" bindtap="selectTime">
+                    {{!!currenTime?currenTime:"店铺当天营业时间内"}}
+                </view>
             </view>
         </view>
         <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
@@ -72,9 +85,10 @@
                 </view>
             </view>
         </view>
-        <view style="background-color: #fff;margin-top: 4rpx">
+        <view style="height: 4px;background-color: #E4E4E4;width: 100%;"></view>
+        <view style="background-color: #fff;">
             <view class="message-title left-dis">捎口信</view>
-            <view style="height: 200rpx;border-top: solid 1px #efefef;">
+            <view style="height: 200rpx;border-top: solid 1px #efefef;border-bottom:solid 1px #efefef;">
                 <view style="padding: 35rpx">
             <textarea wx:if="{{!popupStatus}}" maxlength="50" name="message" class="message-desc"
                       placeholder-class="message-desc"

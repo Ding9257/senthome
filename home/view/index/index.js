@@ -23,6 +23,23 @@ Page({
 
     },
     onLoad: function (option) {
+        if (util.isEmpty(app.globalData.shopInfo)) {
+            app.getLngLat().then(LngLat => {
+                let {lng, lat} = LngLat;
+                app.globalData.coordinate = {lng, lat};
+                request({
+                    url: "/app/getStore",
+                    method: "get",
+                    data: {areaId: "", type: 1, lng, lat}
+                }).then(store => {
+                    let data = store.data;
+                    let areaName = data.areaName;
+                    let shopInfo = data.list.length > 0 ? data.list[0] : {};
+                    app.globalData.shopInfo = shopInfo;
+                    app.globalData.areaName = areaName;
+                })
+            })
+        }
 
     },
     onReady: function () {

@@ -36,6 +36,7 @@ Page({
         let productList = [];
         this.setData({
             shopCart: app.globalData.shopCart,
+            currentPage: 1,
             productList
         });
         let shopInfo = app.globalData.shopInfo;

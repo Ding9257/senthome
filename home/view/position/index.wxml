@@ -23,7 +23,7 @@
     </view>
     <view>
         <view wx:if="{{selectTab=='收货地址'}}" wx:for="{{delivery_list}}"
-              style="height: 150rpx;border-bottom: solid 1px #999999;"
+              style="height: 150rpx;"
               wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view style="border-top:solid 1px #999999;padding-top: 28rpx;">
                 <view style="background-color: {{delivery.status=='0'?'#ffd600':'#fff'}};width: 6rpx;height: 100rpx;float: left;display: inline-block"></view>
@@ -39,12 +39,12 @@
             </view>
         </view>
         <view wx:if="{{selectTab=='店铺自提'}}" wx:for="{{shopMention}}"
-              style="height: 170rpx;border-bottom: solid 1px #999999;"
+              style="height: 154rpx;"
               wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
-            <view style="padding-top: 28rpx;padding-left: 20rpx;">
-                <view class="address-font" style="font-size: 24rpx;">{{delivery.name}} -- {{delivery.distance}}Km</view>
-                <view class="address-font" style="padding-top: 19rpx;">营业时间：{{delivery.businessHours}}</view>
-                <view class="address-font address" style="padding-top: 19rpx;">{{delivery.address}}</view>
+            <view style="padding-top: 20rpx;padding-left: 20rpx;border-bottom: solid 1px #999999;">
+                <view class="address-font" style="font-size: 24rpx;color: #333333;">{{delivery.name}} -- {{delivery.distance}}Km</view>
+                <view class="address-font" style="padding-top: 14rpx;">营业时间：{{delivery.businessHours}}</view>
+                <view class="address-font address" style="padding-top: 14rpx;padding-bottom: 20rpx;">{{delivery.address}}</view>
             </view>
         </view>
         <view wx:if="{{selectTab=='收货地址'&&delivery_list.length==0}}">
@@ -56,7 +56,7 @@
             </view>
         </view>
     </view>
-    <view wx:if="{{selectTab=='收货地址'}}" class="footer">
+    <view wx:if="{{selectTab=='收货地址'}}" style="position:absolute;bottom: 0;width: 100%;">
         <!--navigator-->
         <navigator url="/view/delivery/detail" class="footer-add">
             新增地址

@@ -27,7 +27,7 @@
     left: 0;
     background: white;
     z-index: 99;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #efefef;
 }
 
 /*item与button的容器*/
@@ -254,7 +254,8 @@
 }
 
 .address-font-size {
-    font-size: 12px;
+    font-family: "Microsoft YaHei";
+    color: #3b3b3b;
 }
 
 .message-title {

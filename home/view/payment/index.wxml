@@ -1,7 +1,7 @@
 <view class="container">
     <view class="margin-top">
         <view class="border cell">
-            <van-row>
+            <van-row style="color: #3b3b3b;font-size: 26rpx;">
                 <van-col span="6">支付方式：</van-col>
                 <van-col span="16">微信支付</van-col>
             </van-row>
@@ -10,11 +10,11 @@
     <view class="margin-top">
         <view class="border cell">
             <van-row>
-                <van-col span="6">代金券</van-col>
+                <van-col span="6" style="color: #3b3b3b;font-size: 26rpx;">代金券</van-col>
                 <van-col span="18" style="text-align:right;">
                     <view bindtap="openPopup">
                         <text wx:if="{{!!couponText}}">{{couponText}}</text>
-                        <text wx:else>{{couponUseNum}}张可用代金券</text>
+                        <text style="color: #999999;font-size: 30rpx;" wx:else>{{couponUseNum}}张可用代金券</text>
                         <van-icon name="arrow"/>
                     </view>
                 </van-col>
@@ -28,12 +28,12 @@
             <van-row wx:if="{{typeOrder==0}}">
                 <van-col span="18">{{item.product.name}}</van-col>
                 <van-col span="3">*{{item.num}}</van-col>
-                <van-col span="3">￥{{item.num*item.product.money}}</van-col>
+                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.num*item.product.money}}</van-col>
             </van-row>
             <van-row wx:else>
                 <van-col span="18">{{item.product.name}}</van-col>
                 <van-col span="3">*{{item.num}}</van-col>
-                <van-col span="3">￥{{item.num*item.luckBagMoney}}</van-col>
+                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.num*item.luckBagMoney}}</van-col>
             </van-row>
         </view>
     </view>
@@ -43,16 +43,18 @@
             <van-row>
                 <van-col span="18">商品总额</van-col>
                 <van-col span="3"></van-col>
-                <van-col span="3">￥{{total}}</van-col>
+                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{total}}</van-col>
             </van-row>
         </view>
     </view>
     <view class="margin-top">
-        <view class="border border-desc" style="padding-left:15px;height:30px;line-height:30px;">捎口信</view>
+        <view class="border border-desc" style="padding-left:15px;height:30px;line-height:30px;color: #3b3b3b">捎口信
+        </view>
         <view class="border cell border-content" style="border-top:none;height: 200rpx;">
                 <textarea name="message" placeholder="如果您需要小店的其他商品请留言" placeholder-class="border-content"
+                          placeholder-style="color: #999999;"
                           bindinput="message_put" maxlength="50" class="message-desc"
-                          style="height: 165rpx;line-height: 1.5;"
+                          style="height: 165rpx;line-height: 1.5;color: #999999;"
                           value="{{message}}"/>
         </view>
     </view>

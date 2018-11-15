@@ -162,7 +162,7 @@ Page({
             app.requestPayment(data.data).then(ok => {
                 _this.change_status(orderId, 0);
                 wx.redirectTo({
-                    url: `/view/order/index?activeStatus=2`
+                    url: `/view/order/index?activeStatus=0`
                 });
             }).catch(err => {
                 _this.change_status(orderId, 8);

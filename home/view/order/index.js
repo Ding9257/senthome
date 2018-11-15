@@ -50,6 +50,9 @@ Page({
             if (activeStatus == 3) {
                 orderStatus = 3
             }
+            if (activeStatus == 0) {
+                orderStatus = ""
+            }
             this.setData({
                 activeStatus,
                 orderStatus
