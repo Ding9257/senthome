@@ -83,6 +83,7 @@ Page({
                     return item.id == id
                 });
                 app.globalData.shippingAddress = address[0];
+                app.globalData.areaName = address[0].distributionScope;
                 let shippingAddressType = 1;
                 app.globalData.shippingAddressType = shippingAddressType;
                 this.setData({
@@ -98,6 +99,7 @@ Page({
                     shippingAddressType
                 });
                 app.globalData.shopInfo = address[0];
+                app.globalData.areaName = address[0].distributionScope;
             }
             wx.navigateBack({
                 delta: 1

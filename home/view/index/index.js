@@ -2,6 +2,7 @@ const util = require("../../util/util");
 const request = require("./../../util/request").request;
 import Toast from './../../dist/toast/toast';
 
+let _this;
 const app = getApp();
 Page({
     data: {
@@ -23,27 +24,7 @@ Page({
 
     },
     onLoad: function (option) {
-        if (util.isEmpty(app.globalData.shopInfo)) {
-            app.getLngLat().then(LngLat => {
-                let {lng, lat} = LngLat;
-                app.globalData.coordinate = {lng, lat};
-                request({
-                    url: "/app/getStore",
-                    method: "get",
-                    data: {areaId: "", type: 1, lng, lat}
-                }).then(store => {
-                    let data = store.data;
-                    let areaName = data.areaName;
-                    let shopInfo = data.list.length > 0 ? data.list[0] : {};
-                    app.globalData.shopInfo = shopInfo;
-                    app.globalData.areaName = areaName;
-                    this.setData({
-                        shopInfo,
-                        areaName
-                    })
-                })
-            })
-        }
+        _this = this;
     },
     onReady: function () {
 
@@ -53,6 +34,9 @@ Page({
         //     index: 2,
         //     text: '10'
         // })
+        if (util.isEmpty(app.globalData.shopInfo)) {
+            this.getShopInfo();
+        }
         let shopInfo = app.globalData.shopInfo;
         let areaName = app.globalData.areaName;
         this.setData({
@@ -64,6 +48,31 @@ Page({
         }
         //轮播图
         this.carouselMap();
+    },
+    getShopInfo: function () {
+        let lng, lat;
+        app.getLngLat().then(LngLat => {
+            lng = LngLat.lng;
+            lat = LngLat.lat;
+            app.globalData.coordinate = {lng, lat};
+            app.getUserInfo().then(userInfo => {
+                app.getDefaultAddress(userInfo.userId).then(address => {
+                    app.getAreaStore(address.areaId, 2, lng, lat).then(({areaName, shopInfo}) => {
+                        _this.setData({
+                            areaName, shopInfo
+                        });
+                        _this.getDianZhangRecommend();
+                    });
+                })
+            });
+        }).catch(err => {
+            app.getAreaStore("", 1, lng, lat).then(({areaName, shopInfo}) => {
+                _this.setData({
+                    areaName, shopInfo
+                })
+                _this.getDianZhangRecommend();
+            });
+        })
     },
     onHide: function () {
         console.log("onHide");

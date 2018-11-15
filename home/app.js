@@ -2,7 +2,7 @@ const request = require("./util/request.js").request;
 const util = require("./util/util");
 let _this;
 App({
-    onLaunch: function () {
+    onShow: function () {
         _this = this;
         wx.getSystemInfo({
             success: function (res) {
@@ -10,61 +10,64 @@ App({
                 this.globalData.window_height = res.windowHeight;
             }.bind(this)
         });
+    },
+    onLaunch: function () {
 
-        wx.getSetting({
-            success: function () {
-                wx.getUserInfo({
-                    success: function (wxUserInfo) {
-                        let user = wxUserInfo.userInfo;
-                        wx.login({
-                            success: function (loginData) {
-                                request({
-                                    url: "/customerInfo/login",
-                                    method: "POST",
-                                    data: {
-                                        icon: user.avatarUrl,
-                                        userName: util.removeEmoji(user.nickName),
-                                        code: loginData.code
-                                    }
-                                }).then(data => {
-                                    let item = data.data;
-                                    user.userId = item.userId;
-                                    user.phone = item.phone;
-                                    getApp().globalData.userInfo = user;
-                                    _this.getDefaultAddress(item.userId);
-                                })
-                            }
-                        });
-                    }
-                });
-            },
-            fail: function (err) {
-                console.log("getSetting is error", err);
-            }
+    },
+    getUserInfo: function () {
+        return new Promise((resolve, reject) => {
+            wx.getUserInfo({
+                success: function (wxUserInfo) {
+                    let user = wxUserInfo.userInfo;
+                    wx.login({
+                        success: function (loginData) {
+                            request({
+                                url: "/customerInfo/login",
+                                method: "POST",
+                                data: {
+                                    icon: user.avatarUrl,
+                                    userName: util.removeEmoji(user.nickName),
+                                    code: loginData.code
+                                }
+                            }).then(data => {
+                                let item = data.data;
+                                user.userId = item.userId;
+                                user.phone = item.phone;
+                                getApp().globalData.userInfo = user;
+                                resolve(user);
+                            })
+                        }
+                    });
+                },
+                fail: function (err) {
+                    reject(err);
+                }
+            });
         });
     },
     getDefaultAddress: function (userId) {
-        request({
-            url: "/address/list",
-            method: "post",
-            data: {userId, status: 0}
-        }).then(res => {
-            //判断是否有默认收货地址
-            if (res.data.length >= 1) {
-                //有默认收货地址
-                let address = res.data[0];
-                let areaId = address.areaId;
-                _this.getAreaStore(areaId, 2);
-            } else {
-                //无默认收货地址
-                _this.getAreaStore("", 1);
-            }
+        return new Promise((resolve, reject) => {
+            request({
+                url: "/address/list",
+                method: "post",
+                data: {userId, status: 0}
+            }).then(res => {
+                //判断是否有默认收货地址
+                if (res.data.length >= 1) {
+                    //有默认收货地址
+                    let address = res.data[0];
+                    resolve(address);
+                } else {
+                    //无默认收货地址
+                    resolve({});
+                }
+            }).catch(err => {
+                reject(err)
+            })
         })
     },
-    getAreaStore: function (areaId, type = 2) {
-        _this.getLngLat().then(LngLat => {
-            let {lng, lat} = LngLat;
-            getApp().globalData.coordinate = {lng, lat};
+    getAreaStore: function (areaId, type = 2, lng, lat) {
+        return new Promise((resolve, reject) => {
             request({
                 url: "/app/getStore",
                 method: "get",
@@ -75,7 +78,29 @@ App({
                 let shopInfo = data.list.length > 0 ? data.list[0] : {};
                 getApp().globalData.shopInfo = shopInfo;
                 getApp().globalData.areaName = areaName;
+                resolve({areaName, shopInfo})
+            }).catch(err => {
+                reject(err)
             })
+
+        });
+    },
+    isAuthLocation: function () {
+        return new Promise((resolve, reject) => {
+            wx.getSetting({
+                success: function (setok) {
+                    if (setok.authSetting["scope.userLocation"]) {
+                        resolve(setok)
+                    } else {
+                        //没授权地理位置
+                        reject(setok)
+                    }
+                },
+                fail: function (err) {
+                    console.log("getSetting is error", err);
+                    reject(err)
+                }
+            });
         })
     },
     globalData: {
@@ -122,6 +147,7 @@ App({
         return new Promise((resolve, reject) => {
             wx.getLocation({
                 success: function (res) {
+                    getApp().globalData.coordinate = {lng: res.longitude, lat: res.latitude};
                     resolve({lng: res.longitude, lat: res.latitude, result: {}});
                     //逆地理编码
                 },
