@@ -37,10 +37,13 @@ Page({
                     let shopInfo = data.list.length > 0 ? data.list[0] : {};
                     app.globalData.shopInfo = shopInfo;
                     app.globalData.areaName = areaName;
+                    this.setData({
+                        shopInfo,
+                        areaName
+                    })
                 })
             })
         }
-
     },
     onReady: function () {
 
