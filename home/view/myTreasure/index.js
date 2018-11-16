@@ -33,10 +33,15 @@ Page({
 
     },
     getTreasure: function () {
+        let result = this.data.result;
+        let tempResult = result;
+        if (tempResult == 2) {
+            result = 0
+        }
         request({
             url: '/coupon/findByUserId',
             method: "POST",
-            data: {userId: app.globalData.userInfo.userId, result: this.data.result}
+            data: {userId: app.globalData.userInfo.userId, result}
         }).then(res => {
             let list = [];
             for (let tempItem of res.data) {
@@ -59,7 +64,11 @@ Page({
                         }
                     }
                 }
-                list.push(tempItem);
+                if (tempResult == 2 && currentTimestamp > collectTimestamp) {
+                    list.push(tempItem);
+                } else {
+                    list.push(tempItem);
+                }
             }
             this.setData({
                 treasure_list: list

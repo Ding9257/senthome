@@ -51,7 +51,7 @@
         <view class="winning" style="width:{{width-40}}px;">
             <view class="winning-name">本期获奖名单</view>
             <view class="winning-content">
-                <view wx:for="{{goods.ids}}" wx:key="{{item.id}}">
+                <view wx:for="{{winnerUser}}" wx:key="{{item.id}}">
                     <van-row>
                         <van-col span="12">
                             <text style="float: right" class="winning-name">{{item.name}}</text>

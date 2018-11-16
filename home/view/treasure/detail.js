@@ -10,6 +10,7 @@ Page({
         id: "",
         shopNum: 0,
         current: 0,
+        winnerUser: [],
         isShowWinning: false,
         width: app.globalData.window_width,
         height: app.globalData.window_height,
@@ -79,9 +80,7 @@ Page({
             item.progress = 100;
             //判断活动是否结束
             if (currentTimestamp >= collectTimestamp) {
-                this.setData({
-                    isShowWinning: true
-                })
+                this.getWinnerUser(item.ids);
                 item.isOver = true;
             } else {
                 let progress = currentTimestamp / collectTimestamp * 100;
@@ -90,6 +89,19 @@ Page({
             this.setData({
                 goods: item
             });
+        })
+    },
+    getWinnerUser: function (ids) {
+        request({
+            url: '/customerInfo/coupon',
+            method: "get",
+            data: {ids}
+        }).then(res => {
+            console.log(res);
+            this.setData({
+                winnerUser: res.data,
+                isShowWinning: true
+            })
         })
     },
     onClose: function () {
