@@ -49,10 +49,11 @@ Page({
                 let currentTimestamp = moment().valueOf();
                 let collectTimestamp = moment(item.collectTime).valueOf();
                 let progress = currentTimestamp / collectTimestamp * 100;
-                item.progress = progress.toFixed(2) * 1;
+                item.progress = progress.toFixed(1) * 1;
                 item.oddsOfWinning = 0;
                 if (!util.isEmpty(item.couponDrools)) {
-                    for (let i = 0; item.couponDrools.length; i++) {
+                    for (let i = 0; i < item.couponDrools.length; i++) {
+                        console.log(item.couponDrools[i]);
                         let {people, rate, num} = item.couponDrools[i];
                         if (i == 0) {
                             item.oddsOfWinning = rate;

@@ -45,7 +45,7 @@ Page(Object.assign({}, Quantity, {
                     sku_id: data.sku_list[0].sku_id,
                     product_id: data.product_id,
                     product_name: data.product_name,
-                    product_price: JSON.parse(data.sku_list[0].product_price)[0].product_price.toFixed(2),
+                    product_price: JSON.parse(data.sku_list[0].product_price)[0].product_price.toFixed(1),
                     product_image_file: data.product_image_file,
                     product_image_file_list: product_image_file_list,
                     product_content: htmlToWxml.html2json(data.product_content)

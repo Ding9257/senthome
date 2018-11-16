@@ -156,7 +156,7 @@ Page({
             let list = [];
             for (let item of data.data) {
                 let distance = item.juli;
-                distance = (distance / 1000).toFixed(2);
+                distance = (distance / 1000).toFixed(1);
                 item.distance = distance;
                 list.push(item);
             }

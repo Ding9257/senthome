@@ -104,6 +104,8 @@ App({
         })
     },
     globalData: {
+        //收益率
+        gain: 1.05,
         userInfo: {},
         shopInfo: {},
         orderStatus: {

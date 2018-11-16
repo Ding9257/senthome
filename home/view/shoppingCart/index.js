@@ -8,7 +8,7 @@ Page(Object.assign({}, Quantity, {
         is_all: false,
         is_select: false,
         is_edit: false,
-        cart_total: parseFloat(0).toFixed(2),
+        cart_total: parseFloat(0).toFixed(1),
         cart_list: [
             {
                 product_id: 1,
@@ -56,7 +56,7 @@ Page(Object.assign({}, Quantity, {
         for (var i = 0; i < cart_list.length; i++) {
             var product = cart_list[i];
 
-            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
+            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(1);
 
             if (product.is_check) {
                 is_select = true;
@@ -95,7 +95,7 @@ Page(Object.assign({}, Quantity, {
 
         this.setData({
             is_select: is_select,
-            cart_total: cart_total.toFixed(2),
+            cart_total: cart_total.toFixed(1),
             cart_list: this.data.cart_list
         });
     },
@@ -120,7 +120,7 @@ Page(Object.assign({}, Quantity, {
         this.setData({
             is_all: is_all,
             is_select: is_all,
-            cart_total: cart_total.toFixed(2),
+            cart_total: cart_total.toFixed(1),
             cart_list: this.data.cart_list
         });
 
@@ -137,7 +137,7 @@ Page(Object.assign({}, Quantity, {
             if (product.product_id == componentId) {
                 product.product_quantity.quantity = quantity;
 
-                product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
+                product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(1);
             }
 
             if (product.is_check) {
@@ -146,7 +146,7 @@ Page(Object.assign({}, Quantity, {
         }
 
         this.setData({
-            cart_total: cart_total.toFixed(2),
+            cart_total: cart_total.toFixed(1),
             cart_list: this.data.cart_list
         });
 
@@ -174,7 +174,7 @@ Page(Object.assign({}, Quantity, {
         for (var i = 0; i < uncheck_cart_list.length; i++) {
             var product = cart_list[i];
 
-            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(2);
+            product.product_total_price = (product.product_quantity.quantity * product.product_price).toFixed(1);
 
             if (product.is_check) {
                 is_select = true;

@@ -60,7 +60,7 @@ Page({
                 console.log(luckBagMoney);
                 let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.01;
                 console.log(profit);
-                item.luckBagMoney = (luckBagMoney * (1 - profit)).toFixed(2);
+                item.luckBagMoney = (luckBagMoney * (1 - profit)).toFixed(1);
                 list.push(item);
                 //otherStock  剩余库存
                 luckBagMoneyList[item.id] = {
@@ -115,7 +115,7 @@ Page({
             let product = luckBagMoneyList[key];
             luckBagTotalPrice = luckBagTotalPrice + (product.num * product.luckBagMoney);
         }
-        luckBagTotalPrice = luckBagTotalPrice.toFixed(2)
+        luckBagTotalPrice = luckBagTotalPrice.toFixed(1)
         this.setData({
             luckBagTotalPrice
         });

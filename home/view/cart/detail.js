@@ -7,6 +7,7 @@ Page({
     data: {
         goods: {},
         current: 0,
+        gain: app.globalData.gain,
         hosts: app.globalData.hosts,
         num: 0,
         width: getApp().globalData.window_width,
@@ -31,6 +32,7 @@ Page({
             data: {id}
         }).then(res => {
             this.handleShopCartById(id);
+            res.data.money = (res.data.money * this.data.gain).toFixed(1);
             that.setData({
                 goods: res.data
             });
@@ -143,7 +145,7 @@ Page({
     sumPrice: function () {
         let goods = this.data.goods;
         let num = this.data.num;
-        let price = (goods.money * num).toFixed(2);
+        let price = (goods.money * num).toFixed(1);
         this.setData({
             sumPrice: price
         });

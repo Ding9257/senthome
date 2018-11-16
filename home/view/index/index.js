@@ -7,6 +7,7 @@ const app = getApp();
 Page({
     data: {
         window_width: app.globalData.window_width,
+        gain: app.globalData.gain,
         hosts: app.globalData.hosts,
         imgWidth: 30,
         shopDefaultImg: "/image/new/mr.png",
@@ -103,8 +104,9 @@ Page({
             for (let key in res.data) {
                 let items = res.data[key];
                 if (!util.isEmpty(items)) {
-                    list = list.concat(items);
                     for (let item of items) {
+                        item.money = (item.money * this.data.gain).toFixed(1);
+                        list.push(item);
                         if (util.isEmpty(shopCart[item.id])) {
                             shopCart[item.id] = {num: 0, otherStock: item.stock, product: item};
                         }

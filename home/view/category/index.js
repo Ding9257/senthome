@@ -6,6 +6,7 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
+        gain: app.globalData.gain,
         hosts: app.globalData.hosts,
         shopDefaultImg: "/image/new/zw.png",
         list: [],
@@ -106,13 +107,16 @@ Page({
             }
             let totalPage = Math.ceil(data.data.count / this.data.page);
             let productList = this.data.productList || [];
+            let list = [];
             for (let item of data.data.productList) {
+                item.money = (item.money * this.data.gain).toFixed(1);
+                list.push(item);
                 if (!this.data.shopCart[item.id]) {
                     this.data.shopCart[item.id] = {num: 0, otherStock: item.stock, product: item};
                 }
             }
             this.setData({
-                productList: productList.concat(data.data.productList),
+                productList: productList.concat(list),
                 totalPage: totalPage,
             });
         }).catch(err => {

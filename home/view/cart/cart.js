@@ -211,7 +211,7 @@ Page({
                 total += carts[i].num * 1 * carts[i].product.money * 1;
             }
         }
-        total = total.toFixed(2);
+        total = total.toFixed(1);
         if (this.data.shippingAddressType == 1 && total < 20) {
             Toast.fail('送货上门需大于20元');
             return false
@@ -290,7 +290,7 @@ Page({
                 total += carts[i].num * 1 * carts[i].product.money * 1;
             }
         }
-        total = total.toFixed(2);
+        total = total.toFixed(1);
         // 写回经点击修改后的数组
         this.setData({
             total: total

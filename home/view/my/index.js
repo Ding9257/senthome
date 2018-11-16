@@ -7,7 +7,7 @@ const app = getApp();
 let _this;
 Page({
     data: {
-        member_total_amount: parseFloat(0).toFixed(2),
+        member_total_amount: parseFloat(0).toFixed(1),
         WAIT_PAY: 0,
         shopInfo: app.globalData.shopInfo,
         userInfo: app.globalData.userInfo,

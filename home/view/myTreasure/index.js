@@ -44,7 +44,7 @@ Page({
                 let currentTimestamp = moment().valueOf();
                 let collectTimestamp = moment(item.collectTime).valueOf();
                 let progress = currentTimestamp / collectTimestamp * 100;
-                tempItem.progress = progress.toFixed(2) * 1;
+                tempItem.progress = progress.toFixed(1) * 1;
                 tempItem.oddsOfWinning = 0;
                 if (!util.isEmpty(item.couponDrools)) {
                     for (let i = 0; item.couponDrools.length; i++) {

@@ -5,7 +5,7 @@ import Toast from "../../dist/toast/toast";
 let _this;
 Page({
     data: {
-        member_total_amount: parseFloat(0).toFixed(2),
+        member_total_amount: parseFloat(0).toFixed(1),
         WAIT_PAY: 0,
         WAIT_SEND: 0,
         total: 0,
