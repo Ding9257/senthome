@@ -102,7 +102,7 @@ Page({
             data: againPayment
         }).then(res => {
             app.requestPayment(res.data).then(ok => {
-                Toast.fail("支付成功");
+                Toast.success("支付成功");
                 _this.change_status(againPayment.orderId, 0).then(() => {
                     _this.getOrder(_this.data.id)
                 });
@@ -112,10 +112,14 @@ Page({
         })
     },
     change_status: function (orderId, status) {
+        let data = {orderId, status};
+        if (status == 0) {
+            data.collectCode = Math.random().toString().slice(-6);
+        }
         return request({
             url: "/order/update",
             method: "POST",
-            data: {orderId, status}
+            data: data
         })
     },
 });

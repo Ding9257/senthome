@@ -22,7 +22,7 @@
         </view>
     </view>
     <view class="margin-top">
-        <view class="border border-desc" style="padding-left:15px;height:30px;line-height:30px;">带其他元素</view>
+        <view class="border border-desc" style="padding-left:15px;height:30px;line-height:30px;">商品列表</view>
         <view wx:for="{{productList}}" wx:key="{{item.index}}" class="border cell border-content"
               style="border-top:none;">
             <van-row wx:if="{{typeOrder==0}}">

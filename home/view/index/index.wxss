@@ -134,7 +134,7 @@ page {
 
 .top {
     position: relative;
-    height: 570rpx;
+    height: 560rpx;
     background-color: #fff;
 }
 
@@ -174,7 +174,7 @@ page {
 }
 .banner {
     position: absolute;
-    top: 260rpx;
+    top: 250rpx;
     height: 360rpx;
     width: 690rpx;
 }

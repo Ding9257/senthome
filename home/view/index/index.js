@@ -16,6 +16,7 @@ Page({
         areaNareaNameame: "请选择",
         shopCart: {},
         shopInfo: {},
+        userInfo: {},
         category_list: [],
         product_list: [],
         dianZhang_list: []
@@ -39,8 +40,10 @@ Page({
         }
         let shopInfo = app.globalData.shopInfo;
         let areaName = app.globalData.areaName;
+        let userInfo = app.globalData.userInfo;
         this.setData({
             shopInfo,
+            userInfo,
             areaName
         })
         if (!util.isEmpty(shopInfo)) {
@@ -56,6 +59,9 @@ Page({
             lat = LngLat.lat;
             app.globalData.coordinate = {lng, lat};
             app.getUserInfo().then(userInfo => {
+                _this.setData({
+                    userInfo
+                })
                 app.getDefaultAddress(userInfo.userId).then(address => {
                     app.getAreaStore(address.areaId, 2, lng, lat).then(({areaName, shopInfo}) => {
                         _this.setData({
@@ -156,22 +162,29 @@ Page({
             method: "post",
             data
         }).then(data => {
-            if (target == 2) {
-                if (data.data.count > 0) {
-                    wx.navigateTo({
-                        url
-                    });
-                } else {
-                    Toast.fail('店铺装修中');
+            if (util.isEmpty(this.data.userInfo)) {
+                app.globalData.isShowToast = true;
+                wx.switchTab({
+                    url: '/view/my/index'
+                })
+            } else {
+                if (target == 2) {
+                    if (data.data.count > 0) {
+                        wx.navigateTo({
+                            url
+                        });
+                    } else {
+                        Toast.fail('店铺装修中');
+                    }
                 }
-            }
-            if (target == 1) {
-                if (data.data.length > 0) {
-                    wx.navigateTo({
-                        url
-                    });
-                } else {
-                    Toast.fail('店铺装修中');
+                if (target == 1) {
+                    if (data.data.length > 0) {
+                        wx.navigateTo({
+                            url
+                        });
+                    } else {
+                        Toast.fail('店铺装修中');
+                    }
                 }
             }
         })

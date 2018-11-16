@@ -176,12 +176,16 @@ Page({
         })
     },
     change_status: function (orderId, status) {
+        let data = {orderId, status};
+        if (status == 0) {
+            data.collectCode = Math.random().toString().slice(-6);
+        }
         request({
             url: "/order/update",
             method: "POST",
-            data: {orderId, status}
-        }).then(data => {
-            console.log(data);
+            data: data
+        }).then(res => {
+            console.log(res);
         })
     },
     message_put: function (e) {
