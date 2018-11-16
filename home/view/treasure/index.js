@@ -53,7 +53,6 @@ Page({
                 item.oddsOfWinning = 0;
                 if (!util.isEmpty(item.couponDrools)) {
                     for (let i = 0; i < item.couponDrools.length; i++) {
-                        console.log(item.couponDrools[i]);
                         let {people, rate, num} = item.couponDrools[i];
                         if (i == 0) {
                             item.oddsOfWinning = rate;
@@ -67,7 +66,6 @@ Page({
                 }
                 list.push(item);
             }
-            console.log(list);
             this.setData({
                 treasure_list: list
             });

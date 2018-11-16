@@ -1,0 +1,12 @@
+.container {
+    background-color: #F9F9F9;
+}
+.change-address{
+	height: 70rpx;line-height: 70rpx;
+	border: solid 1px #ffd600;
+	font-size: 30rpx;font-family:"Microsoft YaHei";
+	color: #ffd600;
+	text-align: center;
+	border-radius: 10rpx;
+	margin: 0 auto;
+}

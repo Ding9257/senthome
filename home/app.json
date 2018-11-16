@@ -18,6 +18,7 @@
     "view/treasure/detail",
     "view/myTreasure/index",
     "view/position/index",
+    "view/phone/index",
     "view/voucher/index"
   ],
   "window": {

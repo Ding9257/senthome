@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "获取手机号码",
+  "usingComponents": {
+    "van-card": "./../../dist/card/index",
+    "van-row": "./../../dist/row/index",
+    "van-col": "./../../dist/col/index",
+    "van-icon": "./../../dist/icon/index",
+    "van-tab": "./../../dist/tab/index",
+    "van-tabs": "./../../dist/tabs/index",
+    "van-button": "./../../dist/button/index"
+  }
+}

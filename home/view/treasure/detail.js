@@ -97,9 +97,12 @@ Page({
             method: "get",
             data: {ids}
         }).then(res => {
-            console.log(res);
+            let list = [];
+            for (let key in res.data) {
+                list.push({name: key, phone: res.data[key]})
+            }
             this.setData({
-                winnerUser: res.data,
+                winnerUser: list,
                 isShowWinning: true
             })
         })
