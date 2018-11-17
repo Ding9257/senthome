@@ -2,11 +2,34 @@
     background-color: #F9F9F9;
 }
 .change-address{
-	height: 70rpx;line-height: 70rpx;
-	border: solid 1px #ffd600;
-	font-size: 30rpx;font-family:"Microsoft YaHei";
-	color: #ffd600;
+    width: 670rpx;
+	height: 80rpx;
+    line-height: 80rpx;
+	font-size: 26rpx;font-family:"Microsoft YaHei";
+	color: #ffffff;
+    background-color: #ffd600;
+    border: none;
 	text-align: center;
 	border-radius: 10rpx;
 	margin: 0 auto;
+}
+.userinfo {
+    padding-top: 145rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    width:100%;
+}
+
+.userinfo-avatar {
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 50%;
+}
+
+.userinfo-nickname {
+    padding-top: 50rpx;
+    font-family: "Microsoft YaHei";
+    font-size: 34rpx;
+    color: #000000;
 }

@@ -2,9 +2,9 @@ const request = require("../../util/request").request;
 const app = getApp();
 Page({
     data: {
-        window_width: getApp().globalData.window_width - 20,
-        sid: getApp().globalData.sid || "",
-        userId: "",
+        window_width: app.globalData.window_width,
+        sid: app.globalData.sid,
+        userInfo: {},
         voucherList: []
     },
     onUnload: function () {
@@ -17,7 +17,10 @@ Page({
 
     },
     onShow: function () {
-
+        let userInfo = app.globalData.userInfo;
+        this.setData({
+            userInfo
+        })
     },
     onHide: function () {
 

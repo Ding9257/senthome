@@ -50,7 +50,7 @@ function requestP(options = {}) {
         Accept: 'application/json;charset=UTF-8'
     }, options.header);
     wx.showLoading({
-        title: '操作中',
+        title: '',
         mask: true
     });
     return new Promise((res, rej) => {
@@ -66,12 +66,12 @@ function requestP(options = {}) {
                     if (isHttpSuccess(r.data.status)) {
                         res(r.data);
                     } else {
-                        wx.showToast({
-                            title: r.data.msg,
-                            icon: 'none',
-                            duration: 1000,
-                            mask: true
-                        })
+                        // wx.showToast({
+                        //     title: r.data.msg,
+                        //     icon: 'none',
+                        //     duration: 1000,
+                        //     mask: true
+                        // })
                         rej(r.data)
                     }
                 } else {

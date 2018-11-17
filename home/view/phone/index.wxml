@@ -1,3 +1,14 @@
 <view class="container">
-    <button class="change-address" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权手机号</button>
+    <view class="userinfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/image/new/tx.png'}}"
+               background-size="cover"/>
+        <text style="color: #000;" class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view style="padding-top: 220rpx;">
+        <button class="change-address" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            <image style="width: 61rpx;height: 49rpx;vertical-align: middle;padding-right: 16rpx;"
+                   src="/image/new/wx.png"/>
+            微信用户快捷登录
+        </button>
+    </view>
 </view>

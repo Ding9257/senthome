@@ -44,9 +44,9 @@ Page({
                     _this.setData({
                         userInfo: app.globalData.userInfo
                     });
-                    // wx.navigateTo({
-                    //     url:"/view/phone/index"
-                    // });
+                    wx.navigateTo({
+                        url:"/view/phone/index"
+                    });
                 }).catch(err => {
                     Toast.fail(err.msg);
                 })
