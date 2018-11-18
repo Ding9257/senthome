@@ -8,23 +8,21 @@ Page({
         hosts: app.globalData.hosts,
         status: 0,
         orderType: "",
-        banner_list: [{
-            banner_id: 0,
-            banner_image: '/image/new/luck.jpeg'
-        }],
+        banner_list: [{url: "/image/banner.png"}],
         treasure_list: []
     },
     onUnload: function () {
 
     },
     onLoad: function () {
-        this.getTreasure();
+
     },
     onReady: function () {
 
     },
     onShow: function () {
-
+        this.getBannerList();
+        this.getTreasure();
     },
     onHide: function () {
 
@@ -87,5 +85,18 @@ Page({
             orderType
         });
         this.getTreasure();
+    },
+    getBannerList: function () {
+        request({
+            url: '/icon/list',
+            method: "POST",
+            data: {type: 1}
+        }).then(res => {
+            if (!util.isEmpty(res.data)) {
+                this.setData({
+                    banner_list: res.data
+                });
+            }
+        })
     }
 });

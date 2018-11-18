@@ -1,9 +1,9 @@
 <view class="container" style="background-color: #fff;">
     <view class="page-section page-section-spacing swiper">
         <swiper indicator-dots="true" indicator-active-color="#c81623" autoplay="false" interval="5000" duration="500">
-            <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.banner_id}}">
+            <swiper-item wx:for="{{banner_list}}" wx:for-item="banner" wx:key="{{banner.id}}">
                 <image style="width: 514px; height: 150px; position: absolute; left: 50%; margin-left: -257px;"
-                       src="{{banner.banner_image}}"/>
+                       src="{{hosts+banner.url}}"/>
             </swiper-item>
         </swiper>
     </view>

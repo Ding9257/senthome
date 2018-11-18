@@ -125,7 +125,7 @@ Page({
         request({
             url: '/icon/list',
             method: "POST",
-            data: {}
+            data: {type: 0}
         }).then(res => {
             if (!util.isEmpty(res.data)) {
                 this.setData({
