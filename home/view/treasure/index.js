@@ -10,7 +10,7 @@ Page({
         orderType: "",
         banner_list: [{
             banner_id: 0,
-            banner_image: '/image/banner.png'
+            banner_image: '/image/new/luck.jpeg'
         }],
         treasure_list: []
     },

@@ -52,20 +52,19 @@ Page({
             //计算福袋价格
             let list = [];
             for (let item of res.data.blessingList) {
-                let luckBagMoney = 0;
-                for (let product of item.productList) {
-                    luckBagMoney = luckBagMoney + product.money * 1;
-                }
-                let tempProfit = item.profit;
-                console.log(luckBagMoney);
-                let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.01;
-                console.log(profit);
-                item.luckBagMoney = (luckBagMoney * (1 - profit)).toFixed(1);
+                // let luckBagMoney = 0;
+                // for (let product of item.productList) {
+                //     luckBagMoney = luckBagMoney + product.money * 1;
+                // }
+                // let tempProfit = item.profit;
+                // let profit = tempProfit.substring(0, tempProfit.length - 1) * 0.01;
+                // item.luckBagMoney = (luckBagMoney * (1 - profit)).toFixed(1);
+                item.luckBagMoney = item.money;
                 list.push(item);
                 //otherStock  剩余库存
                 luckBagMoneyList[item.id] = {
                     num: 0,
-                    luckBagMoney: item.luckBagMoney,
+                    luckBagMoney: item.money,
                     otherStock: item.stock,
                     luckBag: item
                 };
@@ -115,7 +114,7 @@ Page({
             let product = luckBagMoneyList[key];
             luckBagTotalPrice = luckBagTotalPrice + (product.num * product.luckBagMoney);
         }
-        luckBagTotalPrice = luckBagTotalPrice.toFixed(1)
+        luckBagTotalPrice = luckBagTotalPrice.toFixed(0)
         this.setData({
             luckBagTotalPrice
         });

@@ -43,8 +43,18 @@ Page({
             this.setData({voucherList: res.data})
         })
     },
+    updateUserInfo: function (phone) {
+        request({
+            url: '/coupon/findByCoupon',
+            method: "POST",
+            data: {...this.data.userInfo, phone}
+        }).then(res => {
+            wx.navigateBack({
+                delta: 1
+            })
+        })
+    },
     getPhoneNumber(e) {
-        console.log(e);
         console.log(e.detail.errMsg)
         console.log(e.detail.iv)
         console.log(e.detail.encryptedData)
