@@ -54,16 +54,16 @@
             <van-row>
                 <!-- 商品选购 -->
                 <view bindtap="goToshop" style="display: inline-block">
-                    <image class="img-shadow" src="/image/all/1.png" style="width:330rpx;height: 334rpx;"/>
+                    <image class="img-shadow" src="/image/all/spxg.png" style="width:330rpx;height: 334rpx;"/>
                 </view>
                 <view style="display: inline-block;padding-left: 25rpx;">
                     <view data-target="1" bindtap="goToTarget">
                         <!-- 轻松夺宝 -->
-                        <image class="img-shadow" src="/image/all/2.png" style="width:332rpx; height:157rpx;"/>
+                        <image class="img-shadow" src="/image/all/qsdb.png" style="width:332rpx; height:157rpx;"/>
                     </view>
                     <view style="padding-top:8rpx;" data-target="2" bindtap="goToTarget">
                         <!-- 惊喜福袋 -->
-                        <image class="img-shadow" src="/image/all/3.png" style="width:332rpx; height:157rpx;"/>
+                        <image class="img-shadow" src="/image/all/jxfd.png" style="width:332rpx; height:157rpx;"/>
                     </view>
                 </view>
             </van-row>
