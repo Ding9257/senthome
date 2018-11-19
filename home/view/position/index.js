@@ -9,13 +9,16 @@ Page({
         popupStatus: false,
         areaList: {
             province_list: {
-                110000: '顺义区',
-                220000: '石景山区',
-                330000: '东城区',
-                440000: '西城区',
-                550000: '朝阳区',
-                660000: '密云区',
-                770000: '海淀区'
+                110000: '北京市'
+            },
+            city_list: {
+                110100: '顺义区',
+                110200: '石景山区',
+                110300: '东城区',
+                110400: '西城区',
+                110500: '朝阳区',
+                110600: '密云区',
+                110700: '海淀区'
             }
         },
         selectProv: "选择地区",
@@ -116,7 +119,7 @@ Page({
             this.setData({
                 selectProv
             });
-            this.getStore(selectProv);
+            this.getStore(selectProv, "北京市");
         })
     },
     getAddress: function () {
@@ -147,11 +150,11 @@ Page({
             shippingAddressType
         });
     },
-    getStore: function (area) {
+    getStore: function (area, city) {
         request({
             url: "/area/listStore",
             method: "post",
-            data: {area, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
+            data: {area, city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
         }).then(data => {
             let list = [];
             for (let item of data.data) {
@@ -166,12 +169,15 @@ Page({
         });
     },
     areaSelect: function (e) {
-        let selectProv = e.detail.values[0].name;
+
+        console.log(e);
+        let city = e.detail.values[0].name;
+        let selectProv = e.detail.values[1].name;
         this.setData({
             selectProv,
             popupStatus: false
         });
-        this.getStore(selectProv)
+        this.getStore(selectProv, city);
     },
     changePopupStatus: function () {
         this.setData({

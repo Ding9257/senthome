@@ -63,6 +63,6 @@
         </navigator>
     </view>
     <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-        <van-area columns-num="1" area-list="{{ areaList }}" bind:cancel="cancel" bind:confirm="areaSelect"/>
+        <van-area columns-num="2" area-list="{{ areaList }}" value="110000" bind:cancel="cancel" bind:confirm="areaSelect"/>
     </van-popup>
 </view>
