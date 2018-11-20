@@ -88,7 +88,7 @@ Page({
             url: '/order/list1',
             method: "POST",
             data: {
-                sid: this.data.shopInfo.id,
+                //sid: this.data.shopInfo.id,
                 status: this.data.orderStatus,
                 pageNo: this.data.currentPage,
                 userId: this.data.userInfo.userId
