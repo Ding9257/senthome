@@ -1,15 +1,16 @@
 <view class="container" style="background-color: #fff;">
     <view wx:for="{{delivery_list}}"
-          style="height: 150rpx;border-bottom: solid 2rpx #999999;padding: 30rpx 0 0 20rpx;"
+          style="height: 150rpx;border-bottom: solid 2rpx #999999;padding: 30rpx 0 0 0rpx;"
           wx:for-item="delivery" id="{{delivery.id}}" wx:key="{{delivery.id}}" bindtap="handleClick">
         <view style="height: 80rpx;" class="address-item">
-            <!--<view style="height: 80rpx;width: 6px;background-color: #ffd600"></view>-->
-            <view style="width: {{window_width-100}}px;height: 80rpx;">
+            <view style="height: 100rpx;width: 6rpx;background-color:{{delivery.status=='0'?'#ffd600':'#fff'}};float: left;"></view>
+            <view style="width: {{window_width-100}}px;height: 80rpx;padding-left: 20rpx;">
                 <view style="font-size:26rpx;color:#3b3b3b;display: block;height: 40rpx;">
                     <text>{{delivery.name}}</text>
                     <text style="padding-left: 40rpx;">{{delivery.phone}}</text>
                 </view>
-                <view class="van-ellipsis" style="font-size:26rpx;color: #999999;padding-top: 30rpx;display: block;height: 40rpx;">
+                <view class="van-ellipsis"
+                      style="font-size:26rpx;color: #999999;padding-top: 30rpx;display: block;height: 40rpx;">
                     {{delivery.contentAddress}}
                 </view>
             </view>

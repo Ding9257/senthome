@@ -12,7 +12,7 @@ Page({
         id: "",
         color: constant.color,
         address: {},
-        isDefault: 1,
+        isDefault: false,
         delivery_province: "",
         community: "",//小区
         area: "",
@@ -53,11 +53,9 @@ Page({
     },
     onLoad: function (option) {
         let id = option.id;
-        let isSelect = option.isSelect;
         if (!!id) {
             this.setData({
-                id,
-                isSelect
+                id
             });
             this.getAddress();
         }
@@ -136,7 +134,7 @@ Page({
                 userId: app.globalData.userInfo.userId,
                 city,
                 address: area,
-                status: this.data.isDefault,
+                status: this.data.isDefault ? 0 : 1,
                 areaId: this.data.areaId
             }
         }).then(res => {
@@ -151,12 +149,11 @@ Page({
             method: "POST",
             data: {id: this.data.id}
         }).then(res => {
-            let data = res.data[0]
-            console.log(data);
+            let data = res.data[0];
             this.setData({
                 address: data,
                 city: data.city,
-                isDefault: data.status,
+                isDefault: data.status == 0 ? true : false,
                 area: data.address
             });
         });
@@ -224,7 +221,7 @@ Page({
         }
     },
     setDefault: function () {
-        let isDefault = this.data.isDefault == 0 ? 1 : 0;
+        let isDefault = !this.data.isDefault;
         this.setData({
             isDefault
         })
