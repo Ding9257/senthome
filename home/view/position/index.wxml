@@ -42,9 +42,13 @@
               style="height: 154rpx;"
               wx:for-item="delivery" wx:key="{{delivery.id}}" id="{{delivery.id}}" bindtap="handleClick">
             <view style="padding-top: 20rpx;padding-left: 20rpx;border-bottom: solid 1px #999999;">
-                <view class="address-font" style="font-size: 24rpx;color: #333333;">{{delivery.name}} -- {{delivery.distance}}Km</view>
+                <view class="address-font" style="font-size: 24rpx;color: #333333;">{{delivery.name}} --
+                    {{delivery.distance}}Km
+                </view>
                 <view class="address-font" style="padding-top: 14rpx;">营业时间：{{delivery.businessHours}}</view>
-                <view class="address-font address" style="padding-top: 14rpx;padding-bottom: 20rpx;">{{delivery.address}}</view>
+                <view class="address-font address" style="padding-top: 14rpx;padding-bottom: 20rpx;">
+                    {{delivery.address}}
+                </view>
             </view>
         </view>
         <view wx:if="{{selectTab=='收货地址'&&delivery_list.length==0}}">
@@ -56,13 +60,14 @@
             </view>
         </view>
     </view>
-    <view wx:if="{{selectTab=='收货地址'}}" style="position:absolute;bottom: 0;width: 100%;">
+    <view wx:if="{{selectTab=='收货地址'&&!!userInfo.userId}}" style="position:absolute;bottom: 0;width: 100%;">
         <!--navigator-->
         <navigator url="/view/delivery/detail" class="footer-add">
             新增地址
         </navigator>
     </view>
     <van-popup show="{{ popupStatus }}" z-index="999999" position="bottom">
-        <van-area columns-num="2" area-list="{{ areaList }}" value="110000" bind:cancel="cancel" bind:confirm="areaSelect"/>
+        <van-area columns-num="2" area-list="{{ areaList }}" value="110000" bind:cancel="cancel"
+                  bind:confirm="areaSelect"/>
     </van-popup>
 </view>
