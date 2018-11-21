@@ -190,7 +190,8 @@
             get_table_data(startTime, endTime) {
                 this.load_data = true
                 this.$http({
-                    url: "/manager/orderIndex",
+                    url: `/manager/orderIndex?startTime=${startTime}&endTime=${endTime}`,
+                    method: "get",
                     data: {startTime, endTime}
                 })
                     .then(({data}) => {

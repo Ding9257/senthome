@@ -114,13 +114,13 @@
                 this.load_data = true
                 let start = "00:00:00", end = "23:59:59";
                 let toDayTime = moment().format(formatData);
-                let toDay = `${toDayTime} ${start}-${toDayTime} ${end}`;
+                let toDay = `${toDayTime} ${start} - ${toDayTime} ${end}`;
                 let yestDayTime = moment().subtract(1, 'days').format(formatData);
-                let yestDay = `${yestDayTime} ${start}-${yestDayTime} ${end}`;
+                let yestDay = `${yestDayTime} ${start} - ${yestDayTime} ${end}`;
                 let weekDayTime = moment().subtract(6, 'days').format(formatData);
-                let weekDay = `${weekDayTime} ${start}-${toDayTime} ${end}`;
+                let weekDay = `${weekDayTime} ${start} - ${toDayTime} ${end}`;
                 let monthDayTime = moment().subtract(30, 'days').format(formatData);
-                let monthDay = `${monthDayTime} ${start}-${toDayTime} ${end}`;
+                let monthDay = `${monthDayTime} ${start} - ${toDayTime} ${end}`;
                 let query = `?toDay=${toDay}&yestDay=${yestDay}&weekDay=${weekDay}&monthDay=${monthDay}`;
                 this.$http({
                     url: "/order/listOrder" + query,

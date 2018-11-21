@@ -10,12 +10,6 @@
                     end-placeholder="结束日期">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="交易额">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
-            </el-form-item>
-            <el-form-item label="交易量">
-                <el-input v-model="formInline.user" placeholder=""></el-input>
-            </el-form-item>
             <el-form-item>
                 <el-button @click="get_table_data()" type="primary">查询</el-button>
             </el-form-item>
@@ -26,36 +20,26 @@
                 <el-tag type="info">销售量{{table_data.number}}</el-tag>
             </div>
             <el-table
-                :data="table_data.ordersList"
+                :data="table_data"
                 v-loading="load_data"
                 element-loading-text="拼命加载中"
                 border
-                @selection-change="on_batch_select"
                 style="width: 100%;">
                 <el-table-column
-                    prop="id"
-                    label="id"
-                    width="80">
+                    prop="store.name"
+                    label="店铺信息">
                 </el-table-column>
                 <el-table-column
-                    prop="store"
-                    label="门店"
-                    width="120">
-                </el-table-column>
-                <el-table-column
-                    prop="img"
-                    label="月份"
-                    width="100">
+                    prop="number"
+                    label="销售量">
                 </el-table-column>
                 <el-table-column
                     prop="mixMoney"
-                    label="交易额"
-                    width="">
+                    label="最高交易量">
                 </el-table-column>
                 <el-table-column
-                    prop="price"
-                    label="所占比例"
-                    width="120">
+                    prop="money"
+                    label="销售总额">
                 </el-table-column>
             </el-table>
         </div>
@@ -64,14 +48,16 @@
 <script type="text/javascript">
     import {panelTitle, bottomToolBar} from 'components'
     import fetch from 'common/fetch'
+    import moment from "moment"
 
+    const formatData = "YYYY-MM-DD HH:mm:ss";
     export default {
         data() {
             return {
                 formInline: {},
                 value6: "",
                 name: "",
-                table_data: {},
+                table_data: [],
                 //当前页码
                 currentPage: 1,
                 //数据总条目
@@ -99,10 +85,16 @@
             //获取数据
             get_table_data() {
                 this.load_data = true;
-                this.$http({url: "/data/dataList", method: "POST", data: this.form})
-                    .then(({data}) => {
-                        this.table_data = data
-                        this.load_data = false
+                let startTime = "", endTime = "";
+                let times = this.formInline.time;
+                if (!!times) {
+                    startTime = moment(times[0]).format(formatData);
+                    endTime = moment(times[1]).format(formatData);
+                }
+                this.$http({url: `/data/dataList?startTime=${startTime}&endTime=${endTime}`, method: "get"})
+                    .then((res) => {
+                        this.table_data = res.data || [],
+                            this.load_data = false
                     })
                     .catch(() => {
                         this.load_data = false

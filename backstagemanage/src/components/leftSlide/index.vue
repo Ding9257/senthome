@@ -143,11 +143,11 @@
                                 {
                                     title: "销量统计",
                                     path: "/data/count"
-                                },
-                                {
-                                    title: "销量明细",
-                                    path: "/data/detail"
                                 }
+                                // {
+                                //     title: "销量明细",
+                                //     path: "/data/detail"
+                                // }
                             ]
                     }
                     ,

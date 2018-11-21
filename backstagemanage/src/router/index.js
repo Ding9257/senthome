@@ -373,15 +373,15 @@ const routes = [
                     auth: true
                 }
             },
-            {
-                path: '/data/detail',
-                name: "dataDetailList",
-                component: dataDetaiListComponent,
-                meta: {
-                    title: "销量明细",
-                    auth: true
-                }
-            },
+            // {
+            //     path: '/data/detail',
+            //     name: "dataDetailList",
+            //     component: dataDetaiListComponent,
+            //     meta: {
+            //         title: "销量明细",
+            //         auth: true
+            //     }
+            // },
             //平台设置
             {
                 path: '/platform/set',

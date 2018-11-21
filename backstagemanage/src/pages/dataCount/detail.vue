@@ -10,7 +10,7 @@
         </el-form>
         <div class="panel-body">
             <el-table
-                :data="table_data.ordersList"
+                :data="table_data"
                 v-loading="load_data"
                 element-loading-text="拼命加载中"
                 border
