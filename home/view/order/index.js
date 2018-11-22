@@ -6,6 +6,7 @@ Page({
         window_width: app.globalData.window_width,
         window_height: app.globalData.window_height,
         hosts: app.globalData.hosts,
+        gain: app.globalData.gain,
         userInfo: app.globalData.userInfo,
         shopInfo: app.globalData.shopInfo,
         orderStatusObject: app.globalData.orderStatus || "",
@@ -96,7 +97,11 @@ Page({
         }).then(res => {
             let totalPage = Math.ceil(res.data.count / this.data.page);
             let order_list = this.data.order_list || [];
-            order_list = order_list.concat(res.data.orderList)
+            order_list = order_list.concat(res.data.orderList.map(item => {
+                item.countMoney = (item.countMoney * this.data.gain).toFixed(1);
+                return item;
+            }));
+            console.log(order_list);
             this.setData({
                 order_list: order_list,
                 totalPage

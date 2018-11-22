@@ -8,6 +8,7 @@ Page({
     data: {
         window_width: app.globalData.window_width,
         sid: app.globalData.sid || "",
+        gain: app.globalData.gain,
         order: {},
         id: "",
         orderStatus: app.globalData.orderStatus
@@ -46,10 +47,12 @@ Page({
             data: {id}
         }).then(res => {
             let total = 0;
-            res.data.productOrderResultsList.forEach(item => {
-                total = total + item.money * item.num
+            res.data.productOrderResultsList = res.data.productOrderResultsList.map(item => {
+                total = total + item.money * item.num * this.data.gain;
+                item.money = (item.money * this.data.gain).toFixed(1);
+                return item;
             });
-            res.data.total = total;
+            res.data.total = total.toFixed(1);
             this.setData({
                 order: res.data
             });
