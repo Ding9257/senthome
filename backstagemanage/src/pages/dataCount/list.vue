@@ -35,7 +35,7 @@
                 </el-table-column>
                 <el-table-column
                     prop="mixMoney"
-                    label="最高交易量">
+                    label="最高交易额">
                 </el-table-column>
                 <el-table-column
                     prop="money"
