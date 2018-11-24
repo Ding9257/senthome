@@ -8,6 +8,7 @@
     "van-toast": "./../../dist/toast/index",
     "van-popup": "./../../dist/popup/index",
     "van-area": "./../../dist/area/index",
+    "van-field": "./../../dist/field/index",
     "van-button": "./../../dist/button/index"
   }
 }

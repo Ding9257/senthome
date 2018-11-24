@@ -57,3 +57,6 @@
 page {
     font-family: "Microsoft YaHei";
 }
+textarea {
+    height: 150rpx !important;
+}

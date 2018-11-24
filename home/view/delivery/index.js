@@ -53,10 +53,23 @@ Page({
                 method: "POST",
                 data: {userId: this.data.userInfo.userId}
             }).then(res => {
-                this.setData({
-                    delivery_list: res.data
-                });
+                if (res.data.length == 1 && res.data[0].status != "0") {
+                    this.updateAddress(res.data[0].id);
+                } else {
+                    this.setData({
+                        delivery_list: res.data
+                    });
+                }
             });
         }
+    },
+    updateAddress: function (id) {
+        request({
+            url: '/address/update',
+            method: "POST",
+            data: {id, status: 0}
+        }).then(res => {
+            this.getAddress();
+        });
     }
 });

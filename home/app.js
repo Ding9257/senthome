@@ -59,7 +59,7 @@ App({
                     resolve(address);
                 } else {
                     //无默认收货地址
-                    resolve({});
+                    reject({});
                 }
             }).catch(err => {
                 reject(err)

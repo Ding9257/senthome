@@ -45,7 +45,8 @@ Page({
             url: '/blessing/list',
             method: "POST",
             data: {
-                sid: this.data.sid
+                sid: this.data.sid,
+                status: 0
             }
         }).then(res => {
             let luckBagMoneyList = this.data.luckBagMoneyList || {};
@@ -109,7 +110,6 @@ Page({
     countLuckBagTotalPrice: function () {
         let luckBagTotalPrice = 0;
         let luckBagMoneyList = this.data.luckBagMoneyList;
-        console.log(luckBagMoneyList);
         for (let key in luckBagMoneyList) {
             let product = luckBagMoneyList[key];
             luckBagTotalPrice = luckBagTotalPrice + (product.num * product.luckBagMoney);

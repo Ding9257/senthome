@@ -59,12 +59,12 @@ Page({
             lng = LngLat.lng;
             lat = LngLat.lat;
             app.globalData.coordinate = {lng, lat};
-            app.getUserInfo().then(userInfo => {
+            return app.getUserInfo().then(userInfo => {
                 _this.setData({
                     userInfo
                 })
-                app.getDefaultAddress(userInfo.userId).then(address => {
-                    app.getAreaStore(address.areaId, 2, lng, lat).then(({areaName, shopInfo}) => {
+                return app.getDefaultAddress(userInfo.userId).then(address => {
+                    return app.getAreaStore(address.areaId, 2, lng, lat).then(({areaName, shopInfo}) => {
                         _this.setData({
                             areaName, shopInfo
                         });
@@ -157,6 +157,7 @@ Page({
                 url = "/view/luckBag/index";
                 httpUrl = "/blessing/list";
                 data.sid = this.data.shopInfo.id;
+                data.status = 0;
                 break;
         }
         request({
