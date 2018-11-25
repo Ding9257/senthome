@@ -28,12 +28,12 @@
             <van-row wx:if="{{typeOrder==0}}">
                 <van-col span="18">{{item.product.name}}</van-col>
                 <van-col span="3">*{{item.num}}</van-col>
-                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.num*item.product.money}}</van-col>
+                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.product.money}}</van-col>
             </van-row>
             <van-row wx:else>
                 <van-col span="18">{{item.product.name}}</van-col>
                 <van-col span="3">*{{item.num}}</van-col>
-                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.num*item.luckBagMoney}}</van-col>
+                <van-col span="3" style="color: #fc0438;font-size: 24rpx;">￥{{item.luckBagMoney}}</van-col>
             </van-row>
         </view>
     </view>

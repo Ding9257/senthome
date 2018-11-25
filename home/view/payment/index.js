@@ -61,7 +61,7 @@ Page({
         let total = data.total || 0;
         let productList = JSON.parse(data.product);
         let typeOrder = data.typeOrder;
-        let message = data.message;
+        let message = data.message || "";
         let productOrder = [];
         for (let item of productList) {
             if (typeOrder == 0) {
@@ -189,7 +189,7 @@ Page({
         })
     },
     message_put: function (e) {
-        let message = e.detail.value;
+        let message = e.detail;
         this.setData({message});
     }
 });

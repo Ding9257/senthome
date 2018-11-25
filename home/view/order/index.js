@@ -98,7 +98,13 @@ Page({
             let totalPage = Math.ceil(res.data.count / this.data.page);
             let order_list = this.data.order_list || [];
             order_list = order_list.concat(res.data.orderList.map(item => {
-                item.countMoney = (Math.floor(item.countMoney * this.data.gain * 10) / 10).toFixed(1);
+                if (item.resultType == 0) {
+                    let countMoney = 0;
+                    item.productOrderResultsList.map(product => {
+                        countMoney = countMoney + (Math.floor(product.money * this.data.gain * 10) * product.num / 10).toFixed(1) * 1;
+                    });
+                    item.countMoney = countMoney.toFixed(1);
+                }
                 return item;
             }));
             this.setData({

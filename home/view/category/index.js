@@ -119,6 +119,7 @@ Page({
                 productList: productList.concat(list),
                 totalPage: totalPage,
             });
+
         }).catch(err => {
             console.log(err);
         });

@@ -48,11 +48,17 @@ Page({
         }).then(res => {
             let total = 0;
             res.data.productOrderResultsList = res.data.productOrderResultsList.map(item => {
-                total = total + (Math.floor(item.money * item.num * this.data.gain * 10) / 10).toFixed(1) * 1;
-                item.money = (Math.floor(item.money * this.data.gain * 10) / 10).toFixed(1);
+                if (res.data.resultType == 0) {
+                    total = total + (Math.floor(item.money * this.data.gain * 10) * item.num / 10).toFixed(1) * 1;
+                    item.money = (Math.floor(item.money * this.data.gain * 10) / 10).toFixed(1);
+                }
+                if (res.data.resultType == 1) {
+                    total = total + (Math.floor(item.money * item.num * 10) / 10).toFixed(1) * 1;
+                    item.money = (Math.floor(item.money * 10) / 10).toFixed(1);
+                }
+
                 return item;
             });
-            console.log(total);
             res.data.total = total.toFixed(1);
             this.setData({
                 order: res.data
@@ -100,8 +106,14 @@ Page({
     },
     goPayment: function () {
         let againPayment = this.data.order;
+        let url = "";
+        if (againPayment.resultType == 0) {
+            url = "/weChat/toTakeWxCarReset";
+        } else {
+            url = "/weChat/toTakeWxBlessReset";
+        }
         request({
-            url: "/weChat/toTakeWxCarReset",
+            url,
             method: "POST",
             data: againPayment
         }).then(res => {
