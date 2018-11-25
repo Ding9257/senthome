@@ -109,7 +109,7 @@ Page({
             let productList = this.data.productList || [];
             let list = [];
             for (let item of data.data.productList) {
-                item.money = (item.money * this.data.gain).toFixed(1);
+                item.money = (Math.floor(item.money * this.data.gain * 10) / 10).toFixed(1);
                 list.push(item);
                 if (!this.data.shopCart[item.id]) {
                     this.data.shopCart[item.id] = {num: 0, otherStock: item.stock, product: item};

@@ -98,10 +98,9 @@ Page({
             let totalPage = Math.ceil(res.data.count / this.data.page);
             let order_list = this.data.order_list || [];
             order_list = order_list.concat(res.data.orderList.map(item => {
-                item.countMoney = (item.countMoney * this.data.gain).toFixed(1);
+                item.countMoney = (Math.floor(item.countMoney * this.data.gain * 10) / 10).toFixed(1);
                 return item;
             }));
-            console.log(order_list);
             this.setData({
                 order_list: order_list,
                 totalPage

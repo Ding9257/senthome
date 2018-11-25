@@ -32,7 +32,7 @@ Page({
             data: {id}
         }).then(res => {
             this.handleShopCartById(id);
-            res.data.money = (res.data.money * this.data.gain).toFixed(1);
+            res.data.money = (Math.floor(res.data.money * this.data.gain * 10) / 10).toFixed(1);
             that.setData({
                 goods: res.data
             });

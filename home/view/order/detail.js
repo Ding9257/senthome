@@ -48,10 +48,11 @@ Page({
         }).then(res => {
             let total = 0;
             res.data.productOrderResultsList = res.data.productOrderResultsList.map(item => {
-                total = total + item.money * item.num * this.data.gain;
-                item.money = (item.money * this.data.gain).toFixed(1);
+                total = total + (Math.floor(item.money * item.num * this.data.gain * 10) / 10).toFixed(1) * 1;
+                item.money = (Math.floor(item.money * this.data.gain * 10) / 10).toFixed(1);
                 return item;
             });
+            console.log(total);
             res.data.total = total.toFixed(1);
             this.setData({
                 order: res.data
