@@ -89,7 +89,7 @@ Page({
             request({
                 url: `/order/update`,
                 method: "POST",
-                data: {id: this.data.id, status: 4}
+                data: {id: this.data.id, status: 5}
             }).then(res => {
                 this.getOrder(this.data.id);
             });

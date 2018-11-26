@@ -94,7 +94,7 @@
         </view>
         <!-- 待收货 -->
         <view wx:if="{{order.status==9}}">
-            <view class="order-button" bindtap="paidCancel">取消订单</view>
+            <view class="order-button" bindtap="paymentCancel">取消订单</view>
         </view>
         <!-- 已支付 -->
         <view wx:if="{{order.status==0}}">
