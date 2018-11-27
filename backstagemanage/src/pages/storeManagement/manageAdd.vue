@@ -7,99 +7,79 @@
             <el-row>
                 <el-col :span="8">
                     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-                        <el-steps :active="active" finish-status="success">
-                            <el-step title="基本信息">
-
-                            </el-step>
-                            <el-step title="详细信息">
-
-                            </el-step>
-                        </el-steps>
-
-                        <div v-show="active==1">
-                            <el-form-item label="店铺名称:" prop="name">
-                                <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
-                            </el-form-item>
-                            <el-form-item label="店铺Logo:">
-                                <el-upload
-                                    class="avatar-uploader"
-                                    :action="action"
-                                    name="files"
-                                    :show-file-list="false"
-                                    :on-success="handleAvatarSuccess"
-                                >
-                                    <img v-if="form.img" :src="form.img" class="avatar">
-                                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                                </el-upload>
-                            </el-form-item>
-                            <el-form-item label="手机号:" prop="mobile">
-                                <el-input v-model="form.mobile" placeholder="请输入内容" style="width: 250px;"></el-input>
-                            </el-form-item>
-                        </div>
-                        <div v-show="active==2">
-                            <el-form-item label="状态:">
-                                <el-select v-model="form.status" placeholder="请选择">
-                                    <el-option
-                                        v-for="item in status"
-                                        :label="item.name"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="店铺电话:">
-                                <el-input v-model="form.mobile" placeholder="请输入内容"
-                                          style="width: 250px;"></el-input>
-                            </el-form-item>
-                            <el-form-item label="营业时间:">
-                                <el-time-picker
-                                    v-model="form.openTime"
-                                    is-range
-                                    @blur="openTimeChange"
-                                    range-separator="至"
-                                    start-placeholder="开始时间"
-                                    end-placeholder="结束时间"
-                                    placeholder="选择时间范围">
-                                </el-time-picker>
-                            </el-form-item>
-                            <el-form-item label="配送范围:">
-                                <el-select v-model="form.distributionScope" placeholder="请选择">
-                                    <el-option
-                                        v-for="item in ranges"
-                                        :label="item.name"
-                                        :value="item.name">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="详细地址:">
-                                <el-input v-model="form.address" placeholder="请输入内容"
-                                          style="width: 250px;"></el-input>
-                            </el-form-item>
-                            <el-form-item label="微信号:">
-                                <el-input v-model="form.wxId" placeholder="请输入内容" style="width: 250px;"></el-input>
-                            </el-form-item>
-                        </div>
-                        <el-button style="margin-top: 12px;" v-show="active==1" @click="next">下一步</el-button>
-                        <el-button style="margin-top: 12px;" v-show="active==2" @click="up">上一步</el-button>
-                        <el-button v-show="active==2" style="margin-top: 12px;" @click="on_submit_form"
-                                   :loading="on_submit_loading">
-                            确认
-                        </el-button>
+                        <el-form-item label="店铺名称:" prop="name">
+                            <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="店铺Logo:">
+                            <el-upload
+                                class="avatar-uploader"
+                                :action="action"
+                                name="files"
+                                :show-file-list="false"
+                                :on-success="handleAvatarSuccess"
+                            >
+                                <img v-if="form.img" :src="`${hosts}${form.img}`" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            </el-upload>
+                        </el-form-item>
+                        <el-form-item label="状态:">
+                            <el-select v-model="form.status" placeholder="请选择">
+                                <el-option
+                                    v-for="item in status"
+                                    :label="item.name"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="店铺电话:">
+                            <el-input v-model="form.mobile" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="营业时间:">
+                            <el-time-picker
+                                v-model="form.openTime"
+                                is-range
+                                @blur="openTimeChange"
+                                range-separator="至"
+                                start-placeholder="开始时间"
+                                end-placeholder="结束时间"
+                                placeholder="选择时间范围">
+                            </el-time-picker>
+                        </el-form-item>
+                        <el-form-item label="配送范围:">
+                            <el-select v-model="form.distributionScope" placeholder="请选择">
+                                <el-option
+                                    v-for="item in ranges"
+                                    :label="item.name"
+                                    :value="item.name">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="详细地址:">
+                            <el-input v-model="form.address" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="微信号:">
+                            <el-input v-model="form.wxId" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
                         <!--<el-form-item label="二维码:">-->
-                        <!--<el-upload-->
-                        <!--class="avatar-uploader"-->
-                        <!--:action="action"-->
-                        <!--name="files"-->
-                        <!--:show-file-list="false"-->
-                        <!--:on-success="handleAvatarrCodeSuccess"-->
-                        <!--&gt;-->
-                        <!--<img v-if="form.qrCode" :src="form.qrCode" class="avatar">-->
-                        <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
-                        <!--</el-upload>-->
+                            <!--<el-upload-->
+                                <!--class="avatar-uploader"-->
+                                <!--:action="action"-->
+                                <!--name="files"-->
+                                <!--:show-file-list="false"-->
+                                <!--:on-success="handleAvatarrCodeSuccess"-->
+                            <!--&gt;-->
+                                <!--<img v-if="form.qrCode" :src="form.qrCode" class="avatar">-->
+                                <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+                            <!--</el-upload>-->
                         <!--</el-form-item>-->
                         <!--<el-form-item label="所属小区编号:">-->
                         <!--<el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>-->
                         <!--</el-form-item>-->
-                        <!--`-->
+                        <el-form-item>
+                            <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交
+                            </el-button>
+                            <el-button @click="$router.back()">取消</el-button>
+                        </el-form-item>
                     </el-form>
                 </el-col>
             </el-row>
@@ -116,11 +96,11 @@
     export default {
         data() {
             return {
-                active: 1,
+                hosts: this.config.hosts,
                 ranges: [
-                    {name: "一千米", value: "1"},
-                    {name: "三千米", value: "3"},
-                    {name: "五千米", value: "5"}
+                    // {name: "一千米", value: "1"},
+                    // {name: "三千米", value: "3"},
+                    // {name: "五千米", value: "5"}
                 ],
                 status: [
                     {name: "正常", value: "0"},
@@ -158,15 +138,6 @@
             this.route_id && this.get_form_data()
         },
         methods: {
-            next() {
-                if (this.active == 1) {
-                    console.log(this.active);
-                }
-                this.active++
-            },
-            up(){
-                this.active--;
-            },
             touchstart(e) {
                 console.log(e);
             },
@@ -182,9 +153,16 @@
                         this.form = data
                         this.form.openTime
                         this.load_data = false
+                        this.get_community()
                     })
                     .catch(() => {
                         this.load_data = false
+                    })
+            },
+            get_community(){
+                this.$http({url: "/area/list", method: "POST", data: {pageNo: 1}})
+                    .then(({data: {areaList}}) => {
+                        this.ranges = areaList
                     })
             },
             //时间选择改变时
