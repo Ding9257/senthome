@@ -20,6 +20,7 @@ Page({
         userInfo: {},
         category_list: [],
         product_list: [],
+        sid: "",
         dianZhang_list: []
     },
     onUnload: function () {
@@ -27,6 +28,8 @@ Page({
     },
     onLoad: function (option) {
         _this = this;
+        let scene = decodeURIComponent(option.scene);
+        _this.setData({scene});
     },
     onReady: function () {
 
@@ -36,7 +39,7 @@ Page({
         //     index: 2,
         //     text: '10'
         // })
-        if (util.isEmpty(app.globalData.shopInfo)) {
+        if (util.isEmpty(app.globalData.shopInfo) && util.isEmpty(this.data.sid)) {
             this.getShopInfo();
         }
         let shopInfo = app.globalData.shopInfo;

@@ -26,7 +26,7 @@ Page({
             {title: "全部订单", status: ""},
             {title: "待付款", status: 8},
             {title: "待收货", status: 9},
-            {title: "退款/售后", status: 3}
+            {title: "退款/售后", status: -1}
         ]
     },
     onUnload: function () {
@@ -49,7 +49,7 @@ Page({
                 orderStatus = 9
             }
             if (activeStatus == 3) {
-                orderStatus = 3
+                orderStatus = -1
             }
             if (activeStatus == 0) {
                 orderStatus = ""

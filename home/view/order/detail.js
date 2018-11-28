@@ -89,7 +89,7 @@ Page({
             request({
                 url: `/order/update`,
                 method: "POST",
-                data: {id: this.data.id, status: 5}
+                data: {id: this.data.id, status: 3}
             }).then(res => {
                 this.getOrder(this.data.id);
             });
@@ -126,6 +126,21 @@ Page({
                 Toast.fail("付款失败");
             })
         })
+    },
+    failCancel:function () {
+        Dialog.confirm({
+            title: '确定要取消当前订单吗？'
+        }).then(() => {
+            request({
+                url: `/order/update`,
+                method: "POST",
+                data: {id: this.data.id, status: 5}
+            }).then(res => {
+                this.getOrder(this.data.id);
+            });
+        }).catch(() => {
+
+        });
     },
     change_status: function (orderId, status) {
         let data = {orderId, status};
