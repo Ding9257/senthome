@@ -135,6 +135,7 @@
             }
         },
         created() {
+            this.get_community()
             this.route_id && this.get_form_data()
         },
         methods: {
@@ -153,7 +154,6 @@
                         this.form = data
                         this.form.openTime
                         this.load_data = false
-                        this.get_community()
                     })
                     .catch(() => {
                         this.load_data = false
