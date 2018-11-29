@@ -16,11 +16,7 @@ Page({
 
     },
     onLoad: function () {
-        this.setData({
-            sid: app.globalData.shopInfo.id
-        });
-        //获取福袋
-        this.getLuckBag();
+
     },
     onReady: function () {
 
@@ -138,7 +134,7 @@ Page({
     },
     goToRule: function () {
         wx.navigateTo({
-            url: '/view/rule/index'
+            url: ''
         });
     }
 });

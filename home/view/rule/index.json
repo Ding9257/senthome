@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "惊喜福袋",
+  "usingComponents": {
+    "van-card": "./../../dist/card/index",
+    "van-row": "./../../dist/row/index",
+    "van-col": "./../../dist/col/index",
+    "van-badge": "./../../dist/badge/index",
+    "van-toast": "./../../dist/toast/index",
+    "van-badge-group": "./../../dist/badge-group/index",
+    "van-button": "./../../dist/button/index"
+  }
+}

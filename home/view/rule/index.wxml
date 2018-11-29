@@ -1,0 +1,25 @@
+<view class="luck-back-img" style="height: 100vh;">
+    <view style="padding-top: 66rpx;">
+        <view class="luck-rule">
+            活动规则
+        </view>
+    </view>
+    <view style="padding: 76rpx 60rpx;line-height: 36px;font-family: 'Microsoft YaHei'">
+        <view>1、惊喜福袋是由商家出售的商品礼包优惠活动。礼包内商品种类个数不限，礼包售价100%低于礼包内商品总价格。</view>
+        <view>
+            2、用户购买次数不限。
+        </view>
+        <view>
+            3、用户购买的礼包后需要到店兑换礼包。
+        </view>
+        <view>
+            4、用户购买福袋后可以通过订单详情查看福袋内的商品列表。
+        </view>
+        <view>
+            5、福袋购买后到兑换福袋前长期有效。
+        </view>
+        <view>
+            6、福袋购买后不可退款、不可转让、不可代付，不可折现；
+        </view>
+    </view>
+</view>
