@@ -23,7 +23,7 @@
     <view class="value">{{goods.specifications}}</view>
 </view>
 <view class="footer">
-    <view style="position: absolute;bottom: 26rpx;left: 20rpx;">
+    <view catchtap="goCart" style="position: absolute;bottom: 26rpx;left: 20rpx;">
         <image src="/image/all/gwc.png" style="width:60rpx;height:60rpx;float:left;"/>
     </view>
     <view style="position: absolute;bottom: 26rpx;left: 113rpx;">

@@ -149,5 +149,10 @@ Page({
         this.setData({
             sumPrice: price
         });
+    },
+    goCart: function () {
+        wx.switchTab({
+            url: '/view/cart/cart'
+        })
     }
 });

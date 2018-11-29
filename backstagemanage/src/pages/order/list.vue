@@ -44,6 +44,16 @@
                     width="100">
                 </el-table-column>
                 <el-table-column
+                    prop="countMoney"
+                    label="订单金额"
+                    width="100">
+                </el-table-column>
+                <el-table-column
+                    prop="sname"
+                    label="商家名称"
+                    width="100">
+                </el-table-column>
+                <el-table-column
                     prop="address.name"
                     label="收货姓名"
                     width="120">
