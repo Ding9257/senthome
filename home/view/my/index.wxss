@@ -60,6 +60,15 @@
 .free-btn-bordernone::after {
     border: none;
 }
+
+.contact {
+    background: none !important;
+    font-size: 14px;
+}
+.contact::after {
+    border: none;
+}
+
 .black-frame {
     height: 10rpx;
     background-color: #efefef;

@@ -74,12 +74,13 @@
         <view class="my-item" bindtap="navigator" data-url="/view/myTreasure/index">
             <van-col span="12">
                 <view>
-                    <image src="/image/mine/db.png" class="icon" />我的夺宝
+                    <image src="/image/mine/db.png" class="icon"/>
+                    我的夺宝
                 </view>
             </van-col>
             <van-col span="12">
                 <view style="float: right;">
-                    <image src="/image/all/xyb.png" class="go" />
+                    <image src="/image/all/xyb.png" class="go"/>
                 </view>
             </van-col>
         </view>
@@ -88,12 +89,13 @@
         <view class="my-item" bindtap="navigator" data-url="/view/voucher/index">
             <van-col span="12">
                 <view>
-                    <image src="/image/mine/djq.png" class="icon" />代金券
+                    <image src="/image/mine/djq.png" class="icon"/>
+                    代金券
                 </view>
             </van-col>
             <van-col span="12">
                 <view style="float: right;">
-                    <image src="/image/all/xyb.png" class="go" />
+                    <image src="/image/all/xyb.png" class="go"/>
                 </view>
             </van-col>
         </view>
@@ -102,7 +104,8 @@
         <view class="my-item" bindtap="navigator" data-url="/view/delivery/index">
             <van-col span="12">
                 <view>
-                    <image src="/image/mine/shdz.png" class="icon" />收货地址
+                    <image src="/image/mine/shdz.png" class="icon"/>
+                    收货地址
                 </view>
             </van-col>
             <van-col span="12">
@@ -113,10 +116,19 @@
         </view>
     </van-row>
     <van-row>
-        <view class="my-item" bindtap="customer">
+        <view class="my-item">
             <van-col span="12">
                 <view>
-                    <image src="/image/mine/kf.png" class="icon" />客服电话
+                    <van-row>
+                        <van-col span="1">
+                            <image src="/image/mine/kf.png" class="icon"/>
+                        </van-col>
+                        <van-col span="18">
+                            <button style="font-size: 14px;height: 43px;line-height: 43px;padding-left: 8px;color: #3b3b3b;" class="contact" open-type="contact"
+                                    bindcontact="handleContact">进入客服回话
+                            </button>
+                        </van-col>
+                    </van-row>
                 </view>
             </van-col>
             <van-col span="12">
@@ -126,6 +138,7 @@
             </van-col>
         </view>
     </van-row>
+
     <view wx:if="{{!!userInfo.nickName}}" class="weui-cells weui-cells_after-title margin-top">
         <button bindtap="out" class="out-button">退出登录</button>
     </view>

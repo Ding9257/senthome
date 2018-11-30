@@ -45,7 +45,7 @@ Page({
                         userInfo: app.globalData.userInfo
                     });
                     wx.navigateTo({
-                        url:"/view/phone/index"
+                        url: "/view/phone/index"
                     });
                 }).catch(err => {
                     Toast.fail(err.msg);
@@ -63,7 +63,7 @@ Page({
 
     },
     onShow: function () {
-        if(app.globalData.isShowToast){
+        if (app.globalData.isShowToast) {
             wx.showToast({
                 title: "请先登录",
                 icon: 'none',
@@ -124,5 +124,9 @@ Page({
         } else {
             Toast.fail("请登录");
         }
+    },
+    handleContact: function (e) {
+        console.log(e.path)
+        console.log(e.query)
     }
 });
