@@ -125,7 +125,7 @@ App({
         //附近店铺
         nearbyStore: {},
         hosts: "https://www.shunbokj.cn:8080",
-        //hosts:"https://www.daojia.shunbokj.cn",
+        //hosts: "https://47.104.254.181:9200",
         //小区名字
         areaName: "",
         shopCart: {},
