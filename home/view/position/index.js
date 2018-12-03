@@ -167,7 +167,7 @@ Page({
         request({
             url: "/area/listStore",
             method: "post",
-            data: {area, city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
+            data: {area: "顺义区", city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
         }).then(data => {
             let list = [];
             for (let item of data.data) {
