@@ -21,6 +21,7 @@ Page({
         category_list: [],
         product_list: [],
         sid: "",
+        scene: app.globalData.scene,
         dianZhang_list: []
     },
     onUnload: function () {
@@ -28,8 +29,12 @@ Page({
     },
     onLoad: function (option) {
         _this = this;
-        let scene = decodeURIComponent(option.scene);
-        _this.setData({scene});
+        if (!util.isEmpty(option.scene)) {
+            let scene = decodeURIComponent(option.scene);
+            app.globalData.scene = scene;
+            _this.setData({scene});
+
+        }
     },
     onReady: function () {
 
@@ -39,7 +44,17 @@ Page({
         //     index: 2,
         //     text: '10'
         // })
-        if (util.isEmpty(app.globalData.shopInfo) && util.isEmpty(this.data.sid)) {
+        if (!util.isEmpty(_this.data.scene) && util.isEmpty(app.globalData.shopInfo)) {
+            app.getLngLat().then(LngLat => {
+                let lng = LngLat.lng;
+                let lat = LngLat.lat;
+                app.globalData.coordinate = {lng, lat};
+                _this.getStoreBySid(this.data.scene);
+            }).catch(err => {
+                _this.getStoreBySid(this.data.scene);
+            });
+        }
+        else if (util.isEmpty(app.globalData.shopInfo) && util.isEmpty(this.data.sid)) {
             this.getShopInfo();
         }
         let shopInfo = app.globalData.shopInfo;
@@ -230,6 +245,23 @@ Page({
         this.setData({
             shopCart
         })
+    },
+    getStoreBySid: function (sid) {
+        request({
+            url: '/store/findOne',
+            method: "POST",
+            data: {id: sid}
+        }).then((data) => {
+            let shopInfo = data.data;
+            _this.setData({
+                shopInfo,
+                areaName: shopInfo.areaName
+            })
+            app.globalData.shopInfo = shopInfo;
+            app.globalData.areaName = shopInfo.areaName;
+            _this.getDianZhangRecommend();
+        }).catch(err => {
+        });
     }
 });
 

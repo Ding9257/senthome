@@ -34,7 +34,8 @@ Page({
                     data: {
                         icon: user.avatarUrl,
                         userName: util.removeEmoji(user.nickName),
-                        code: loginData.code
+                        code: loginData.code,
+                        sid: app.globalData.scene
                     }
                 }).then(data => {
                     let item = data.data;

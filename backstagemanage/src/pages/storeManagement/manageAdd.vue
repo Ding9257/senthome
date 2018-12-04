@@ -46,11 +46,12 @@
                             </el-time-picker>
                         </el-form-item>
                         <el-form-item label="配送范围:">
-                            <el-select v-model="form.distributionScope" placeholder="请选择">
+                            <el-select v-model="form.areaId" placeholder="请选择">
                                 <el-option
                                     v-for="item in ranges"
+                                    :key="item.id"
                                     :label="item.name"
-                                    :value="item.name">
+                                    :value="item.id">
                                 </el-option>
                             </el-select>
                         </el-form-item>
@@ -61,16 +62,16 @@
                             <el-input v-model="form.wxId" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <!--<el-form-item label="二维码:">-->
-                            <!--<el-upload-->
-                                <!--class="avatar-uploader"-->
-                                <!--:action="action"-->
-                                <!--name="files"-->
-                                <!--:show-file-list="false"-->
-                                <!--:on-success="handleAvatarrCodeSuccess"-->
-                            <!--&gt;-->
-                                <!--<img v-if="form.qrCode" :src="form.qrCode" class="avatar">-->
-                                <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
-                            <!--</el-upload>-->
+                        <!--<el-upload-->
+                        <!--class="avatar-uploader"-->
+                        <!--:action="action"-->
+                        <!--name="files"-->
+                        <!--:show-file-list="false"-->
+                        <!--:on-success="handleAvatarrCodeSuccess"-->
+                        <!--&gt;-->
+                        <!--<img v-if="form.qrCode" :src="form.qrCode" class="avatar">-->
+                        <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+                        <!--</el-upload>-->
                         <!--</el-form-item>-->
                         <!--<el-form-item label="所属小区编号:">-->
                         <!--<el-input v-model="form.areaId" placeholder="请输入内容" style="width: 250px;"></el-input>-->
@@ -152,6 +153,7 @@
                 })
                     .then(({data}) => {
                         this.form = data
+                        this.form.areaId = data.areaId * 1
                         this.form.openTime
                         this.load_data = false
                     })
@@ -159,7 +161,7 @@
                         this.load_data = false
                     })
             },
-            get_community(){
+            get_community() {
                 this.$http({url: "/area/list", method: "POST", data: {pageNo: 1}})
                     .then(({data: {areaList}}) => {
                         this.ranges = areaList

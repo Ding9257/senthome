@@ -43,6 +43,12 @@
                         <el-form-item label="售价:">
                             <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
+                        <el-form-item label="满:">
+                            <el-input v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="减:">
+                            <el-input v-model="form.reduceMoney" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
                         <el-form-item label="规则设置">
                             <el-form-item v-for="(param,index) in form.couponDrools" :key="index"
                                           style="padding-bottom: 5px;">

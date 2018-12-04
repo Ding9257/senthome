@@ -13,4 +13,7 @@ export const storage_prefix = 'zzm_admin_storage_'
 //base64加密前缀
 export const base64_prefix = 'zzm_admin_base64_'
 //接入服务器接口地址根目录
-export const server_base_url = 'https://47.104.254.181:9200'
+//生产
+export const server_base_url = 'https://www.daojia.shunbokj.cn:9200'
+//测试
+// export const server_base_url = 'https://www.shunbokj.cn:8080'

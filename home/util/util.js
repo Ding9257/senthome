@@ -36,6 +36,9 @@ function isEmpty(o) {
     if (o == undefined) {
         return true;
     }
+    if (o == "undefined") {
+        return true;
+    }
     if (o == null) {
         return true;
     }

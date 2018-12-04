@@ -2,6 +2,7 @@ const constant = require("../../util/constant.js");
 const request = require("./../../util/request").request;
 const util = require("../../util/util");
 const app = getApp();
+let _this;
 Page({
     data: {
         color: constant.color,
@@ -12,13 +13,13 @@ Page({
                 110000: '北京市'
             },
             city_list: {
-                110100: '顺义区',
-                110200: '石景山区',
-                110300: '东城区',
-                110400: '西城区',
-                110500: '朝阳区',
-                110600: '密云区',
-                110700: '海淀区'
+                // 110100: '顺义区',
+                // 110200: '石景山区',
+                // 110300: '东城区',
+                // 110400: '西城区',
+                // 110500: '朝阳区',
+                // 110600: '密云区',
+                // 110700: '海淀区'
             }
         },
         selectProv: "选择地区",
@@ -35,6 +36,7 @@ Page({
 
     },
     onLoad: function (option) {
+        _this = this;
         let isSelect = option.isSelect;
         if (!!isSelect) {
             this.setData({
@@ -48,6 +50,7 @@ Page({
     onShow: function () {
         let userInfo = app.globalData.userInfo;
         this.setData({userInfo});
+        this.getArea();
         this.getAddress();
         this.getDistrict();
     },
@@ -167,7 +170,7 @@ Page({
         request({
             url: "/area/listStore",
             method: "post",
-            data: {area: "顺义区", city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
+            data: {area, city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
         }).then(data => {
             let list = [];
             for (let item of data.data) {
@@ -182,8 +185,6 @@ Page({
         });
     },
     areaSelect: function (e) {
-
-        console.log(e);
         let city = e.detail.values[0].name;
         let selectProv = e.detail.values[1].name;
         this.setData({
@@ -195,6 +196,23 @@ Page({
     changePopupStatus: function () {
         this.setData({
             popupStatus: true
+        });
+    },
+    getArea: function () {
+        request({
+            url: "/area/area",
+            method: "post",
+            data: {}
+        }).then(data => {
+            let city_list = {};
+            let number = 110000;
+            for (let i = 0; i < data.data.length; i++) {
+                let key = number + (i + 1) * 100;
+                city_list[key] = data.data[i]
+            }
+            let areaList = this.data.areaList;
+            areaList.city_list = city_list;
+            this.setData({areaList})
         });
     }
 });

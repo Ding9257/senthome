@@ -35,9 +35,6 @@ Page({
     getTreasure: function () {
         let result = this.data.result;
         let tempResult = result;
-        if (tempResult == 2) {
-            result = 0
-        }
         request({
             url: '/coupon/findByUserId',
             method: "POST",
@@ -52,8 +49,9 @@ Page({
                 tempItem.progress = progress.toFixed(1) * 1;
                 tempItem.oddsOfWinning = 0;
                 if (!util.isEmpty(item.couponDrools)) {
-                    for (let i = 0; item.couponDrools.length; i++) {
-                        let {people, rate, num} = item.couponDrools[i];
+                    let couponDrools = item.couponDrools;
+                    for (let i = 0; couponDrools.length > i; i++) {
+                        let {people, rate, num} = couponDrools[i];
                         if (i == 0) {
                             tempItem.oddsOfWinning = rate;
                         }

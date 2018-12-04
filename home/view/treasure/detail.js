@@ -3,6 +3,7 @@ import Toast from "./../../dist/toast/toast";
 const moment = require("./../../util/moment");
 const request = require("./../../util/request").request;
 const app = getApp();
+let _this;
 Page({
     data: {
         goods: {},
@@ -17,6 +18,7 @@ Page({
         galleryHeight: 200
     },
     onLoad: function (options) {
+        _this = this;
         let id = options.id;
         this.setData({
             id
@@ -55,7 +57,9 @@ Page({
             method: "POST",
             data: {cid, userId, num, status: 0, result: 0}
         }).then(data => {
+            console.log(data);
             app.requestPayment(data.data).then(ok => {
+                _this.updateTreasure(data.data.id);
                 Toast.fail("购买成功");
                 setTimeout(() => {
                     wx.switchTab({
@@ -110,6 +114,15 @@ Page({
     onClose: function () {
         this.setData({
             isShowWinning: false
+        })
+    },
+    updateTreasure: function (id) {
+        request({
+            url: '/coupon/updateOrder',
+            method: "POST",
+            data: {id, status: 1}
+        }).then(res => {
+
         })
     }
 });

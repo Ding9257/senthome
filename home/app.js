@@ -124,8 +124,8 @@ App({
         window_height: 0,
         //附近店铺
         nearbyStore: {},
-        hosts: "https://www.shunbokj.cn:8080",
-        // hosts: "https://www.daojia.shunbokj.cn:9200",
+        // hosts: "https://www.shunbokj.cn:8080",
+        hosts: "https://www.daojia.shunbokj.cn:9200",
         //小区名字
         areaName: "",
         shopCart: {},
@@ -135,6 +135,8 @@ App({
         //坐标
         coordinate: {},
         open_id: '',
+        //扫码进来的店铺sid
+        scene: "",
         isShowToast: false
     },
     shopCartClear: function () {

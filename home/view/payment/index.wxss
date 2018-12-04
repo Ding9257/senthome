@@ -40,6 +40,9 @@
 	position: fixed;
 	bottom: 0;
 }
+.footer button {
+    background-color: #f8dd56;
+}
 .border-desc {
     font-size: 26rpx;
     color: #999999;
