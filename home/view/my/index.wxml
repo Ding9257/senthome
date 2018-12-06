@@ -117,21 +117,21 @@
     </van-row>
     <van-row>
         <view class="my-item">
-            <van-col span="12">
+            <van-col span="22">
                 <view>
                     <van-row>
                         <van-col span="1">
                             <image src="/image/mine/kf.png" class="icon"/>
                         </van-col>
-                        <van-col span="18">
-                            <button style="font-size: 14px;height: 43px;line-height: 43px;padding-left: 8px;color: #3b3b3b;" class="contact" open-type="contact"
-                                    bindcontact="handleContact">进入客服回话
+                        <van-col span="23">
+                            <button style="font-size: 14px;height: 43px;line-height: 43px;padding-left: 15px;color: #3b3b3b;text-align: left;" class="contact" open-type="contact"
+                                    bindcontact="handleContact">进入客服会话
                             </button>
                         </van-col>
                     </van-row>
                 </view>
             </van-col>
-            <van-col span="12">
+            <van-col span="2">
                 <view style="float: right;">
                     <image src="/image/all/xyb.png" class="go"/>
                 </view>
