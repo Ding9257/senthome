@@ -39,7 +39,7 @@
                                                   percentage="{{item.progress}}"/>
                                 </view>
                                 <view class="treasure-font" style="font-size: 12rpx;float: right;">
-                                    当前{{item.num}}人，中奖率{{item.oddsOfWinning}}
+                                    当前{{item.num}}人，中奖率{{item.oddsOfWinning}}%
                                 </view>
                             </view>
                         </van-col>

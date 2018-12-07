@@ -23,7 +23,7 @@
                           percentage="{{goods.progress}}"/>
         </view>
         <view style="padding-bottom: 40rpx;">
-            <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}</text>
+            <text style="font-size:14px;">目标超过{{goods.num}}人，中奖率{{goods.couponDrools[0].rate}}%</text>
         </view>
     </view>
     <view style="text-align:center;color:#3b3b3b;font-size: 28rpx;padding-top: 40rpx;border-top: solid 1rpx #efefef;">
