@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <input type="text" name="userId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易订单号</label>
+                                                <input type="text" name="transferRequestNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易金额</label>
+                                                <input type="text" name="amount" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易类型（参照类型表）</label>
+                                                <input type="text" name="tradeType" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>创建时间</label>
+                                                <input type="text" name="creatTime" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建日期</label>
+                                                <input type="text" name="creatMonth" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>手续费  元</label>
+                                                <input type="text" name="tradeCharge" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>手续费  %</label>
+                                                <input type="text" name="tradeChargeRate" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易状态  1成功，0失败  2待确认  3,批量资金发放，待输入密码</label>
+                                                <input type="text" name="status" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <input type="text" name="statusDesc" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>操作次数</label>
+                                                <input type="text" name="operateCount" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>操作对应的transferBank的银行卡号</label>
+                                                <input type="text" name="operateBankCardId" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>目标用户id</label>
+                                                <input type="text" name="targetUserId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道回调url</label>
+                                                <input type="text" name="customBackUrl" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道订单号</label>
+                                                <input type="text" name="customOrderNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>批量资金发放批次号</label>
+                                                <input type="text" name="batchNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道唯一标识</label>
+                                                <input type="text" name="merchantId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>订单备注</label>
+                                                <input type="text" name="historyDesc" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道批量资金发放批次号</label>
+                                                <input type="text" name="customBatchNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道批量资金发放回调地址</label>
+                                                <input type="text" name="batchOutCallBackUrl" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户标识（原公司）</label>
+                                                <span><%= locals.data && data.originalId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>关联的佣金待发商户（佣金代发公司）</label>
+                                                <span><%= locals.data && data.companyId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <span><%= locals.data && data.profiltUpper%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <span><%= locals.data && data.profiltLower%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>平台标识</label>
+                                                <span><%= locals.data && data.merchantId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>关联状态：0 无效  1 目前 启用      2  历史</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>创建时间</label>
+                                                <span><%= locals.data && data.createtime%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>修改时间</label>
+                                                <span><%= locals.data && data.updatetime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>服务费</label>
+                                                <span><%= locals.data && data.serviceRates%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

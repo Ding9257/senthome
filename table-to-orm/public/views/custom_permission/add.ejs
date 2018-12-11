@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>权限名称</label>
+                                                <input type="text" name="contentName" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>权限类型</label>
+                                                <input type="text" name="contentLevel" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>父权限</label>
+                                                <input type="text" name="parentId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <input type="text" name="createTime" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>链接</label>
+                                                <input type="text" name="link" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否启用</label>
+                                                <input type="text" name="enabled" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>备注</label>
+                                                <input type="text" name="remark" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>显示的顺序</label>
+                                                <input type="text" name="showLevel" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>0: no, 1: show</label>
+                                                <input type="text" name="isShow" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

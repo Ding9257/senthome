@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>字段2</th>
+                                                        <th>字段3</th>
+                                                        <th>字段4</th>
+                                                        <th>商户标识</th>
+                                                        <th>平台标识</th>
+                                                        <th>字段7</th>
+                                                        <th>用户类型 1：普通自由职业者 2：企业合伙人</th>
+                                                        <th>字段9</th>
+                                                        <th> 0 待发放 1 发放成功 2 发放失败</th>
+                                                        <th>批次id 对应交易记录表id</th>
+                                                        <th>爱员工授权订单号</th>
+                                                        <th>字段13</th>
+                                                        <th>佣金发放时间</th>
+                                                        <th>操作人</th>
+                                                        <th>备注</th>
+                                                        <th>字段17</th>
+                                                        <th>字段18</th>
+                                                        <th>字段19</th>
+                                                        <th>字段20</th>
+                                                        <th>支付方式</th>
+                                                        <th>支付宝账户</th>
+                                                        <th>1 已开票 2 未开票 </th>
+                                                        <th>发票号</th>
+                                                        <th>字段25</th>
+                                                        <th>字段26</th>
+                                                        <th>字段27</th>
+                                                        <th>字段28</th>
+                                                        <th>字段29</th>
+                                                        <th>字段30</th>
+                                                        <th>字段31</th>
+                                                        <th>字段32</th>
+                                                        <th>字段33</th>
+                                                        <th>字段34</th>
+                                                        <th>字段35</th>
+                                                        <th>字段36</th>
+                                                        <th>字段37</th>
+                                                        <th>字段38</th>
+                                                        <th>字段39</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.createtime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.amount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.originalId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.merchantId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.statusDesc%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.aygOrderNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.orderNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.updatetime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.operatorName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.remark%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.serviceRatesFree%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.profiltFree%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.serviceRates%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.profilt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.payType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.account%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.invoiceStatus%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.invoiceBatchNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.menuId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.contentName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.paymentTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.certId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.documentType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchFileName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.description%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchDesc%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankNo%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

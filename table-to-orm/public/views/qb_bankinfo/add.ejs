@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="maxInvestLimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <input type="text" name="bankBrhName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <input type="text" name="todayMaxInvestLimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <input type="text" name="bankpic" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支持哪种方式 0,全部支持,1,联动,2，连连</label>
+                                                <input type="text" name="paytype" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <input type="text" name="bankno" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单笔限额（-1无限制）</label>
+                                                <input type="text" name="lianlianOrderlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>连连单日限额（-1无限制）</label>
+                                                <input type="text" name="lianlianDaylimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单月限额（-1无限制）</label>
+                                                <input type="text" name="lianlianMonthlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单月限额（-1无限制）</label>
+                                                <input type="text" name="liandongMonthlimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联动单笔限额（-1无限制）</label>
+                                                <input type="text" name="liandongOrderlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单日限额（-1无限制）</label>
+                                                <input type="text" name="liandongDaylimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段14</label>
+                                                <input type="text" name="chinapayMonthlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段15</label>
+                                                <input type="text" name="chinapayOrderlimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段16</label>
+                                                <input type="text" name="chinapayDaylimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单日限额</label>
+                                                <input type="text" name="fuyoupayDaylimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>富友单笔限额</label>
+                                                <input type="text" name="fuyoupayOrderlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单月限额</label>
+                                                <input type="text" name="fuyoupayMonthlimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <input type="text" name="jdpayOrderlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <input type="text" name="jdpayDaylimit" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段22</label>
+                                                <input type="text" name="jdpayMonthlimit" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <input type="text" name="shortName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付优先级：1连连;5富友</label>
+                                                <input type="text" name="priority" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户标识</label>
+                                                <input type="text" name="originalId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>平台ID</label>
+                                                <input type="text" name="merchantId" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户名称</label>
+                                                <input type="text" name="originalName" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <input type="text" name="appSecret" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段6</label>
+                                                <input type="text" name="phoneNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <input type="text" name="createTime" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段8</label>
+                                                <input type="text" name="updateTime" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

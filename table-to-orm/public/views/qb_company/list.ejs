@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>对应qb_users主键</th>
+                                                        <th>公司名称</th>
+                                                        <th>法人</th>
+                                                        <th>法人代表身份证号</th>
+                                                        <th>联系人</th>
+                                                        <th>联系人手机号</th>
+                                                        <th>邮箱</th>
+                                                        <th>社会信用代码</th>
+                                                        <th>证件有效期（营业执照）</th>
+                                                        <th>发证机关（营业执照）</th>
+                                                        <th>联系地址</th>
+                                                        <th>税务登记号</th>
+                                                        <th>营业执照号</th>
+                                                        <th>对公账号</th>
+                                                        <th>对公账号银行编号</th>
+                                                        <th>对公账号银行名称</th>
+                                                        <th>开户所在省</th>
+                                                        <th>开户所在市</th>
+                                                        <th>营业执照扫描件路径</th>
+                                                        <th>身份证扫描件</th>
+                                                        <th>开户许可证</th>
+                                                        <th>创建时间</th>
+                                                        <th>合作企业开户授权委托</th>
+                                                        <th>代理人身份证</th>
+                                                        <th>银行预留手机号</th>
+                                                        <th>开户回调地址</th>
+                                                        <th>字段28</th>
+                                                        <th>字段29</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.userId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.egalPerson%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.egalPersonCertNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.contactor%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.contactorMobile%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.email%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.socialCreditCode%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.expiresEnd%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.certOrganization%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.contactorAddress%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.taxRegisterNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.businessLicenseNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.cardNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankCardProvince%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankCardCity%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.businessLicenceImg%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.identityImg%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.openingPermitsImg%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.creatTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.letterOfAuthorizationImg%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.proxyIdentityImg%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankCardPhoneNO%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.callBackUrl%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.signAccount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customkey%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

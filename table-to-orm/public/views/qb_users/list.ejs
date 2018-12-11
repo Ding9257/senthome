@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>渠道商户用户id</th>
+                                                        <th>姓名/公司名</th>
+                                                        <th>用户身份证号码/营业执照号</th>
+                                                        <th>用户手机号</th>
+                                                        <th>支付宝账号</th>
+                                                        <th>注册时间</th>
+                                                        <th>商户id</th>
+                                                        <th>交易密码是否存在，存在true，不存在false</th>
+                                                        <th>爱员工商户类型 1 合伙人企业电子账户，其他 2 爱员工电子账户 </th>
+                                                        <th>用户类型，1普通 ， 2商户， 0禁用， -1 待激活 11 补全信息 -2待激活商户 3支付宝</th>
+                                                        <th>用户所在企业对应的编号</th>
+                                                        <th>公司名称</th>
+                                                        <th>用户身份证照片（正面）</th>
+                                                        <th>备注</th>
+                                                        <th>用户身份证照片（反面）</th>
+                                                        <th>签约状态； 0 初始状态1 成功，2 失败 </th>
+                                                        <th>微信openid</th>
+                                                        <th>导入批次id</th>
+                                                        <th>证件类型</th>
+                                                        <th>身份证照片上传状态 0 未上传 1 已上传 2 上传失败</th>
+                                                        <th>银行名称</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.userNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.certId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.mobilePhone%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.account%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.creatTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.merchantId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.transPassword%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyUserNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userCertFrontPicture%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.remark%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.userCertBackPicture%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.signType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.wechartId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batcheId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.documentType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.pictureStatus%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankName%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

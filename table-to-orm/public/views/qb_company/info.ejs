@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对应qb_users主键</label>
+                                                <span><%= locals.data && data.userId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>公司名称</label>
+                                                <span><%= locals.data && data.companyName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>法人</label>
+                                                <span><%= locals.data && data.egalPerson%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人代表身份证号</label>
+                                                <span><%= locals.data && data.egalPersonCertNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系人</label>
+                                                <span><%= locals.data && data.contactor%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联系人手机号</label>
+                                                <span><%= locals.data && data.contactorMobile%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>邮箱</label>
+                                                <span><%= locals.data && data.email%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>社会信用代码</label>
+                                                <span><%= locals.data && data.socialCreditCode%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>证件有效期（营业执照）</label>
+                                                <span><%= locals.data && data.expiresEnd%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>发证机关（营业执照）</label>
+                                                <span><%= locals.data && data.certOrganization%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系地址</label>
+                                                <span><%= locals.data && data.contactorAddress%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>税务登记号</label>
+                                                <span><%= locals.data && data.taxRegisterNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照号</label>
+                                                <span><%= locals.data && data.businessLicenseNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号</label>
+                                                <span><%= locals.data && data.cardNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对公账号银行编号</label>
+                                                <span><%= locals.data && data.bankNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号银行名称</label>
+                                                <span><%= locals.data && data.bankName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户所在省</label>
+                                                <span><%= locals.data && data.bankCardProvince%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户所在市</label>
+                                                <span><%= locals.data && data.bankCardCity%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照扫描件路径</label>
+                                                <span><%= locals.data && data.businessLicenceImg%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>身份证扫描件</label>
+                                                <span><%= locals.data && data.identityImg%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户许可证</label>
+                                                <span><%= locals.data && data.openingPermitsImg%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <span><%= locals.data && data.creatTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>合作企业开户授权委托</label>
+                                                <span><%= locals.data && data.letterOfAuthorizationImg%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>代理人身份证</label>
+                                                <span><%= locals.data && data.proxyIdentityImg%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行预留手机号</label>
+                                                <span><%= locals.data && data.bankCardPhoneNO%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户回调地址</label>
+                                                <span><%= locals.data && data.callBackUrl%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段28</label>
+                                                <span><%= locals.data && data.signAccount%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段29</label>
+                                                <span><%= locals.data && data.customkey%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>用户id</th>
+                                                        <th>开户银行卡（提现用）</th>
+                                                        <th>绑定状态0--解绑， 1--绑定 -1待激活</th>
+                                                        <th>银行编号</th>
+                                                        <th>类型 1.充值 2，提现 3.企业对公帐号</th>
+                                                        <th>银行预留手机号</th>
+                                                        <th>创建时间</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.user_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankCardNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.transferType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankCardPhoneNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.creat_time%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

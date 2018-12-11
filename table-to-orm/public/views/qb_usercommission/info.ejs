@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <span><%= locals.data && data.createtime%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <span><%= locals.data && data.userId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <span><%= locals.data && data.amount%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>商户标识</label>
+                                                <span><%= locals.data && data.originalId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>平台标识</label>
+                                                <span><%= locals.data && data.merchantId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <span><%= locals.data && data.companyId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户类型 1：普通自由职业者 2：企业合伙人</label>
+                                                <span><%= locals.data && data.userType%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段9</label>
+                                                <span><%= locals.data && data.statusDesc%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label> 0 待发放 1  发放成功  2 发放失败</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>批次id 对应交易记录表id</label>
+                                                <span><%= locals.data && data.batchId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>爱员工授权订单号</label>
+                                                <span><%= locals.data && data.aygOrderNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段13</label>
+                                                <span><%= locals.data && data.orderNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>佣金发放时间</label>
+                                                <span><%= locals.data && data.updatetime%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>操作人</label>
+                                                <span><%= locals.data && data.operatorName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>备注</label>
+                                                <span><%= locals.data && data.remark%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段17</label>
+                                                <span><%= locals.data && data.serviceRatesFree%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段18</label>
+                                                <span><%= locals.data && data.profiltFree%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段19</label>
+                                                <span><%= locals.data && data.serviceRates%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <span><%= locals.data && data.profilt%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>支付方式</label>
+                                                <span><%= locals.data && data.payType%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付宝账户</label>
+                                                <span><%= locals.data && data.account%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>1 已开票  2 未开票  </label>
+                                                <span><%= locals.data && data.invoiceStatus%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>发票号</label>
+                                                <span><%= locals.data && data.invoiceBatchNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段25</label>
+                                                <span><%= locals.data && data.menuId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段26</label>
+                                                <span><%= locals.data && data.contentName%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段27</label>
+                                                <span><%= locals.data && data.paymentTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段28</label>
+                                                <span><%= locals.data && data.userNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段29</label>
+                                                <span><%= locals.data && data.companyName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段30</label>
+                                                <span><%= locals.data && data.certId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段31</label>
+                                                <span><%= locals.data && data.documentType%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段32</label>
+                                                <span><%= locals.data && data.userName%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段33</label>
+                                                <span><%= locals.data && data.customName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段34</label>
+                                                <span><%= locals.data && data.batchFileName%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段35</label>
+                                                <span><%= locals.data && data.bankName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段36</label>
+                                                <span><%= locals.data && data.description%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段37</label>
+                                                <span><%= locals.data && data.batchName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段38</label>
+                                                <span><%= locals.data && data.batchDesc%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段39</label>
+                                                <span><%= locals.data && data.bankNo%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

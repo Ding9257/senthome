@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <span><%= locals.data && data.maxInvestLimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <span><%= locals.data && data.bankBrhName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <span><%= locals.data && data.todayMaxInvestLimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <span><%= locals.data && data.bankpic%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支持哪种方式 0,全部支持,1,联动,2，连连</label>
+                                                <span><%= locals.data && data.paytype%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <span><%= locals.data && data.bankno%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单笔限额（-1无限制）</label>
+                                                <span><%= locals.data && data.lianlianOrderlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>连连单日限额（-1无限制）</label>
+                                                <span><%= locals.data && data.lianlianDaylimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单月限额（-1无限制）</label>
+                                                <span><%= locals.data && data.lianlianMonthlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单月限额（-1无限制）</label>
+                                                <span><%= locals.data && data.liandongMonthlimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联动单笔限额（-1无限制）</label>
+                                                <span><%= locals.data && data.liandongOrderlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单日限额（-1无限制）</label>
+                                                <span><%= locals.data && data.liandongDaylimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段14</label>
+                                                <span><%= locals.data && data.chinapayMonthlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段15</label>
+                                                <span><%= locals.data && data.chinapayOrderlimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段16</label>
+                                                <span><%= locals.data && data.chinapayDaylimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单日限额</label>
+                                                <span><%= locals.data && data.fuyoupayDaylimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>富友单笔限额</label>
+                                                <span><%= locals.data && data.fuyoupayOrderlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单月限额</label>
+                                                <span><%= locals.data && data.fuyoupayMonthlimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <span><%= locals.data && data.jdpayOrderlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <span><%= locals.data && data.jdpayDaylimit%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段22</label>
+                                                <span><%= locals.data && data.jdpayMonthlimit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <span><%= locals.data && data.shortName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付优先级：1连连;5富友</label>
+                                                <span><%= locals.data && data.priority%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

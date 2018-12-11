@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="userId" value="<%= locals.data && data.userId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>薪税下发公司标识</label>
+                                                <input type="text" name="companyId" value="<%= locals.data && data.companyId%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户标识（原公司）</label>
+                                                <input type="text" name="originalId" value="<%= locals.data && data.originalId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>用户商户标识</label>
+                                                <input type="text" name="userNo" value="<%= locals.data && data.userNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>签约模板Id</label>
+                                                <input type="text" name="templateId" value="<%= locals.data && data.templateId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>0 未签约 1 签约</label>
+                                                <input type="text" name="status" value="<%= locals.data && data.status%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段8</label>
+                                                <input type="text" name="createTime" value="<%= locals.data && data.createTime%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段9</label>
+                                                <input type="text" name="updateTime" value="<%= locals.data && data.updateTime%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段10</label>
+                                                <input type="text" name="agreementUrl" value="<%= locals.data && data.agreementUrl%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>上上签合同ID</label>
+                                                <input type="text" name="contractId" value="<%= locals.data && data.contractId%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

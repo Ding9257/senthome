@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="maxInvestLimit" value="<%= locals.data && data.maxInvestLimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <input type="text" name="bankBrhName" value="<%= locals.data && data.bankBrhName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <input type="text" name="todayMaxInvestLimit" value="<%= locals.data && data.todayMaxInvestLimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <input type="text" name="bankpic" value="<%= locals.data && data.bankpic%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支持哪种方式 0,全部支持,1,联动,2，连连</label>
+                                                <input type="text" name="paytype" value="<%= locals.data && data.paytype%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <input type="text" name="bankno" value="<%= locals.data && data.bankno%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单笔限额（-1无限制）</label>
+                                                <input type="text" name="lianlianOrderlimit" value="<%= locals.data && data.lianlianOrderlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>连连单日限额（-1无限制）</label>
+                                                <input type="text" name="lianlianDaylimit" value="<%= locals.data && data.lianlianDaylimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>连连单月限额（-1无限制）</label>
+                                                <input type="text" name="lianlianMonthlimit" value="<%= locals.data && data.lianlianMonthlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单月限额（-1无限制）</label>
+                                                <input type="text" name="liandongMonthlimit" value="<%= locals.data && data.liandongMonthlimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联动单笔限额（-1无限制）</label>
+                                                <input type="text" name="liandongOrderlimit" value="<%= locals.data && data.liandongOrderlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联动单日限额（-1无限制）</label>
+                                                <input type="text" name="liandongDaylimit" value="<%= locals.data && data.liandongDaylimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段14</label>
+                                                <input type="text" name="chinapayMonthlimit" value="<%= locals.data && data.chinapayMonthlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段15</label>
+                                                <input type="text" name="chinapayOrderlimit" value="<%= locals.data && data.chinapayOrderlimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段16</label>
+                                                <input type="text" name="chinapayDaylimit" value="<%= locals.data && data.chinapayDaylimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单日限额</label>
+                                                <input type="text" name="fuyoupayDaylimit" value="<%= locals.data && data.fuyoupayDaylimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>富友单笔限额</label>
+                                                <input type="text" name="fuyoupayOrderlimit" value="<%= locals.data && data.fuyoupayOrderlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>富友单月限额</label>
+                                                <input type="text" name="fuyoupayMonthlimit" value="<%= locals.data && data.fuyoupayMonthlimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <input type="text" name="jdpayOrderlimit" value="<%= locals.data && data.jdpayOrderlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <input type="text" name="jdpayDaylimit" value="<%= locals.data && data.jdpayDaylimit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段22</label>
+                                                <input type="text" name="jdpayMonthlimit" value="<%= locals.data && data.jdpayMonthlimit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <input type="text" name="shortName" value="<%= locals.data && data.shortName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付优先级：1连连;5富友</label>
+                                                <input type="text" name="priority" value="<%= locals.data && data.priority%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道商户用户id</label>
+                                                <span><%= locals.data && data.userNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>姓名/公司名</label>
+                                                <span><%= locals.data && data.userName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户身份证号码/营业执照号</label>
+                                                <span><%= locals.data && data.certId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>用户手机号</label>
+                                                <span><%= locals.data && data.mobilePhone%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付宝账号</label>
+                                                <span><%= locals.data && data.account%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册时间</label>
+                                                <span><%= locals.data && data.creatTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户id</label>
+                                                <span><%= locals.data && data.merchantId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易密码是否存在，存在true，不存在false</label>
+                                                <span><%= locals.data && data.transPassword%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>爱员工商户类型  1 合伙人企业电子账户，其他  2 爱员工电子账户  </label>
+                                                <span><%= locals.data && data.companyType%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>用户类型，1普通 ， 2商户，  0禁用， -1  待激活  11   补全信息    -2待激活商户 3支付宝</label>
+                                                <span><%= locals.data && data.userType%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户所在企业对应的编号</label>
+                                                <span><%= locals.data && data.companyUserNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>公司名称</label>
+                                                <span><%= locals.data && data.companyName%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户身份证照片（正面）</label>
+                                                <span><%= locals.data && data.userCertFrontPicture%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>备注</label>
+                                                <span><%= locals.data && data.remark%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户身份证照片（反面）</label>
+                                                <span><%= locals.data && data.userCertBackPicture%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>签约状态； 0 初始状态1 成功，2 失败 </label>
+                                                <span><%= locals.data && data.signType%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>微信openid</label>
+                                                <span><%= locals.data && data.wechartId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>导入批次id</label>
+                                                <span><%= locals.data && data.batcheId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>证件类型</label>
+                                                <span><%= locals.data && data.documentType%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>身份证照片上传状态 0 未上传 1 已上传 2 上传失败</label>
+                                                <span><%= locals.data && data.pictureStatus%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行名称</label>
+                                                <span><%= locals.data && data.bankName%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

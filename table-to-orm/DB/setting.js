@@ -1,10 +1,7 @@
-/**
- * Created by lingxi on 2017/12/20.
- */
 module.exports = {
-    host: '10.46.64.194',
-    database: "hcbtest",
-    username: "root",
-    password: "Root#209*17",
+    host: 'rm-2ze54unnv814ng1wv3o.mysql.rds.aliyuncs.com',
+    database: "salary_wallet",
+    username: "salary",
+    password: "Pilipa2018",
     port: '3306'
 }

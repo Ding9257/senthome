@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <input type="text" name="userId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>合同订单号</label>
+                                                <input type="text" name="extrOrderId" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>状态1，已签  0，未签 ，-1待签约</label>
+                                                <input type="text" name="status" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <input type="text" name="creatTime" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>通知地址</label>
+                                                <input type="text" name="url" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道key</label>
+                                                <input type="text" name="customkey" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="createtime" value="<%= locals.data && data.createtime%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <input type="text" name="amount" value="<%= locals.data && data.amount%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <input type="text" name="ordername" value="<%= locals.data && data.ordername%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <input type="text" name="orderno" value="<%= locals.data && data.orderno%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>付款账户号</label>
+                                                <input type="text" name="accountNo" value="<%= locals.data && data.accountNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>付款账户名称</label>
+                                                <input type="text" name="accountName" value="<%= locals.data && data.accountName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>发送方渠道key</label>
+                                                <input type="text" name="customkey" value="<%= locals.data && data.customkey%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>接收方渠道key</label>
+                                                <input type="text" name="recCustomkey" value="<%= locals.data && data.recCustomkey%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>操作时间（确认 or 驳回）</label>
+                                                <input type="text" name="updatetime" value="<%= locals.data && data.updatetime%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>设置佣金发放时间</label>
+                                                <input type="text" name="providetime" value="<%= locals.data && data.providetime%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段12</label>
+                                                <input type="text" name="mfkjServiceFee" value="<%= locals.data && data.mfkjServiceFee%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>服务费</label>
+                                                <input type="text" name="serviceFee" value="<%= locals.data && data.serviceFee%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>支付方式： 1 徽商银行  2 支付宝  3 微信</label>
+                                                <input type="text" name="payType" value="<%= locals.data && data.payType%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>0 待确认   1 执行成功  2 执行失败  3 已提交 4 已打款</label>
+                                                <input type="text" name="status" value="<%= locals.data && data.status%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>操作人</label>
+                                                <input type="text" name="operatorName" value="<%= locals.data && data.operatorName%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>备注信息</label>
+                                                <input type="text" name="remark" value="<%= locals.data && data.remark%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户订单号</label>
+                                                <input type="text" name="originalBeachNo" value="<%= locals.data && data.originalBeachNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段19</label>
+                                                <input type="text" name="passNum" value="<%= locals.data && data.passNum%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <input type="text" name="failedNum" value="<%= locals.data && data.failedNum%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <input type="text" name="batchNum" value="<%= locals.data && data.batchNum%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段22</label>
+                                                <input type="text" name="batchAmount" value="<%= locals.data && data.batchAmount%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <input type="text" name="handleAmount" value="<%= locals.data && data.handleAmount%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段24</label>
+                                                <input type="text" name="failedAmount" value="<%= locals.data && data.failedAmount%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段25</label>
+                                                <input type="text" name="menuId" value="<%= locals.data && data.menuId%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段26</label>
+                                                <input type="text" name="batchName" value="<%= locals.data && data.batchName%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段27</label>
+                                                <input type="text" name="batchDesc" value="<%= locals.data && data.batchDesc%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段28</label>
+                                                <input type="text" name="fileName" value="<%= locals.data && data.fileName%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

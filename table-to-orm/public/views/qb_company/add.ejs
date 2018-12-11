@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对应qb_users主键</label>
+                                                <input type="text" name="userId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>公司名称</label>
+                                                <input type="text" name="companyName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>法人</label>
+                                                <input type="text" name="egalPerson" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人代表身份证号</label>
+                                                <input type="text" name="egalPersonCertNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系人</label>
+                                                <input type="text" name="contactor" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联系人手机号</label>
+                                                <input type="text" name="contactorMobile" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>邮箱</label>
+                                                <input type="text" name="email" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>社会信用代码</label>
+                                                <input type="text" name="socialCreditCode" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>证件有效期（营业执照）</label>
+                                                <input type="text" name="expiresEnd" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>发证机关（营业执照）</label>
+                                                <input type="text" name="certOrganization" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系地址</label>
+                                                <input type="text" name="contactorAddress" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>税务登记号</label>
+                                                <input type="text" name="taxRegisterNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照号</label>
+                                                <input type="text" name="businessLicenseNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号</label>
+                                                <input type="text" name="cardNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对公账号银行编号</label>
+                                                <input type="text" name="bankNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号银行名称</label>
+                                                <input type="text" name="bankName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户所在省</label>
+                                                <input type="text" name="bankCardProvince" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户所在市</label>
+                                                <input type="text" name="bankCardCity" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照扫描件路径</label>
+                                                <input type="text" name="businessLicenceImg" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>身份证扫描件</label>
+                                                <input type="text" name="identityImg" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户许可证</label>
+                                                <input type="text" name="openingPermitsImg" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <input type="text" name="creatTime" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>合作企业开户授权委托</label>
+                                                <input type="text" name="letterOfAuthorizationImg" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>代理人身份证</label>
+                                                <input type="text" name="proxyIdentityImg" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行预留手机号</label>
+                                                <input type="text" name="bankCardPhoneNO" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户回调地址</label>
+                                                <input type="text" name="callBackUrl" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段28</label>
+                                                <input type="text" name="signAccount" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段29</label>
+                                                <input type="text" name="customkey" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

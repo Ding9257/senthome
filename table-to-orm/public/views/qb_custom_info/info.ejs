@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>第三方渠道唯一标识key</label>
+                                                <span><%= locals.data && data.customkey%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>ip限制，多数据逗号间隔</label>
+                                                <span><%= locals.data && data.ip%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>三方logo</label>
+                                                <span><%= locals.data && data.customlogo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道名称</label>
+                                                <span><%= locals.data && data.customname%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>盐值</label>
+                                                <span><%= locals.data && data.salt%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道登录token的加密字段</label>
+                                                <span><%= locals.data && data.customLoginKey%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道银行</label>
+                                                <span><%= locals.data && data.channelBankNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道开通业务代码  </label>
+                                                <span><%= locals.data && data.moduleNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道编码</label>
+                                                <span><%= locals.data && data.channelNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>状态</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否显示固收 1,显示。  0,不显示</label>
+                                                <span><%= locals.data && data.showP2p%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否显示基金 1,显示。  0,不显示</label>
+                                                <span><%= locals.data && data.showFund%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否显示保险 1,显示。  0,不显示</label>
+                                                <span><%= locals.data && data.showInsurance%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>商户开户成功回调</label>
+                                                <span><%= locals.data && data.companyOpenNotify%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>合同通知url（仅限moduleNo=000002）</label>
+                                                <span><%= locals.data && data.compactNotifyUrl%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>参数名</label>
+                                                <span><%= locals.data && data.paramName%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>参数值</label>
+                                                <span><%= locals.data && data.paramValue%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>参数类型</label>
+                                                <span><%= locals.data && data.paramFlag%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>参数时间</label>
+                                                <span><%= locals.data && data.paramDate%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>状态1.正常，-1 失效</label>
+                                                <span><%= locals.data && data.paramStatus%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>用户ip</label>
+                                                <span><%= locals.data && data.fromip%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段8</label>
+                                                <span><%= locals.data && data.firstfrom%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段9</label>
+                                                <span><%= locals.data && data.firstad%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>验证次数</label>
+                                                <span><%= locals.data && data.vailCount%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <span><%= locals.data && data.deviceUUID%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段12</label>
+                                                <span><%= locals.data && data.serialId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否是语音验证码 1：是0：否</label>
+                                                <span><%= locals.data && data.isVoice%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段14</label>
+                                                <span><%= locals.data && data.bankcardno%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <span><%= locals.data && data.userId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>薪税下发公司标识</label>
+                                                <span><%= locals.data && data.companyId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商户标识（原公司）</label>
+                                                <span><%= locals.data && data.originalId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>用户商户标识</label>
+                                                <span><%= locals.data && data.userNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>签约模板Id</label>
+                                                <span><%= locals.data && data.templateId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>0 未签约 1 签约</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段8</label>
+                                                <span><%= locals.data && data.createTime%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段9</label>
+                                                <span><%= locals.data && data.updateTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段10</label>
+                                                <span><%= locals.data && data.agreementUrl%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>上上签合同ID</label>
+                                                <span><%= locals.data && data.contractId%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

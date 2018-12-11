@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <span><%= locals.data && data.userId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>合同订单号</label>
+                                                <span><%= locals.data && data.extrOrderId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>状态1，已签  0，未签 ，-1待签约</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <span><%= locals.data && data.creatTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>通知地址</label>
+                                                <span><%= locals.data && data.url%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道key</label>
+                                                <span><%= locals.data && data.customkey%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

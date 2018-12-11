@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <span><%= locals.data && data.userId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易订单号</label>
+                                                <span><%= locals.data && data.transferRequestNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易金额</label>
+                                                <span><%= locals.data && data.amount%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易类型（参照类型表）</label>
+                                                <span><%= locals.data && data.tradeType%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>创建时间</label>
+                                                <span><%= locals.data && data.creatTime%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建日期</label>
+                                                <span><%= locals.data && data.creatMonth%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>手续费  元</label>
+                                                <span><%= locals.data && data.tradeCharge%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>手续费  %</label>
+                                                <span><%= locals.data && data.tradeChargeRate%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易状态  1成功，0失败  2待确认  3,批量资金发放，待输入密码</label>
+                                                <span><%= locals.data && data.status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <span><%= locals.data && data.statusDesc%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>操作次数</label>
+                                                <span><%= locals.data && data.operateCount%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>操作对应的transferBank的银行卡号</label>
+                                                <span><%= locals.data && data.operateBankCardId%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>目标用户id</label>
+                                                <span><%= locals.data && data.targetUserId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道回调url</label>
+                                                <span><%= locals.data && data.customBackUrl%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道订单号</label>
+                                                <span><%= locals.data && data.customOrderNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>批量资金发放批次号</label>
+                                                <span><%= locals.data && data.batchNo%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道唯一标识</label>
+                                                <span><%= locals.data && data.merchantId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>订单备注</label>
+                                                <span><%= locals.data && data.historyDesc%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道批量资金发放批次号</label>
+                                                <span><%= locals.data && data.customBatchNo%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道批量资金发放回调地址</label>
+                                                <span><%= locals.data && data.batchOutCallBackUrl%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

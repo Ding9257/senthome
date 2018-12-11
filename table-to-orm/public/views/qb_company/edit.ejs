@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对应qb_users主键</label>
+                                                <input type="text" name="userId" value="<%= locals.data && data.userId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>公司名称</label>
+                                                <input type="text" name="companyName" value="<%= locals.data && data.companyName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>法人</label>
+                                                <input type="text" name="egalPerson" value="<%= locals.data && data.egalPerson%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人代表身份证号</label>
+                                                <input type="text" name="egalPersonCertNo" value="<%= locals.data && data.egalPersonCertNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系人</label>
+                                                <input type="text" name="contactor" value="<%= locals.data && data.contactor%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>联系人手机号</label>
+                                                <input type="text" name="contactorMobile" value="<%= locals.data && data.contactorMobile%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>邮箱</label>
+                                                <input type="text" name="email" value="<%= locals.data && data.email%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>社会信用代码</label>
+                                                <input type="text" name="socialCreditCode" value="<%= locals.data && data.socialCreditCode%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>证件有效期（营业执照）</label>
+                                                <input type="text" name="expiresEnd" value="<%= locals.data && data.expiresEnd%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>发证机关（营业执照）</label>
+                                                <input type="text" name="certOrganization" value="<%= locals.data && data.certOrganization%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>联系地址</label>
+                                                <input type="text" name="contactorAddress" value="<%= locals.data && data.contactorAddress%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>税务登记号</label>
+                                                <input type="text" name="taxRegisterNo" value="<%= locals.data && data.taxRegisterNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照号</label>
+                                                <input type="text" name="businessLicenseNo" value="<%= locals.data && data.businessLicenseNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号</label>
+                                                <input type="text" name="cardNo" value="<%= locals.data && data.cardNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>对公账号银行编号</label>
+                                                <input type="text" name="bankNo" value="<%= locals.data && data.bankNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>对公账号银行名称</label>
+                                                <input type="text" name="bankName" value="<%= locals.data && data.bankName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户所在省</label>
+                                                <input type="text" name="bankCardProvince" value="<%= locals.data && data.bankCardProvince%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户所在市</label>
+                                                <input type="text" name="bankCardCity" value="<%= locals.data && data.bankCardCity%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照扫描件路径</label>
+                                                <input type="text" name="businessLicenceImg" value="<%= locals.data && data.businessLicenceImg%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>身份证扫描件</label>
+                                                <input type="text" name="identityImg" value="<%= locals.data && data.identityImg%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户许可证</label>
+                                                <input type="text" name="openingPermitsImg" value="<%= locals.data && data.openingPermitsImg%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <input type="text" name="creatTime" value="<%= locals.data && data.creatTime%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>合作企业开户授权委托</label>
+                                                <input type="text" name="letterOfAuthorizationImg" value="<%= locals.data && data.letterOfAuthorizationImg%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>代理人身份证</label>
+                                                <input type="text" name="proxyIdentityImg" value="<%= locals.data && data.proxyIdentityImg%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行预留手机号</label>
+                                                <input type="text" name="bankCardPhoneNO" value="<%= locals.data && data.bankCardPhoneNO%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户回调地址</label>
+                                                <input type="text" name="callBackUrl" value="<%= locals.data && data.callBackUrl%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段28</label>
+                                                <input type="text" name="signAccount" value="<%= locals.data && data.signAccount%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段29</label>
+                                                <input type="text" name="customkey" value="<%= locals.data && data.customkey%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

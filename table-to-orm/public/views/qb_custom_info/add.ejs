@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>第三方渠道唯一标识key</label>
+                                                <input type="text" name="customkey" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>ip限制，多数据逗号间隔</label>
+                                                <input type="text" name="ip" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>三方logo</label>
+                                                <input type="text" name="customlogo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道名称</label>
+                                                <input type="text" name="customname" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>盐值</label>
+                                                <input type="text" name="salt" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道登录token的加密字段</label>
+                                                <input type="text" name="customLoginKey" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道银行</label>
+                                                <input type="text" name="channelBankNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道开通业务代码  </label>
+                                                <input type="text" name="moduleNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道编码</label>
+                                                <input type="text" name="channelNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>状态</label>
+                                                <input type="text" name="status" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否显示固收 1,显示。  0,不显示</label>
+                                                <input type="text" name="showP2p" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否显示基金 1,显示。  0,不显示</label>
+                                                <input type="text" name="showFund" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否显示保险 1,显示。  0,不显示</label>
+                                                <input type="text" name="showInsurance" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>商户开户成功回调</label>
+                                                <input type="text" name="companyOpenNotify" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>合同通知url（仅限moduleNo=000002）</label>
+                                                <input type="text" name="compactNotifyUrl" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

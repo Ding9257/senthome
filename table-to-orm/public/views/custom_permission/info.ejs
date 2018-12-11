@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>权限名称</label>
+                                                <span><%= locals.data && data.contentName%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>权限类型</label>
+                                                <span><%= locals.data && data.contentLevel%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>父权限</label>
+                                                <span><%= locals.data && data.parentId%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建时间</label>
+                                                <span><%= locals.data && data.createTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>链接</label>
+                                                <span><%= locals.data && data.link%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否启用</label>
+                                                <span><%= locals.data && data.enabled%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>备注</label>
+                                                <span><%= locals.data && data.remark%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>显示的顺序</label>
+                                                <span><%= locals.data && data.showLevel%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>0: no, 1: show</label>
+                                                <span><%= locals.data && data.isShow%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

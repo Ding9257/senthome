@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="createtime" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段3</label>
+                                                <input type="text" name="amount" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段4</label>
+                                                <input type="text" name="ordername" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段5</label>
+                                                <input type="text" name="orderno" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段6</label>
+                                                <input type="text" name="reCustomkey" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <input type="text" name="customkey" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段8</label>
+                                                <input type="text" name="updatetime" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段9</label>
+                                                <input type="text" name="openCompany" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段10</label>
+                                                <input type="text" name="companyId" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <input type="text" name="invoiceCompanyName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段12</label>
+                                                <input type="text" name="invoiceNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>发票号</label>
+                                                <input type="text" name="invoiceNum" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>0 待确认   1 确认   2 被驳回</label>
+                                                <input type="text" name="status" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段15</label>
+                                                <input type="text" name="operatorName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段16</label>
+                                                <input type="text" name="remark" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段17</label>
+                                                <input type="text" name="receiverName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段18</label>
+                                                <input type="text" name="mobileNo" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段19</label>
+                                                <input type="text" name="bankMessage" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <input type="text" name="invoiceType" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <input type="text" name="taxpayerType" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段22</label>
+                                                <input type="text" name="num" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <input type="text" name="address" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>快递公司</label>
+                                                <input type="text" name="courierCompany" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段25</label>
+                                                <input type="text" name="bankNameAndBankNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段26</label>
+                                                <input type="text" name="courierNo" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

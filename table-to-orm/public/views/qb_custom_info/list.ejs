@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>第三方渠道唯一标识key</th>
+                                                        <th>ip限制，多数据逗号间隔</th>
+                                                        <th>三方logo</th>
+                                                        <th>渠道名称</th>
+                                                        <th>盐值</th>
+                                                        <th>渠道登录token的加密字段</th>
+                                                        <th>渠道银行</th>
+                                                        <th>渠道开通业务代码 </th>
+                                                        <th>渠道编码</th>
+                                                        <th>状态</th>
+                                                        <th>是否显示固收 1,显示。 0,不显示</th>
+                                                        <th>是否显示基金 1,显示。 0,不显示</th>
+                                                        <th>是否显示保险 1,显示。 0,不显示</th>
+                                                        <th>商户开户成功回调</th>
+                                                        <th>合同通知url（仅限moduleNo=000002）</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.customkey%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.ip%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customlogo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customname%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.salt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customLoginKey%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.channelBankNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.moduleNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.channelNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.showP2p%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.showFund%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.showInsurance%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyOpenNotify%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.compactNotifyUrl%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

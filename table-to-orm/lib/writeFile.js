@@ -5,6 +5,7 @@ const fs = require('fs');
 const beautify_js = require('js-beautify').js;
 const sequelize = 'sequelize';
 const DataTypes = 'DataTypes';
+
 function writeFile(filePath, tableName, list) {
     let str =
         `module.exports = function (${sequelize}, ${DataTypes}) {
@@ -19,12 +20,14 @@ function writeFile(filePath, tableName, list) {
         else console.log(err);
     })
 }
+
 function handleList(list) {
     return list.map(item => {
         return `${item.Field}:{${handleitem(item)}}`;
     }).join(',\n')
 
 }
+
 function handleitem(item) {
     let str = '';
     Object.keys(item).forEach(key => {
@@ -36,6 +39,7 @@ function handleitem(item) {
     }
     return str;
 }
+
 function handleKey(key, value) {
     let str = ''
     switch (key) {
@@ -72,9 +76,34 @@ function handleKey(key, value) {
     }
     return str;
 }
+
 function handleType(value) {
-    return value.includes('bigint(') ? value.replace(/bigint/, 'BIGINT') :
-        value.includes('int(') ? value.replace(/int/, 'INTEGER') :
-            value.includes('varchar(') ? value.replace(/varchar/, 'STRING') : value.toUpperCase();
+    console.log(value);
+    let res = "";
+    if (value.includes('bigint(')) {
+        res = value.replace(/bigint/, 'BIGINT');
+    }
+    if (value.includes('int(')) {
+        res = value.replace(/int/, 'INTEGER');
+    }
+    if (value.includes('varchar(')) {
+        res = value.replace(/varchar/, 'STRING');
+    }
+    if (value.includes('unsigned') && value.includes('int(')) {
+        let index = value.indexOf(")");
+        let tempRes = value.substr(0, index + 1);
+        res = `${tempRes.replace(/int/, 'INTEGER')}.${"unsigned".toUpperCase()}`;
+    }
+    if (value.includes('tinyint(')) {
+        res = value.replace(/tinyint/, 'TINYINT');
+    }
+    if (value.includes('datetime')) {
+        res = "date".toUpperCase();
+    }
+    if (!res) {
+        res = value.toUpperCase();
+    }
+    return res;
 }
+
 module.exports = writeFile;

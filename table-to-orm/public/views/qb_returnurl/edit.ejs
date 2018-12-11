@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <input type="text" name="user_id" value="<%= locals.data && data.user_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>设置密码后台通知</label>
+                                                <input type="text" name="passwordSetReturnUrl" value="<%= locals.data && data.passwordSetReturnUrl%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>重置密码后台通知</label>
+                                                <input type="text" name="passwordResetUrl" value="<%= locals.data && data.passwordResetUrl%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>修改密码后台通知</label>
+                                                <input type="text" name="passwordChangeUrl" value="<%= locals.data && data.passwordChangeUrl%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

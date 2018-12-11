@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户id</label>
+                                                <input type="text" name="userId" value="<%= locals.data && data.userId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易订单号</label>
+                                                <input type="text" name="transferRequestNo" value="<%= locals.data && data.transferRequestNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易金额</label>
+                                                <input type="text" name="amount" value="<%= locals.data && data.amount%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易类型（参照类型表）</label>
+                                                <input type="text" name="tradeType" value="<%= locals.data && data.tradeType%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>创建时间</label>
+                                                <input type="text" name="creatTime" value="<%= locals.data && data.creatTime%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>创建日期</label>
+                                                <input type="text" name="creatMonth" value="<%= locals.data && data.creatMonth%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>手续费  元</label>
+                                                <input type="text" name="tradeCharge" value="<%= locals.data && data.tradeCharge%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>手续费  %</label>
+                                                <input type="text" name="tradeChargeRate" value="<%= locals.data && data.tradeChargeRate%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>交易状态  1成功，0失败  2待确认  3,批量资金发放，待输入密码</label>
+                                                <input type="text" name="status" value="<%= locals.data && data.status%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <input type="text" name="statusDesc" value="<%= locals.data && data.statusDesc%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>操作次数</label>
+                                                <input type="text" name="operateCount" value="<%= locals.data && data.operateCount%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>操作对应的transferBank的银行卡号</label>
+                                                <input type="text" name="operateBankCardId" value="<%= locals.data && data.operateBankCardId%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>目标用户id</label>
+                                                <input type="text" name="targetUserId" value="<%= locals.data && data.targetUserId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道回调url</label>
+                                                <input type="text" name="customBackUrl" value="<%= locals.data && data.customBackUrl%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道订单号</label>
+                                                <input type="text" name="customOrderNo" value="<%= locals.data && data.customOrderNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>批量资金发放批次号</label>
+                                                <input type="text" name="batchNo" value="<%= locals.data && data.batchNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道唯一标识</label>
+                                                <input type="text" name="merchantId" value="<%= locals.data && data.merchantId%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>订单备注</label>
+                                                <input type="text" name="historyDesc" value="<%= locals.data && data.historyDesc%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道批量资金发放批次号</label>
+                                                <input type="text" name="customBatchNo" value="<%= locals.data && data.customBatchNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>渠道批量资金发放回调地址</label>
+                                                <input type="text" name="batchOutCallBackUrl" value="<%= locals.data && data.batchOutCallBackUrl%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

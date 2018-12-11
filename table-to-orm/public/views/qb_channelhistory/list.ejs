@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>字段2</th>
+                                                        <th>字段3</th>
+                                                        <th>字段4</th>
+                                                        <th>字段5</th>
+                                                        <th>付款账户号</th>
+                                                        <th>付款账户名称</th>
+                                                        <th>交易类型 1 充值 2 发佣金</th>
+                                                        <th>发送方渠道key</th>
+                                                        <th>接收方渠道key</th>
+                                                        <th>操作时间（确认 or 驳回）</th>
+                                                        <th>设置佣金发放时间</th>
+                                                        <th>字段13</th>
+                                                        <th>服务费</th>
+                                                        <th>支付方式： 1 徽商银行 2 支付宝 3 微信</th>
+                                                        <th>0 待确认 1 执行成功 2 执行失败 3 已提交 4 驳回</th>
+                                                        <th>操作人</th>
+                                                        <th>备注信息</th>
+                                                        <th>商户订单号</th>
+                                                        <th>字段20</th>
+                                                        <th>字段21</th>
+                                                        <th>字段22</th>
+                                                        <th>字段23</th>
+                                                        <th>字段24</th>
+                                                        <th>字段25</th>
+                                                        <th>字段26</th>
+                                                        <th>字段27</th>
+                                                        <th>字段28</th>
+                                                        <th>字段29</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.createtime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.amount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.ordername%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.orderno%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.accountNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.accountName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.transfertype%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customkey%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.recCustomkey%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.updatetime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.providetime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.mfkjServiceFee%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.serviceFee%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.payType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.operatorName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.remark%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.originalBeachNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.passNum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.failedNum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchNum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchAmount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.handleAmount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.failedAmount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.menuId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.batchDesc%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.fileName%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

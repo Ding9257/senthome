@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>公司名称</th>
+                                                        <th>0代表禁用，1代表启用 -2注销</th>
+                                                        <th>渠道商唯一标识</th>
+                                                        <th>注册时间</th>
+                                                        <th>手机号</th>
+                                                        <th>邮箱</th>
+                                                        <th>用户名</th>
+                                                        <th>交易密码</th>
+                                                        <th>账户类型：1 商户 2 下发公司 3 代理商</th>
+                                                        <th>字段11</th>
+                                                        <th>字段12</th>
+                                                        <th>服务结束时间</th>
+                                                        <th>开始服务时间</th>
+                                                        <th>// 渠道手续费账户余额</th>
+                                                        <th>所属账户</th>
+                                                        <th>// 渠道手续费账户余额</th>
+                                                        <th>字段18</th>
+                                                        <th>字段19</th>
+                                                        <th>字段20</th>
+                                                        <th>字段21</th>
+                                                        <th>// 商户开通通知地址</th>
+                                                        <th>字段23</th>
+                                                        <th>// 渠道手续费账户余额</th>
+                                                        <th>单位地址及电话</th>
+                                                        <th>开户行及账号</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.companyName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.enabled%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customkey%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.creatTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.phoneNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.email%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.username%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.tranPassword%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.customType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankcardno%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankname%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.startTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.endTime%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.AgentId%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.masterCustom%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.receiverName%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.address%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankMessage%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.invoiceType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.taxpayerType%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.companyOpenNotifyUrl%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.invoiceNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.productNo%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.addressAndPhone%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bankNameAndBankNo%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

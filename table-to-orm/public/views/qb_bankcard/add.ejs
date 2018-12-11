@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行名</label>
+                                                <input type="text" name="bankName" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>银行卡名</label>
+                                                <input type="text" name="bankFullName" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行卡长度</label>
+                                                <input type="text" name="length" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>银行卡号</label>
+                                                <input type="text" name="cardFullNo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行卡起始长度</label>
+                                                <input type="text" name="startLength" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>银行卡起始</label>
+                                                <input type="text" name="start" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>银行编号</label>
+                                                <input type="text" name="bankNo" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

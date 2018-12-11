@@ -11,6 +11,7 @@ async function start() {
         //生成model
         writeFile(path.join(__dirname, 'public', 'model', `${tableName}.js`), tableName, list);
         //生成views
+        return true;
         let arrField = [];
         list.forEach((item, index) => {
             if (item.Field != 'id') {

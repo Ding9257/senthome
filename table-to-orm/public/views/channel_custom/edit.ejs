@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>公司名称</label>
+                                                <input type="text" name="companyName" value="<%= locals.data && data.companyName%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>0代表禁用，1代表启用  -2注销</label>
+                                                <input type="text" name="enabled" value="<%= locals.data && data.enabled%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>渠道商唯一标识</label>
+                                                <input type="text" name="customkey" value="<%= locals.data && data.customkey%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册时间</label>
+                                                <input type="text" name="creatTime" value="<%= locals.data && data.creatTime%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>手机号</label>
+                                                <input type="text" name="phoneNo" value="<%= locals.data && data.phoneNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>邮箱</label>
+                                                <input type="text" name="email" value="<%= locals.data && data.email%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>用户名</label>
+                                                <input type="text" name="username" value="<%= locals.data && data.username%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>交易密码</label>
+                                                <input type="text" name="tranPassword" value="<%= locals.data && data.tranPassword%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>账户类型：1 商户 2 下发公司 3 代理商</label>
+                                                <input type="text" name="customType" value="<%= locals.data && data.customType%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段11</label>
+                                                <input type="text" name="bankcardno" value="<%= locals.data && data.bankcardno%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段12</label>
+                                                <input type="text" name="bankname" value="<%= locals.data && data.bankname%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>服务结束时间</label>
+                                                <input type="text" name="startTime" value="<%= locals.data && data.startTime%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开始服务时间</label>
+                                                <input type="text" name="endTime" value="<%= locals.data && data.endTime%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>// 渠道手续费账户余额</label>
+                                                <input type="text" name="AgentId" value="<%= locals.data && data.AgentId%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>所属账户</label>
+                                                <input type="text" name="masterCustom" value="<%= locals.data && data.masterCustom%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>// 渠道手续费账户余额</label>
+                                                <input type="text" name="receiverName" value="<%= locals.data && data.receiverName%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段18</label>
+                                                <input type="text" name="address" value="<%= locals.data && data.address%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段19</label>
+                                                <input type="text" name="bankMessage" value="<%= locals.data && data.bankMessage%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段20</label>
+                                                <input type="text" name="invoiceType" value="<%= locals.data && data.invoiceType%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段21</label>
+                                                <input type="text" name="taxpayerType" value="<%= locals.data && data.taxpayerType%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>// 商户开通通知地址</label>
+                                                <input type="text" name="companyOpenNotifyUrl" value="<%= locals.data && data.companyOpenNotifyUrl%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段23</label>
+                                                <input type="text" name="invoiceNo" value="<%= locals.data && data.invoiceNo%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>// 渠道手续费账户余额</label>
+                                                <input type="text" name="productNo" value="<%= locals.data && data.productNo%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>单位地址及电话</label>
+                                                <input type="text" name="addressAndPhone" value="<%= locals.data && data.addressAndPhone%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>开户行及账号</label>
+                                                <input type="text" name="bankNameAndBankNo" value="<%= locals.data && data.bankNameAndBankNo%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

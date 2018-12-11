@@ -14,6 +14,6 @@ export const storage_prefix = 'zzm_admin_storage_'
 export const base64_prefix = 'zzm_admin_base64_'
 //接入服务器接口地址根目录
 //生产
-export const server_base_url = 'https://www.daojia.shunbokj.cn:9200'
+// export const server_base_url = 'https://www.daojia.shunbokj.cn:9200'
 //测试
-// export const server_base_url = 'https://www.shunbokj.cn:8080'
+export const server_base_url = 'https://www.shunbokj.cn:8080'
