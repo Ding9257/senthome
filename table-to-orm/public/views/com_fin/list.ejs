@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>企业ID</th>
+                                                        <th>经营状况</th>
+                                                        <th>财务部联系方式</th>
+                                                        <th>企业开户行</th>
+                                                        <th>企业银行卡号</th>
+                                                        <th>开户日期</th>
+                                                        <th>经营资金来源1自有 2贷款</th>
+                                                        <th>经营贷款金额 （万元）当经营资金来源为贷款需填写</th>
+                                                        <th>企业征信等级 1 正常类 2 瑕疵类 3 次级类 4禁入类</th>
+                                                        <th>月均应收账款（万元）</th>
+                                                        <th>应收账款账期（天）</th>
+                                                        <th>月均应付账款（万元）</th>
+                                                        <th>应付账款账期（天）</th>
+                                                        <th>财务负责人姓名</th>
+                                                        <th>财务负责人手机号码</th>
+                                                        <th>财务负责人居住地址</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.opt_status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.financial_contact%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.acct_bank%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bank_card_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.acct_open_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.money_source%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.loan_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_level%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.receivable_m_avg_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.receivable_ap%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.handle_m_avg_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.handle_ap%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.fin_person_name%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.fin_person_mobile%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.fin_person_address%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

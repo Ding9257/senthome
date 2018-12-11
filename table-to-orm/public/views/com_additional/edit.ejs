@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>客户号码</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经营场地性质  1自有 2 租赁</label>
+                                                <input type="text" name="ops_area_type" value="<%= locals.data && data.ops_area_type%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营场地面积(平方米)</label>
+                                                <input type="text" name="ops_area_size" value="<%= locals.data && data.ops_area_size%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>年租金费用</label>
+                                                <input type="text" name="year_rent_fee" value="<%= locals.data && data.year_rent_fee%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>运营模式 1 干线 2 市内配送 3其他</label>
+                                                <input type="text" name="ops_type" value="<%= locals.data && data.ops_type%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>运营模式说明 当“运营模式”选“其他”时填写</label>
+                                                <input type="text" name="ops_desc" value="<%= locals.data && data.ops_desc%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>业务主要区域  1 省内配送 2 跨省配送 3全国配送</label>
+                                                <input type="text" name="main_biz_area" value="<%= locals.data && data.main_biz_area%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>核心企业名称</label>
+                                                <input type="text" name="core_company_name" value="<%= locals.data && data.core_company_name%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否注册品牌 1 是 2 不是</label>
+                                                <input type="text" name="remarked_brand" value="<%= locals.data && data.remarked_brand%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>品牌名称  当“是否注册品牌”选“是”时填写（有多个品牌时填最主要的即可）</label>
+                                                <input type="text" name="brand_name" value="<%= locals.data && data.brand_name%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商标注册号 当“是否注册品牌”选“是”时填写</label>
+                                                <input type="text" name="remark_num" value="<%= locals.data && data.remark_num%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业固定电话号码</label>
+                                                <input type="text" name="tel" value="<%= locals.data && data.tel%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业法人居住地址</label>
+                                                <input type="text" name="legal_person_address" value="<%= locals.data && data.legal_person_address%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

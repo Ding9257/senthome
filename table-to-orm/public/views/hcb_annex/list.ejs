@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>字段2</th>
+                                                        <th>营业执照</th>
+                                                        <th>组织机构代码证</th>
+                                                        <th>税务登记证</th>
+                                                        <th>道路运输经营许可证</th>
+                                                        <th>法人及实际控制人身份证</th>
+                                                        <th>行驶证</th>
+                                                        <th>经营场地租赁合同/房产证明</th>
+                                                        <th>近2年水电缴费凭证</th>
+                                                        <th>借款业务申请表</th>
+                                                        <th>企业征信报告</th>
+                                                        <th>法人及实际控制人征信报告</th>
+                                                        <th>法人及实际控制人担保函</th>
+                                                        <th>企业授信授权书</th>
+                                                        <th>企业近12个月银行流水</th>
+                                                        <th>前三大客户运输合同</th>
+                                                        <th>商业险保单</th>
+                                                        <th>运输挂靠协议</th>
+                                                        <th>内部环境办公室</th>
+                                                        <th>外部环境：外部环境照片，外访人员与门牌LOGO合影</th>
+                                                        <th>经营相关：运输车辆</th>
+                                                        <th>现场拍照，客户办公照</th>
+                                                        <th>现场拍照，客户手持服务合同与渠道人员合照</th>
+                                                        <th>企业近6个月增值税纳税单</th>
+                                                        <th>最近3年财务报表</th>
+                                                        <th>最近3年审计报告</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g9%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g10%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g8%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g7%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.b1%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.i11%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g2%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g11%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.L9%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.L10%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.L11%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.L12%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.L6%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g3%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g12%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g13%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g14%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g15%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g16%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g17%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g181%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g182%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g19%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g20%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.g21%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

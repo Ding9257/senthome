@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>字段2</th>
+                                                        <th>近3年行政处罚及不良记录 0-无记录 1-有记录已修正 2-有记录且未改进</th>
+                                                        <th>企业近1年征信逾期记录 0-信用记录良好无逾期 1-出现过逾期但情节较轻 2-出现过逾期情节较重 3-出现过严重逾期或信用记录极差或当前扔处于逾期状态</th>
+                                                        <th>实际控制人近1年逾期记录</th>
+                                                        <th>资产总额</th>
+                                                        <th>负债总额</th>
+                                                        <th>净利润</th>
+                                                        <th>营业收入</th>
+                                                        <th>平均应收账款</th>
+                                                        <th>企业现金流量余额</th>
+                                                        <th>经营活动现金流量</th>
+                                                        <th>本年销售收入增加额</th>
+                                                        <th>上年销售收入总额</th>
+                                                        <th>本年度资产增长额</th>
+                                                        <th>年初资产总额</th>
+                                                        <th>财报是否经过审计</th>
+                                                        <th>业务稳定性</th>
+                                                        <th>企业品牌</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.near_three_yeras_admin_bad_note%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_near_one_years_overdue_note%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.controller_near_one_years_overdue_note%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.assets_total%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.liabilities_total%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.net_profit%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.operate_income%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.average_accounts_receivable%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_cash_balance%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.business_cash%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.this_year_sales_increase%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.last_year_income_lump_sum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.this_year_assets_growth%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.early_assets_lump_sum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.earnings_is_audit%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.business_stability%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_brand%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

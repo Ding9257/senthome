@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业ID</label>
+                                                <input type="text" name="company_id" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经营状况</label>
+                                                <input type="text" name="opt_status" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>财务部联系方式</label>
+                                                <input type="text" name="financial_contact" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业开户行</label>
+                                                <input type="text" name="acct_bank" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业银行卡号</label>
+                                                <input type="text" name="bank_card_num" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户日期</label>
+                                                <input type="text" name="acct_open_date" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营资金来源1自有 2贷款</label>
+                                                <input type="text" name="money_source" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经营贷款金额 （万元）当经营资金来源为贷款需填写</label>
+                                                <input type="text" name="loan_amt" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业征信等级 1 正常类 2 瑕疵类 3 次级类 4禁入类</label>
+                                                <input type="text" name="credit_level" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>月均应收账款（万元）</label>
+                                                <input type="text" name="receivable_m_avg_amt" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>应收账款账期（天）</label>
+                                                <input type="text" name="receivable_ap" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>月均应付账款（万元）</label>
+                                                <input type="text" name="handle_m_avg_amt" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>应付账款账期（天）</label>
+                                                <input type="text" name="handle_ap" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>财务负责人姓名</label>
+                                                <input type="text" name="fin_person_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>财务负责人手机号码</label>
+                                                <input type="text" name="fin_person_mobile" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>财务负责人居住地址</label>
+                                                <input type="text" name="fin_person_address" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

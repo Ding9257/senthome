@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>额度ID</label>
+                                                <span><%= locals.data && data.quota_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业ID</label>
+                                                <span><%= locals.data && data.company_id%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>产品ID</label>
+                                                <span><%= locals.data && data.product_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>合作商ID</label>
+                                                <span><%= locals.data && data.partner_id%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>业务品种</label>
+                                                <span><%= locals.data && data.business_type%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>币种</label>
+                                                <span><%= locals.data && data.currency%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>额度状态5-批准 1 -冻结 2-终止 3-过期 4-待授信  6-未授信</label>
+                                                <span><%= locals.data && data.freezen_status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>系统评估额度日期</label>
+                                                <span><%= locals.data && data.system_credit_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>系统评估额度</label>
+                                                <span><%= locals.data && data.sys_credit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>最后授信审批日期</label>
+                                                <span><%= locals.data && data.last_credit_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>批准额度</label>
+                                                <span><%= locals.data && data.approved_sum%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>已用额度</label>
+                                                <span><%= locals.data && data.already_used_amount%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>可用额度</label>
+                                                <span><%= locals.data && data.available_credit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>冻结金额</label>
+                                                <span><%= locals.data && data.freezing_amount%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>授信开始日期</label>
+                                                <span><%= locals.data && data.credit_apply_create_time%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>授信终止日期</label>
+                                                <span><%= locals.data && data.credit_apply_expire_time%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否循环使用</label>
+                                                <span><%= locals.data && data.is_loop%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>周期单位</label>
+                                                <span><%= locals.data && data.cycle%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>周日</label>
+                                                <span><%= locals.data && data.cycle_num%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否额度审批中 1审批中 2审批完</label>
+                                                <span><%= locals.data && data.is_approval%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

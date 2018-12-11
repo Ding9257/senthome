@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>企业ID（系统生成，企业在系统中的唯一标识）</th>
+                                                        <th>统一社会信用代码</th>
+                                                        <th>企业法定名称</th>
+                                                        <th>企业类型</th>
+                                                        <th>企业住所</th>
+                                                        <th>法人姓名</th>
+                                                        <th>注册资本(万元)</th>
+                                                        <th>注册资本币种</th>
+                                                        <th>成立日期</th>
+                                                        <th>主营范围</th>
+                                                        <th>注册登记机关</th>
+                                                        <th>注册登记日期</th>
+                                                        <th>营业执照编号</th>
+                                                        <th>是否删除：0未删除，-1删除</th>
+                                                        <th>实际经营地址</th>
+                                                        <th>业务类型</th>
+                                                        <th>兼营范围</th>
+                                                        <th>登记注册类型</th>
+                                                        <th>首次记录时间</th>
+                                                        <th>更新记录时间</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_code%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_name%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_address%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.legal_person%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_currency%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.create_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.main_biz%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_org%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.license_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.de_flag%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.real_address%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.biz_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.slave_biz%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.create_time%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.update_time%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

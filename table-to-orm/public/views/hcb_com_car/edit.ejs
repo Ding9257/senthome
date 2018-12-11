@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>客户号码</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>统一社会信用代码</label>
+                                                <input type="text" name="org_code" value="<%= locals.data && data.org_code%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>牵引车品牌  进口 合资 国产</label>
+                                                <input type="text" name="car_brand" value="<%= locals.data && data.car_brand%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>有无仓储分拨中心  0 无  1 有</label>
+                                                <input type="text" name="has_storage" value="<%= locals.data && data.has_storage%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>有无固定停车场 0 无 1 有</label>
+                                                <input type="text" name="has_park" value="<%= locals.data && data.has_park%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>总车辆数量 公司实际可用货运车辆总数</label>
+                                                <input type="text" name="total_car_quantity" value="<%= locals.data && data.total_car_quantity%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>自有车辆数量 自有货运车辆</label>
+                                                <input type="text" name="own_car_quantity" value="<%= locals.data && data.own_car_quantity%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>挂靠车辆数量</label>
+                                                <input type="text" name="other_car_quantity" value="<%= locals.data && data.other_car_quantity%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>有贷款的车辆数量 自有货运车辆中，目前有贷款的数量</label>
+                                                <input type="text" name="loan_car_quantity" value="<%= locals.data && data.loan_car_quantity%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>月均通行费用（全部车辆）(万元)</label>
+                                                <input type="text" name="avg_m_etc_amt" value="<%= locals.data && data.avg_m_etc_amt%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>月均加油费用（全部车辆）(万元)</label>
+                                                <input type="text" name="avg_m_oil_amt" value="<%= locals.data && data.avg_m_oil_amt%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否核心承运商 0 是 1 否</label>
+                                                <input type="text" name="main_ops" value="<%= locals.data && data.main_ops%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

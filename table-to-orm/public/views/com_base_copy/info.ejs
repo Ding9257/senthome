@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>客户号码</label>
+                                                <span><%= locals.data && data.company_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>统一社会信用代码</label>
+                                                <span><%= locals.data && data.org_code%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业法定名称</label>
+                                                <span><%= locals.data && data.company_name%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业类型</label>
+                                                <span><%= locals.data && data.company_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业住所</label>
+                                                <span><%= locals.data && data.company_address%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人</label>
+                                                <span><%= locals.data && data.legal_person%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册资本(元)</label>
+                                                <span><%= locals.data && data.reg_amt%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册资本币种</label>
+                                                <span><%= locals.data && data.reg_currency%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>成立日期</label>
+                                                <span><%= locals.data && data.create_date%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>主营范围</label>
+                                                <span><%= locals.data && data.main_biz%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>兼营范围</label>
+                                                <span><%= locals.data && data.slave_biz%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>登记注册类型</label>
+                                                <span><%= locals.data && data.reg_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册登记机关</label>
+                                                <span><%= locals.data && data.reg_org%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册登记日期</label>
+                                                <span><%= locals.data && data.reg_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照编号</label>
+                                                <span><%= locals.data && data.license_num%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>手机号</label>
+                                                <span><%= locals.data && data.mobile%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册地</label>
+                                                <span><%= locals.data && data.reg_place%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>证件类型</label>
+                                                <span><%= locals.data && data.id_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>证件号码</label>
+                                                <span><%= locals.data && data.id_num%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>组织机构登记日期</label>
+                                                <span><%= locals.data && data.org_reg_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>组织机构有效日期</label>
+                                                <span><%= locals.data && data.org_valid_date%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>组织机构代码证颁发机关</label>
+                                                <span><%= locals.data && data.org_issue_org%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册登记有效日期</label>
+                                                <span><%= locals.data && data.reg_valid_date%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>已注册登记年检日期</label>
+                                                <span><%= locals.data && data.reg_check_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营状况</label>
+                                                <span><%= locals.data && data.opt_status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>主要产品情况</label>
+                                                <span><%= locals.data && data.main_product_info%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营场地面积(平方米)</label>
+                                                <span><%= locals.data && data.opt_area_size%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经营场地所有权</label>
+                                                <span><%= locals.data && data.opt_area_own%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>财务部联系方式</label>
+                                                <span><%= locals.data && data.financial_contact%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>投资主体</label>
+                                                <span><%= locals.data && data.investment_subject%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>英文名称</label>
+                                                <span><%= locals.data && data.eng_name%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>国别</label>
+                                                <span><%= locals.data && data.nation%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业规模</label>
+                                                <span><%= locals.data && data.enterprise_size%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>从业人数</label>
+                                                <span><%= locals.data && data.worker_amt%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>控股类型</label>
+                                                <span><%= locals.data && data.holding_type%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>财务报表类型</label>
+                                                <span><%= locals.data && data.financial_report%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>行业类型</label>
+                                                <span><%= locals.data && data.industry_type%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>基本账户开户行</label>
+                                                <span><%= locals.data && data.basic_acct_bank%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>基本账户账号</label>
+                                                <span><%= locals.data && data.basic_acct_num%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>开户日期</label>
+                                                <span><%= locals.data && data.acct_open_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>上市公司标志</label>
+                                                <span><%= locals.data && data.public_company_flag%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>股票代码</label>
+                                                <span><%= locals.data && data.stock_cd%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>上市地</label>
+                                                <span><%= locals.data && data.listed_city%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>集团客户标识</label>
+                                                <span><%= locals.data && data.group_flag%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>集团客户类型</label>
+                                                <span><%= locals.data && data.group_type%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>上级公司名称</label>
+                                                <span><%= locals.data && data.superior_name%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>上级公司组织机构代码</label>
+                                                <span><%= locals.data && data.superior_org_cd%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>集团融资形式</label>
+                                                <span><%= locals.data && data.group_finance_way%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>信用等级</label>
+                                                <span><%= locals.data && data.cst_credit_level%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>信用评定日期</label>
+                                                <span><%= locals.data && data.credit_evaluate_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>信用等级(外部)</label>
+                                                <span><%= locals.data && data.credit_level_out%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>信用等级评定日期（外部）</label>
+                                                <span><%= locals.data && data.credit_evaluate_date_out%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>信用等级评定机构(外部)</label>
+                                                <span><%= locals.data && data.credit_evaluate_org_out%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业隶属关系</label>
+                                                <span><%= locals.data && data.company_membership%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>客户种类：工业，商业，建筑业（房地产），农业，乡镇企业，私营企业，其他</label>
+                                                <span><%= locals.data && data.cst_class%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>进出口权标识</label>
+                                                <span><%= locals.data && data.port_flag%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否属特种经营</label>
+                                                <span><%= locals.data && data.is_special_opt%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>地区重点企业</label>
+                                                <span><%= locals.data && data.is_point_company%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>优势企业</label>
+                                                <span><%= locals.data && data.is_vantage_company%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否龙头企业</label>
+                                                <span><%= locals.data && data.is_leader_company%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否两高一剩企业</label>
+                                                <span><%= locals.data && data.is_21_company%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>通过环评</label>
+                                                <span><%= locals.data && data.is_env_through%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>环境行为等级</label>
+                                                <span><%= locals.data && data.env_level%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>建立信贷关系时间</label>
+                                                <span><%= locals.data && data.credit_rel_time%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>国资委下属企业</label>
+                                                <span><%= locals.data && data.is_belong_gzw%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>有无董事会</label>
+                                                <span><%= locals.data && data.have_directorate%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业性质</label>
+                                                <span><%= locals.data && data.firms_nature%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经济类型:01-全民 02-集团 03-三资 04-个体 05-私营其他</label>
+                                                <span><%= locals.data && data.economic_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>地区编码</label>
+                                                <span><%= locals.data && data.area_cd%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>行政区域</label>
+                                                <span><%= locals.data && data.region%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>行政区域2</label>
+                                                <span><%= locals.data && data.region2%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>主办机构</label>
+                                                <span><%= locals.data && data.organizer_org%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>管理机构</label>
+                                                <span><%= locals.data && data.manage_org%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否合作商客户</label>
+                                                <span><%= locals.data && data.is_co_company%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>系统评估额度</label>
+                                                <span><%= locals.data && data.sys_credit%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否删除：0未删除，-1删除</label>
+                                                <span><%= locals.data && data.de_flag%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段78</label>
+                                                <span><%= locals.data && data.company_email%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段79</label>
+                                                <span><%= locals.data && data.lic_start_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段80</label>
+                                                <span><%= locals.data && data.lic_end_date%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段81</label>
+                                                <span><%= locals.data && data.bank_code%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>额度ID</th>
+                                                        <th>企业ID</th>
+                                                        <th>产品ID</th>
+                                                        <th>合作商ID</th>
+                                                        <th>业务品种</th>
+                                                        <th>币种</th>
+                                                        <th>额度状态5-批准 1 -冻结 2-终止 3-过期 4-待授信 6-未授信</th>
+                                                        <th>系统评估额度日期</th>
+                                                        <th>系统评估额度</th>
+                                                        <th>最后授信审批日期</th>
+                                                        <th>批准额度</th>
+                                                        <th>已用额度</th>
+                                                        <th>可用额度</th>
+                                                        <th>冻结金额</th>
+                                                        <th>授信开始日期</th>
+                                                        <th>授信终止日期</th>
+                                                        <th>是否循环使用</th>
+                                                        <th>周期单位</th>
+                                                        <th>周日</th>
+                                                        <th>是否额度审批中 1审批中 2审批完</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.quota_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.product_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.partner_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.business_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.currency%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.freezen_status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.system_credit_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.sys_credit%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.last_credit_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.approved_sum%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.already_used_amount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.available_credit%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.freezing_amount%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_apply_create_time%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_apply_expire_time%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_loop%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.cycle%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.cycle_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_approval%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

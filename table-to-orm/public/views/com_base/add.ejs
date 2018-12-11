@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业ID（系统生成，企业在系统中的唯一标识）</label>
+                                                <input type="text" name="company_id" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>统一社会信用代码</label>
+                                                <input type="text" name="org_code" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业法定名称</label>
+                                                <input type="text" name="company_name" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业类型</label>
+                                                <input type="text" name="company_type" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业住所</label>
+                                                <input type="text" name="company_address" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人姓名</label>
+                                                <input type="text" name="legal_person" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册资本(万元)</label>
+                                                <input type="text" name="reg_amt" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册资本币种</label>
+                                                <input type="text" name="reg_currency" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>成立日期</label>
+                                                <input type="text" name="create_date" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>主营范围</label>
+                                                <input type="text" name="main_biz" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册登记机关</label>
+                                                <input type="text" name="reg_org" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册登记日期</label>
+                                                <input type="text" name="reg_date" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照编号</label>
+                                                <input type="text" name="license_num" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否删除：0未删除，-1删除</label>
+                                                <input type="text" name="de_flag" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>实际经营地址</label>
+                                                <input type="text" name="real_address" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>业务类型</label>
+                                                <input type="text" name="biz_type" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>兼营范围</label>
+                                                <input type="text" name="slave_biz" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>登记注册类型</label>
+                                                <input type="text" name="reg_type" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>首次记录时间</label>
+                                                <input type="text" name="create_time" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>更新记录时间</label>
+                                                <input type="text" name="update_time" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

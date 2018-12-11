@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>客户号码</th>
+                                                        <th>统一社会信用代码</th>
+                                                        <th>牵引车品牌 进口 合资 国产</th>
+                                                        <th>有无仓储分拨中心 0 无 1 有</th>
+                                                        <th>有无固定停车场 0 无 1 有</th>
+                                                        <th>总车辆数量 公司实际可用货运车辆总数</th>
+                                                        <th>自有车辆数量 自有货运车辆</th>
+                                                        <th>挂靠车辆数量</th>
+                                                        <th>有贷款的车辆数量 自有货运车辆中，目前有贷款的数量</th>
+                                                        <th>月均通行费用（全部车辆）(万元)</th>
+                                                        <th>月均加油费用（全部车辆）(万元)</th>
+                                                        <th>是否核心承运商 0 是 1 否</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_code%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.car_brand%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.has_storage%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.has_park%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.total_car_quantity%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.own_car_quantity%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.other_car_quantity%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.loan_car_quantity%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.avg_m_etc_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.avg_m_oil_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.main_ops%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

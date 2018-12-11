@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目编号</label>
+                                                <input type="text" name="project_no" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目名称</label>
+                                                <input type="text" name="project_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目状态</label>
+                                                <input type="text" name="project_status" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目上线时间</label>
+                                                <input type="text" name="project_line_time" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目终止时间</label>
+                                                <input type="text" name="project_down_time" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <input type="text" name="partner_no" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目创建人</label>
+                                                <input type="text" name="createUser" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目创建时间</label>
+                                                <input type="text" name="createTime" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否已授信</label>
+                                                <input type="text" name="is_credit" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

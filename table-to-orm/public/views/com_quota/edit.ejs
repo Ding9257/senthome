@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>额度ID</label>
+                                                <input type="text" name="quota_id" value="<%= locals.data && data.quota_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业ID</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>产品ID</label>
+                                                <input type="text" name="product_id" value="<%= locals.data && data.product_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>合作商ID</label>
+                                                <input type="text" name="partner_id" value="<%= locals.data && data.partner_id%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>业务品种</label>
+                                                <input type="text" name="business_type" value="<%= locals.data && data.business_type%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>币种</label>
+                                                <input type="text" name="currency" value="<%= locals.data && data.currency%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>额度状态5-批准 1 -冻结 2-终止 3-过期 4-待授信  6-未授信</label>
+                                                <input type="text" name="freezen_status" value="<%= locals.data && data.freezen_status%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>系统评估额度日期</label>
+                                                <input type="text" name="system_credit_date" value="<%= locals.data && data.system_credit_date%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>系统评估额度</label>
+                                                <input type="text" name="sys_credit" value="<%= locals.data && data.sys_credit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>最后授信审批日期</label>
+                                                <input type="text" name="last_credit_date" value="<%= locals.data && data.last_credit_date%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>批准额度</label>
+                                                <input type="text" name="approved_sum" value="<%= locals.data && data.approved_sum%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>已用额度</label>
+                                                <input type="text" name="already_used_amount" value="<%= locals.data && data.already_used_amount%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>可用额度</label>
+                                                <input type="text" name="available_credit" value="<%= locals.data && data.available_credit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>冻结金额</label>
+                                                <input type="text" name="freezing_amount" value="<%= locals.data && data.freezing_amount%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>授信开始日期</label>
+                                                <input type="text" name="credit_apply_create_time" value="<%= locals.data && data.credit_apply_create_time%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>授信终止日期</label>
+                                                <input type="text" name="credit_apply_expire_time" value="<%= locals.data && data.credit_apply_expire_time%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否循环使用</label>
+                                                <input type="text" name="is_loop" value="<%= locals.data && data.is_loop%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>周期单位</label>
+                                                <input type="text" name="cycle" value="<%= locals.data && data.cycle%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>周日</label>
+                                                <input type="text" name="cycle_num" value="<%= locals.data && data.cycle_num%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否额度审批中 1审批中 2审批完</label>
+                                                <input type="text" name="is_approval" value="<%= locals.data && data.is_approval%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

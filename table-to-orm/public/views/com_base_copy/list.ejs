@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div class="investment_f">
+                                <div class="investment_con">
+                                    <form class="form-inline querybox" action="#">
+                                        <div class="form-group">
+                                            <label>XXXXXXXX：</label>
+                                            <input class="form-input" name="name" />
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-query">
+                            <span class="glyphicon glyphicon-search btn_icon" aria-hidden="true">查询</span>
+                        </button>
+                                    </form>
+
+                                    <div class="card card-box">
+                                        <div class="list-header form-inline">
+                                            <h4 class="title"><strong>列表</strong></h4>
+                                            <div class="text-right handle-box">
+                                                <a href="#" type="button" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>
+                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content table-responsive">
+                                            <table class="table table-box table-condensed table-bordered">
+                                                <thead class="text-primary">
+                                                    <tr>
+                                                        <th>客户号码</th>
+                                                        <th>统一社会信用代码</th>
+                                                        <th>企业法定名称</th>
+                                                        <th>企业类型</th>
+                                                        <th>企业住所</th>
+                                                        <th>法人</th>
+                                                        <th>注册资本(元)</th>
+                                                        <th>注册资本币种</th>
+                                                        <th>成立日期</th>
+                                                        <th>主营范围</th>
+                                                        <th>兼营范围</th>
+                                                        <th>登记注册类型</th>
+                                                        <th>注册登记机关</th>
+                                                        <th>注册登记日期</th>
+                                                        <th>营业执照编号</th>
+                                                        <th>手机号</th>
+                                                        <th>注册地</th>
+                                                        <th>证件类型</th>
+                                                        <th>证件号码</th>
+                                                        <th>组织机构登记日期</th>
+                                                        <th>组织机构有效日期</th>
+                                                        <th>组织机构代码证颁发机关</th>
+                                                        <th>注册登记有效日期</th>
+                                                        <th>已注册登记年检日期</th>
+                                                        <th>经营状况</th>
+                                                        <th>主要产品情况</th>
+                                                        <th>经营场地面积(平方米)</th>
+                                                        <th>经营场地所有权</th>
+                                                        <th>财务部联系方式</th>
+                                                        <th>投资主体</th>
+                                                        <th>英文名称</th>
+                                                        <th>国别</th>
+                                                        <th>企业规模</th>
+                                                        <th>从业人数</th>
+                                                        <th>控股类型</th>
+                                                        <th>财务报表类型</th>
+                                                        <th>行业类型</th>
+                                                        <th>基本账户开户行</th>
+                                                        <th>基本账户账号</th>
+                                                        <th>开户日期</th>
+                                                        <th>上市公司标志</th>
+                                                        <th>股票代码</th>
+                                                        <th>上市地</th>
+                                                        <th>集团客户标识</th>
+                                                        <th>集团客户类型</th>
+                                                        <th>上级公司名称</th>
+                                                        <th>上级公司组织机构代码</th>
+                                                        <th>集团融资形式</th>
+                                                        <th>信用等级</th>
+                                                        <th>信用评定日期</th>
+                                                        <th>信用等级(外部)</th>
+                                                        <th>信用等级评定日期（外部）</th>
+                                                        <th>信用等级评定机构(外部)</th>
+                                                        <th>企业隶属关系</th>
+                                                        <th>客户种类：工业，商业，建筑业（房地产），农业，乡镇企业，私营企业，其他</th>
+                                                        <th>进出口权标识</th>
+                                                        <th>是否属特种经营</th>
+                                                        <th>地区重点企业</th>
+                                                        <th>优势企业</th>
+                                                        <th>是否龙头企业</th>
+                                                        <th>是否两高一剩企业</th>
+                                                        <th>通过环评</th>
+                                                        <th>环境行为等级</th>
+                                                        <th>建立信贷关系时间</th>
+                                                        <th>国资委下属企业</th>
+                                                        <th>有无董事会</th>
+                                                        <th>企业性质</th>
+                                                        <th>经济类型:01-全民 02-集团 03-三资 04-个体 05-私营其他</th>
+                                                        <th>地区编码</th>
+                                                        <th>行政区域</th>
+                                                        <th>行政区域2</th>
+                                                        <th>主办机构</th>
+                                                        <th>管理机构</th>
+                                                        <th>是否合作商客户</th>
+                                                        <th>系统评估额度</th>
+                                                        <th>是否删除：0未删除，-1删除</th>
+                                                        <th>字段78</th>
+                                                        <th>字段79</th>
+                                                        <th>字段80</th>
+                                                        <th>字段81</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% !!locals.list &&list.rows.forEach((item, index)=>{ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.company_id%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_code%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_name%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_address%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.legal_person%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_currency%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.create_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.main_biz%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.slave_biz%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_org%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.license_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.mobile%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_place%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.id_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.id_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_reg_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_valid_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.org_issue_org%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_valid_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.reg_check_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.opt_status%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.main_product_info%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.opt_area_size%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.opt_area_own%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.financial_contact%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.investment_subject%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.eng_name%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.nation%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.enterprise_size%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.worker_amt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.holding_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.financial_report%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.industry_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.basic_acct_bank%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.basic_acct_num%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.acct_open_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.public_company_flag%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.stock_cd%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.listed_city%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.group_flag%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.group_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.superior_name%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.superior_org_cd%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.group_finance_way%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.cst_credit_level%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_evaluate_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_level_out%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_evaluate_date_out%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_evaluate_org_out%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_membership%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.cst_class%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.port_flag%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_special_opt%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_point_company%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_vantage_company%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_leader_company%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_21_company%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_env_through%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.env_level%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.credit_rel_time%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_belong_gzw%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.have_directorate%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.firms_nature%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.economic_type%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.area_cd%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.region%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.region2%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.organizer_org%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.manage_org%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.is_co_company%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.sys_credit%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.de_flag%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.company_email%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.lic_start_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.lic_end_date%>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.bank_code%>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <div class="tcdPageCode" style="padding-top: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

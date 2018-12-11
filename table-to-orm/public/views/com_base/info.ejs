@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业ID（系统生成，企业在系统中的唯一标识）</label>
+                                                <span><%= locals.data && data.company_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>统一社会信用代码</label>
+                                                <span><%= locals.data && data.org_code%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业法定名称</label>
+                                                <span><%= locals.data && data.company_name%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业类型</label>
+                                                <span><%= locals.data && data.company_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业住所</label>
+                                                <span><%= locals.data && data.company_address%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人姓名</label>
+                                                <span><%= locals.data && data.legal_person%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册资本(万元)</label>
+                                                <span><%= locals.data && data.reg_amt%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册资本币种</label>
+                                                <span><%= locals.data && data.reg_currency%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>成立日期</label>
+                                                <span><%= locals.data && data.create_date%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>主营范围</label>
+                                                <span><%= locals.data && data.main_biz%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>注册登记机关</label>
+                                                <span><%= locals.data && data.reg_org%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>注册登记日期</label>
+                                                <span><%= locals.data && data.reg_date%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>营业执照编号</label>
+                                                <span><%= locals.data && data.license_num%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否删除：0未删除，-1删除</label>
+                                                <span><%= locals.data && data.de_flag%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>实际经营地址</label>
+                                                <span><%= locals.data && data.real_address%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>业务类型</label>
+                                                <span><%= locals.data && data.biz_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>兼营范围</label>
+                                                <span><%= locals.data && data.slave_biz%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>登记注册类型</label>
+                                                <span><%= locals.data && data.reg_type%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>首次记录时间</label>
+                                                <span><%= locals.data && data.create_time%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>更新记录时间</label>
+                                                <span><%= locals.data && data.update_time%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>公司ID</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>ETC卡号</label>
+                                                <input type="text" name="etc_no" value="<%= locals.data && data.etc_no%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>车辆牌号</label>
+                                                <input type="text" name="car_no" value="<%= locals.data && data.car_no%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>充值流水ID</label>
+                                                <input type="text" name="recharge_id" value="<%= locals.data && data.recharge_id%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>借款时间</label>
+                                                <input type="text" name="loan_time" value="<%= locals.data && data.loan_time%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>借款金额</label>
+                                                <input type="text" name="laon_amt" value="<%= locals.data && data.laon_amt%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

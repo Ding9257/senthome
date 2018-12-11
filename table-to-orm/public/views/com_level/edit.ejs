@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业ID</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>信用等级</label>
+                                                <input type="text" name="cst_credit_level" value="<%= locals.data && data.cst_credit_level%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>信用评定日期</label>
+                                                <input type="text" name="credit_evaluate_date" value="<%= locals.data && data.credit_evaluate_date%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>信用等级(外部)</label>
+                                                <input type="text" name="credit_level_out" value="<%= locals.data && data.credit_level_out%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>信用等级评定日期（外部）</label>
+                                                <input type="text" name="credit_evaluate_date_out" value="<%= locals.data && data.credit_evaluate_date_out%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>信用等级评定机构(外部)</label>
+                                                <input type="text" name="credit_evaluate_org_out" value="<%= locals.data && data.credit_evaluate_org_out%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

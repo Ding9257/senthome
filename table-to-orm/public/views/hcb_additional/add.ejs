@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业ID</label>
+                                                <input type="text" name="company_id" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>运输行业连续经营年限</label>
+                                                <input type="text" name="work_years" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>在职员工人数（不含挂靠）</label>
+                                                <input type="text" name="worker_num" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>全职司机人数（不含挂靠）</label>
+                                                <input type="text" name="driver_num" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>货运司机平均驾龄（年）</label>
+                                                <input type="text" name="drive_avg_years" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>货车帮合作起始时间 精确到日</label>
+                                                <input type="text" name="co_years" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

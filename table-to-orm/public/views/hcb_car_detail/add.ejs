@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>添加信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>车牌号码</label>
+                                                <input type="text" name="car_no" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>车辆所有人</label>
+                                                <input type="text" name="owner" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>统一社会信用代码</label>
+                                                <input type="text" name="org_code" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>ETC卡号</label>
+                                                <input type="text" name="etc_no" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否挂靠1是 0不是</label>
+                                                <input type="text" name="linked" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>是否贷款靠1是 0不是</label>
+                                                <input type="text" name="loan" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否缴纳商业险靠1是 0不是</label>
+                                                <input type="text" name="insured" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>商业险保额</label>
+                                                <input type="text" name="insured_amt" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <span><%= locals.data && data.company_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>营业执照</label>
+                                                <span><%= locals.data && data.g9%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>组织机构代码证</label>
+                                                <span><%= locals.data && data.g10%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>税务登记证</label>
+                                                <span><%= locals.data && data.g8%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>道路运输经营许可证</label>
+                                                <span><%= locals.data && data.g7%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人及实际控制人身份证</label>
+                                                <span><%= locals.data && data.b1%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>行驶证</label>
+                                                <span><%= locals.data && data.i11%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>经营场地租赁合同/房产证明</label>
+                                                <span><%= locals.data && data.g2%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>近2年水电缴费凭证</label>
+                                                <span><%= locals.data && data.g11%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>借款业务申请表</label>
+                                                <span><%= locals.data && data.L9%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业征信报告</label>
+                                                <span><%= locals.data && data.L10%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>法人及实际控制人征信报告</label>
+                                                <span><%= locals.data && data.L11%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>法人及实际控制人担保函</label>
+                                                <span><%= locals.data && data.L12%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业授信授权书</label>
+                                                <span><%= locals.data && data.L6%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业近12个月银行流水</label>
+                                                <span><%= locals.data && data.g3%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>前三大客户运输合同</label>
+                                                <span><%= locals.data && data.g12%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>商业险保单</label>
+                                                <span><%= locals.data && data.g13%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>运输挂靠协议</label>
+                                                <span><%= locals.data && data.g14%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>内部环境办公室</label>
+                                                <span><%= locals.data && data.g15%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>外部环境：外部环境照片，外访人员与门牌LOGO合影</label>
+                                                <span><%= locals.data && data.g16%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营相关：运输车辆</label>
+                                                <span><%= locals.data && data.g17%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>现场拍照，客户办公照</label>
+                                                <span><%= locals.data && data.g181%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>现场拍照，客户手持服务合同与渠道人员合照</label>
+                                                <span><%= locals.data && data.g182%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业近6个月增值税纳税单</label>
+                                                <span><%= locals.data && data.g19%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>最近3年财务报表</label>
+                                                <span><%= locals.data && data.g20%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>最近3年审计报告</label>
+                                                <span><%= locals.data && data.g21%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

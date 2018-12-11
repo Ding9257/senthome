@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目编号</label>
+                                                <span><%= locals.data && data.project_no%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目名称</label>
+                                                <span><%= locals.data && data.project_name%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目状态</label>
+                                                <span><%= locals.data && data.project_status%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目上线时间</label>
+                                                <span><%= locals.data && data.project_line_time%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目终止时间</label>
+                                                <span><%= locals.data && data.project_down_time%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>字段7</label>
+                                                <span><%= locals.data && data.partner_no%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>项目创建人</label>
+                                                <span><%= locals.data && data.createUser%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>项目创建时间</label>
+                                                <span><%= locals.data && data.createTime%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>是否已授信</label>
+                                                <span><%= locals.data && data.is_credit%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

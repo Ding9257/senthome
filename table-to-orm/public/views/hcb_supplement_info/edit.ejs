@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>修改信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>字段2</label>
+                                                <input type="text" name="company_id" value="<%= locals.data && data.company_id%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>近3年行政处罚及不良记录  0-无记录 1-有记录已修正 2-有记录且未改进</label>
+                                                <input type="text" name="near_three_yeras_admin_bad_note" value="<%= locals.data && data.near_three_yeras_admin_bad_note%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>企业近1年征信逾期记录 0-信用记录良好无逾期 1-出现过逾期但情节较轻 2-出现过逾期情节较重 3-出现过严重逾期或信用记录极差或当前扔处于逾期状态</label>
+                                                <input type="text" name="company_near_one_years_overdue_note" value="<%= locals.data && data.company_near_one_years_overdue_note%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>实际控制人近1年逾期记录</label>
+                                                <input type="text" name="controller_near_one_years_overdue_note" value="<%= locals.data && data.controller_near_one_years_overdue_note%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>资产总额</label>
+                                                <input type="text" name="assets_total" value="<%= locals.data && data.assets_total%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>负债总额</label>
+                                                <input type="text" name="liabilities_total" value="<%= locals.data && data.liabilities_total%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>净利润</label>
+                                                <input type="text" name="net_profit" value="<%= locals.data && data.net_profit%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>营业收入</label>
+                                                <input type="text" name="operate_income" value="<%= locals.data && data.operate_income%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>平均应收账款</label>
+                                                <input type="text" name="average_accounts_receivable" value="<%= locals.data && data.average_accounts_receivable%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业现金流量余额</label>
+                                                <input type="text" name="company_cash_balance" value="<%= locals.data && data.company_cash_balance%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>经营活动现金流量</label>
+                                                <input type="text" name="business_cash" value="<%= locals.data && data.business_cash%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>本年销售收入增加额</label>
+                                                <input type="text" name="this_year_sales_increase" value="<%= locals.data && data.this_year_sales_increase%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>上年销售收入总额</label>
+                                                <input type="text" name="last_year_income_lump_sum" value="<%= locals.data && data.last_year_income_lump_sum%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>本年度资产增长额</label>
+                                                <input type="text" name="this_year_assets_growth" value="<%= locals.data && data.this_year_assets_growth%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>年初资产总额</label>
+                                                <input type="text" name="early_assets_lump_sum" value="<%= locals.data && data.early_assets_lump_sum%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>财报是否经过审计</label>
+                                                <input type="text" name="earnings_is_audit" value="<%= locals.data && data.earnings_is_audit%>" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>业务稳定性</label>
+                                                <input type="text" name="business_stability" value="<%= locals.data && data.business_stability%>" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>企业品牌</label>
+                                                <input type="text" name="company_brand" value="<%= locals.data && data.company_brand%>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>

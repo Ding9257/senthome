@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include ./../public/header %>
+
+    <body>
+        <div class="wrapper">
+            <%- include ./../public/sidebar %>
+                <div class="main-panel">
+                    <%- include ./../public/nav %>
+                        <div class="content" style="margin-top: 5px;">
+                            <div style="padding: 14px">
+                                <form action="#" method="post" class="form-check-rule edit_box">
+                                    <div class="text-center bg-primary edit_title">
+                                        <h4>详细信息</h4>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>公司ID</label>
+                                                <span><%= locals.data && data.company_id%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>ETC卡号</label>
+                                                <span><%= locals.data && data.etc_no%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>车辆牌号</label>
+                                                <span><%= locals.data && data.car_no%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>充值流水ID</label>
+                                                <span><%= locals.data && data.recharge_id%>测试</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <label>借款时间</label>
+                                                <span><%= locals.data && data.loan_time%>测试</span>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>借款金额</label>
+                                                <span><%= locals.data && data.laon_amt%>测试</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <button class="btn btn-success" type="submit">添加</button>
+                                        <a href="#" class="btn btn-success">返回</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </body>
+
+</html>
