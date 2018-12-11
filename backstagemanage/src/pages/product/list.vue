@@ -36,7 +36,7 @@
                     label="商品图片"
                     width="100">
                     <template scope="props">
-                        <img :src="`${hosts}${props.row.img}`" />
+                        <img :src="`${hosts}${props.row.img}`"/>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -61,6 +61,9 @@
                         <router-link :to="{name: 'productUpdate', params: {id: props.row.id}}" tag="span">
                             <el-button type="info" size="small" icon="edit">修改</el-button>
                         </router-link>
+                        <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row.id)">
+                            删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -128,23 +131,23 @@
                     })
             },
             //单个删除
-            delete_data(item) {
+            delete_data(id) {
                 this.$confirm('此操作将删除该数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 })
                     .then(() => {
-                        this.load_data = true
-                        this.$fetch.api_table.del(item)
-                            .then(({msg}) => {
-                                this.get_table_data()
-                                this.$message.success(msg)
+                        this.$http({url: "/product/delete", method: "POST", data: {id}})
+                            .then(() => {
+                                this.get_table_data();
                             })
                             .catch(() => {
+                                this.load_data = false
                             })
                     })
                     .catch(() => {
+                        this.load_data = false
                     })
             },
             change_status(status) {
