@@ -182,6 +182,13 @@
             },
             //提交
             on_submit_form() {
+                let area
+                if (!!this.form.areaId) {
+                    area = this.ranges.filter(item => {
+                        return item.id == this.form.areaId
+                    })
+                    this.form.distributionScope = area.length > 0 ? area[0].name : ""
+                }
                 this.$refs.form.validate((valid) => {
                     if (!valid) return false
                     this.on_submit_loading = true
