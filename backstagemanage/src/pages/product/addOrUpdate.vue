@@ -11,7 +11,7 @@
                             <el-input v-model="form.name" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="商品分类">
-                            <el-select v-model="form.region" placeholder="请选择商品分类">
+                            <el-select v-model="form.type" placeholder="请选择商品分类">
                                 <el-option v-for="item in sort" :label="item.name" :value="item.id"></el-option>
                             </el-select>
                         </el-form-item>
@@ -34,12 +34,12 @@
                             <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <!--<el-form-item label="商品参数">-->
-                            <!--<el-form-item v-for="(param,index) in form.params" :key="index"-->
-                                          <!--style="padding-bottom: 5px;">-->
-                                <!--<el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>-->
-                                <!--<el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>-->
-                                <!--<el-button @click.prevent="removeParam(index)">删除</el-button>-->
-                            <!--</el-form-item>-->
+                        <!--<el-form-item v-for="(param,index) in form.params" :key="index"-->
+                        <!--style="padding-bottom: 5px;">-->
+                        <!--<el-input v-model="param.key" placeholder="参数名称" style="width: 120px;"></el-input>-->
+                        <!--<el-input v-model="param.value" placeholder="参数值" style="width: 120px;"></el-input>-->
+                        <!--<el-button @click.prevent="removeParam(index)">删除</el-button>-->
+                        <!--</el-form-item>-->
                         <!--</el-form-item>-->
 
                         <el-form-item>
@@ -88,6 +88,7 @@
                 })
                     .then(({data}) => {
                         this.form = data
+                        this.form.type = this.form.type * 1
                         this.load_data = false
                     })
                     .catch(() => {
@@ -129,6 +130,8 @@
                     } else {
                         url = "/product/save";
                     }
+                    this.form.stock = 999
+                    this.form.stockWarning = 999
                     this.$http({
                         url,
                         data: this.form
