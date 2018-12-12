@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "assets",
+      "script": "./app.js",
+      "watch": false,
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "env_prod": {
+        "NODE_ENV": "production"
+      },
+      "env_dev":{
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}

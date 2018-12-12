@@ -1,0 +1,83 @@
+/**
+ * Created by lingxi on 2018/2/8.
+ */
+module.exports = {
+    apply_no: 'applyNo',//进件编号
+    product_id: 'applyProId',
+    app_id: 'appId',//渠道号
+
+    company_name: 'cname',
+    org_code: 'licenseCode',
+    reg_amt: 'cAsset',
+    create_date: 'cfromdate',
+    real_address: 'realOprateAddress',
+    biz_type: 'businessType',
+
+    work_years: 'operationAge',
+    worker_num: 'employeeCount',
+    driver_num: 'driverCount',
+    drive_avg_years: 'driverAveAge',
+    co_years: 'cooperateStartTime',
+
+    car_brand: 'truckBrand',
+    has_storage: 'existStorage',
+    has_park: 'existParking',
+    total_car_quantity: 'allCount',
+    own_car_quantity: 'ownCount',
+    other_car_quantity: 'subjectionCount',
+    loan_car_quantity: 'havaLoanCount',
+    avg_m_etc_amt: 'aveTrafficCost',
+    avg_m_oil_amt: 'aveOilCost',
+    main_ops: 'isCoreCarrier',
+
+    legal_person_name: 'juridicalName',
+    controller_name: 'realConName',
+    legal_person_mobile: 'juridicalPhone',
+    controller_mobile: 'realConPhone',
+    legal_person_percent: 'juridicalStake',
+    controller_percent: 'realConStake',
+    legal_person_idnum: 'juridicalIdNum',
+    controller_idnum: 'realConIdNum',
+    controller_work_years: 'realConAge',
+    controller_address: 'realConAddress',
+    controller_marry_status: 'realConMarryType',
+    controller_spouse_name: 'realConMateName',
+    controller_spouse_idnum: 'realConMateIdNum',
+    controller_spouse_mobile: 'realConMatePhone',
+    controller_relatives_name: 'realConImmediateName',
+    controller_relatives_idnum: 'realConImmediateIdNum',
+    controller_relatives_mobile: 'realConImmediatePhone',
+    controller_relation: 'realConImmediateRelation',
+    controller_level: 'creditInquiryLevel',
+
+    ops_area_type: 'placeNature',
+    year_rent_fee: 'annualRent',
+    ops_type: 'OperatMode',
+    ops_desc: 'OperatModeDesc',
+    main_biz_area: 'businessArea',
+    core_company_name: 'isCoreCarrier',
+    remarked_brand: 'isRegisterBrand',
+    brand_name: 'brandName',
+    remark_num: 'registrationMark',
+    tel: 'cTelephone',
+    legal_person_address: 'juridicalAdress',
+
+    acct_bank: 'cBankName',
+    bank_card_num: 'cBankCard',
+    fin_person_name: 'financeChiefName',
+    fin_person_mobile: 'financeChiefPhone',
+    fin_person_address: 'financeChiefAdress',
+    money_source: 'manageBankroll',
+    loan_amt: 'manageLoanAmount',
+    credit_level: 'creditInquiryLevel',
+    receivable_m_avg_amt: 'monthReceivable',
+    receivable_ap: 'monthReceivableDays',
+    handle_m_avg_amt: 'monthPayable',
+    handle_ap: 'monthPayableDays',
+
+    L9: 'l9',
+    L10: 'l10',
+    L11: 'l11',
+    L12: 'l12',
+    L6: 'l6'
+}

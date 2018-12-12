@@ -1,0 +1,2 @@
+[2018-02-12T10:50:07.725] [INFO] producer - {"applyNo":"12341234","appId":234234,"bidNum":"456456789789789","applyProId":555,"licenseCode":135817351000,"loanAmount":2000,"plateNumber":"京A1234","etcCard":"ETC111111111"}
+[2018-02-12T10:57:21.871] [INFO] producer - {"applyNo":"12341234","appId":234234,"bidNum":"456456789789789","applyProId":555,"licenseCode":135817351000,"loanAmount":2000,"plateNumber":"京A1234","etcCard":"ETC111111111"}
