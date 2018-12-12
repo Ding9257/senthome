@@ -12,7 +12,7 @@
                         </el-form-item>
                         <el-form-item label="商品分类">
                             <el-select v-model="form.type" placeholder="请选择商品分类">
-                                <el-option v-for="item in sort" :label="item.name" :value="item.id"></el-option>
+                                <el-option v-for="item in sort" :label="item.name" :value="item.name"></el-option>
                             </el-select>
                         </el-form-item>
                         <el-form-item label="商品图片:">
@@ -88,7 +88,7 @@
                 })
                     .then(({data}) => {
                         this.form = data
-                        this.form.type = this.form.type * 1
+                        //this.form.type = this.form.type * 1
                         this.load_data = false
                     })
                     .catch(() => {
@@ -132,6 +132,8 @@
                     }
                     this.form.stock = 999
                     this.form.stockWarning = 999
+                    this.form.sid = 0
+                    this.form.status = 0
                     this.$http({
                         url,
                         data: this.form
