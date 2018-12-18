@@ -9,33 +9,38 @@ module.exports = function(sequelize, DataTypes) {
         },
         channelId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false,
+            allowNull: true,
             comment: ''
         },
         payType: {
             type: DataTypes.INTEGER(1),
             allowNull: true,
-            comment: ''
+            comment: '下发通道 1银行卡 2微信 3支付宝'
         },
         accountName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '账户名称'
         },
         accountNum: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '账户号'
         },
         bankName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '开户行'
         },
         usefor: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '用途'
+        },
+        customkey: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '渠道商唯一标识'
         }
     });
     return channel_config;

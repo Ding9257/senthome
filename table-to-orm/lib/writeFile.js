@@ -78,7 +78,6 @@ function handleKey(key, value) {
 }
 
 function handleType(value) {
-    console.log(value);
     let res = "";
     if (value.includes('bigint(')) {
         res = value.replace(/bigint/, 'BIGINT');

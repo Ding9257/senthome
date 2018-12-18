@@ -12,6 +12,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             comment: '对应qb_users主键'
         },
+        customkey: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            unique: true,
+            comment: '渠道商唯一标识'
+        },
         companyName: {
             type: DataTypes.STRING(255),
             allowNull: true,
@@ -142,10 +148,41 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             comment: ''
         },
-        customkey: {
+        serviceRate: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '基础费率'
+        },
+        status: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: '1',
+            comment: '1 启用  2 未启用 3 停用'
+        },
+        prov: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '省份'
+        },
+        city: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '城市'
+        },
+        address: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '地址'
+        },
+        bankCode: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '银企直联服务CODE'
+        },
+        customType: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            comment: '账户类型：1 商户 2 下发公司 3 代理商'
         }
     });
     return qb_company;

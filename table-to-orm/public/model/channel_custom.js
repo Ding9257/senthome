@@ -24,6 +24,11 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
             comment: '渠道商唯一标识'
         },
+        secretkey: {
+            type: DataTypes.STRING(40),
+            allowNull: true,
+            comment: '秘钥'
+        },
         creatTime: {
             type: DataTypes.STRING(50),
             allowNull: true,
@@ -64,7 +69,12 @@ module.exports = function(sequelize, DataTypes) {
         bankname: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '开户行'
+        },
+        bankNo: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '账号'
         },
         startTime: {
             type: DataTypes.DATE,
@@ -130,11 +140,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             comment: '单位地址及电话'
-        },
-        bankNameAndBankNo: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-            comment: '开户行及账号'
         }
     });
     return channel_custom;

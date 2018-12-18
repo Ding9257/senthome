@@ -24,14 +24,15 @@ module.exports = function(sequelize, DataTypes) {
         },
         customkey: {
             type: DataTypes.STRING(255),
-            allowNull: true,
-            comment: ''
+            allowNull: false,
+            defaultValue: '',
+            comment: '下发公司标识'
         },
         status: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             defaultValue: '1',
-            comment: '1 启用  2 未启用'
+            comment: '1 启用  2 未启用 3 停用'
         },
         priviewUrl: {
             type: DataTypes.LONGTEXT,
@@ -42,6 +43,31 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             comment: ''
+        },
+        contractId: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '合同ID -- 上上签 平台获取'
+        },
+        templateId: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '模板id'
+        },
+        templateName: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '模板名称'
+        },
+        enableTime: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            comment: '启用时间'
+        },
+        operatingTime: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            comment: '操作时间'
         }
     });
     return qb_contract;

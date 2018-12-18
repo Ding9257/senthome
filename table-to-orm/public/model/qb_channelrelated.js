@@ -52,6 +52,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(25),
             allowNull: true,
             comment: '服务费'
+        },
+        passage: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '下发通道 1银行卡 2微信 3支付宝'
         }
     });
     return qb_channelrelated;
