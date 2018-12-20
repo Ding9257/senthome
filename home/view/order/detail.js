@@ -119,6 +119,7 @@ Page({
         }).then(res => {
             app.requestPayment(res.data).then(ok => {
                 Toast.success("支付成功");
+                _this.push(againPayment);
                 _this.change_status(againPayment.orderId, 0).then(() => {
                     _this.getOrder(_this.data.id)
                 });
@@ -127,7 +128,16 @@ Page({
             })
         })
     },
-    failCancel:function () {
+    push: (order) => {
+        request({
+            url: "/weChat/push",
+            method: "get",
+            data: {msg: `下单成功id=${order.orderId}`, regId: order.sid}
+        }).then(res => {
+            console.log(res);
+        })
+    },
+    failCancel: function () {
         Dialog.confirm({
             title: '确定要取消当前订单吗？'
         }).then(() => {

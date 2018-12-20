@@ -161,6 +161,7 @@ Page({
             let orderId = data.data.orderId;
             app.requestPayment(data.data).then(ok => {
                 _this.change_status(orderId, 0);
+                _this.push(orderId);
                 wx.redirectTo({
                     url: `/view/order/index?activeStatus=0`
                 });
@@ -173,6 +174,15 @@ Page({
             })
         }).catch(e => {
             Toast.fail(e.msg);
+        })
+    },
+    push: (orderId) => {
+        request({
+            url: "/weChat/push",
+            method: "get",
+            data: {msg: `下单成功id=${orderId}`, regId: this.data.shopInfo.id}
+        }).then(res => {
+            console.log(res);
         })
     },
     change_status: function (orderId, status) {
