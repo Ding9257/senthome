@@ -180,7 +180,7 @@ Page({
         request({
             url: "/weChat/push",
             method: "get",
-            data: {msg: `下单成功id=${orderId}`, regId: this.data.shopInfo.id}
+            data: {msg: `下单成功id=${orderId}`, regId: _this.data.shopInfo.id}
         }).then(res => {
             console.log(res);
         })
