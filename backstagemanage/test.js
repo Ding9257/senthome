@@ -1,3 +1,9 @@
-const moment = require("moment");
-console.log(moment());
-console.log(moment().subtract(0, 'days'));
+for (var i = 0; i < 5; i++) {
+    (function (i) {
+
+
+        setTimeout(function () {
+            console.log(i)
+        }, 1000)
+    })(i)
+}

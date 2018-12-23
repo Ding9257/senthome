@@ -170,7 +170,7 @@ Page({
         request({
             url: "/area/listStore",
             method: "post",
-            data: {area, city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat}
+            data: {area, city, lngs: app.globalData.coordinate.lng, lats: app.globalData.coordinate.lat, status: 0}
         }).then(data => {
             let list = [];
             for (let item of data.data) {
