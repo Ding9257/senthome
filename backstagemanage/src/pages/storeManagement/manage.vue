@@ -66,6 +66,9 @@
                     prop="qrCode"
                     label="二维码"
                     width="120">
+                    <template slot-scope="scope">
+                        <img :src="`${hosts}${scope.row.qrCode}`" />
+                    </template>
                 </el-table-column>
                 <el-table-column
                     prop="areaId"
@@ -114,6 +117,7 @@
     export default {
         data() {
             return {
+                hosts: this.config.hosts,
                 formInline: {},
                 name: "",
                 table_data: null,
