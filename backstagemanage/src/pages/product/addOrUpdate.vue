@@ -28,10 +28,23 @@
                             </el-upload>
                         </el-form-item>
                         <el-form-item label="商品售价:">
-                            <el-input v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input type="number" v-model="form.money" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <el-form-item label="商品市场价:">
-                            <el-input v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
+                            <el-input type="number" v-model="form.price" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="品牌:">
+                            <el-input v-model="form.brand" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="产地:">
+                            <el-input v-model="form.area" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="单位:">
+                            <el-input v-model="form.unit" placeholder="请输入内容" style="width: 250px;"></el-input>
+                        </el-form-item>
+                        <el-form-item label="重量:">
+                            <el-input v-model="form.weight" placeholder="请输入内容" style="width: 250px;"></el-input>
                         </el-form-item>
                         <!--<el-form-item label="商品参数">-->
                         <!--<el-form-item v-for="(param,index) in form.params" :key="index"-->
@@ -70,7 +83,7 @@
                 load_data: false,
                 on_submit_loading: false,
                 rules: {
-                    name: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
+                    name: [{required: true, message: '商品名称不能为空', trigger: 'blur'}]
                 }
             }
         },
