@@ -32,6 +32,21 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             comment: ''
         },
+        serviceType: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '服务类型'
+        },
+        price: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '单价'
+        },
+        number: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '计件'
+        },
         documentType: {
             type: DataTypes.INTEGER(1),
             allowNull: true,
@@ -116,6 +131,18 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             comment: '手机号码'
+        },
+        serviceRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            defaultValue: '0',
+            comment: '服务费费率'
+        },
+        serviceFee: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            defaultValue: '0.00',
+            comment: '服务费'
         }
     });
     return qb_commissiontemporary;

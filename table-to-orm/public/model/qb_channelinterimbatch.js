@@ -38,12 +38,12 @@ module.exports = function(sequelize, DataTypes) {
             comment: '付款账户名称'
         },
         customkey: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(50),
             allowNull: true,
             comment: '发送方渠道key'
         },
         recCustomkey: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(50),
             allowNull: true,
             comment: '接收方渠道key'
         },

@@ -13,12 +13,12 @@ module.exports = function(sequelize, DataTypes) {
             comment: ''
         },
         companyId: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(50),
             allowNull: true,
             comment: '薪税下发公司标识'
         },
         originalId: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(50),
             allowNull: true,
             comment: '商户标识（原公司）'
         },

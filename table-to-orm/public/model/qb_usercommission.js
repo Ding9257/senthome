@@ -7,6 +7,16 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             comment: ''
         },
+        batchId: {
+            type: DataTypes.STRING(50),
+            allowNull: true,
+            comment: '批次id 对应交易记录表id'
+        },
+        orderNo: {
+            type: DataTypes.STRING(50),
+            allowNull: true,
+            comment: ''
+        },
         createtime: {
             type: DataTypes.STRING(20),
             allowNull: true,
@@ -15,13 +25,28 @@ module.exports = function(sequelize, DataTypes) {
         userId: {
             type: DataTypes.STRING(11),
             allowNull: true,
-            comment: ''
+            comment: '用户ID'
         },
         amount: {
             type: DataTypes.STRING(20),
             allowNull: true,
             defaultValue: '0',
-            comment: ''
+            comment: '下发金额'
+        },
+        serviceType: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '服务类型'
+        },
+        price: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '单价'
+        },
+        number: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '计件'
         },
         originalId: {
             type: DataTypes.STRING(50),
@@ -34,9 +59,9 @@ module.exports = function(sequelize, DataTypes) {
             comment: '平台标识'
         },
         companyId: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(50),
             allowNull: true,
-            comment: ''
+            comment: '结算公司ID'
         },
         userType: {
             type: DataTypes.INTEGER(1),
@@ -47,7 +72,7 @@ module.exports = function(sequelize, DataTypes) {
         statusDesc: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '状态描述'
         },
         status: {
             type: DataTypes.INTEGER(1),
@@ -55,20 +80,10 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: '0',
             comment: ' 0 待发放 1  发放成功  2 发放失败'
         },
-        batchId: {
-            type: DataTypes.STRING(50),
-            allowNull: true,
-            comment: '批次id 对应交易记录表id'
-        },
         aygOrderNo: {
             type: DataTypes.STRING(100),
             allowNull: true,
             comment: '爱员工授权订单号'
-        },
-        orderNo: {
-            type: DataTypes.STRING(50),
-            allowNull: true,
-            comment: ''
         },
         updatetime: {
             type: DataTypes.STRING(20),
@@ -88,17 +103,17 @@ module.exports = function(sequelize, DataTypes) {
         serviceRatesFree: {
             type: DataTypes.STRING(20),
             allowNull: true,
-            comment: ''
+            comment: '服务费'
         },
         profiltFree: {
             type: DataTypes.STRING(20),
             allowNull: true,
-            comment: ''
+            comment: '利润'
         },
         serviceRates: {
             type: DataTypes.STRING(20),
             allowNull: true,
-            comment: ''
+            comment: '服务费费率'
         },
         profilt: {
             type: DataTypes.STRING(20),
@@ -114,7 +129,7 @@ module.exports = function(sequelize, DataTypes) {
         account: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: '支付宝账户'
+            comment: '打款账户'
         },
         invoiceStatus: {
             type: DataTypes.INTEGER(1),
@@ -129,17 +144,17 @@ module.exports = function(sequelize, DataTypes) {
         menuId: {
             type: DataTypes.INTEGER(10),
             allowNull: true,
-            comment: ''
+            comment: '菜单ID'
         },
         contentName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '菜单名称'
         },
         paymentTime: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '到账时间'
         },
         userNo: {
             type: DataTypes.STRING(255),
@@ -149,37 +164,37 @@ module.exports = function(sequelize, DataTypes) {
         companyName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '下发公司名称'
         },
         certId: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '证件号码'
         },
         documentType: {
             type: DataTypes.INTEGER(10),
             allowNull: true,
-            comment: ''
+            comment: '证件类型'
         },
         userName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '姓名'
         },
         customName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '商户名称'
         },
         batchFileName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '批次文件名称'
         },
         bankName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '支行信息'
         },
         description: {
             type: DataTypes.STRING(255),
@@ -189,12 +204,12 @@ module.exports = function(sequelize, DataTypes) {
         batchName: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '批次名称'
         },
         batchDesc: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '批次描述'
         },
         bankNo: {
             type: DataTypes.STRING(255),

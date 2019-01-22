@@ -20,22 +20,32 @@ module.exports = function(sequelize, DataTypes) {
         passNum: {
             type: DataTypes.INTEGER(10),
             allowNull: true,
-            comment: ''
+            comment: '校验成功数目'
         },
         batchNum: {
             type: DataTypes.INTEGER(10),
             allowNull: true,
-            comment: ''
+            comment: '批次数目'
         },
         errorNum: {
             type: DataTypes.INTEGER(10),
             allowNull: true,
-            comment: ''
+            comment: '校验失败数目'
         },
         customkey: {
             type: DataTypes.STRING(255),
             allowNull: true,
-            comment: ''
+            comment: '商户标识'
+        },
+        companyId: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: 'j结算公司标识'
+        },
+        status: {
+            type: DataTypes.INTEGER(1),
+            allowNull: true,
+            comment: '1 未提交  2 已提交'
         }
     });
     return qb_userbatch;

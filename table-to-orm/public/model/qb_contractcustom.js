@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         contractId: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
-            comment: '合同ID--对应contract 主键'
+            comment: '下发公司合同ID--对应contract 主键'
         },
         customkey: {
             type: DataTypes.STRING(255),
@@ -21,7 +21,17 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER(255),
             allowNull: true,
             defaultValue: '1',
-            comment: '1 启用  2 未启用 3 停用'
+            comment: '1 启用  2 未启用 3 停用  4弃用'
+        },
+        expireTime: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            comment: '过期时间'
+        },
+        privewUrl: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            comment: '合同预览地址'
         }
     });
     return qb_contractcustom;

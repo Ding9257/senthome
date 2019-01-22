@@ -24,6 +24,16 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
             comment: '渠道商唯一标识'
         },
+        customType: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            comment: '账户类型：1 商户 2 下发公司 3 代理商 4管理员'
+        },
+        bankcardno: {
+            type: DataTypes.STRING(50),
+            allowNull: true,
+            comment: ''
+        },
         secretkey: {
             type: DataTypes.STRING(40),
             allowNull: true,
@@ -36,13 +46,13 @@ module.exports = function(sequelize, DataTypes) {
         },
         phoneNo: {
             type: DataTypes.STRING(40),
-            allowNull: true,
+            allowNull: false,
+            primaryKey: true,
             comment: '手机号'
         },
         email: {
             type: DataTypes.STRING(50),
             allowNull: true,
-            unique: true,
             comment: '邮箱'
         },
         username: {
@@ -55,16 +65,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(40),
             allowNull: true,
             comment: '交易密码'
-        },
-        customType: {
-            type: DataTypes.INTEGER(11),
-            allowNull: true,
-            comment: '账户类型：1 商户 2 下发公司 3 代理商'
-        },
-        bankcardno: {
-            type: DataTypes.STRING(50),
-            allowNull: true,
-            comment: ''
         },
         bankname: {
             type: DataTypes.STRING(255),
@@ -85,6 +85,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true,
             comment: '开始服务时间'
+        },
+        expireTime: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            comment: '过期时间'
         },
         AgentId: {
             type: DataTypes.STRING(45),
@@ -119,7 +124,7 @@ module.exports = function(sequelize, DataTypes) {
         taxpayerType: {
             type: DataTypes.INTEGER(20),
             allowNull: true,
-            comment: ''
+            comment: '纳税人类型  1一般纳税人  2小规模'
         },
         companyOpenNotifyUrl: {
             type: DataTypes.STRING(255),
@@ -140,6 +145,32 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(255),
             allowNull: true,
             comment: '单位地址及电话'
+        },
+        bankNameAndBankNo: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '开户行及账号'
+        },
+        contentList: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '发票内容id集合'
+        },
+        taxpayerNumber: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '纳税人识别号'
+        },
+        password: {
+            type: DataTypes.STRING(40),
+            allowNull: true,
+            comment: '管理密码'
+        },
+        emitType: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: '1',
+            comment: '1 先签约 后下发  2 直接下发 '
         }
     });
     return channel_custom;

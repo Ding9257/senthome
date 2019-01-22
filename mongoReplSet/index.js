@@ -12,19 +12,13 @@ var option = {
         },
         "replSet": {
             "rs_name": "myset",     // 副本集名字
-            "poolSize": 10,         // 每个服务器连接数
+            "poolSize": 5,         // 每个服务器连接数
             "socketOptions": {
                 //"keepAlive": 2,
                 "connectTimeoutMS": 30000,
                 "socketTimeoutMS": 500
             }
         }
-    },
-    "collections": {
-        "users": "users",
-        "loggers": "loggers",
-        "msgs": "msgs",
-        "comments": "comments"
     }
 };
 mongoose.connect(option.url, {

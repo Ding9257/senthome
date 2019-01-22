@@ -18,6 +18,12 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
             comment: '渠道商唯一标识'
         },
+        status: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            defaultValue: '1',
+            comment: '1 启用  2 未启用 3 停用'
+        },
         companyName: {
             type: DataTypes.STRING(255),
             allowNull: true,
@@ -148,17 +154,6 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             comment: ''
         },
-        serviceRate: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-            comment: '基础费率'
-        },
-        status: {
-            type: DataTypes.INTEGER(11),
-            allowNull: true,
-            defaultValue: '1',
-            comment: '1 启用  2 未启用 3 停用'
-        },
         prov: {
             type: DataTypes.STRING(255),
             allowNull: true,
@@ -183,6 +178,61 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER(11),
             allowNull: true,
             comment: '账户类型：1 商户 2 下发公司 3 代理商'
+        },
+        serviceRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '最低报价服务费率'
+        },
+        VATRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '企业增值税税率'
+        },
+        VATAttachRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '企业增值税附加税率'
+        },
+        perVATRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '个人增值税税率'
+        },
+        perVATAttachRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '个人增值税附加税率'
+        },
+        perTarifRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '个税核定征收税率'
+        },
+        localVATRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '当地增值税留存比率'
+        },
+        VATBackRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '增值税返比率'
+        },
+        localIncometaxRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '当地所得税留存比率'
+        },
+        incometaxBackRate: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            comment: '所得税返还比率'
+        },
+        serverCode: {
+            type: DataTypes.STRING(40),
+            allowNull: true,
+            comment: '银企编号'
         }
     });
     return qb_company;
