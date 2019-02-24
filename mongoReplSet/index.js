@@ -45,10 +45,8 @@ mongoose.connect(option.url, {
         usercount = await user.countDocuments({});
         console.log("usercount:", usercount);
         bookcount = await book.countDocuments({});
-        console.log("bookcount:", bookcount);
         session.endSession();
     } catch (e) {
-        console.log(e);
         await session.abortTransaction();
         session.endSession();
     }
