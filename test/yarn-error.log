@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/lingxi/.nvm/versions/node/v8.11.1/bin/node /Users/lingxi/.nvm/versions/node/v8.11.1/bin/yarn install co
+
+PATH: 
+  /Library/apache-maven-3.6.1/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin:/Users/lingxi/.nvm/versions/node/v8.11.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin:.
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add co" instead.
+      at new MessageError (/Users/lingxi/.nvm/versions/node/v8.11.1/lib/node_modules/yarn/lib/cli.js:186:110)
+      at Object.<anonymous> (/Users/lingxi/.nvm/versions/node/v8.11.1/lib/node_modules/yarn/lib/cli.js:21987:13)
+      at Generator.next (<anonymous>)
+      at step (/Users/lingxi/.nvm/versions/node/v8.11.1/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /Users/lingxi/.nvm/versions/node/v8.11.1/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>

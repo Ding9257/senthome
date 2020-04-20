@@ -1,5 +1,9 @@
-const Promise = require("bluebird");
-const fs = Promise.promisifyAll(require("fs"));
-fs.readdirAsync('./public/model').then(data => {
-    console.log(data);
-});
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '*信息技术服务*软件开发和互联网技术服务' where id = 4 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 5 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 6 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 7 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 15 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 17 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 18 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 19 and customkey = 'rizhao';
+update `qb_contract` set merchantTemplateId = '1554712178010000001' ,content = '' where id = 20 and customkey = 'rizhao';

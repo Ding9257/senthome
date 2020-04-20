@@ -4,6 +4,8 @@ class Math {
     add(a, b) {
         return a + b;
     }
+
+    sub(){}
 }
 
 function log(target, name, descriptor) {
@@ -14,10 +16,10 @@ function log(target, name, descriptor) {
         console.log(`Calling ${name} with`, ...arguments);
         return oldValue.apply(this, arguments);
     };
-
-    return descriptor;
+    //
+     return descriptor;
 }
 
 
 let math = new Math()
-math.add(1, 2)
+console.log(math.add(1, 2));
