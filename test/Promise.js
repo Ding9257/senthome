@@ -211,8 +211,7 @@ class MyPromise {
 
 module.exports = MyPromise;
 
-new MyPromise(r => {
-    r("ss")
-}).then(r => {
-    console.log(r);
-});
+new MyPromise(function () {
+    console.log(arguments);
+})
+
