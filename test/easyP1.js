@@ -8,7 +8,6 @@ function myPromise(fn) {
         setTimeout(() => {
             okCallBack(res);
         })
-
     }
 
     let reject = (err) => {
