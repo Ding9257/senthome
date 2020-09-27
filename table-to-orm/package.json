@@ -11,10 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.1",
+    "exceljs": "3",
     "js-beautify": "^1.7.5",
+    "koa-session-mysql": "^0.1.2",
+    "lodash": "^4.17.19",
     "moment": "^2.20.1",
     "mysql": "^2.15.0",
     "prettier": "^1.11.1",
+    "province-city-china": "^6.0.3",
     "sequelize": "^3.21.0"
   }
 }
