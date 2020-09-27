@@ -1,29 +1,21 @@
-// callback
-// promise
-// yield 协程
-// Generator
+setTimeout(async function () {
 
-function* r1() {
-    let v = yield 1 + 1;
-    return v;
-}
+    let i = 0;
 
+    while (true) {
 
+        console.log(++i);
 
-function run(fn) {
-    let gen = fn();
-    console.log(gen);
-
-    function next(err, data) {
-        let result = gen.next(data);
-        console.log(result);
-        if(result.done) return;
-        result.value(next);
+        await sleep();
 
     }
+}, 1000);
 
-    next();
 
+function sleep() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve();
+        }, 1000);
+    })
 }
-
-console.log(run(r1));

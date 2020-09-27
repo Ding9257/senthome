@@ -1,5 +1,4 @@
 // https://www.jianshu.com/p/7c5cec56f0f6
-// https://www.jianshu.com/p/7c5cec56f0f6
 // 完整代码 也顺便带大家理顺一下
 function Promise(executor) {
     let self = this;
@@ -148,6 +147,7 @@ Promise.defer = Promise.deferred = function () {
 Promise.prototype.catch = function (onRejected) {
     return this.then(null, onRejected) // 相当于then里的成功回调只传个null
 }
+
 
 // 内部实现
 Promise.all = function (promises) { // promises 是一个数组
