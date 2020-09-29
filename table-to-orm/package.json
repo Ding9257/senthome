@@ -19,6 +19,6 @@
     "mysql": "^2.15.0",
     "prettier": "^1.11.1",
     "province-city-china": "^6.0.3",
-    "sequelize": "^3.21.0"
+    "sequelize": "^5.15.1"
   }
 }
