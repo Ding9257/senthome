@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "co": "^4.6.0",
     "is-promise": "^4.0.0",
     "promise": "^8.1.0",
